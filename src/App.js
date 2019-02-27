@@ -13,7 +13,7 @@ class App extends Component {
       //intialize it with empty array or will trigger error at first render
       colors: [],
       theColorApiRes: '',
-      imgSRC: 'https://mymodernmet.com/wp/wp-content/uploads/archive/ocgy1ixCGE6d0SzzinRj_1082098615.jpeg',
+      imgSRC: 'https://cdn-images-1.medium.com/max/1000/1*PjLIvhVpVh26HXKyIc02lg.jpeg',
       input: '',
       hexSelected: '',
       errorMsg: ''
@@ -42,7 +42,7 @@ class App extends Component {
     let hex = event.target.dataset.id;
     hex = hex.slice(1, hex.length)
     console.log(hex);
-    axios.get(`http://www.thecolorapi.com/id?hex=${hex}`)
+    axios.get(`https://www.thecolorapi.com/id?hex=${hex}`)
     .then(res => {
       console.log(res);
       this.setState({theColorApiRes: res})
