@@ -29,7 +29,10 @@ class App extends Component {
     const app = new Clarifai.App({apiKey: 'bd8644854b19417dacdfa3adba21aab1'});
     app.models.predict("eeed0b6733a644cea07cf4c60f87ebb7", url)
     .then(res => {
-      this.setState({ colors: res.outputs[0].data.colors });
+      this.setState({
+        colors: res.outputs[0].data.colors,
+        theColorApiRes: ''
+       });
     },
       err => {
         console.log(err);
@@ -41,7 +44,7 @@ class App extends Component {
   colorApiCall (event) {
     let hex = event.target.dataset.id;
     hex = hex.slice(1, hex.length)
-    console.log(hex);
+    // adding https fixes "Mixed Content Blocked" message
     axios.get(`https://www.thecolorapi.com/id?hex=${hex}`)
     .then(res => {
       console.log(res);
