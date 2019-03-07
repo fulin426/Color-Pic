@@ -9,6 +9,7 @@ const toPercent = num => {
 
 class ColorsList extends Component {
   componentDidMount() {
+    // console.log(this.props.url);
     const url = this.props.url;
     this.props.analyzeImage(url);
   }
@@ -29,7 +30,7 @@ class ColorsList extends Component {
         <p>{toPercent(color.value)}</p>
       </div>
     );
-    
+
     return(
     <div>
       {ColorsList}
@@ -41,7 +42,7 @@ class ColorsList extends Component {
 const mapStateToProps = state => {
   return {
     colors: state.colors,
-    url: state.url
+    url: state.url.url
   };
 };
 

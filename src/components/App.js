@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
+
 import InputBar from './InputBar';
 import ColorsList from './ColorsList';
 import ImageMain from './ImageMain';
-import axios from 'axios';
-const Clarifai = require('clarifai');
+import ImageSelection from './ImageSelection';
 
 class App extends Component {
   constructor(props) {
@@ -20,21 +21,21 @@ class App extends Component {
     };
   }
 
-  clarifaiApiCall (url) {
-    const app = new Clarifai.App({apiKey: 'bd8644854b19417dacdfa3adba21aab1'});
-    app.models.predict(Clarifai.COLOR_MODEL, url)
-    .then(res => {
-      this.setState({
-        colors: res.outputs[0].data.colors,
-        theColorApiRes: ''
-       });
-    },
-      err => {
-        console.log(err);
-        this.setState({errorMsg: err});
-      }
-    );
-  }
+  // clarifaiApiCall (url) {
+  //   const app = new Clarifai.App({apiKey: 'bd8644854b19417dacdfa3adba21aab1'});
+  //   app.models.predict(Clarifai.COLOR_MODEL, url)
+  //   .then(res => {
+  //     this.setState({
+  //       colors: res.outputs[0].data.colors,
+  //       theColorApiRes: ''
+  //      });
+  //   },
+  //     err => {
+  //       console.log(err);
+  //       this.setState({errorMsg: err});
+  //     }
+  //   );
+  // }
 
   colorApiCall (event) {
     let hex = event.target.dataset.id;
@@ -80,17 +81,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <h2>Choose a picture and analyze it</h2>
-        <ImageMain />
+        <div className="image-selection-container">
+          <ImageSelection />
+          <ImageMain />
+        </div>
           {/* <InputBar
           searchButtonClick={event => this.searchButtonClick(event)}
           imgSearch={event => this.imgSearch(event)}/> */}
-          <ColorsList
-            colorApiCall={event => this.colorApiCall(event)}
-            colors={this.state.colors}
-          />
-          {this.colorInfoRender()}
+        <ColorsList/>
       </div>
     );
   }

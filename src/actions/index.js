@@ -8,3 +8,10 @@ export const analyzeImage = (url) => async dispatch => {
     payload: response.outputs[0].data.colors
   })
 }
+
+export const changeMainImage = url => dispatch => {
+  dispatch({
+    type: 'MAIN_IMAGE',
+    url: url
+  });
+};

@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const ImageMain = ({url}) => {
-  console.log(url);
   return(
-    <div>
+    <div className="image-main">
         <img
           className="sample-img"
           src={url}
