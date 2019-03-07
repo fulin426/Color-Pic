@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import InputBar from './InputBar';
 import ColorsList from './ColorsList';
+import ImageMain from './ImageMain';
 import axios from 'axios';
-
 const Clarifai = require('clarifai');
 
 class App extends Component {
@@ -16,18 +16,13 @@ class App extends Component {
       imgSRC: 'https://cdn-images-1.medium.com/max/1000/1*PjLIvhVpVh26HXKyIc02lg.jpeg',
       input: '',
       hexSelected: '',
-      errorMsg: ''
+      errorMsg: '',
     };
   }
 
-  componentDidMount() {
-    let url = this.state.imgSRC;
-    this.clariaApiCall(url);
-  }
-
-  clariaApiCall (url) {
+  clarifaiApiCall (url) {
     const app = new Clarifai.App({apiKey: 'bd8644854b19417dacdfa3adba21aab1'});
-    app.models.predict("eeed0b6733a644cea07cf4c60f87ebb7", url)
+    app.models.predict(Clarifai.COLOR_MODEL, url)
     .then(res => {
       this.setState({
         colors: res.outputs[0].data.colors,
@@ -53,7 +48,7 @@ class App extends Component {
     err => {
        console.log(err.message);
        this.setState({errorMessage: err.message});
-     })
+     });
   }
 
   imgSearch(event) {
@@ -65,7 +60,7 @@ class App extends Component {
     this.setState({
       imgSRC: url
     },
-      this.clariaApiCall(url)
+      this.clarifaiApiCall(url)
     );
   }
 
@@ -87,13 +82,10 @@ class App extends Component {
     return (
       <div className="App">
         <h2>Choose a picture and analyze it</h2>
-        <img
-          className="sample-img"
-          alt="stairs"
-          src={this.state.imgSRC} />
-          <InputBar
+        <ImageMain />
+          {/* <InputBar
           searchButtonClick={event => this.searchButtonClick(event)}
-          imgSearch={event => this.imgSearch(event)}/>
+          imgSearch={event => this.imgSearch(event)}/> */}
           <ColorsList
             colorApiCall={event => this.colorApiCall(event)}
             colors={this.state.colors}
