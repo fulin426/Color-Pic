@@ -9,9 +9,13 @@ const toPercent = num => {
 
 class ColorsList extends Component {
   componentDidMount() {
-    // console.log(this.props.url);
-    const url = this.props.url;
-    this.props.analyzeImage(url);
+    this.props.analyzeImage(this.props.url);
+  }
+  // Make API call each time the URL changes
+  componentDidUpdate(prevProps) {
+    if (this.props.url !== prevProps.url ) {
+      this.props.analyzeImage(this.props.url);
+    };
   }
 
   render() {
@@ -21,8 +25,6 @@ class ColorsList extends Component {
         key={color.raw_hex}
         className="color-wrapper">
         <div
-          // onClick={props.colorApiCall}
-          data-id={color.raw_hex}
           className="color-square"
           style={{"backgroundColor": color.raw_hex}}>
         </div>

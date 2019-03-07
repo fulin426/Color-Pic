@@ -7,11 +7,11 @@ export const analyzeImage = (url) => async dispatch => {
     type: 'ANALYZE_IMAGE',
     payload: response.outputs[0].data.colors
   })
-}
+};
 
-export const changeMainImage = url => dispatch => {
-  dispatch({
+export const changeMainImage = url => {
+  return {
     type: 'MAIN_IMAGE',
     url: url
-  });
+  };
 };

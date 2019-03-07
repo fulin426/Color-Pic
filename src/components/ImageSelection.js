@@ -6,7 +6,6 @@ import { analyzeImage } from '../actions';
 class ImageSelection extends Component {
   changeImage(url) {
     this.props.changeMainImage(url);
-    this.props.analyzeImage(url);
   };
 
   renderImages () {
