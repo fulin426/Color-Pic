@@ -65,24 +65,12 @@ class App extends Component {
     );
   }
 
-  colorInfoRender() {
-    if (this.state.theColorApiRes === '') {
-      return (<div></div>);
-    } else {
-      return(
-        <div>
-          <p>R: {this.state.theColorApiRes.data.rgb.r}</p>
-          <p>G: {this.state.theColorApiRes.data.rgb.g}</p>
-          <p>B: {this.state.theColorApiRes.data.rgb.b}</p>
-        </div>
-      );
-    }
-  }
-
   render() {
     return (
       <div className="App container">
-        <h2>Choose a picture and analyze it</h2>
+        <div className="header">
+          <h2 >Choose a picture and analyze it</h2>
+        </div>
         <div className="image-selection-container">
           <ImageSelection />
           <ImageMain />

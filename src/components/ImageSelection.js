@@ -24,7 +24,10 @@ class ImageSelection extends Component {
     return(
       <div className="images-select-wrapper">
         {this.renderImages()}
-        <button onClick={() => this.props.randomImage()}>
+        <button
+          className="random-btn"
+          onClick={() => this.props.randomImage()}
+          >
           Random
         </button>
       </div>
