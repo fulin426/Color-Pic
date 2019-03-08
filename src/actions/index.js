@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const Clarifai = require('clarifai');
 
 export const analyzeImage = (url) => async dispatch => {
@@ -14,4 +16,17 @@ export const changeMainImage = url => {
     type: 'MAIN_IMAGE',
     url: url
   };
+};
+
+export const randomImage = () => async dispatch => {
+  const response = await axios.get('https://api.unsplash.com/photos/random', {
+    headers: {
+      Authorization: 'Client-ID 7e3664d943831b0902bdde147b893f182272b23dad6fcf084fb3eaa9d4b0b325'
+    }
+  });
+  console.log(response.data.urls);
+  dispatch({
+    type: 'RANDOM_IMAGE',
+    url: response.data.urls.regular
+  })
 };

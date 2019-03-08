@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeMainImage } from '../actions';
 import { analyzeImage } from '../actions';
+import { randomImage } from '../actions';
 
 class ImageSelection extends Component {
-  changeImage(url) {
-    this.props.changeMainImage(url);
-  };
-
   renderImages () {
     return (
       this.props.url.map(url =>
@@ -16,7 +13,7 @@ class ImageSelection extends Component {
             className="image-selection"
             src={url}
             alt="selection"
-            onClick={() => this.changeImage(url)}
+            onClick={() => this.props.changeMainImage(url)}
           />
         </div>
       )
@@ -27,6 +24,9 @@ class ImageSelection extends Component {
     return(
       <div className="images-select-wrapper">
         {this.renderImages()}
+        <button onClick={() => this.props.randomImage()}>
+          Random
+        </button>
       </div>
     );
   }
@@ -38,4 +38,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { changeMainImage, analyzeImage })(ImageSelection);
+export default connect(mapStateToProps, { changeMainImage, analyzeImage, randomImage })(ImageSelection);

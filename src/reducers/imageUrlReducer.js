@@ -15,6 +15,11 @@ export default (state = initialState, action) => {
        ...state,
        url:action.url
      };
+     case 'RANDOM_IMAGE':
+      return {
+        ...state,
+        url:action.url
+      };
     default:
      return state;
   }
