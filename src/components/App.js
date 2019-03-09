@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 
-import InputBar from './InputBar';
 import ColorsList from './ColorsList';
 import ImageMain from './ImageMain';
 import ImageSelection from './ImageSelection';
