@@ -5,6 +5,7 @@ import axios from 'axios';
 import ColorsList from './ColorsList';
 import ImageMain from './ImageMain';
 import ImageSelection from './ImageSelection';
+import ColorInfo from './ColorInfo';
 
 class App extends Component {
   constructor(props) {
@@ -74,10 +75,8 @@ class App extends Component {
           <ImageSelection />
           <ImageMain />
         </div>
-          {/* <InputBar
-          searchButtonClick={event => this.searchButtonClick(event)}
-          imgSearch={event => this.imgSearch(event)}/> */}
         <ColorsList/>
+        <ColorInfo />
       </div>
     );
   }

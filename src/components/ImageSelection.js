@@ -27,7 +27,7 @@ class ImageSelection extends Component {
         <button
           className="random-btn"
           onClick={() => this.props.randomImage()}
-          >
+        >
           Random
         </button>
       </div>

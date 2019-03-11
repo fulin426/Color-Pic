@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
+import { getColorInfo } from '../actions';
 
 // change return numberes to percent
 const toPercent = num => {
@@ -25,11 +26,13 @@ class ColorsList extends Component {
       const ColorsList = sortColors.map(color =>
         <div
           key={color.raw_hex}
-          className="color-wrapper">
+          className="color-wrapper"
+          onClick={() => this.props.getColorInfo(color.raw_hex.slice(1, color.raw_hex.length))}
+        >
           <div
             className="color-square"
-            style={{"backgroundColor": color.raw_hex}}>
-          </div>
+            style={{"backgroundColor": color.raw_hex}}
+          />
           <p>{color.raw_hex}</p>
           <p>{toPercent(color.value)}</p>
         </div>
@@ -37,11 +40,15 @@ class ColorsList extends Component {
       return(ColorsList);
     }
     // otherwise return error statement
-    return <div>{this.props.error}</div>;
+    return (
+      <div>
+        {this.props.error}
+      </div>
+    );
   };
 
   render() {
-    return(
+    return (
     <div>
       {this.colorsRender()}
     </div>
@@ -57,4 +64,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { analyzeImage })(ColorsList);
+export default connect(mapStateToProps, { analyzeImage, getColorInfo })(ColorsList);

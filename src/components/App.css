@@ -64,5 +64,14 @@
 
 .color-wrapper {
   display: inline-block;
-  word-wrap: break-word;
+  cursor: pointer;
+}
+
+.color-info {
+  margin-top: 2rem;
+}
+
+.info-text {
+  display: inline-block;
+  margin-left: 0.6rem;
 }
