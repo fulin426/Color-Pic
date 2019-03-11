@@ -34,7 +34,7 @@ class Modal extends Component {
           <div>
             <h3>Try your own image</h3>
               <form>
-                <div className="ui actio input">
+                <div className="ui action input">
                   <input
                     className="url-input"
                     type="text"
@@ -43,7 +43,7 @@ class Modal extends Component {
                     placeholder="Copy and paste Url..."
                   />
                   <button
-                    onClick={(event) => {
+                    onClick={event => {
                       this.submitURL(event);
                       close();
                     }}
