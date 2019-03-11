@@ -30,24 +30,32 @@ class Modal extends Component {
         modal
         closeOnDocumentClick
       >
-        <h3>Try your own image</h3>
-        <form>
-          <div className="ui actio input">
-            <input
-              className="url-input"
-              type="text"
-              onChange={event => this.setState({input: event.target.value})}
-              value={this.state.input}
-              placeholder="Copy and paste Url..."
-            />
-            <button
-              onClick={event => this.submitURL(event)}
-              className="ui button"
-            >
-              Submit
-            </button>
+        {close => (
+          <div>
+            <h3>Try your own image</h3>
+              <form>
+                <div className="ui actio input">
+                  <input
+                    className="url-input"
+                    type="text"
+                    onChange={event => this.setState({input: event.target.value})}
+                    value={this.state.input}
+                    placeholder="Copy and paste Url..."
+                  />
+                  <button
+                    onClick={(event) => {
+                      this.submitURL(event);
+                      close();
+                    }}
+                    className="ui button"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
           </div>
-        </form>
+          )
+        }
       </Popup>
     );
   }
