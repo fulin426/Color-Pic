@@ -52,3 +52,10 @@ export const changeMainImage = url => {
     url: url
   };
 };
+
+export const addImageSelection = url => {
+  return {
+    type: 'ADD_URL',
+    url: url
+  };
+};

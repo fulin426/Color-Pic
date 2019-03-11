@@ -16,10 +16,6 @@
 }
 
 /* change dimensions at different break points */
-.sample-img {
-  max-height: 480px;
-  max-width: 100%;
-}
 
 .image-selection {
   max-height: 80px;
@@ -52,6 +48,11 @@
   cursor: pointer;
 }
 
+.sample-img {
+  max-height: 480px;
+  max-width: 100%;
+}
+
 .color-info {
   margin-top: 2rem;
 }
@@ -66,10 +67,10 @@
 }
 /* React Popup */
 .popup-content {
-  width: 500px;
+  width: 600px;
   height: 180px;
   text-align: center;
-  padding: 32px
+  padding: 32px !important;
 }
 
 .modal-btn:hover {
@@ -82,5 +83,5 @@
 }
 
 .url-input {
- width: 440px;
+ width: 250px;
 }

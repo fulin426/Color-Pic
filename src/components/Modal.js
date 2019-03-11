@@ -1,23 +1,56 @@
-import React from 'react'
-import Popup from 'reactjs-popup'
+import React, { Component } from 'react';
+import Popup from 'reactjs-popup';
+import { connect } from 'react-redux';
+import { analyzeImage } from '../actions';
+import { changeMainImage } from '../actions';
+import { addImageSelection } from '../actions';
 
-const Modal = () => (
-  <Popup
-    trigger={<button className="modal-btn"> Try Your Own Image </button>}
-    modal
-    closeOnDocumentClick
-  >
-    <h3>Try your own image</h3>
-    <form>
-      <div class="ui input">
-        <input
-          className="url-input"
-          type="text"
-          placeholder="Copy and paste Url..."
-        />
-      </div>
-    </form>
-  </Popup>
-)
 
-export default Modal;
+class Modal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: ''
+    };
+  }
+
+  submitURL(event) {
+    event.preventDefault();
+    console.log(this.state.input);
+    // add error handle in case of bad url
+    this.props.analyzeImage(this.state.input);
+    this.props.changeMainImage(this.state.input);
+    this.props.addImageSelection(this.state.input);
+  };
+
+  render() {
+    return (
+      <Popup
+        trigger={<button className="modal-btn"> Try Your Own Image </button>}
+        modal
+        closeOnDocumentClick
+      >
+        <h3>Try your own image</h3>
+        <form>
+          <div className="ui actio input">
+            <input
+              className="url-input"
+              type="text"
+              onChange={event => this.setState({input: event.target.value})}
+              value={this.state.input}
+              placeholder="Copy and paste Url..."
+            />
+            <button
+              onClick={event => this.submitURL(event)}
+              className="ui button"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </Popup>
+    );
+  }
+}
+
+export default connect(null, { analyzeImage, changeMainImage, addImageSelection })(Modal);

@@ -20,6 +20,11 @@ export default (state = initialState, action) => {
         ...state,
         url: action.url
       };
+      case 'ADD_URL':
+       return {
+         ...state,
+         exampleImages: state.exampleImages.concat(action.url)
+       };
     default:
      return state;
   }
