@@ -36,6 +36,10 @@
   background-color: #cececb;
 }
 
+.images-container {
+ overflow: scroll;
+ height: 325px; 
+}
 .color-square {
   height: 6rem;
   width: 6rem;

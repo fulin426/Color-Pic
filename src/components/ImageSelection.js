@@ -24,7 +24,9 @@ class ImageSelection extends Component {
   render() {
     return(
       <div className="right floated right aligned three wide column">
-        {this.renderImages()}
+        <div className="images-container">
+          {this.renderImages()}
+        </div>
         <button
           className="random-btn"
           onClick={() => this.props.randomImage()}

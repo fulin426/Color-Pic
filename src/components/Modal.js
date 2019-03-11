@@ -21,6 +21,8 @@ class Modal extends Component {
     this.props.analyzeImage(this.state.input);
     this.props.changeMainImage(this.state.input);
     this.props.addImageSelection(this.state.input);
+    //clear inputbar on submit
+    this.setState({input: ''});
   };
 
   render() {
