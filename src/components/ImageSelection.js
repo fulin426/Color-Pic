@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { changeMainImage } from '../actions';
 import { analyzeImage } from '../actions';
 import { randomImage } from '../actions';
+import  Modal from './Modal';
 
 class ImageSelection extends Component {
   renderImages () {
@@ -22,7 +23,7 @@ class ImageSelection extends Component {
 
   render() {
     return(
-      <div className="images-select-wrapper">
+      <div className="right floated right aligned three wide column">
         {this.renderImages()}
         <button
           className="random-btn"
@@ -30,6 +31,7 @@ class ImageSelection extends Component {
         >
           Random
         </button>
+        <Modal />
       </div>
     );
   }

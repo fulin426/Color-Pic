@@ -17,7 +17,7 @@ export const analyzeImage = (url) => async dispatch => {
     })
   }
 };
-
+//finish error handling in reducer
 export const randomImage = () => async dispatch => {
   try {
     const response = await axios.get('https://api.unsplash.com/photos/random', {
@@ -37,7 +37,7 @@ export const randomImage = () => async dispatch => {
     })
   }
 };
-
+//add error handling
 export const getColorInfo = (hex) => async dispatch => {
   const response = await axios.get(`https://www.thecolorapi.com/id?hex=${hex}`);
   dispatch({

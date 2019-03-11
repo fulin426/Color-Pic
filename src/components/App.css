@@ -10,30 +10,15 @@
   cursor: pointer;
 }
 
-.image-selection-container {
-  display: inline-block;
-  padding: 15px;
+/* override default negative margin */
+.ui.grid {
+  margin: 0;
 }
 
-.images-select-wrapper {
-  display: inline-block;
-  padding: 1rem;
-  height: 100%;
-}
-
-.image-main {
-  display: inline-block;
-  height: 340px;
-  width: 500px;
-  padding: 1rem;
-  border: 1px solid lightgrey;
-}
-
+/* change dimensions at different break points */
 .sample-img {
-  max-height: 310px;
-  max-width: 460px;
-  display: block;
-  margin: 0 auto;
+  max-height: 480px;
+  max-width: 100%;
 }
 
 .image-selection {
@@ -51,7 +36,7 @@
   width: 120px;
 }
 
-.random-btn:hover {
+.random-btn:hover, {
   background-color: #cececb;
 }
 
@@ -71,7 +56,31 @@
   margin-top: 2rem;
 }
 
+.image-container {
+  margin-bottom: 2rem;
+}
+
 .info-text {
   display: inline-block;
   margin-left: 0.6rem;
+}
+/* React Popup */
+.popup-content {
+  width: 500px;
+  height: 180px;
+  text-align: center;
+  padding: 32px
+}
+
+.modal-btn:hover {
+  background-color: #cececb;
+}
+
+.modal-btn {
+  width: 120px;
+  cursor: pointer;
+}
+
+.url-input {
+ width: 440px;
 }

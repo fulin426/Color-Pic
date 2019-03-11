@@ -49,7 +49,7 @@ class ColorsList extends Component {
 
   render() {
     return (
-    <div>
+    <div className="right floated center aligned thirteen wide column">
       {this.colorsRender()}
     </div>
     );

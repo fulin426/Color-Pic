@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const ImageMain = ({url}) => {
   return(
-    <div className="image-main">
+    <div className="left floated center aligned eleven wide column">
         <img
           className="sample-img"
           src={url}
