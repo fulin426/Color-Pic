@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
 import { getColorInfo } from '../actions';
 import { Popup } from 'semantic-ui-react';
+import ColorInfo from './ColorInfo';
 
 // change return numberes to percent
 const toPercent = num => {
@@ -37,7 +38,12 @@ class ColorsList extends Component {
                 style={{"backgroundColor": color.raw_hex}}
               />
             }
-            content={<p>{toPercent(color.value)}</p>}
+            content={
+              <div>
+                <p>{toPercent(color.value)}</p>
+                <ColorInfo />
+              </div>
+            }
             on='click'
             position='top right'
           />

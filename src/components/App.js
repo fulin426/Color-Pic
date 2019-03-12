@@ -5,10 +5,8 @@ import axios from 'axios';
 import ColorsList from './ColorsList';
 import ImageMain from './ImageMain';
 import ImageSelection from './ImageSelection';
-import ColorInfo from './ColorInfo';
 
 class App extends Component {
-
   render() {
     return (
       <div className="App container">
@@ -22,7 +20,6 @@ class App extends Component {
         <div className="ui grid">
           <ColorsList/>
         </div>
-        <ColorInfo />
       </div>
     );
   }
