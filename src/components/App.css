@@ -37,8 +37,8 @@
 }
 
 .images-container {
- overflow: scroll;
- height: 325px; 
+ overflow: auto;
+ height: 325px;
 }
 .color-square {
   height: 6rem;

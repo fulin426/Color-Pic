@@ -21,11 +21,26 @@ class ImageSelection extends Component {
     );
   };
 
+  renderRandomImage() {
+    if(this.props.random_url.length >= 1) {
+      return(
+        <img
+          className="image-selection"
+          src={this.props.random_url}
+          alt="selection"
+          onClick={() => this.props.changeMainImage(this.props.random_url)}
+        />
+      );
+    }
+    return null;
+  }
+
   render() {
     return(
       <div className="right floated right aligned three wide column">
         <div className="images-container">
           {this.renderImages()}
+          {this.renderRandomImage()}
         </div>
         <button
           className="random-btn"
@@ -41,7 +56,8 @@ class ImageSelection extends Component {
 
 const mapStateToProps = state => {
   return {
-    url: state.url.exampleImages
+    url: state.url.exampleImages,
+    random_url: state.url.random_url
   };
 };
 
