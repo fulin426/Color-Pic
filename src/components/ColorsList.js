@@ -40,12 +40,13 @@ class ColorsList extends Component {
             }
             content={
               <div>
+                <p>{color.w3c.name}</p>
                 <p>{toPercent(color.value)}</p>
                 <ColorInfo />
               </div>
             }
             on='click'
-            position='top right'
+            position='top center'
           />
             <p>{color.raw_hex}</p>
         </div>
