@@ -40,6 +40,7 @@
  overflow: auto;
  height: 325px;
 }
+/* render hex color squares */
 .color-square {
   height: 6rem;
   width: 6rem;

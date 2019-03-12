@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
 import { getColorInfo } from '../actions';
+import { Popup } from 'semantic-ui-react';
 
 // change return numberes to percent
 const toPercent = num => {
@@ -24,17 +25,23 @@ class ColorsList extends Component {
     if (this.props.colors.length >= 1) {
       let sortColors = this.props.colors.sort((a,b) => b.value - a.value);
       const ColorsList = sortColors.map(color =>
-        <div
-          key={color.raw_hex}
-          className="color-wrapper"
-          onClick={() => this.props.getColorInfo(color.raw_hex.slice(1, color.raw_hex.length))}
-        >
           <div
-            className="color-square"
-            style={{"backgroundColor": color.raw_hex}}
+            key={color.raw_hex}
+            className="color-wrapper"
+            onClick={() => this.props.getColorInfo(color.raw_hex.slice(1, color.raw_hex.length))}
+          >
+          <Popup
+            trigger={
+              <div
+                className="color-square"
+                style={{"backgroundColor": color.raw_hex}}
+              />
+            }
+            content={<p>{toPercent(color.value)}</p>}
+            on='click'
+            position='top right'
           />
-          <p>{color.raw_hex}</p>
-          <p>{toPercent(color.value)}</p>
+            <p>{color.raw_hex}</p>
         </div>
       );
       return(ColorsList);
