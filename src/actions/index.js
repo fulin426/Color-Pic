@@ -1,22 +1,69 @@
 import axios from 'axios';
 const Clarifai = require('clarifai');
+//Convert Hex to RGB functions
+function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)};
+function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)};
+function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)};
+function cutHex(h) {return (h.charAt(0)==="#") ? h.substring(1,7):h};
+// Convert RGB to Hex functions
+function rgbToHex(R,G,B) {return "#"+toHex(R)+toHex(G)+toHex(B)};
+function toHex(n) {
+ n = parseInt(n,10);
+ if (isNaN(n)) return "00";
+ n = Math.max(0,Math.min(n,255));
+ return "0123456789ABCDEF".charAt((n-n%16)/16)
+      + "0123456789ABCDEF".charAt(n%16);
+};
 
 export const analyzeImage = (url) => async dispatch => {
   const app = new Clarifai.App({apiKey: 'bd8644854b19417dacdfa3adba21aab1'});
-  try {
-    const response = await app.models.predict(Clarifai.COLOR_MODEL, url);
-    dispatch({
-      type: 'ANALYZE_IMAGE',
-      payload: response.outputs[0].data.colors
+    app.models.predict(Clarifai.COLOR_MODEL, url)
+    .then(response => {
+      //convert Hexcolors from Clarifai API to send to Colormind API
+      const hexColors = [];
+      response.outputs[0].data.colors.map(color =>{
+        hexColors.push(color.raw_hex);
+      });
+
+      let hexToRGB = [];
+      for (let i = 0; i < hexColors.length; i++) {
+        let R = hexToR(hexColors[i]);
+        let G = hexToG(hexColors[i]);
+        let B = hexToB(hexColors[i]);
+        hexToRGB.push([ R, G , B ]);
+      };
+
+      if( hexToRGB.length > 5 ) {
+        hexToRGB = hexToRGB.slice(1, 6);
+      };
+
+      //2nd call to colormind API
+      axios.post('http://colormind.io/api/', {
+        model : "default",
+        input : hexToRGB
+      })
+      .then(function (response) {
+        let RGBtoHexData = [];
+        let colorMindResponse = response.data.result;
+        for (let i = 0; i < colorMindResponse.length; i++) {
+          RGBtoHexData.push(rgbToHex(colorMindResponse[i][0], colorMindResponse[i][1], colorMindResponse[i][2]));
+        }
+        // console.log(RGBtoHexData);
+        dispatch({
+          type: 'ANALYZE_IMAGE',
+          payload: RGBtoHexData
+        });
+      })
     })
-  } catch(err) {
-    console.log(err);
-    dispatch({
-      type: 'ANALYZE_IMAGE_ERROR',
-      error: err.data.status.details
-    })
-  }
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: 'ANALYZE_IMAGE_ERROR',
+        error: err.data.status.details
+    });
+  })
 };
+
 //finish error handling in reducer
 export const randomImage = () => async dispatch => {
   try {

@@ -32,7 +32,7 @@
   width: 120px;
 }
 
-.random-btn:hover, {
+.random-btn:hover {
   background-color: #cececb;
 }
 
@@ -42,15 +42,16 @@
 }
 /* render hex color squares */
 .color-square {
-  height: 6rem;
-  width: 6rem;
+  height: 11rem;
+  width: 100%;
   margin: 0 auto;
   display: inline-block;
+  cursor: pointer;
 }
 
 .color-wrapper {
   display: inline-block;
-  cursor: pointer;
+  width: 18%;
 }
 
 .sample-img {

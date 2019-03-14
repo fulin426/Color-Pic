@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
 import { getColorInfo } from '../actions';
-import { Popup } from 'semantic-ui-react';
 import ColorInfo from './ColorInfo';
 
 // change return numberes to percent
-const toPercent = num => {
-  return Math.floor(num*100) + '%';
-}
 
 class ColorsList extends Component {
   componentDidMount() {
@@ -23,32 +19,20 @@ class ColorsList extends Component {
 
   colorsRender() {
     // if there is no error in request and colors data is returned
-    if (this.props.colors.length >= 1) {
-      let sortColors = this.props.colors.sort((a,b) => b.value - a.value);
-      const ColorsList = sortColors.map(color =>
+    if (this.props.colors.length >=1) {
+      const ColorsList = this.props.colors.map(color =>
           <div
-            key={color.raw_hex}
+            key={color}
             className="color-wrapper"
-            onClick={() => this.props.getColorInfo(color.raw_hex.slice(1, color.raw_hex.length))}
+            // onClick={() => this.props.getColorInfo(color.slice(1, color.length))}
           >
-          <Popup
-            trigger={
-              <div
-                className="color-square"
-                style={{"backgroundColor": color.raw_hex}}
-              />
-            }
-            content={
-              <div>
-                <p>{color.w3c.name}</p>
-                <p>{toPercent(color.value)}</p>
-                <ColorInfo />
-              </div>
-            }
-            on='click'
-            position='top center'
+          <div
+            className="color-square"
+            style={{backgroundColor: color}}
           />
-            <p>{color.raw_hex}</p>
+          <p>
+            {color}
+          </p>
         </div>
       );
       return(ColorsList);
@@ -63,7 +47,7 @@ class ColorsList extends Component {
 
   render() {
     return (
-    <div className="right floated center aligned thirteen wide column">
+    <div className="ui container">
       {this.colorsRender()}
     </div>
     );

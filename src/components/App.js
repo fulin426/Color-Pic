@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
 
 import ColorsList from './ColorsList';
 import ImageMain from './ImageMain';
@@ -17,9 +16,7 @@ class App extends Component {
           <ImageSelection />
           <ImageMain />
         </div>
-        <div className="ui grid">
           <ColorsList/>
-        </div>
       </div>
     );
   }
