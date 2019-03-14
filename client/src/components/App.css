@@ -1,0 +1,93 @@
+.App {
+  text-align: center;
+}
+
+.header {
+  margin-top: 20px;
+}
+
+.image-selection, .search-button, .random-btn {
+  cursor: pointer;
+}
+
+/* override default negative margin */
+.ui.grid {
+  margin: 0;
+}
+
+/* change dimensions at different break points */
+
+.image-selection {
+  max-height: 80px;
+  max-width: 120px;
+  opacity: 0.75;
+}
+
+.image-selection:hover {
+  opacity: 1.0;
+}
+
+.random-btn {
+  height: 40px;
+  width: 120px;
+}
+
+.random-btn:hover {
+  background-color: #cececb;
+}
+
+.images-container {
+ overflow: auto;
+ height: 325px;
+}
+/* render hex color squares */
+.color-square {
+  height: 10rem;
+  width: 100%;
+  margin: 0 auto;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.color-wrapper {
+  display: inline-block;
+  width: 16%;
+}
+
+.sample-img {
+  max-height: 480px;
+  max-width: 100%;
+}
+
+.color-info {
+  margin-top: 2rem;
+}
+
+.image-container {
+  margin-bottom: 2rem;
+}
+
+.info-text {
+  display: inline-block;
+  margin-left: 0.6rem;
+}
+/* React Popup */
+.popup-content {
+  width: 600px;
+  height: 180px;
+  text-align: center;
+  padding: 32px !important;
+}
+
+.modal-btn:hover {
+  background-color: #cececb;
+}
+
+.modal-btn {
+  width: 120px;
+  cursor: pointer;
+}
+
+.url-input {
+ width: 250px;
+}
