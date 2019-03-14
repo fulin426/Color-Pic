@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
 import { getColorInfo } from '../actions';
+import { colorMindAPI } from '../actions';
 import ColorInfo from './ColorInfo';
 
 // change return numberes to percent
@@ -9,6 +10,7 @@ import ColorInfo from './ColorInfo';
 class ColorsList extends Component {
   componentDidMount() {
     this.props.analyzeImage(this.props.url);
+    this.props.colorMindAPI();
   };
   // Make API call each time the URL changes
   componentDidUpdate(prevProps) {
@@ -62,4 +64,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { analyzeImage, getColorInfo })(ColorsList);
+export default connect(mapStateToProps, {
+  analyzeImage,
+  getColorInfo,
+  colorMindAPI
+})(ColorsList);
