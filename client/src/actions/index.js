@@ -103,6 +103,12 @@ export const sendPositionInfo = (position) => dispatch => {
   })
 };
 
+export const sendSelectedColor = (color) => dispatch => {
+  dispatch({
+    type: 'SELECTED_COLOR',
+    selectedColor: color
+  })
+};
 export const sendAlphaInfo = (alpha) => dispatch => {
   dispatch({
     type: 'SEND_ALPHA_INFO',

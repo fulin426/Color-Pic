@@ -5,20 +5,22 @@ import { connect } from 'react-redux';
 import { updateHexColor } from '../actions';
 import { sendColorInfo } from '../actions';
 import { sendAlphaInfo } from '../actions';
+import { sendSelectedColor } from '../actions';
 
 class ColorPicker extends Component {
   handleChange = (color, event) => {
-    console.log(color.rgb.a);
+    console.log(color.hex);
     let colorPalette = this.props.colors;
     //update new item in color array
     colorPalette[this.props.position] = color.hex
     // send new color pallette
     this.props.updateHexColor(colorPalette);
     this.props.sendColorInfo(color.hex);
+    this.props.sendSelectedColor(color.hex);
     this.props.sendAlphaInfo(color.rgb.a);
   }
   render() {
-    if(this.props.hexColor.length >= 1) {
+    if(this.props.colors.length >= 1) {
       return (
         <div className="color-picker">
           {/* <h4>Hue</h4>
@@ -44,7 +46,7 @@ class ColorPicker extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.colorInfo);
+  console.log(state);
   return {
     hexColor: state.colorInfo.hexColor,
     R: state.colorInfo.R,
@@ -59,4 +61,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   updateHexColor,
   sendColorInfo,
+  sendSelectedColor,
   sendAlphaInfo })(ColorPicker);

@@ -42,16 +42,10 @@
 }
 /* render hex color squares */
 .color-square {
-  height: 10rem;
-  width: 100%;
-  margin: 0 auto;
+  height: 11rem;
+  width: 16%;
   display: inline-block;
   cursor: pointer;
-}
-
-.color-wrapper {
-  display: inline-block;
-  width: 16%;
 }
 
 .sample-img {
