@@ -8,9 +8,9 @@ class ColorInfo extends Component {
       return (
         <div className="color-info">
          <h5>Hex: {this.props.hexColor}</h5>
-         <p className="info-text">r: {this.props.R}</p>
-         <p className="info-text">g: {this.props.G}</p>
-         <p className="info-text">b: {this.props.B}</p>
+         <p className="info-text">R: {this.props.R}</p>
+         <p className="info-text">G: {this.props.G}</p>
+         <p className="info-text">B: {this.props.B}</p>
         </div>
       );
     }
@@ -19,7 +19,6 @@ class ColorInfo extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     hexColor: state.colorInfo.hexColor,
     R: state.colorInfo.R,

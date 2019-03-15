@@ -21,8 +21,8 @@ export const analyzeImage = (url) => async dispatch => {
     .then(response => {
       //convert Hexcolors from Clarifai API to send to Colormind API
       const hexColors = [];
-      response.outputs[0].data.colors.map(color =>{
-        hexColors.push(color.raw_hex);
+      response.outputs[0].data.colors.map(color => {
+        return hexColors.push(color.raw_hex);
       });
 
       let hexToRGB = [];
@@ -85,13 +85,28 @@ export const randomImage = () => async dispatch => {
   }
 };
 //add error handling
-export const sendColorInfo = hexColor => dispatch => {
+export const sendColorInfo = (hexColor) => dispatch => {
+
   let R = hexToR(hexColor);
   let G = hexToG(hexColor);
   let B = hexToB(hexColor);
   dispatch({
     type: 'SEND_COLOR_INFO',
-    info: [hexColor, R, G, B]
+    info: [hexColor, R, G, B],
+  })
+};
+
+export const sendPositionInfo = (position) => dispatch => {
+  dispatch({
+    type: 'SEND_POSITION_INFO',
+    position: position
+  })
+};
+
+export const updateHexColor = (newColorSet) => dispatch => {
+  dispatch({
+    type: 'UPDATE_HEX_COLOR',
+    newColorSet: newColorSet
   })
 };
 
