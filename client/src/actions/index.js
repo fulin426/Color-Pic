@@ -103,6 +103,13 @@ export const sendPositionInfo = (position) => dispatch => {
   })
 };
 
+export const sendAlphaInfo = (alpha) => dispatch => {
+  dispatch({
+    type: 'SEND_ALPHA_INFO',
+    alpha: alpha
+  })
+};
+
 export const updateHexColor = (newColorSet) => dispatch => {
   dispatch({
     type: 'UPDATE_HEX_COLOR',

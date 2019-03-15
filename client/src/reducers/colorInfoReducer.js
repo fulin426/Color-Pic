@@ -3,6 +3,7 @@ const initialState = {
   R: [],
   G: [],
   B: [],
+  alpha: [],
   position: 0
 }
 
@@ -18,6 +19,10 @@ export default (state = initialState, action) => {
       case 'SEND_POSITION_INFO':
         return {...state,
           position: action.position
+        };
+      case 'SEND_ALPHA_INFO':
+        return {...state,
+          alpha: action.alpha
         };
     default:
      return state;
