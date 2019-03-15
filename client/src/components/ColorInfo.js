@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 class ColorInfo extends Component {
   render(){
     // console.log(this.props.colorInfo.colorData);
-    if(this.props.apiResponse === 'received') {
+    if(true) {
       return (
         <div className="color-info">
-         <p className="info-text">r: {this.props.colorData.rgb.r}</p>
-         <p className="info-text">g: {this.props.colorData.rgb.g}</p>
-         <p className="info-text">b: {this.props.colorData.rgb.b}</p>
+         <h5>Hex: {this.props.hexColor}</h5>
+         <p className="info-text">r: {this.props.R}</p>
+         <p className="info-text">g: {this.props.G}</p>
+         <p className="info-text">b: {this.props.B}</p>
         </div>
       );
     }
@@ -18,9 +19,12 @@ class ColorInfo extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
-    apiResponse: state.colorInfo.apiResponse,
-    colorData: state.colorInfo.colorData
+    hexColor: state.colorInfo.hexColor,
+    R: state.colorInfo.R,
+    G: state.colorInfo.G,
+    B: state.colorInfo.B,
   };
 };
 

@@ -1,14 +1,18 @@
 const initialState = {
-  colorData: [],
-  apiResponse: 'none',
+  hexColor: [],
+  R: [],
+  G: [],
+  B: [],
 }
 
 export default (state = initialState, action) => {
   switch(action.type) {
-    case 'GET_COLOR_INFO':
+    case 'SEND_COLOR_INFO':
       return {...state,
-        colorData: action.payload,
-        apiResponse: 'received'
+        hexColor: action.info[0],
+        R: action.info[1],
+        G: action.info[2],
+        B: action.info[3]
       };
     default:
      return state;

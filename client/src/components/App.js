@@ -4,6 +4,8 @@ import './App.css';
 import ColorsList from './ColorsList';
 import ImageMain from './ImageMain';
 import ImageSelection from './ImageSelection';
+import ColorPicker from './ColorPicker';
+import ColorInfo from './ColorInfo';
 
 class App extends Component {
   render() {
@@ -16,7 +18,9 @@ class App extends Component {
           <ImageSelection />
           <ImageMain />
         </div>
-          <ColorsList/>
+          <ColorsList />
+          <ColorInfo />
+          <ColorPicker />
       </div>
     );
   }

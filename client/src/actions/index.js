@@ -85,11 +85,13 @@ export const randomImage = () => async dispatch => {
   }
 };
 //add error handling
-export const getColorInfo = (hex) => async dispatch => {
-  const response = await axios.get(`https://www.thecolorapi.com/id?hex=${hex}`);
+export const sendColorInfo = hexColor => dispatch => {
+  let R = hexToR(hexColor);
+  let G = hexToG(hexColor);
+  let B = hexToB(hexColor);
   dispatch({
-    type: 'GET_COLOR_INFO',
-    payload: response.data
+    type: 'SEND_COLOR_INFO',
+    info: [hexColor, R, G, B]
   })
 };
 

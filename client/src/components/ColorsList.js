@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
-import { getColorInfo } from '../actions';
+import { sendColorInfo } from '../actions';
 import { colorMindAPI } from '../actions';
-import ColorInfo from './ColorInfo';
-
-// change return numberes to percent
 
 class ColorsList extends Component {
   componentDidMount() {
@@ -13,9 +10,11 @@ class ColorsList extends Component {
     this.props.colorMindAPI();
   };
   // Make API call each time the URL changes
+  // Update colorInfo each time
   componentDidUpdate(prevProps) {
     if (this.props.url !== prevProps.url ) {
       this.props.analyzeImage(this.props.url);
+      this.props.sendColorInfo(this.props.colors[0]);
     };
   };
 
@@ -26,7 +25,7 @@ class ColorsList extends Component {
           <div
             key={color}
             className="color-wrapper"
-            // onClick={() => this.props.getColorInfo(color.slice(1, color.length))}
+            onClick={() => this.props.sendColorInfo(color)}
           >
           <div
             className="color-square"
@@ -66,6 +65,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   analyzeImage,
-  getColorInfo,
+  sendColorInfo,
   colorMindAPI
 })(ColorsList);

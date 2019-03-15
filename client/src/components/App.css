@@ -59,10 +59,6 @@
   max-width: 100%;
 }
 
-.color-info {
-  margin-top: 2rem;
-}
-
 .image-container {
   margin-bottom: 2rem;
 }
@@ -90,4 +86,18 @@
 
 .url-input {
  width: 250px;
+}
+
+.color-info {
+  margin-top: 1rem;
+  display: inline-block;
+  height: 8rem;
+  width: 14rem;
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  margin-right: 4rem;
+}
+
+.color-picker {
+  display: inline-block;
 }
