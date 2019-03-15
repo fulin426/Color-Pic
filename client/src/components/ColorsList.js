@@ -60,7 +60,7 @@ class ColorsList extends Component {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state.colors.colors);
   return {
     colors: state.colors.colors,
     url: state.url.url,
