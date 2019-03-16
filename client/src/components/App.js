@@ -8,13 +8,14 @@ import ImageSelection from './ImageSelection';
 import ColorPicker from './ColorPicker';
 import ColorInfo from './ColorInfo';
 import SavePalette from './SavePalette';
+import Footer from './Footer';
 
 class App extends Component {
   render() {
     return (
       <div className="App container">
         <div className="header">
-          <h2 >Choose a picture and analyze it</h2>
+          <h2 >Choose a picture and analyze</h2>
         </div>
         <Grid celled>
           <Grid.Row>
@@ -49,6 +50,7 @@ class App extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <Footer />
       </div>
     );
   }

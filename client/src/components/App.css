@@ -12,7 +12,7 @@
 
 /* change dimensions at different break points */
 .image-selection {
-  max-height: 80px;
+  max-height: 120px;
   width: 90%;
   opacity: 0.75;
 }
@@ -87,9 +87,16 @@
   border: 1px solid lightgrey;
   margin: 0 auto;
 }
+
 .color-picker {
   display: inline-block;
 }
+
 .color-picker-grid {
-  background-color: #F5F5F5;
+  background-color: #E8E8E8;
+}
+
+.footer {
+  height: 10rem;
+  padding: 2rem;
 }

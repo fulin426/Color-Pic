@@ -37,6 +37,11 @@ export const analyzeImage = (url) => async dispatch => {
         hexToRGB = hexToRGB.slice(1, 6);
       };
 
+      if (hexToRGB.length < 5) {
+        for (let i = hexToRGB.length; i < 5 ; i++) {
+          hexToRGB.push('N');
+        }
+      }
       //2nd call to colormind API
       axios.post('http://colormind.io/api/', {
         model : "default",
