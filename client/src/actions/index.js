@@ -46,7 +46,10 @@ export const analyzeImage = (url) => async dispatch => {
         let RGBtoHexData = [];
         let colorMindResponse = response.data.result;
         for (let i = 0; i < colorMindResponse.length; i++) {
-          RGBtoHexData.push(rgbToHex(colorMindResponse[i][0], colorMindResponse[i][1], colorMindResponse[i][2]));
+          RGBtoHexData.push({
+            hexColor: rgbToHex(colorMindResponse[i][0], colorMindResponse[i][1], colorMindResponse[i][2]),
+            alpha: 1
+          });
         }
         // console.log(RGBtoHexData);
         dispatch({

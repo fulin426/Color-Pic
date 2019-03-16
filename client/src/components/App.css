@@ -10,16 +10,10 @@
   cursor: pointer;
 }
 
-/* override default negative margin */
-.ui.grid {
-  margin: 0;
-}
-
 /* change dimensions at different break points */
-
 .image-selection {
   max-height: 80px;
-  max-width: 120px;
+  width: 90%;
   opacity: 0.75;
 }
 
@@ -27,9 +21,10 @@
   opacity: 1.0;
 }
 
-.random-btn {
+.regen-btn {
   height: 40px;
-  width: 120px;
+  width: 100%;
+  margin: 0 !important;
 }
 
 .random-btn:hover {
@@ -43,7 +38,7 @@
 /* render hex color squares */
 .color-square {
   height: 11rem;
-  width: 16%;
+  width: 20%;
   display: inline-block;
   cursor: pointer;
 }
@@ -74,7 +69,8 @@
 }
 
 .modal-btn {
-  width: 120px;
+  height: 60px;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -85,13 +81,15 @@
 .color-info {
   margin-top: 1rem;
   display: inline-block;
-  height: 8rem;
-  width: 14rem;
+  height: 10rem;
+  width: 90%;
   padding: 1rem;
   border: 1px solid lightgrey;
-  margin-right: 4rem;
+  margin: 0 auto;
 }
-
 .color-picker {
   display: inline-block;
+}
+.color-picker-grid {
+  background-color: #F5F5F5;
 }

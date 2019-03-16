@@ -16,9 +16,6 @@ class ColorsList extends Component {
     if (this.props.url !== prevProps.url ) {
       this.props.analyzeImage(this.props.url);
     };
-    // if (this.props.colors !== prevProps.colors) {
-    //   this.props.sendColorInfo(this.props.colors[0]);
-    // }
   };
 
   handleOnClickSquare(color, index) {
@@ -27,25 +24,30 @@ class ColorsList extends Component {
     this.props.sendPositionInfo(index);
   }
 
-  renderBorder(color) {
+  renderBorder(color, alpha) {
     if (this.props.selectedColor === color) {
       return {
         border: '3px solid black',
-        backgroundColor: color };
+        backgroundColor: color,
+        opacity: alpha
+      };
     }
     return {
-      backgroundColor: color };
+      backgroundColor: color,
+      opacity: alpha
+    };
   }
 
   colorsRender() {
+    console.log(this.props.colors);
     // if there is no error in request and colors data is returned
     if (this.props.colors.length >=1) {
       const ColorsList = this.props.colors.map((color,index) =>
           <div
-            key={color}
+            key={color.hexColor}
             className="color-square"
-            style={this.renderBorder(color)}
-            onClick={() => this.handleOnClickSquare(color, index)}
+            style={this.renderBorder(color.hexColor, color.alpha)}
+            onClick={() => this.handleOnClickSquare(color.hexColor, index)}
           >
         </div>
       );
@@ -61,7 +63,7 @@ class ColorsList extends Component {
 
   render() {
     return (
-    <div className="ui container">
+    <div>
       {this.colorsRender()}
     </div>
     );
@@ -69,7 +71,6 @@ class ColorsList extends Component {
 };
 
 const mapStateToProps = state => {
-  // console.log(state.colorInfo.selectedColor);
   return {
     colors: state.colors.colors,
     selectedColor: state.colorInfo.selectedColor,

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeMainImage } from '../actions';
 import { analyzeImage } from '../actions';
-import { randomImage } from '../actions';
+import { Button } from 'semantic-ui-react'
 import  Modal from './Modal';
 
 class ImageSelection extends Component {
   renderImages () {
     return (
-      this.props.url.map(url =>
+      this.props.exampleUrl.map(url =>
         <div key={url} >
           <img
             className="image-selection"
@@ -21,34 +21,18 @@ class ImageSelection extends Component {
     );
   };
 
-  // renderRandomImage() {
-  //   if(this.props.random_url.length >= 1) {
-  //     return(
-  //       <img
-  //         className="image-selection"
-  //         src={this.props.random_url}
-  //         alt="selection"
-  //         onClick={() => this.props.changeMainImage(this.props.random_url)}
-  //       />
-  //     );
-  //   }
-  //   return null;
-  // }
-
   render() {
     return(
-      <div className="right floated right aligned three wide column">
+      <div>
         <div className="images-container">
           {this.renderImages()}
-          {/* {this.renderRandomImage()} */}
         </div>
-        {/* <button
-          className="random-btn"
-          onClick={() => this.props.randomImage()}
-        >
-          Random
-        </button> */}
         <Modal />
+        <Button
+          className="regen-btn"
+          content="Regenerate"
+          onClick={() => this.props.analyzeImage(this.props.url)}
+        />
       </div>
     );
   }
@@ -56,9 +40,12 @@ class ImageSelection extends Component {
 
 const mapStateToProps = state => {
   return {
-    url: state.url.exampleImages,
+    url: state.url.url,
+    exampleUrl: state.url.exampleImages,
     random_url: state.url.random_url
   };
 };
 
-export default connect(mapStateToProps, { changeMainImage, analyzeImage, randomImage })(ImageSelection);
+export default connect(mapStateToProps, {
+  changeMainImage,
+  analyzeImage })(ImageSelection);

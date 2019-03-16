@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HuePicker } from 'react-color';
-import { ChromePicker } from 'react-color';
+import { AlphaPicker } from 'react-color';
 import { connect } from 'react-redux';
 import { updateHexColor } from '../actions';
 import { sendColorInfo } from '../actions';
@@ -10,9 +10,16 @@ import { sendSelectedColor } from '../actions';
 class ColorPicker extends Component {
   handleChange = (color, event) => {
     console.log(color.hex);
+    console.log(color.rgb.a);
     let colorPalette = this.props.colors;
+    console.log(colorPalette);
+    // create new color object
+    let newColor = {
+      hexColor: color.hex,
+      alpha: color.rgb.a
+    };
     //update new item in color array
-    colorPalette[this.props.position] = color.hex
+    colorPalette[this.props.position] = newColor
     // send new color pallette
     this.props.updateHexColor(colorPalette);
     this.props.sendColorInfo(color.hex);
@@ -23,20 +30,27 @@ class ColorPicker extends Component {
     if(this.props.colors.length >= 1) {
       return (
         <div className="color-picker">
-          {/* <h4>Hue</h4>
+          <h4>Hue</h4>
           <HuePicker
             style={{ marginRight: 4 + 'em' }}
-            color={ this.props.hexColor }
-            onChange={ this.handleChange }
-          /> */}
-          <ChromePicker
-            onChange={ this.handleChange }
             color={{
               r: this.props.R,
               g: this.props.G,
               b: this.props.B,
               a: this.props.a
             }}
+            onChange={ this.handleChange }
+          />
+          <h4>Alpha</h4>
+          <AlphaPicker
+            style={{ marginRight: 4 + 'em' }}
+            color={{
+              r: this.props.R,
+              g: this.props.G,
+              b: this.props.B,
+              a: this.props.a
+            }}
+            onChange={ this.handleChange }
           />
         </div>
       );
