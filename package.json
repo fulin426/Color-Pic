@@ -17,6 +17,7 @@
     "axios": "^0.18.0",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
+    "heroku": "^7.22.7",
     "nodemon": "^1.14.7"
   }
 }
