@@ -145,15 +145,15 @@ export const addImageSelection = url => {
   };
 };
 
-export const colorMindAPI = () => dispatch => {
-  return fetch('/api/customers')
-    .then(res => res.json())
-    .then(customers => {
-      // console.log(customers);
-      dispatch({
-        type: 'GET_CUSTOMERS',
-        payload: customers
-      })
-    }
-  )
-}
+// export const colorMindAPI = () => dispatch => {
+//   return fetch('/api/customers')
+//     .then(res => res.json())
+//     .then(customers => {
+//       // console.log(customers);
+//       dispatch({
+//         type: 'GET_CUSTOMERS',
+//         payload: customers
+//       })
+//     }
+//   )
+// }
