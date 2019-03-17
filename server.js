@@ -13,4 +13,6 @@ app.get('/api/customers', (req, res) => {
   res.json(customers);
 });
 
-app.listen(process.env.PORT || 3001);
+const PORT = process.env.PORT || 3001
+
+app.listen(PORT);
