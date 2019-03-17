@@ -13,6 +13,4 @@ app.get('/api/customers', (req, res) => {
   res.json(customers);
 });
 
-const port = 3001;
-
-app.listen(port, () => `Server running on port ${port}`);
+app.listen(process.env.PORT || 3001);
