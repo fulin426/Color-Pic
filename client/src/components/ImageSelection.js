@@ -4,6 +4,7 @@ import { changeMainImage } from '../actions';
 import { analyzeImage } from '../actions';
 import { Button } from 'semantic-ui-react'
 import  Modal from './Modal';
+import SavePalette from './SavePalette';
 
 class ImageSelection extends Component {
   renderImages () {
@@ -33,6 +34,7 @@ class ImageSelection extends Component {
           content="Regenerate"
           onClick={() => this.props.analyzeImage(this.props.url)}
         />
+        <SavePalette />
       </div>
     );
   }

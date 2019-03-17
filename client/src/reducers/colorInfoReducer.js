@@ -11,7 +11,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type) {
     case 'SEND_COLOR_INFO':
-      console.log(action.info[0]);
       return {...state,
         hexColor: action.info[0],
         R: action.info[1],

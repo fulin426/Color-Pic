@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react'
 
 const SavePalette = () => {
   return (
-    <div>
+    <div className="save-pallette">
       <Button content="Save Palette" />
     </div>
   );

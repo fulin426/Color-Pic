@@ -95,6 +95,10 @@
 .color-picker-grid {
   background-color: #E8E8E8;
 }
+/* hide display of buttom default chrome picker info */
+.overide-color {
+  display: none !important;
+}
 
 .footer {
   height: 10rem;

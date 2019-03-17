@@ -7,7 +7,6 @@ import ImageMain from './ImageMain';
 import ImageSelection from './ImageSelection';
 import ColorPicker from './ColorPicker';
 import ColorInfo from './ColorInfo';
-import SavePalette from './SavePalette';
 import Footer from './Footer';
 
 class App extends Component {
@@ -22,11 +21,8 @@ class App extends Component {
             <Grid.Column width={3}>
               <ImageSelection />
             </Grid.Column>
-            <Grid.Column width={10}>
+            <Grid.Column width={13}>
               <ImageMain />
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <SavePalette />
             </Grid.Column>
           </Grid.Row>
         </Grid>

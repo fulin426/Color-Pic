@@ -39,7 +39,6 @@ class ColorsList extends Component {
   }
 
   colorsRender() {
-    console.log(this.props.colors);
     // if there is no error in request and colors data is returned
     if (this.props.colors.length >=1) {
       const ColorsList = this.props.colors.map((color,index) =>
