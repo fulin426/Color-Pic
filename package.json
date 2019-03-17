@@ -1,23 +1,36 @@
 {
-  "name": "reactexpress",
-  "version": "1.0.0",
-  "description": "Color Pic",
-  "main": "server.js",
-  "scripts": {
-    "client-install": "cd client && npm install",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
-  },
-  "author": "Fu-Lin Liu",
-  "license": "MIT",
-  "devDependencies": {},
+  "name": "colors-app",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "concurrently": "^3.5.1",
-    "express": "^4.16.2",
-    "heroku": "^7.22.7",
-    "nodemon": "^1.14.7"
-  }
+    "babel-preset-env": "^1.7.0",
+    "clarifai": "^2.9.0",
+    "image-to-base64": "^2.0.1",
+    "react": "^16.8.3",
+    "react-color": "^2.17.0",
+    "react-dom": "^16.8.3",
+    "react-redux": "^6.0.1",
+    "react-scripts": "^2.1.8",
+    "reactjs-popup": "^1.3.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.85.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:3001",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

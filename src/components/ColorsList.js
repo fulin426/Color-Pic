@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
 import { sendColorInfo } from '../actions';
 import { sendPositionInfo } from '../actions';
-import { colorMindAPI } from '../actions';
 import { sendSelectedColor } from '../actions';
 
 class ColorsList extends Component {
   componentDidMount() {
     this.props.analyzeImage(this.props.url);
-    this.props.colorMindAPI();
   };
   // Make API call each time the URL changes
   componentDidUpdate(prevProps) {
@@ -83,5 +81,4 @@ export default connect(mapStateToProps, {
   sendColorInfo,
   sendPositionInfo,
   sendSelectedColor,
-  colorMindAPI
 })(ColorsList);
