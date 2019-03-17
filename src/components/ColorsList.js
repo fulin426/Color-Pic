@@ -22,10 +22,10 @@ class ColorsList extends Component {
     this.props.sendPositionInfo(index);
   }
 
-  renderBorder(color, alpha) {
-    if (this.props.selectedColor === color) {
+  renderBorder(index, color, alpha) {
+    if (this.props.position === index) {
       return {
-        border: '3px solid black',
+        border: '4px solid black',
         backgroundColor: color,
         opacity: alpha
       };
@@ -43,7 +43,7 @@ class ColorsList extends Component {
           <div
             key={color.hexColor}
             className="color-square"
-            style={this.renderBorder(color.hexColor, color.alpha)}
+            style={this.renderBorder(index, color.hexColor, color.alpha)}
             onClick={() => this.handleOnClickSquare(color.hexColor, index)}
           >
         </div>
@@ -68,9 +68,11 @@ class ColorsList extends Component {
 };
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     colors: state.colors.colors,
     selectedColor: state.colorInfo.selectedColor,
+    position: state.colorInfo.position,
     url: state.url.url,
     error: state.error
   };

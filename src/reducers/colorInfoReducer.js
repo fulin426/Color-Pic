@@ -1,11 +1,11 @@
 const initialState = {
-  hexColor: [],
-  R: [],
-  G: [],
-  B: [],
-  alpha: [],
+  hexColor: '',
+  R: '',
+  G: '',
+  B: '',
+  alpha: '',
   position: 0,
-  selectedColor: []
+  selectedColor: ''
 }
 
 export default (state = initialState, action) => {

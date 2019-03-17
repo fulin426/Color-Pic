@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { ChromePicker } from 'react-color';
-import { AlphaPicker } from 'react-color';
 import { connect } from 'react-redux';
 import { updateHexColor } from '../actions';
 import { sendColorInfo } from '../actions';
@@ -12,7 +11,7 @@ class ColorPicker extends Component {
     let colorPalette = this.props.colors;
     // create new color object
     let newColor = {
-      hexColor: color.hex,
+      hexColor: color.hex.toUpperCase(),
       alpha: color.rgb.a
     };
     //update new item in color array
@@ -23,6 +22,7 @@ class ColorPicker extends Component {
     this.props.sendSelectedColor(color.hex);
     this.props.sendAlphaInfo(color.rgb.a);
   }
+
   render() {
     if(this.props.colors.length >= 1) {
       return (
@@ -34,7 +34,7 @@ class ColorPicker extends Component {
               r: this.props.R,
               g: this.props.G,
               b: this.props.B,
-              a: this.props.a
+              a: this.props.colors[this.props.position].alpha
             }}
             onChange={ this.handleChange }
           />
