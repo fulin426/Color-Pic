@@ -57,8 +57,6 @@ app.get('/api/colormind', (req, res) => {
   http.send(JSON.stringify(data));
 });
 
-const port = 5000;
-
 app.listen(app.get("port"), () => {
   console.log(`Find the server at: http://localhost:${app.get("port")}/`);
 });
