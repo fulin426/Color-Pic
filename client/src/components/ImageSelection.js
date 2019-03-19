@@ -44,7 +44,6 @@ const mapStateToProps = state => {
   return {
     url: state.url.url,
     exampleUrl: state.url.exampleImages,
-    random_url: state.url.random_url
   };
 };
 
