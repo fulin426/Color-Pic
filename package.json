@@ -1,35 +1,23 @@
 {
-  "name": "colors-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.18.0",
-    "babel-preset-env": "^1.7.0",
-    "clarifai": "^2.9.0",
-    "image-to-base64": "^2.0.1",
-    "react": "^16.8.3",
-    "react-color": "^2.17.0",
-    "react-dom": "^16.8.3",
-    "react-redux": "^6.0.1",
-    "react-scripts": "^2.1.8",
-    "reactjs-popup": "^1.3.2",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "semantic-ui-react": "^0.85.0"
-  },
+  "name": "reactexpress",
+  "version": "1.0.0",
+  "description": "Starter kit for creating React/Redux and Express apps",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "client-install": "cd client && npm install",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "author": "Brad Traversy & Gregory Assasie",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "clarifai": "^2.9.0",
+    "concurrently": "^3.5.1",
+    "express": "^4.16.2",
+    "nodemon": "^1.14.7",
+    "xmlhttprequest": "^1.8.0"
+  }
 }
