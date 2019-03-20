@@ -7,6 +7,8 @@ import ImageMain from './ImageMain';
 import ImageSelection from './ImageSelection';
 import ColorPicker from './ColorPicker';
 import ColorInfo from './ColorInfo';
+import Regenerate from './Regenerate';
+import SavePalette from './SavePalette';
 import Footer from './Footer';
 
 class App extends Component {
@@ -37,12 +39,13 @@ class App extends Component {
           <Grid.Row>
             <Grid.Column width={5}>
               <ColorInfo />
+              <Regenerate />
             </Grid.Column>
-            <Grid.Column
-              width={11}
-              className="color-picker-grid"
-            >
+            <Grid.Column width={8}>
               <ColorPicker />
+            </Grid.Column>
+            <Grid.Column width={3}>
+              <SavePalette />
             </Grid.Column>
           </Grid.Row>
         </Grid>

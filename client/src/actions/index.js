@@ -19,6 +19,7 @@ function toHex(n) {
 export const analyzeImage = (url) => dispatch => {
   app.models.predict("eeed0b6733a644cea07cf4c60f87ebb7", url)
   .then(function(response) {
+      console.log(response);
       const hexColors = [];
       response.outputs[0].data.colors.map(color => {
         return hexColors.push(color.raw_hex.slice(1, color.raw_hex.length));

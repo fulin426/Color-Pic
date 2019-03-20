@@ -16,10 +16,10 @@ class ColorPicker extends Component {
     };
     //update new item in color array
     colorPalette[this.props.position] = newColor
-    // send new color pallette
+    // send new color pallette, use upppercase for hex colors
     this.props.updateHexColor(colorPalette);
-    this.props.sendColorInfo(color.hex);
-    this.props.sendSelectedColor(color.hex);
+    this.props.sendColorInfo(color.hex.toUpperCase());
+    this.props.sendSelectedColor(color.hex.toUpperCase());
     this.props.sendAlphaInfo(color.rgb.a);
   }
 

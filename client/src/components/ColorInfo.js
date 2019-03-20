@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Input } from 'semantic-ui-react';
 
 class ColorInfo extends Component {
   render(){
-    // console.log(this.props.colorInfo.colorData);
-    if(true) {
-      return (
-        <div className="color-info">
-         <h5>Hex: {this.props.hexColor}</h5>
-         <p className="info-text">R: {this.props.R}</p>
-         <p className="info-text">G: {this.props.G}</p>
-         <p className="info-text">B: {this.props.B}</p>
-        </div>
-      );
-    }
-    return null;
+    return (
+      <div className="color-info">
+       <h5>Hex</h5>
+       <input
+         className="hex-info-input"
+         value={this.props.hexColor}
+       />
+       <p className="info-text">R</p>
+       <p className="info-text">G</p>
+       <p className="info-text">B</p>
+       <div>
+         <input
+           className="info-input"
+           value={this.props.R}
+         />
+         <input
+           className="info-input"
+           value={this.props.G}
+         />
+         <input
+           className="info-input"
+           value={this.props.B}
+         />
+       </div>
+      </div>
+    );
   }
 }
 

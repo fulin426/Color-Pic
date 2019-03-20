@@ -21,12 +21,6 @@
   opacity: 1.0;
 }
 
-.regen-btn {
-  height: 40px;
-  width: 100%;
-  margin: 0 !important;
-}
-
 .random-btn:hover {
   background-color: #cececb;
 }
@@ -52,10 +46,6 @@
   margin-bottom: 2rem;
 }
 
-.info-text {
-  display: inline-block;
-  margin-left: 0.6rem;
-}
 /* React Popup */
 .popup-content {
   width: 600px;
@@ -77,27 +67,59 @@
 .url-input {
  width: 250px;
 }
+/* color info display */
+.info-text {
+  display: inline-block;
+  margin: 5px 22px;
+}
+
+.hex-info-input {
+  text-align: center !important;
+  padding: 5px;
+  max-width: 165px;
+  display: block;
+  margin: 0 auto;
+}
+
+.info-input {
+  width: 55px;
+  padding: 5px;
+  text-align: center;
+}
 
 .color-info {
   margin-top: 1rem;
   display: inline-block;
-  height: 10rem;
+  height: 12rem;
   width: 90%;
+  max-width: 240px;
   padding: 1rem;
   border: 1px solid lightgrey;
   margin: 0 auto;
+  margin-bottom: 1.5rem;
 }
 
+.regen-btn {
+  height: 40px;
+  width: 90%;
+  margin: 0 !important;
+}
+
+/* color picker */
 .color-picker {
   display: inline-block;
 }
 
 .color-picker-grid {
-  background-color: #E8E8E8;
+  background-color: #fff;
 }
 /* hide display of buttom default chrome picker info */
 .overide-color {
   display: none !important;
+}
+
+.save-pallette {
+  width: 100%
 }
 
 .footer {
