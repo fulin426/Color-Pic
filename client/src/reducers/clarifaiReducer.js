@@ -1,12 +1,18 @@
 const initialState = {
-  colors: []
+  colors: [],
+  status: ''
 }
 
 export default (state = initialState, action) => {
   switch(action.type) {
     case 'ANALYZE_IMAGE':
       return {...state,
-        colors: action.payload
+        colors: action.payload,
+        status: 'recieved'
+      };
+    case 'CLEAR_RECIEVED':
+      return {...state,
+        status: action.status
       };
     case 'UPDATE_HEX_COLOR':
       function updateObjectInArray(array, action) {

@@ -19,7 +19,6 @@ function toHex(n) {
 export const analyzeImage = (url) => dispatch => {
   app.models.predict("eeed0b6733a644cea07cf4c60f87ebb7", url)
   .then(function(response) {
-      console.log(response);
       const hexColors = [];
       response.outputs[0].data.colors.map(color => {
         return hexColors.push(color.raw_hex.slice(1, color.raw_hex.length));
@@ -52,21 +51,40 @@ export const analyzeImage = (url) => dispatch => {
 };
 
 //add error handling
-export const sendColorInfo = (hexColor) => dispatch => {
+export const sendColorInfo = (hexColor, alpha) => dispatch => {
 
   let R = hexToR(hexColor);
   let G = hexToG(hexColor);
   let B = hexToB(hexColor);
   dispatch({
     type: 'SEND_COLOR_INFO',
-    info: [hexColor, R, G, B],
+    hexColor: hexColor,
+    R: R,
+    G: G,
+    B: B,
+    alpha: alpha
   })
 };
+
+export const clearRecieved = () => dispatch => {
+  dispatch({
+    type: 'CLEAR_RECIEVED',
+    status: ''
+  })
+};
+
 
 export const sendPositionInfo = (position) => dispatch => {
   dispatch({
     type: 'SEND_POSITION_INFO',
     position: position
+  })
+};
+
+export const clearPosition = () => dispatch => {
+  dispatch({
+    type: 'CLEAR_POSITION_INFO',
+    position: 0
   })
 };
 

@@ -70,7 +70,7 @@
 /* color info display */
 .info-text {
   display: inline-block;
-  margin: 5px 22px;
+  margin: 5px 20px;
 }
 
 .hex-info-input {
@@ -82,8 +82,8 @@
 }
 
 .info-input {
-  width: 55px;
-  padding: 5px;
+  width: 48px;
+  padding: 4px;
   text-align: center;
 }
 

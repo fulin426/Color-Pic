@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Input } from 'semantic-ui-react';
+import { updateHexColor } from '../actions';
 
 class ColorInfo extends Component {
+
   render(){
     return (
       <div className="color-info">
@@ -14,6 +15,7 @@ class ColorInfo extends Component {
        <p className="info-text">R</p>
        <p className="info-text">G</p>
        <p className="info-text">B</p>
+       <p className="info-text">a</p>
        <div>
          <input
            className="info-input"
@@ -27,6 +29,10 @@ class ColorInfo extends Component {
            className="info-input"
            value={this.props.B}
          />
+         <input
+           className="info-input"
+           value={this.props.a}
+         />
        </div>
       </div>
     );
@@ -39,7 +45,10 @@ const mapStateToProps = state => {
     R: state.colorInfo.R,
     G: state.colorInfo.G,
     B: state.colorInfo.B,
+    a: state.colorInfo.alpha,
+    colors: state.colors.colors,
+    position: state.colorInfo.position
   };
 };
 
-export default connect(mapStateToProps, { })(ColorInfo);
+export default connect(mapStateToProps, { updateHexColor })(ColorInfo);

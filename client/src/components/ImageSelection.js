@@ -2,9 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeMainImage } from '../actions';
 import { analyzeImage } from '../actions';
+import { clearRecieved } from '../actions';
+import { clearPosition } from '../actions';
 import  Modal from './Modal';
 
 class ImageSelection extends Component {
+  handleClick(url) {
+    // first clear the status from API
+    this.props.clearRecieved();
+    // set position to 1
+    this.props.clearPosition();
+    this.props.changeMainImage(url);
+  }
+
   renderImages () {
     return (
       this.props.exampleUrl.map(url =>
@@ -13,7 +23,7 @@ class ImageSelection extends Component {
             className="image-selection"
             src={url}
             alt="selection"
-            onClick={() => this.props.changeMainImage(url)}
+            onClick={() => this.handleClick(url)}
           />
         </div>
       )
@@ -41,4 +51,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   changeMainImage,
+  clearRecieved,
+  clearPosition,
   analyzeImage })(ImageSelection);

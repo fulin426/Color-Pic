@@ -38,17 +38,6 @@ class ColorPicker extends Component {
             }}
             onChange={ this.handleChange }
           />
-          {/* <h4>Alpha</h4> */}
-          {/* <AlphaPicker
-            style={{ marginRight: 4 + 'em' }}
-            color={{
-              r: this.props.R,
-              g: this.props.G,
-              b: this.props.B,
-              a: this.props.a
-            }}
-            onChange={ this.handleChange }
-          /> */}
         </div>
       );
     }
