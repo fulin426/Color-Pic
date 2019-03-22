@@ -1,9 +1,7 @@
-.App {
-  text-align: center;
-}
 
 .header {
   margin-top: 20px;
+  text-align: center;
 }
 
 .image-selection, .search-button, .random-btn {
@@ -13,7 +11,8 @@
 /* change dimensions at different break points */
 .image-selection {
   max-height: 120px;
-  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
   opacity: 0.75;
 }
 
@@ -30,16 +29,26 @@
  height: 325px;
 }
 /* render hex color squares */
+.color-square-container {
+ display: inline-block;
+ width: 20%;
+}
+
+.carot-container {
+
+}
+
 .color-square {
   height: 11rem;
-  width: 20%;
+  width: 100%;
   display: inline-block;
   cursor: pointer;
 }
 
 .sample-img {
   max-height: 480px;
-  max-width: 100%;
+  max-width: 720px !important;
+  margin: 0 auto;
 }
 
 .image-container {
@@ -79,6 +88,7 @@
   max-width: 165px;
   display: block;
   margin: 0 auto;
+  margin-bottom: .5rem;
 }
 
 .info-input {
@@ -96,12 +106,14 @@
   padding: 1rem;
   border: 1px solid lightgrey;
   margin: 0 auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .regen-btn {
   height: 40px;
   width: 90%;
+  max-width: 240px;
   margin: 0 !important;
 }
 

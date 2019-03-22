@@ -15,6 +15,14 @@ class ImageSelection extends Component {
     this.props.changeMainImage(url);
   }
 
+  renderBorder(selectedUrl) {
+    if (this.props.url === selectedUrl) {
+      return { border: '3px solid #0000CC'};
+    } else {
+      return null;
+    }
+  }
+
   renderImages () {
     return (
       this.props.exampleUrl.map(url =>
@@ -23,6 +31,7 @@ class ImageSelection extends Component {
             className="image-selection"
             src={url}
             alt="selection"
+            style={this.renderBorder(url)}
             onClick={() => this.handleClick(url)}
           />
         </div>

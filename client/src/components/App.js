@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
 import { Grid } from 'semantic-ui-react';
 import './App.css';
 
@@ -14,7 +15,7 @@ import Footer from './Footer';
 class App extends Component {
   render() {
     return (
-      <div className="App container">
+      <Container textAlign='center'>
         <div className="header">
           <h2 >Choose a picture and analyze</h2>
         </div>
@@ -50,7 +51,7 @@ class App extends Component {
           </Grid.Row>
         </Grid>
         <Footer />
-      </div>
+      </Container>
     );
   }
 }

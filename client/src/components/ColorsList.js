@@ -33,30 +33,43 @@ class ColorsList extends Component {
     this.props.sendPositionInfo(index);
   }
 
-  renderBorder(index, color, alpha) {
-    if (this.props.position === index) {
-      return {
-        border: '4px solid black',
-        backgroundColor: color,
-        opacity: alpha
-      };
-    }
+  renderColor(color, alpha) {
     return {
       backgroundColor: color,
       opacity: alpha
     };
   }
 
+  renderCarot(index) {
+    if (index === this.props.position) {
+      return {
+        color: 'black'
+      };
+    } else {
+      return {
+        color: 'white'
+      };
+    }
+  }
+
   colorsRender() {
     // if there is no error in request and colors data is returned
     if (this.props.colors.length >=1) {
       const ColorsList = this.props.colors.map((color,index) =>
+        <div
+          key={color.hexColor}
+          className="color-square-container">
           <div
-            key={color.hexColor}
             className="color-square"
-            style={this.renderBorder(index, color.hexColor, color.alpha)}
+            style={this.renderColor(color.hexColor, color.alpha)}
             onClick={() => this.handleOnClickSquare(color.hexColor, index, color.alpha)}
           >
+          </div>
+          <div
+            style={this.renderCarot(index)}
+            className="carot-container">
+            <i className="fas fa-caret-up fa-3x"></i>
+          </div>
         </div>
       );
       return(ColorsList);
