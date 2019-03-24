@@ -11,6 +11,7 @@ import { Dimmer, Loader} from 'semantic-ui-react'
 class ColorsList extends Component {
   componentDidMount() {
     this.props.clearRecieved();
+    // send empty array before recieving new color set
     this.props.clearColorList();
     this.props.analyzeImage(this.props.url);
   };

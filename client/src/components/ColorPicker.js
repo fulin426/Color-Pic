@@ -41,11 +41,12 @@ class ColorPicker extends Component {
         </div>
       );
     }
-    return null;
+    return <ChromePicker className="color-picker" />;
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     hexColor: state.colorInfo.hexColor,
     R: state.colorInfo.R,
