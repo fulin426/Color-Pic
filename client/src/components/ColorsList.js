@@ -5,15 +5,19 @@ import { sendColorInfo } from '../actions';
 import { sendPositionInfo } from '../actions';
 import { sendSelectedColor } from '../actions';
 import { clearRecieved } from '../actions';
+import { clearColorList } from '../actions';
+import { Dimmer, Loader} from 'semantic-ui-react'
 
 class ColorsList extends Component {
   componentDidMount() {
     this.props.clearRecieved();
+    this.props.clearColorList();
     this.props.analyzeImage(this.props.url);
   };
   // Make API call each time the URL changes
   componentDidUpdate(prevProps) {
     if (this.props.url !== prevProps.url ) {
+      this.props.clearColorList();
       this.props.analyzeImage(this.props.url);
     };
     if (this.props.status === 'recieved') {
@@ -56,9 +60,7 @@ class ColorsList extends Component {
     // if there is no error in request and colors data is returned
     if (this.props.colors.length >=1) {
       const ColorsList = this.props.colors.map((color,index) =>
-        <div
-          key={color.hexColor}
-          className="color-square-container">
+        <div key={color.hexColor} className="color-square-container">
           <div
             className="color-square"
             style={this.renderColor(color.hexColor, color.alpha)}
@@ -76,11 +78,13 @@ class ColorsList extends Component {
     }
     // otherwise return error statement
     return (
-      <div>
-        {this.props.error}
+      <div className="color-loader" >
+        <Dimmer active inverted>
+          <Loader size='big' inverted>Loading Colors</Loader>
+        </Dimmer>
       </div>
     );
-  };
+  }
 
   render() {
     return (
@@ -107,5 +111,6 @@ export default connect(mapStateToProps, {
   sendColorInfo,
   sendPositionInfo,
   sendSelectedColor,
-  clearRecieved
+  clearRecieved,
+  clearColorList
 })(ColorsList);

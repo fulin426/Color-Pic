@@ -37,6 +37,15 @@
   opacity: 1.0;
 }
 
+.sample-img {
+  max-height: 480px;
+  margin: 0 auto;
+}
+
+.image-container {
+  margin-bottom: 2rem;
+}
+
 /* React Popup */
 .popup-content {
   width: 600px;
@@ -89,11 +98,14 @@
   }
 }
 
-
 /* render hex color squares */
 .color-square-container {
  display: inline-block;
  width: 20%;
+}
+
+.color-loader {
+ height: 200px;
 }
 
 .carot-container {
@@ -105,15 +117,6 @@
   width: 100%;
   display: inline-block;
   cursor: pointer;
-}
-
-.sample-img {
-  max-height: 480px;
-  margin: 0 auto;
-}
-
-.image-container {
-  margin-bottom: 2rem;
 }
 
 .url-input {

@@ -12,7 +12,11 @@ export default (state = initialState, action) => {
       };
     case 'CLEAR_RECIEVED':
       return {...state,
-        status: action.status
+        status: action.status,
+      };
+    case 'CLEAR_COLORS':
+      return {...state,
+        colors: action.colors
       };
     case 'UPDATE_HEX_COLOR':
       function updateObjectInArray(array, action) {

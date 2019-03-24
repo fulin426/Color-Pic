@@ -88,6 +88,13 @@ export const clearPosition = () => dispatch => {
   })
 };
 
+export const clearColorList = () => dispatch => {
+  dispatch({
+    type: 'CLEAR_COLORS',
+    colors: []
+  })
+};
+
 export const sendSelectedColor = (color) => dispatch => {
   dispatch({
     type: 'SELECTED_COLOR',
