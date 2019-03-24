@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Image } from 'semantic-ui-react';
 
 const ImageMain = ({url}) => {
   return(
-      <img
+      <Image
         className="sample-img"
         src={url}
         alt="analyze main"

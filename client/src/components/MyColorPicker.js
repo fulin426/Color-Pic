@@ -40,7 +40,8 @@ class MyColorPicker extends React.Component {
             a: this.props.a
           }}
           pointer={ CustomPointer }
-          onChange={ this.handleChange } />
+          onChange={ this.handleChange }
+        />
       );
     }
     return null;
@@ -48,7 +49,7 @@ class MyColorPicker extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     hexColor: state.colorInfo.hexColor,
     R: state.colorInfo.R,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
 import './App.css';
 
 import ColorsList from './ColorsList';
@@ -16,15 +16,15 @@ class App extends Component {
   render() {
     return (
       <Container textAlign='center'>
-        <div className="header">
-          <h2 >Choose a picture and analyze</h2>
-        </div>
+        <Header as="h1" className="header">
+          Choose a picture and analyze
+        </Header>
         <Grid celled>
           <Grid.Row>
-            <Grid.Column width={3}>
+            <Grid.Column mobile={16} computer={3}>
               <ImageSelection />
             </Grid.Column>
-            <Grid.Column width={13}>
+            <Grid.Column mobile={16} computer={13}>
               <ImageMain />
             </Grid.Column>
           </Grid.Row>
@@ -38,14 +38,12 @@ class App extends Component {
         </Grid>
         <Grid celled>
           <Grid.Row>
-            <Grid.Column width={5}>
-              <ColorInfo />
-              <Regenerate />
-            </Grid.Column>
-            <Grid.Column width={8}>
+            <Grid.Column mobile={16} computer={10}>
               <ColorPicker />
             </Grid.Column>
-            <Grid.Column width={3}>
+            <Grid.Column mobile={10} computer={6}>
+              <ColorInfo />
+              <Regenerate />
               <SavePalette />
             </Grid.Column>
           </Grid.Row>

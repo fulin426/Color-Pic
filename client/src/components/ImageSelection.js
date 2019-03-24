@@ -17,7 +17,10 @@ class ImageSelection extends Component {
 
   renderBorder(selectedUrl) {
     if (this.props.url === selectedUrl) {
-      return { border: '3px solid #0000CC'};
+      return {
+        border: '3px solid #0000CC',
+        opacity: 1
+      };
     } else {
       return null;
     }
@@ -26,7 +29,10 @@ class ImageSelection extends Component {
   renderImages () {
     return (
       this.props.exampleUrl.map(url =>
-        <div key={url} >
+        <div
+          className="image-wrapper"
+          key={url}
+        >
           <img
             className="image-selection"
             src={url}
@@ -34,6 +40,12 @@ class ImageSelection extends Component {
             style={this.renderBorder(url)}
             onClick={() => this.handleClick(url)}
           />
+          <div className="circle">
+            <i
+              id="delete-img"
+              className="fas fa-times-circle"
+            />
+          </div>
         </div>
       )
     );
@@ -41,11 +53,13 @@ class ImageSelection extends Component {
 
   render() {
     return(
-      <div>
+      <div className="image-modal-container">
         <div className="images-container">
           {this.renderImages()}
         </div>
-        <Modal />
+        <div className="modal-container">
+          <Modal />
+        </div>
       </div>
     );
   }
