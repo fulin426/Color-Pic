@@ -9,37 +9,36 @@ class HeaderMenu extends Component {
 
   render() {
     const { activeItem } = this.state
-
+    // anchor tag is in semantic ui componnent, create seperate with CSS
     return (
       <Menu stackable>
+        <Link to="/">
         <Menu.Item
           name='Color Pic'
           active={activeItem === 'Color Pic'}
           onClick={this.handleItemClick}
         >
-          <Link to="/">
-            Color Pic
-          </Link>
+          Color Pic
         </Menu.Item>
+        </Link>
+        <Link to="/MyPallettes">
         <Menu.Item
           name='My Palettes'
           active={activeItem === 'My Palettes'}
           onClick={this.handleItemClick}
         >
-          <Link to="/MyPallettes">
            My Palettes
-          </Link>
         </Menu.Item>
-
-        <Menu.Item
-          name='About'
-          active={activeItem === 'About'}
-          onClick={this.handleItemClick}
-        >
-          <Link to="/About">
+        </Link>
+        <Link to="/About">
+          <Menu.Item
+            name='About'
+            active={activeItem === 'About'}
+            onClick={this.handleItemClick}
+          >
             About
-          </Link>
-        </Menu.Item>
+          </Menu.Item>
+        </Link>
       </Menu>
     )
   }

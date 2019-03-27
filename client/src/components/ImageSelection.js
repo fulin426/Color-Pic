@@ -5,7 +5,7 @@ import { analyzeImage } from '../actions';
 import { clearRecieved } from '../actions';
 import { clearPosition } from '../actions';
 import { Grid } from 'semantic-ui-react';
-import  Modal from './Modal';
+import  ImageModal from './ImageModal';
 
 class ImageSelection extends Component {
   handleClick(url) {
@@ -60,7 +60,7 @@ class ImageSelection extends Component {
             {this.renderImages()}
           </div>
           <div className="modal-container">
-            <Modal />
+            <ImageModal />
           </div>
         </div>
       </Grid.Column>
