@@ -4,6 +4,7 @@ import { changeMainImage } from '../actions';
 import { analyzeImage } from '../actions';
 import { clearRecieved } from '../actions';
 import { clearPosition } from '../actions';
+import { Grid } from 'semantic-ui-react';
 import  Modal from './Modal';
 
 class ImageSelection extends Component {
@@ -53,14 +54,16 @@ class ImageSelection extends Component {
 
   render() {
     return(
-      <div className="image-modal-container">
-        <div className="images-container">
-          {this.renderImages()}
+      <Grid.Column mobile={16} computer={3}>
+        <div className="image-modal-container">
+          <div className="images-container">
+            {this.renderImages()}
+          </div>
+          <div className="modal-container">
+            <Modal />
+          </div>
         </div>
-        <div className="modal-container">
-          <Modal />
-        </div>
-      </div>
+      </Grid.Column>
     );
   }
 };

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Container } from 'semantic-ui-react';
-import { Grid, Header } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import './App.css';
 
+import HeaderMenu from './HeaderMenu';
+import HomePageHeader from './HomePageHeader';
 import ColorsList from './ColorsList';
 import ImageMain from './ImageMain';
 import ImageSelection from './ImageSelection';
@@ -15,41 +17,36 @@ import Footer from './Footer';
 class App extends Component {
   render() {
     return (
-      <Container textAlign='center'>
-        <Header as="h1" className="header">
-          Choose a picture and analyze
-        </Header>
-        <Grid celled>
-          <Grid.Row>
-            <Grid.Column mobile={16} computer={3}>
+      <div className="App.js">
+        <HeaderMenu />
+        <Container textAlign='center'>
+          <HomePageHeader />
+          <Grid celled>
+            <Grid.Row>
               <ImageSelection />
-            </Grid.Column>
-            <Grid.Column mobile={16} computer={13}>
               <ImageMain />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-        <Grid celled>
-          <Grid.Row>
-            <Grid.Column width={16}>
+            </Grid.Row>
+          </Grid>
+          <Grid celled>
+            <Grid.Row>
               <ColorsList />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-        <Grid celled>
-          <Grid.Row>
-            <Grid.Column mobile={16} computer={10}>
+            </Grid.Row>
+          </Grid>
+          <Grid celled>
+            <Grid.Row>
               <ColorPicker />
-            </Grid.Column>
-            <Grid.Column mobile={10} computer={6}>
-              <ColorInfo />
-              <Regenerate />
-              <SavePalette />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-        <Footer />
-      </Container>
+              <Grid.Column mobile={16} computer={6}>
+                <ColorInfo />
+                <div className="regen-save-buttons">
+                  <Regenerate />
+                  <SavePalette />
+                </div>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          <Footer />
+        </Container>
+      </div>
     );
   }
 }

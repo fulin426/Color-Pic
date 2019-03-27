@@ -6,7 +6,7 @@ import { sendPositionInfo } from '../actions';
 import { sendSelectedColor } from '../actions';
 import { clearRecieved } from '../actions';
 import { clearColorList } from '../actions';
-import { Dimmer, Loader} from 'semantic-ui-react'
+import { Dimmer, Loader, Grid } from 'semantic-ui-react'
 
 class ColorsList extends Component {
   componentDidMount() {
@@ -61,17 +61,19 @@ class ColorsList extends Component {
     // if there is no error in request and colors data is returned
     if (this.props.colors.length >=1) {
       const ColorsList = this.props.colors.map((color,index) =>
-        <div key={color.hexColor} className="color-square-container">
+        <div
+          key={color.hexColor}
+          className="color-square-container"
+        >
           <div
             className="color-square"
             style={this.renderColor(color.hexColor, color.alpha)}
             onClick={() => this.handleOnClickSquare(color.hexColor, index, color.alpha)}
-          >
-          </div>
+          />
           <div
             style={this.renderCarot(index)}
             className="carot-container">
-            <i className="fas fa-caret-up fa-3x"></i>
+            <i className="fas fa-caret-up fa-3x" />
           </div>
         </div>
       );
@@ -89,12 +91,12 @@ class ColorsList extends Component {
 
   render() {
     return (
-    <div>
+    <Grid.Column width={16}>
       {this.colorsRender()}
-    </div>
+    </Grid.Column>
     );
   }
-};
+}
 
 const mapStateToProps = state => {
   return {

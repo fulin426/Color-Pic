@@ -88,13 +88,13 @@
   .images-container {
     display: inline-flex;
     height: auto;
-    width: 80%;
+    width: 60%;
     overflow-x: scroll;
   }
 
   .modal-container {
+    width: 80px;
     display: block;
-    width: 20%;
   }
 }
 
@@ -113,8 +113,8 @@
 }
 
 .color-square {
-  height: 11rem;
   width: 100%;
+  padding-top: 75%;
   display: inline-block;
   cursor: pointer;
 }
@@ -164,6 +164,10 @@
   margin-bottom: 5px;
 }
 
+.regen-save-buttons {
+  display: inline-block;
+}
+
 /* color picker */
 .color-picker {
   display: inline-block;
@@ -175,6 +179,22 @@
 /* hide display of buttom default chrome picker info */
 .overide-color {
   display: none !important;
+}
+/* different widths depending on display size */
+.chrome-picker {
+  width: 540px !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .chrome-picker {
+    width: 660px !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .chrome-picker {
+    max-width: 325px !important;
+  }
 }
 
 .footer {

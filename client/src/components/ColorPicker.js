@@ -5,6 +5,7 @@ import { updateHexColor } from '../actions';
 import { sendColorInfo } from '../actions';
 import { sendAlphaInfo } from '../actions';
 import { sendSelectedColor } from '../actions';
+import { Grid } from 'semantic-ui-react'
 
 class ColorPicker extends Component {
   handleChange = (color, event) => {
@@ -23,7 +24,7 @@ class ColorPicker extends Component {
     this.props.sendAlphaInfo(color.rgb.a);
   }
 
-  render() {
+  renderColorPicker() {
     if(this.props.colors.length >= 1) {
       return (
         <div className="color-picker">
@@ -42,6 +43,14 @@ class ColorPicker extends Component {
       );
     }
     return <ChromePicker className="color-picker" />;
+  }
+
+  render() {
+    return(
+      <Grid.Column mobile={16} computer={10}>
+        {this.renderColorPicker()}
+      </Grid.Column>
+    );
   }
 }
 
