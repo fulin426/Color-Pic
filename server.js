@@ -2,9 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
-
+const ColorPalette = require('./routes/colorPalette');
 const colormindAPI = require('./routes/colormindAPI');
-// const ColorPalette = require('./routes/colorPalette');
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
@@ -29,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 app.use('/api/colormind', colormindAPI);
 
 // Use Route for user Colors API
-// app.use('/api/colors', ColorPalette);
+app.use('/api/colors', ColorPalette);
 
 app.listen(app.get("port"), () => {
   console.log(`Find the server at: http://localhost:${app.get("port")}/`);
