@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { newColorPalette } from '../actions';
-import { Button, Icon, Modal, Input, Header } from 'semantic-ui-react'
+import { Button, Modal, Input, Header } from 'semantic-ui-react'
 
 class SavePalette extends Component {
   state = {
@@ -81,12 +82,14 @@ class SavePalette extends Component {
             >
               Cancel
             </Button>
-            <Button
-              color='green'
-              onClick={() => this.handleConfirmClick()}
-            >
-              Create New
-            </Button>
+            <Link to="/MyPallettes">
+              <Button
+                color='green'
+                onClick={() => this.handleConfirmClick()}
+              >
+                Create New
+              </Button>
+            </Link>
           </Modal.Actions>
         </Modal>
       </div>

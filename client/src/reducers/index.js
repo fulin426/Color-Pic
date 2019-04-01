@@ -10,5 +10,5 @@ export default combineReducers({
   error: clarifaiErrorReducer,
   url: imageUrlReducer,
   colorInfo: colorInfoReducer,
-  myPallettes: colorPaletteReducer
+  myPalettes: colorPaletteReducer
 });

@@ -59,7 +59,7 @@ class ColorsList extends Component {
 
   colorsRender() {
     // if there is no error in request and colors data is returned
-    if (this.props.colors.length >=1) {
+    if (this.props.colors.length >=1 ) {
       const ColorsList = this.props.colors.map((color,index) =>
         <div
           key={color.hexColor}

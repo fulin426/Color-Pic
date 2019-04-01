@@ -105,7 +105,7 @@
 }
 
 .color-loader {
- height: 182px;
+ height: 120px;
 }
 
 .carot-container {
@@ -200,4 +200,10 @@
 .footer {
   height: 10rem;
   padding: 2rem;
+}
+/* my Color palettes */
+.my-palette {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
 }
