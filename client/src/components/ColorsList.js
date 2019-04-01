@@ -115,5 +115,5 @@ export default connect(mapStateToProps, {
   sendPositionInfo,
   sendSelectedColor,
   clearRecieved,
-  clearColorList
+  clearColorList,
 })(ColorsList);

@@ -1,7 +1,7 @@
 {
-  "name": "reactexpress",
+  "name": "colorpic",
   "version": "1.0.0",
-  "description": "Starter kit for creating React/Redux and Express apps",
+  "description": "Create color pallettes from photo inspirations",
   "main": "server.js",
   "scripts": {
     "client-install": "cd client && npm install",
@@ -14,9 +14,11 @@
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
+    "body-parser": "^1.18.3",
     "clarifai": "^2.9.0",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
+    "mongoose": "^5.4.20",
     "nodemon": "^1.14.7",
     "xmlhttprequest": "^1.8.0"
   },

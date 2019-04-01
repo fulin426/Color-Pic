@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createNewPalette } from '../actions';
 import { Button, Icon, Modal, Input, Header } from 'semantic-ui-react'
 
 class SavePalette extends Component {
@@ -45,7 +46,10 @@ class SavePalette extends Component {
           </div>
         </Modal.Content>
         <Modal.Actions>
-          <Button color='green'>
+          <Button
+            color='green'
+            onClick={this.props.createNewPalette()}
+          >
             <Icon name='checkmark' /> Save
           </Button>
         </Modal.Actions>
@@ -60,4 +64,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { })(SavePalette);
+export default connect(mapStateToProps, { createNewPalette })(SavePalette);

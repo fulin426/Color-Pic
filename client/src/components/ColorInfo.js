@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateHexColor } from '../actions';
 
 class ColorInfo extends Component {
 
@@ -51,4 +50,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { updateHexColor })(ColorInfo);
+export default connect(mapStateToProps, { })(ColorInfo);

@@ -50,6 +50,10 @@ export const analyzeImage = (url) => dispatch => {
   })
 };
 
+export const createNewPalette = () => dispatch => {
+
+}
+
 //add error handling
 export const sendColorInfo = (hexColor, alpha) => dispatch => {
 
@@ -64,7 +68,7 @@ export const sendColorInfo = (hexColor, alpha) => dispatch => {
     B: B,
     alpha: alpha
   })
-};
+}
 
 export const clearRecieved = () => dispatch => {
   dispatch({
