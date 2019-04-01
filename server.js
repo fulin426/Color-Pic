@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === "production") {
 app.use('/api/colormind', colormindAPI);
 
 // Use Route for user Colors API
-app.use('/api/colors', ColorPalette);
+// app.use('/api/colors', ColorPalette);
 
 app.listen(app.get("port"), () => {
   console.log(`Find the server at: http://localhost:${app.get("port")}/`);
