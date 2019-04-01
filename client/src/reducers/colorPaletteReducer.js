@@ -5,8 +5,13 @@ export default (state = initialState, action) => {
     case 'GET_COLORS':
      return {
        ...state,
-       palletteData: action.payload
+       Data: action.payload
      };
+     case 'ADD_COLORS':
+      return {
+        ...state,
+        AddColor: `New Color Set "${action.payload}" Created`
+      };
     default:
      return state;
   }

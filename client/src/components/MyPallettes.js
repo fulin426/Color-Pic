@@ -18,6 +18,7 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     myPallettes: state.myPallettes
   };
