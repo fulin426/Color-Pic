@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 //Colors Model
 const ColorPalette = require('../models/colorsmodel');
 
