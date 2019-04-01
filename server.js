@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const colormindAPI = require('./routes/colormindAPI');
-const ColorPalette = require('./routes/colorPalette');
+// const ColorPalette = require('./routes/colorPalette');
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
