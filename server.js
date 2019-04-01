@@ -20,6 +20,12 @@ mongoose.connect(db, { useNewUrlParser: true })
 // uses Heroku Env or Port 5000
 app.set("port", process.env.PORT || 5000);
 
+// Use Route for colormind API
+app.use('/api/colormind', colormindAPI);
+
+// Use Route for user Colors API
+app.use('/api/colors', ColorPalette);
+
 // Express only serves static assets in productio
 if (process.env.NODE_ENV === 'production') {
   //set static folder
@@ -29,12 +35,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-// Use Route for colormind API
-app.use('/api/colormind', colormindAPI);
-
-// Use Route for user Colors API
-app.use('/api/colors', ColorPalette);
 
 app.listen(app.get("port"), () => {
   console.log(`Find the server at: http://localhost:${app.get("port")}/`);
