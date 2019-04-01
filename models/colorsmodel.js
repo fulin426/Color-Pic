@@ -5,7 +5,7 @@ const ColorsSchema = new mongoose.Schema({
     title: {
       type: String,
       required: true,
-      max: 100
+      max: 120
     },
     colors: {
       type: Array,

@@ -16,6 +16,7 @@ function toHex(n) {
       + "0123456789ABCDEF".charAt(n%16);
 };
 
+// Califai API Call
 export const analyzeImage = (url) => dispatch => {
   app.models.predict("eeed0b6733a644cea07cf4c60f87ebb7", url)
   .then(function(response) {
@@ -50,8 +51,32 @@ export const analyzeImage = (url) => dispatch => {
   })
 };
 
-export const createNewPalette = () => dispatch => {
+//API call to get user color palettes
+export const getColors = () => dispatch => {
+  axios.get('/api/colors')
+    .then(res =>
+      dispatch({
+        type: 'GET_COLORS',
+        payload: res.data
+      })
+    )
+    .catch(error =>
+      console.log(error)
+    );
+}
 
+//API call to get user color palettes
+export const newColorPalette = (colorSet) => dispatch => {
+  axios.post('/api/colors', colorSet)
+    .then(res =>
+      dispatch({
+        type: 'ADD_COLORS',
+        payload: res.data
+      })
+    )
+    .catch(error =>
+      console.log(error)
+    );
 }
 
 //add error handling
@@ -75,7 +100,7 @@ export const clearRecieved = () => dispatch => {
     type: 'CLEAR_RECIEVED',
     status: ''
   })
-};
+}
 
 
 export const sendPositionInfo = (position) => dispatch => {
@@ -83,52 +108,53 @@ export const sendPositionInfo = (position) => dispatch => {
     type: 'SEND_POSITION_INFO',
     position: position
   })
-};
+}
 
 export const clearPosition = () => dispatch => {
   dispatch({
     type: 'CLEAR_POSITION_INFO',
     position: 0
   })
-};
+}
 
 export const clearColorList = () => dispatch => {
   dispatch({
     type: 'CLEAR_COLORS',
     colors: []
   })
-};
+}
 
 export const sendSelectedColor = (color) => dispatch => {
   dispatch({
     type: 'SELECTED_COLOR',
     selectedColor: color
   })
-};
+}
+
 export const sendAlphaInfo = (alpha) => dispatch => {
   dispatch({
     type: 'SEND_ALPHA_INFO',
     alpha: alpha
   })
-};
+}
 
 export const updateHexColor = (newColorSet) => dispatch => {
   dispatch({
     type: 'UPDATE_HEX_COLOR',
     newColorSet: newColorSet
   })
-};
+}
 
 export const changeMainImage = url => {
   return {
     type: 'MAIN_IMAGE',
     url: url
   };
-};
+}
 
 export const addImageSelection = url => {
   return {
     type: 'ADD_URL',
     url: url
   };
-};
+}

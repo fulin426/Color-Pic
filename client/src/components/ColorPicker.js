@@ -55,7 +55,6 @@ class ColorPicker extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     hexColor: state.colorInfo.hexColor,
     R: state.colorInfo.R,

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const colormindAPI = require('./routes/colormindAPI');
+const ColorPalette = require('./routes/ColorPalette');
 
 // Bodyparser Middleware
 app.use(bodyParser.json());
@@ -26,6 +27,9 @@ if (process.env.NODE_ENV === "production") {
 
 // Use Route for colormind API
 app.use('/api/colormind', colormindAPI);
+
+// Use Route for user Colors API
+app.use('/api/colors', ColorPalette);
 
 app.listen(app.get("port"), () => {
   console.log(`Find the server at: http://localhost:${app.get("port")}/`);

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+// refactor using require
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 router.get('/', (req, res) => {
@@ -37,13 +38,13 @@ router.get('/', (req, res) => {
   	input : hexToRGB
   }
 
-  var http = new XMLHttpRequest();
+  const http = new XMLHttpRequest();
   // The onreadystatechange property specifies a function to be
   // executed every time the status of the XMLHttpRequest object changes
   http.onreadystatechange = function() {
     // The response is ready
   	if(http.readyState == 4 && http.status == 200) {
-  		var palette = JSON.parse(http.responseText).result;
+  		const palette = JSON.parse(http.responseText).result;
   		res.json(palette);
   	}
   }

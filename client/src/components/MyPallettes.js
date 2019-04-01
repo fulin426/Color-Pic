@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Header } from 'semantic-ui-react';
+import { getColors } from '../actions';
 
-const MyPallettes = () => {
-  return(
-    <Header as="h1" className="header">
-      My Color Pallettes
-    </Header>
-  );
+class MyPallettes extends Component {
+  componentDidMount() {
+    this.props.getColors();
+  }
+
+  render() {
+    return(
+      <Header as="h1" className="header">
+        My Color Pallettes
+      </Header>
+    );
+  }
 }
 
-export default MyPallettes;
+const mapStateToProps = state => {
+  return {
+    myPallettes: state.myPallettes
+  };
+};
+
+export default connect (mapStateToProps, { getColors })(MyPallettes);
