@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
-mongoose.connect(db)
+mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log('MongoDB Connected!'))
   .catch(error => console.log('Not able to connect...',error));
 
@@ -33,5 +33,3 @@ app.use('/api/colors', ColorPalette);
 app.listen(app.get("port"), () => {
   console.log(`Find the server at: http://localhost:${app.get("port")}/`);
 });
-
-exports.app = app;
