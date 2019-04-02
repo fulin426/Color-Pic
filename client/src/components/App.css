@@ -202,8 +202,18 @@
   padding: 2rem;
 }
 /* my Color palettes */
+.palette-container {
+  padding-bottom: 15px;
+}
 .my-palette {
-  height: 100px;
-  width: 100px;
+  height: 125px;
+  width: 20%;
+  display: inline-block;
+}
+
+.confirm-delete-modal {
+  float: right;
+  cursor: pointer;
+  height: 100%;
   display: inline-block;
 }

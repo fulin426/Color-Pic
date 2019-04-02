@@ -17,7 +17,6 @@ class App extends Component {
           <Route path="/MyPallettes" component={MyPallettes} />
           <Route path="/About" component={AboutPage} />
         </BrowserRouter>
-
       </div>
     );
   }

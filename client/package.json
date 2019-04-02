@@ -6,6 +6,8 @@
     "axios": "^0.18.0",
     "babel-preset-env": "^1.7.0",
     "clarifai": "^2.9.0",
+    "i": "^0.3.6",
+    "npm": "^6.9.0",
     "react": "^16.8.3",
     "react-color": "^2.17.0",
     "react-dom": "^16.8.5",

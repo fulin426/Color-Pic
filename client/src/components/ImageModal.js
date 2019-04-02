@@ -5,7 +5,7 @@ import { analyzeImage } from '../actions';
 import { changeMainImage } from '../actions';
 import { addImageSelection } from '../actions';
 
-
+// Rewrite using semanti UI modal
 class Modal extends Component {
   constructor(props) {
     super(props);

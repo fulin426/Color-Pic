@@ -6,7 +6,7 @@ import { sendPositionInfo } from '../actions';
 import { sendSelectedColor } from '../actions';
 import { clearRecieved } from '../actions';
 import { clearColorList } from '../actions';
-import { Dimmer, Loader, Grid } from 'semantic-ui-react'
+import { Dimmer, Loader, Grid, Icon } from 'semantic-ui-react';
 
 class ColorsList extends Component {
   componentDidMount() {
@@ -72,8 +72,9 @@ class ColorsList extends Component {
           />
           <div
             style={this.renderCarot(index)}
-            className="carot-container">
-            <i className="fas fa-caret-up fa-3x" />
+            className="carot-container"
+          >
+            <Icon size="big" name="caret up" />
           </div>
         </div>
       );

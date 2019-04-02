@@ -18,8 +18,10 @@
     "clarifai": "^2.9.0",
     "concurrently": "^3.5.1",
     "express": "^4.16.2",
+    "i": "^0.3.6",
     "mongoose": "^5.4.20",
     "nodemon": "^1.14.7",
+    "npm": "^6.9.0",
     "request": "^2.88.0",
     "xmlhttprequest": "^1.8.0"
   },

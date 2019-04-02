@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Header, Container } from 'semantic-ui-react';
 import { getColors } from '../actions';
+import ConfirmDelete from './ConfirmDeleteModal';
 
 class MyPallettes extends Component {
   componentDidMount() {
+    // get colors from database
     this.props.getColors();
   }
 
-  //Renders one color pallette then insert into renderPalettes()
+  //Renders one set of 5 colors then insert into renderPalettes()
   renderOneColorSet(colors) {
     const colorSet = colors.map(color =>
       <div
@@ -28,8 +30,8 @@ class MyPallettes extends Component {
       console.log(this.props.myPalettes[0].colors[0].hexColor);
 
       const Palettes = this.props.myPalettes.map(palette =>
-        <div key={palette._id}>
-          <p>{palette.title}</p>
+        <div className="palette-container" key={palette._id}>
+          <p>{palette.title} <ConfirmDelete /></p>
           {this.renderOneColorSet(palette.colors)}
         </div>
       );
