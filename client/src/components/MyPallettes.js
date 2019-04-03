@@ -9,12 +9,6 @@ class MyPallettes extends Component {
     this.props.getColors();
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.addColor !== prevProps.addColor) {
-      this.props.getColors();
-    }
-  }
-
   //Renders one set of 5 colors then insert into renderPalettes()
   renderOneColorSet(colors) {
     const colorSet = colors.map(color =>

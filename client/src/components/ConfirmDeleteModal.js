@@ -15,8 +15,7 @@ class ConfirmDelete extends Component {
   }
 
   handleConfirm = () => {
-    // Item is removed from state via reducer
-    // instead of making another call to MongoDB
+    // Item also removed via state
     this.props.deleteColorPalette(this.props.objectID);
     this.setState({
       open: false
@@ -50,7 +49,6 @@ class ConfirmDelete extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     deleteColor: state.myPalettes.DeleteColor,
   };

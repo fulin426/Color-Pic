@@ -14,7 +14,8 @@ export default (state = initialState, action) => {
      case 'ADD_COLORS':
       return {
         ...state,
-        AddColor: `New Color Set "${action.payload}" Created`
+        Data: state.Data.concat(action.payload),
+        AddColor: `"${action.payload.title}" Created ${action.payload._id}`
       };
       case 'DELETE_COLORS':
         return {

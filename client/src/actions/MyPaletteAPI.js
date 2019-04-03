@@ -19,7 +19,7 @@ export const newColorPalette = (colorSet) => dispatch => {
     .then(res =>
       dispatch({
         type: 'ADD_COLORS',
-        payload: res.data.title
+        payload: res.data
       })
     )
     .catch(error =>
