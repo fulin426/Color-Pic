@@ -27,5 +27,6 @@
   },
   "engines": {
     "node": "10.x"
-  }
+  },
+  "homepage" : "https://colorinfo.herokuapp.com/"
 }

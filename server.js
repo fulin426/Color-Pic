@@ -30,9 +30,6 @@ app.use('/api/colors', ColorPalette);
 if (process.env.NODE_ENV === 'production') {
   //set static folder
   app.use(express.static('client/build'));
-  app.get('*', (request, response) => {
-    response.sendFile(path.join(__dirname, 'dist', 'index.html'));
-  });
 }
 
 app.listen(app.get("port"), () => {
