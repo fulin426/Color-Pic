@@ -28,17 +28,13 @@ app.use('/api/colors', ColorPalette);
 
 // Express only serves static assets in productio
 if (process.env.NODE_ENV === 'production') {
-  //set static folder
+  // Set static folder
   app.use(express.static('client/build'));
+  
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
 }
-
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/client/public/index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
 
 app.listen(app.get("port"), () => {
   console.log(`Find the server at: http://localhost:${app.get("port")}/`);
