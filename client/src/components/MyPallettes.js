@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Header, Container } from 'semantic-ui-react';
+import { Header, Container, Grid } from 'semantic-ui-react';
 import { getColors } from '../actions';
 import ConfirmDelete from './ConfirmDeleteModal';
 
@@ -28,10 +28,15 @@ class MyPallettes extends Component {
   renderPalettes() {
     if (this.props.myPalettes !== undefined) {
       const Palettes = this.props.myPalettes.map(palette =>
-        <div className="palette-container" key={palette._id}>
-          <p>{palette.title} <ConfirmDelete /></p>
-          {this.renderOneColorSet(palette.colors)}
-        </div>
+        <Grid.Column mobile={16} computer={8}>
+          <div className="palette-container" key={palette._id}>
+            <p>
+              {palette.title}
+              <ConfirmDelete />
+            </p>
+            {this.renderOneColorSet(palette.colors)}
+          </div>
+        </Grid.Column>
       );
       return Palettes;
     }
@@ -43,8 +48,9 @@ class MyPallettes extends Component {
         <Header as="h1" className="header">
           My Color Palettes
         </Header>
-
-        {this.renderPalettes()}
+        <Grid>
+          {this.renderPalettes()}
+        </Grid>
       </Container>
 
     );
