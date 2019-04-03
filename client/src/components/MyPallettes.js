@@ -10,7 +10,6 @@ class MyPallettes extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.addColor);
     if (this.props.addColor !== prevProps.addColor) {
       this.props.getColors();
     }

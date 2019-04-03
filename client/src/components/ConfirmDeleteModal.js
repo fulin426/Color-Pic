@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Confirm, Icon } from 'semantic-ui-react';
 import { deleteColorPalette } from '../actions/MyPaletteAPI';
-import { getColors } from '../actions/MyPaletteAPI';
 
 class ConfirmDelete extends Component {
   state = {
@@ -16,16 +15,12 @@ class ConfirmDelete extends Component {
   }
 
   handleConfirm = () => {
+    // Item is removed from state via reducer
+    // instead of making another call to MongoDB
     this.props.deleteColorPalette(this.props.objectID);
     this.setState({
       open: false
     });
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.deleteColor !== prevProps.deleteColor) {
-      this.props.getColors();
-    }
   }
 
   handleCancel = () => {
@@ -55,12 +50,12 @@ class ConfirmDelete extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     deleteColor: state.myPalettes.DeleteColor,
   };
 };
 
 export default connect(mapStateToProps, {
-  getColors,
   deleteColorPalette
 })(ConfirmDelete);
