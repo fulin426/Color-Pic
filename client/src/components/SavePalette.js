@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { newColorPalette } from '../actions';
+import { newColorPalette } from '../actions/MyPaletteAPI';
 import { Button, Modal, Input, Header } from 'semantic-ui-react'
 
 class SavePalette extends Component {

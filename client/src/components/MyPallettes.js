@@ -1,26 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Header, Container, Grid } from 'semantic-ui-react';
-import { getColors } from '../actions';
+import { getColors } from '../actions/MyPaletteAPI';
 import ConfirmDelete from './ConfirmDeleteModal';
 
 class MyPallettes extends Component {
   componentDidMount() {
-    // get colors from database
     this.props.getColors();
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log(this.props.addColor);
+    if (this.props.addColor !== prevProps.addColor) {
+      this.props.getColors();
+    }
   }
 
   //Renders one set of 5 colors then insert into renderPalettes()
   renderOneColorSet(colors) {
     const colorSet = colors.map(color =>
-      <div
-        key={color.hexColor}
-        className="my-palette"
-        style={{
-          backgroundColor: color.hexColor,
-          opacity: color.alpha
-        }}
-      />
+      <div className="color-square-container" key={color.hexColor}>
+        <div
+          className="color-square"
+          style={{
+            backgroundColor: color.hexColor,
+            opacity: color.alpha
+          }}
+        />
+      </div>
      );
      return colorSet;
   }
@@ -28,11 +35,15 @@ class MyPallettes extends Component {
   renderPalettes() {
     if (this.props.myPalettes !== undefined) {
       const Palettes = this.props.myPalettes.map(palette =>
-        <Grid.Column mobile={16} computer={8}>
-          <div className="palette-container" key={palette._id}>
+        <Grid.Column
+          key={palette._id}
+          mobile={16}
+          computer={8}
+        >
+          <div className="palette-container">
             <p>
               {palette.title}
-              <ConfirmDelete />
+              <ConfirmDelete objectID={palette._id}/>
             </p>
             {this.renderOneColorSet(palette.colors)}
           </div>
@@ -58,9 +69,9 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
-    myPalettes: state.myPalettes.Data
+    myPalettes: state.myPalettes.Data,
+    addColor: state.myPalettes.AddColor
   };
 };
 

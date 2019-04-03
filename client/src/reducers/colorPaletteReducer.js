@@ -1,4 +1,8 @@
-const initialState = [];
+const initialState = {
+  Data: [],
+  AddColor: '',
+  DeleteColor: ''
+};
 
 export default (state = initialState, action) => {
   switch(action.type) {
@@ -10,8 +14,15 @@ export default (state = initialState, action) => {
      case 'ADD_COLORS':
       return {
         ...state,
-        AddColor: `New Color Set "${action.payload}" Created`
+        AddColor: `New Color Set "${action.payload}" Created`,
+        DeleteColor: ''
       };
+      case 'DELETE_COLORS':
+       return {
+         ...state,
+         DeleteColor: `${action.payload} was Deleted`,
+         AddColor: ''
+       };
     default:
      return state;
   }

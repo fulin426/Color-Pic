@@ -202,13 +202,9 @@
   padding: 2rem;
 }
 /* my Color palettes */
+/* reused some css from colorslist */
 .palette-container {
   padding-bottom: 15px;
-}
-.my-palette {
-  height: 125px;
-  width: 20%;
-  display: inline-block;
 }
 
 .confirm-delete-modal {

@@ -51,34 +51,6 @@ export const analyzeImage = (url) => dispatch => {
   })
 };
 
-//API call to get user color palettes
-export const getColors = () => dispatch => {
-  axios.get('/api/colors')
-    .then(res =>
-      dispatch({
-        type: 'GET_COLORS',
-        payload: res.data
-      })
-    )
-    .catch(error =>
-      console.log(error)
-    );
-}
-
-//API call to get user color palettes
-export const newColorPalette = (colorSet) => dispatch => {
-  axios.post('/api/colors', colorSet)
-    .then(res =>
-      dispatch({
-        type: 'ADD_COLORS',
-        payload: res.data.title
-      })
-    )
-    .catch(error =>
-      console.log(error)
-    );
-}
-
 //add error handling
 export const sendColorInfo = (hexColor, alpha) => dispatch => {
 

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Confirm, Icon } from 'semantic-ui-react';
+import { deleteColorPalette } from '../actions/MyPaletteAPI';
+import { getColors } from '../actions/MyPaletteAPI';
 
 class ConfirmDelete extends Component {
   state = {
@@ -13,9 +16,16 @@ class ConfirmDelete extends Component {
   }
 
   handleConfirm = () => {
+    this.props.deleteColorPalette(this.props.objectID);
     this.setState({
       open: false
     });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.deleteColor !== prevProps.deleteColor) {
+      this.props.getColors();
+    }
   }
 
   handleCancel = () => {
@@ -44,4 +54,13 @@ class ConfirmDelete extends Component {
   }
 }
 
-export default ConfirmDelete;
+const mapStateToProps = state => {
+  return {
+    deleteColor: state.myPalettes.DeleteColor,
+  };
+};
+
+export default connect(mapStateToProps, {
+  getColors,
+  deleteColorPalette
+})(ConfirmDelete);

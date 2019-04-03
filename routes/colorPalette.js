@@ -21,7 +21,12 @@ router.post('/', (req, res) => {
   newColorPalette.save().then(colors => res.json(colors));
 });
 
-// @route DELETE /api/colors/:id
-// Delete a color palette
+//@route DELETE /api/colors/:id
+//Delete a color palette
+router.delete('/:id', (req, res) => {
+  ColorPalette.findById(req.params.id)
+    .then(item => item.remove().then(() => res.json({ success: true })))
+    .catch(err => res.status(404).json({ success: false }));
+});
 
 module.exports = router;
