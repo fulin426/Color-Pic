@@ -27,8 +27,6 @@ class MyPallettes extends Component {
 
   renderPalettes() {
     if (this.props.myPalettes !== undefined) {
-      console.log(this.props.myPalettes[0].colors[0].hexColor);
-
       const Palettes = this.props.myPalettes.map(palette =>
         <div className="palette-container" key={palette._id}>
           <p>{palette.title} <ConfirmDelete /></p>
@@ -45,6 +43,7 @@ class MyPallettes extends Component {
         <Header as="h1" className="header">
           My Color Palettes
         </Header>
+
         {this.renderPalettes()}
       </Container>
 
