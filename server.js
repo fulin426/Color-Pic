@@ -30,6 +30,8 @@ app.use('/api/colors', ColorPalette);
 if (process.env.NODE_ENV === 'production') {
   //set static folder
   app.use(express.static('client/build'));
+  // Wild card route to support react routers rendering
+  app.get('*', (req, res) => res.sendFile(path.resolve('build', 'index.html'));
 }
 
 app.listen(app.get("port"), () => {
