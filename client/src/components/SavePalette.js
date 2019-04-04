@@ -20,7 +20,7 @@ class SavePalette extends Component {
   this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
   }
   // Close Modal
-  close() {
+  close = () => {
     this.setState({
       open: false
     });

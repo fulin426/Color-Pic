@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Confirm, Icon } from 'semantic-ui-react';
+import { Confirm, Icon } from 'semantic-ui-react';
 import { deleteColorPalette } from '../actions/MyPaletteAPI';
 
 class ConfirmDelete extends Component {
@@ -38,7 +38,7 @@ class ConfirmDelete extends Component {
         />
         <Confirm
           open={this.state.open}
-          content="Are you sure you want to delete?"
+          content={`Are you sure you want to delete ${this.props.title} palette?`}
           onCancel={this.handleCancel}
           onConfirm={this.handleConfirm}
           size="small"

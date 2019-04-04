@@ -36,7 +36,10 @@ class MyPallettes extends Component {
           <div className="palette-container">
             <p>
               {palette.title}
-              <ConfirmDelete objectID={palette._id}/>
+              <ConfirmDelete
+                title={palette.title} 
+                objectID={palette._id}
+              />
             </p>
             {this.renderOneColorSet(palette.colors)}
           </div>

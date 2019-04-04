@@ -47,21 +47,16 @@
 }
 
 /* React Popup */
-.popup-content {
+.add-image-modal {
   width: 600px;
   height: 180px;
   text-align: center;
   padding: 32px !important;
 }
 
-.modal-btn:hover {
-  background-color: #cececb;
-}
-
-.modal-btn {
-  height: 60px;
-  width: 100%;
-  cursor: pointer;
+.url-input {
+ width: 80%;
+ max-width: 600px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -75,12 +70,9 @@
     overflow-x: scroll;
   }
 
-  .modal-btn {
-    max-width: 175px;
-  }
-
   .image-modal-container {
     display: inline-flex;
+    width: 100%;
   }
 }
 
@@ -88,7 +80,7 @@
   .images-container {
     display: inline-flex;
     height: auto;
-    width: 60%;
+    width: 85%;
     overflow-x: scroll;
   }
 
@@ -119,9 +111,6 @@
   cursor: pointer;
 }
 
-.url-input {
- width: 250px;
-}
 /* color info display */
 .info-text {
   display: inline-block;
@@ -165,7 +154,7 @@
 }
 
 .regen-save-buttons {
-  display: inline-block;
+  display: -webkit-inline-box;
 }
 
 /* color picker */
