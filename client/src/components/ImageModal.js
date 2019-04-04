@@ -17,9 +17,9 @@ class AddImgModal extends Component {
     this.props.analyzeImage(this.state.input);
     this.props.changeMainImage(this.state.input);
     this.props.addImageSelection(this.state.input);
-    //clear inputbar on submit
+    // Clear inputbar on submit
     this.setState({input: ''});
-    //Close modal
+    // Close modal
     this.close();
   };
 
@@ -27,6 +27,7 @@ class AddImgModal extends Component {
     this.setState({input: event.target.value});
   }
 
+  // Semantic UI settings
   close = () => {
     this.setState({ open: false });
   }
@@ -58,6 +59,7 @@ class AddImgModal extends Component {
               <Button
                 onClick={event => this.submitURL(event)}
                 className="ui button"
+                color='blue'
               >
                 Submit
               </Button>

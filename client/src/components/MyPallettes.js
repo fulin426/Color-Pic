@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Header, Container, Grid } from 'semantic-ui-react';
 import { getColors } from '../actions/MyPaletteAPI';
-import ConfirmDelete from './ConfirmDeleteModal';
+import ConfirmDeleteModal from './ConfirmDeleteModal';
 
 class MyPallettes extends Component {
   componentDidMount() {
@@ -36,8 +36,8 @@ class MyPallettes extends Component {
           <div className="palette-container">
             <p>
               {palette.title}
-              <ConfirmDelete
-                title={palette.title} 
+              <ConfirmDeleteModal
+                title={palette.title}
                 objectID={palette._id}
               />
             </p>

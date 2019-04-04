@@ -185,6 +185,12 @@
     max-width: 325px !important;
   }
 }
+/* save palette modal */
+.savepalette-modal-input {
+  width: 90%;
+  max-width: 425px;
+  padding-bottom: 10px;
+}
 
 .footer {
   height: 10rem;

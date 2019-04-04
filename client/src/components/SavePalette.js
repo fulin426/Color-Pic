@@ -9,7 +9,6 @@ class SavePalette extends Component {
     input: '',
     open: false
   };
-  // Controled Component for Input
   handleInput (event) {
     this.setState({
       input: event.target.value
@@ -19,12 +18,13 @@ class SavePalette extends Component {
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
   this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
   }
-  // Close Modal
+
   close = () => {
     this.setState({
       open: false
     });
   }
+
   // Send new color set to database
   handleConfirmClick() {
     this.props.newColorPalette({
@@ -67,24 +67,25 @@ class SavePalette extends Component {
               Save Palette
             </Header>
             <Input
+              className="savepalette-modal-input"
               label="Title"
               value={this.state.input}
               onChange={event => this.handleInput(event)}
-              placeholder='Insert Palette Name'/>
+              placeholder='Insert Palette Name'
+            />
             <div>
               {this.colorsRender()}
             </div>
           </Modal.Content>
           <Modal.Actions>
             <Button
-              color='red'
               onClick={() => this.close()}
             >
               Cancel
             </Button>
             <Link to="/MyPallettes">
               <Button
-                color='green'
+                color='blue'
                 onClick={() => this.handleConfirmClick()}
               >
                 Create New
