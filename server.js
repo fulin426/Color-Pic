@@ -26,7 +26,14 @@ app.use('/api/colormind', colormindAPI);
 // Use Route for user Colors API
 app.use('/api/colors', ColorPalette);
 
-// Express only serves static assets in productio
+// catch-all endpoint if client makes request to non-existent endpoint
+app.use('*', (req, res) => {
+    res.status(404).json({
+        message: 'Not Found'
+    });
+});
+
+// Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
   app.use(express.static('client/build'));

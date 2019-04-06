@@ -8,6 +8,7 @@ const ColorPalette = require('../models/colorsmodel');
 router.get('/', (req, res) => {
   ColorPalette.find()
     .then(color => res.json(color))
+    .catch(err => res.send(err));
 });
 
 // @route POST /api/colors
@@ -17,8 +18,23 @@ router.post('/', (req, res) => {
     title: req.body.title,
     colors: req.body.colors
   });
+  console.log(req.body);
+  newColorPalette.save()
+    .then(colors => res.json(colors))
+    .catch(err => res.send(err));
+});
 
-  newColorPalette.save().then(colors => res.json(colors));
+//@route Update /api/colors/:id
+//Update a color palette
+router.put('/:id', (req, res) => {
+  const update = {
+    title: req.body.title,
+    colors: req.body.colors
+  };
+
+  ColorPalette.findByIdAndUpdate(req.params.id, update)
+    .then((colors) => res.json({ success: true }))
+    .catch(err => res.send(err));
 });
 
 //@route DELETE /api/colors/:id
@@ -26,7 +42,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
   ColorPalette.findById(req.params.id)
     .then(item => item.remove().then(() => res.json({ success: true })))
-    .catch(err => res.status(404).json({ success: false }));
+    .catch(err => res.json({ success: false }));
 });
 
 module.exports = router;
