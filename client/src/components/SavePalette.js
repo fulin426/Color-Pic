@@ -7,8 +7,10 @@ import { Button, Modal, Input, Header } from 'semantic-ui-react'
 class SavePalette extends Component {
   state = {
     input: '',
-    open: false
+    open: false,
+    error: false
   };
+
   handleInput (event) {
     this.setState({
       input: event.target.value
@@ -32,6 +34,67 @@ class SavePalette extends Component {
       colors: this.props.colors
     })
     this.close();
+  }
+
+  //if empty Input
+  titleRequired() {
+    this.setState({
+      error: true
+    });
+  }
+
+  renderConfirmButton() {
+    // set error to true if empty title input
+    if (this.state.input === '') {
+      return (
+        <Button onClick={() => this.titleRequired()}
+          color='blue'
+        >
+          Create New
+        </Button>
+      );
+    } else {
+      return(
+        <Link to="/MyPallettes">
+          <Button
+            color='blue'
+            style={{ marginLeft: .75 + 'em'}}
+            onClick={() => this.handleConfirmClick()}
+          >
+            Create New
+          </Button>
+        </Link>
+      );
+    }
+  }
+
+  renderTitleInput() {
+    // if user clicks confirm with blank title
+    // render red error input
+    if (this.state.error === true) {
+        return(
+          <Input
+            className="savepalette-modal-input"
+            label="Title"
+            value={this.state.input}
+            onChange={event => this.handleInput(event)}
+            placeholder='Title Required...'
+            error
+          />
+        );
+    }
+    else {
+      //everything else render normal input
+      return(
+        <Input
+          className="savepalette-modal-input"
+          label="Title"
+          value={this.state.input}
+          onChange={event => this.handleInput(event)}
+          placeholder='New Palette Name...'
+        />
+      );
+    }
   }
 
   colorsRender() {
@@ -66,31 +129,14 @@ class SavePalette extends Component {
             <Header as="h2">
               Save Palette
             </Header>
-            <Input
-              className="savepalette-modal-input"
-              label="Title"
-              value={this.state.input}
-              onChange={event => this.handleInput(event)}
-              placeholder='Insert Palette Name'
-            />
-            <div>
+            {this.renderTitleInput()}
+            <div className="colors-render">
               {this.colorsRender()}
             </div>
           </Modal.Content>
           <Modal.Actions>
-            <Button
-              onClick={() => this.close()}
-            >
-              Cancel
-            </Button>
-            <Link to="/MyPallettes">
-              <Button
-                color='blue'
-                onClick={() => this.handleConfirmClick()}
-              >
-                Create New
-              </Button>
-            </Link>
+            <Button onClick={() => this.close()}>Cancel</Button>
+            {this.renderConfirmButton()}
           </Modal.Actions>
         </Modal>
       </div>

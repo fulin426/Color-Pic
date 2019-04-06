@@ -28,9 +28,7 @@ app.use('/api/colors', ColorPalette);
 
 // catch-all endpoint if client makes request to non-existent endpoint
 app.use('*', (req, res) => {
-    res.status(404).json({
-        message: 'Not Found'
-    });
+    res.status(404).json({ message: 'Not Found' });
 });
 
 // Express only serves static assets in production

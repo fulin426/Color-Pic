@@ -41,7 +41,8 @@ class ColorsList extends Component {
   renderColor(color, alpha) {
     return {
       backgroundColor: color,
-      opacity: alpha
+      opacity: alpha,
+      cursor: 'pointer'
     };
   }
 
