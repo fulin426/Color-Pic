@@ -8,7 +8,8 @@ import { Button, Modal, Input } from 'semantic-ui-react'
 class AddImgModal extends Component {
   state = {
     input: '',
-    open: false
+    open: false,
+    error: false
   };
 
   submitURL(event) {
@@ -24,7 +25,68 @@ class AddImgModal extends Component {
   };
 
   handleInput(event) {
-    this.setState({input: event.target.value});
+    this.setState({
+      input: event.target.value,
+      error: false
+    });
+  }
+
+  //if empty Input
+  setError() {
+    this.setState({ error: true });
+  }
+
+  renderURLinput() {
+    // if user clicks confirm with blank title
+    // render red error input
+    if (this.state.error === true) {
+        return(
+          <Input
+            className="url-input"
+            type="text"
+            onChange={event => this.handleInput(event)}
+            value={this.state.input}
+            placeholder="Please enter a url..."
+            error
+           />
+        );
+    }
+    else {
+      //everything else render normal input
+      return(
+        <Input
+          className="url-input"
+          type="text"
+          onChange={event => this.handleInput(event)}
+          value={this.state.input}
+          placeholder="Copy and paste image url..."
+         />
+      );
+    }
+  }
+
+  renderSubmitButton() {
+    if (this.state.input === '') {
+      return(
+        <Button
+          onClick={() => this.setError()}
+          className="ui button"
+          color='blue'
+        >
+          Submit
+        </Button>
+      );
+    } else {
+      return(
+        <Button
+          onClick={event => this.submitURL(event)}
+          className="ui button"
+          color='blue'
+        >
+          Submit
+        </Button>
+      );
+    }
   }
 
   // Semantic UI settings
@@ -49,20 +111,8 @@ class AddImgModal extends Component {
           >
             <Modal.Content className="add-image-modal">
               <h3>Try your own image</h3>
-              <Input
-                className="url-input"
-                type="text"
-                onChange={event => this.handleInput(event)}
-                value={this.state.input}
-                placeholder="Copy and paste image url..."
-               />
-              <Button
-                onClick={event => this.submitURL(event)}
-                className="ui button"
-                color='blue'
-              >
-                Submit
-              </Button>
+              {this.renderURLinput()}
+              {this.renderSubmitButton()}
             </Modal.Content>
           </Modal>
         </div>

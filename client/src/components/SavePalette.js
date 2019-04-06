@@ -12,8 +12,10 @@ class SavePalette extends Component {
   };
 
   handleInput (event) {
+    // set error to false as long as there's user input
     this.setState({
-      input: event.target.value
+      input: event.target.value,
+      error: false
     });
   }
   // Modal Settings
@@ -37,17 +39,15 @@ class SavePalette extends Component {
   }
 
   //if empty Input
-  titleRequired() {
-    this.setState({
-      error: true
-    });
+  setError() {
+    this.setState({ error: true });
   }
 
   renderConfirmButton() {
     // set error to true if empty title input
     if (this.state.input === '') {
       return (
-        <Button onClick={() => this.titleRequired()}
+        <Button onClick={() => this.setError()}
           color='blue'
         >
           Create New
