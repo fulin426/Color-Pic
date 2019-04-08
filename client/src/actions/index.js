@@ -53,7 +53,6 @@ export const analyzeImage = (url) => dispatch => {
 
 //add error handling
 export const sendColorInfo = (hexColor, alpha) => dispatch => {
-
   let R = hexToR(hexColor);
   let G = hexToG(hexColor);
   let B = hexToB(hexColor);

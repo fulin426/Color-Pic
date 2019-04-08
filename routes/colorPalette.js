@@ -33,7 +33,7 @@ router.put('/:id', (req, res) => {
   };
 
   ColorPalette.findByIdAndUpdate(req.params.id, update)
-    .then((colors) => res.json({ success: true }))
+    .then(colors => res.json({ success: true, colors}))
     .catch(err => res.send(err));
 });
 

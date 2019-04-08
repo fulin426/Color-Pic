@@ -26,14 +26,13 @@ class EditModal extends Component {
   }
 
   handleConfirm = () => {
-    // send original title if canceled
     this.setState({
-      open: false
+      open: false,
     });
     const UpdateData = {
       title: this.state.title,
       colors: this.state.selectedSet
-    }
+    };
     this.props.updateColorPalette(this.props.objectID, UpdateData);
   }
 
@@ -43,7 +42,6 @@ class EditModal extends Component {
       open: false,
       title: this.props.title
     });
-    console.log(this.state);
   }
 
   renderOneColorSet(data, position) {
@@ -67,7 +65,6 @@ class EditModal extends Component {
   }
 
   render() {
-    console.log(this.props.data);
     const { open, closeOnEscape, closeOnDimmerClick } = this.state
 
     return (
@@ -115,7 +112,6 @@ class EditModal extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     data: state.myPalettes.Data,
   };

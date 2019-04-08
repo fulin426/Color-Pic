@@ -1,7 +1,8 @@
 const initialState = {
   Data: [],
   AddColor: '',
-  DeleteColor: ''
+  DeleteColor: '',
+  UpdateColor: ''
 };
 
 export default (state = initialState, action) => {
@@ -17,6 +18,16 @@ export default (state = initialState, action) => {
         Data: state.Data.concat(action.payload),
         AddColor: `"${action.payload.title}" Created ${action.payload._id}`
       };
+      case 'UPDATE_COLORS':
+        return {
+          ...state,
+          UpdateColor: `${action.payload} is the new update`
+        };
+      case 'CLEAR_UPDATE':
+        return {
+          ...state,
+          UpdateColor: ''
+        }
       case 'DELETE_COLORS':
         return {
           ...state,

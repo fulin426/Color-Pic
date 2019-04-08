@@ -33,12 +33,19 @@ export const updateColorPalette = (id, colorSet) => dispatch => {
     .then(res =>
       dispatch({
         type: 'UPDATE_COLORS',
-        payload: res.data
+        payload: colorSet
       })
     )
     .catch(error =>
       console.log(error)
     );
+}
+
+export const clearUpdateInStore = () => dispatch => {
+  dispatch({
+    type: 'CLEAR_UPDATE',
+    update: ''
+  })
 }
 
 // Delete user color palettes
