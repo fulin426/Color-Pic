@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ChromePicker } from 'react-color';
-import { Button, Modal, Icon, Input } from 'semantic-ui-react';
+import { Button, Modal, Icon, Input, Grid, Segment } from 'semantic-ui-react';
 import { updateColorPalette } from '../actions/MyPaletteAPI';
+import { sendPositionInfo } from '../actions';
+import { clearPosition } from '../actions';
+import ColorInfo from './ColorInfo';
 
 class EditModal extends Component {
   state = {
     open: false,
     title: '',
-    selectedSet: []
+    selectedSet: [],
+    position: 1
   };
 
   componentDidMount() {
@@ -17,6 +21,11 @@ class EditModal extends Component {
       title: this.props.title,
       selectedSet: this.props.data[this.props.colorPosition].colors
     });
+    this.props.clearPosition();
+  }
+
+  editColor() {
+    // edit color set in state before sending
   }
 
   handleInput(event) {
@@ -25,35 +34,63 @@ class EditModal extends Component {
     });
   }
 
+  cancel = () => {
+    // send original title if canceled
+    this.setState({
+      open: false,
+      title: this.props.title,
+      position: 1
+    });
+    this.props.clearPosition();
+  }
+
   handleConfirm = () => {
     this.setState({
       open: false,
+      position: 1
     });
     const UpdateData = {
       title: this.state.title,
       colors: this.state.selectedSet
     };
     this.props.updateColorPalette(this.props.objectID, UpdateData);
+    this.props.clearPosition();
   }
 
-  cancel = () => {
-    // send original title if canceled
-    this.setState({
-      open: false,
-      title: this.props.title
-    });
+  handleOnClickSquare(index) {
+    this.props.sendPositionInfo(index);
+  }
+
+  renderCarot(index) {
+    if (index === this.props.position) {
+      return {
+        color: 'black'
+      };
+    } else {
+      return {
+        color: 'white'
+      };
+    }
   }
 
   renderOneColorSet(data, position) {
-    const colorSet = data[position].colors.map(color =>
+    const colorSet = data[position].colors.map((color, index) =>
       <div className="color-square-container" key={color.hexColor}>
         <div
           className="color-square"
+          onClick={() => this.handleOnClickSquare(index)}
           style={{
             backgroundColor: color.hexColor,
-            opacity: color.alpha
+            opacity: color.alpha,
+            cursor: 'pointer'
           }}
         />
+        <div
+          style={this.renderCarot(index)}
+          className="carot-container"
+        >
+          <Icon size="big" name="caret up" />
+        </div>
       </div>
      );
      return colorSet;
@@ -92,7 +129,18 @@ class EditModal extends Component {
             <div className="colors-render">
               {this.renderOneColorSet(this.props.data, this.props.colorPosition)}
             </div>
-            <ChromePicker />
+            <Grid stackable columns={2}>
+              <Grid.Column width={10}>
+                <Segment>
+                  <ChromePicker />
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={6}>
+                <Segment>
+                  <ColorInfo />
+                </Segment>
+              </Grid.Column>
+            </Grid>
           </Modal.Content>
           <Modal.Actions>
             <Button onClick={this.cancel}>
@@ -112,9 +160,15 @@ class EditModal extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     data: state.myPalettes.Data,
+    position: state.colorInfo.position
   };
 };
 
-export default connect(mapStateToProps, { updateColorPalette })(EditModal);
+export default connect(mapStateToProps, {
+  updateColorPalette,
+  sendPositionInfo,
+  clearPosition
+})(EditModal);

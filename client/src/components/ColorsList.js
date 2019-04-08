@@ -21,6 +21,7 @@ class ColorsList extends Component {
       this.props.clearColorList();
       this.props.analyzeImage(this.props.url);
     };
+    
     if (this.props.status === 'recieved') {
       // send the first square color info once information sent
       // back from API
