@@ -76,6 +76,15 @@
     display: block;
   }
 }
+/* add image modal */
+.add-image-modal {
+  text-align: center;
+  height: 150px;
+}
+
+.url-input {
+ width: 70%;
+}
 
 /* render hex color squares */
 .color-square-container {
