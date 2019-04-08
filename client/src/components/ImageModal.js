@@ -72,6 +72,7 @@ class AddImgModal extends Component {
           onClick={() => this.setError()}
           className="ui button"
           color='blue'
+          style={{ opacity: 0.8 }}
         >
           Submit
         </Button>
@@ -91,7 +92,10 @@ class AddImgModal extends Component {
 
   // Semantic UI settings
   close = () => {
-    this.setState({ open: false });
+    this.setState({
+      input: '',
+      open: false
+    });
   }
 
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {

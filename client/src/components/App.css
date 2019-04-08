@@ -46,19 +46,6 @@
   margin-bottom: 2rem;
 }
 
-/* React Popup */
-.add-image-modal {
-  width: 600px;
-  height: 180px;
-  text-align: center;
-  padding: 32px !important;
-}
-
-.url-input {
- width: 80%;
- max-width: 600px;
-}
-
 @media only screen and (max-width: 992px) {
   .image-selection{
     max-width: 120px;
@@ -175,7 +162,7 @@
 
 @media only screen and (max-width: 992px) {
   .chrome-picker {
-    width: 660px !important;
+    width: 400px !important;
   }
 }
 
@@ -205,5 +192,21 @@
   float: right;
   cursor: pointer;
   height: 100%;
+  display: inline-block;
+}
+
+.edit-modal {
+  float: right;
+  cursor: pointer;
+  height: 100%;
+  display: inline-block;
+}
+
+.input-colors-container {
+  display: inline-block;
+}
+
+.edit-sketchpicker {
+  float: right;
   display: inline-block;
 }

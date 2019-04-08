@@ -47,7 +47,7 @@ class ColorPicker extends Component {
 
   render() {
     return(
-      <Grid.Column mobile={10} computer={10}>
+      <Grid.Column mobile={16} computer={10}>
         {this.renderColorPicker()}
       </Grid.Column>
     );

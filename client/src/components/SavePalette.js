@@ -18,14 +18,18 @@ class SavePalette extends Component {
       error: false
     });
   }
+  
   // Modal Settings
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
   this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
   }
 
   close = () => {
+    // reset to default state on close
     this.setState({
-      open: false
+      input: '',
+      open: false,
+      error: false
     });
   }
 
@@ -40,7 +44,9 @@ class SavePalette extends Component {
 
   //if empty Input
   setError() {
-    this.setState({ error: true });
+    this.setState({
+      error: true
+    });
   }
 
   renderConfirmButton() {
@@ -49,6 +55,7 @@ class SavePalette extends Component {
       return (
         <Button onClick={() => this.setError()}
           color='blue'
+          style={{ opacity: 0.8 }}
         >
           Create New
         </Button>

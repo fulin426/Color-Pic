@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Header, Container, Grid } from 'semantic-ui-react';
 import { getColors } from '../actions/MyPaletteAPI';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
+import EditModal from './EditModal';
 
 class MyPallettes extends Component {
   componentDidMount() {
@@ -27,7 +28,7 @@ class MyPallettes extends Component {
 
   renderPalettes() {
     if (this.props.myPalettes !== undefined) {
-      const Palettes = this.props.myPalettes.map(palette =>
+      const Palettes = this.props.myPalettes.map((palette, index) =>
         <Grid.Column
           key={palette._id}
           mobile={16}
@@ -39,6 +40,11 @@ class MyPallettes extends Component {
               <ConfirmDeleteModal
                 title={palette.title}
                 objectID={palette._id}
+              />
+              <EditModal
+                title={palette.title}
+                objectID={palette._id}
+                colorPosition={index}
               />
             </p>
             {this.renderOneColorSet(palette.colors)}
@@ -65,6 +71,7 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor

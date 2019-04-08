@@ -27,6 +27,20 @@ export const newColorPalette = (colorSet) => dispatch => {
     );
 }
 
+// Update color palettes
+export const updateColorPalette = (id, colorSet) => dispatch => {
+  axios.put(`/api/colors/${id}`, colorSet)
+    .then(res =>
+      dispatch({
+        type: 'UPDATE_COLORS',
+        payload: res.data
+      })
+    )
+    .catch(error =>
+      console.log(error)
+    );
+}
+
 // Delete user color palettes
 export const deleteColorPalette = id => dispatch => {
   axios.delete(`/api/colors/${id}`)
