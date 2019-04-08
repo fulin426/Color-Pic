@@ -14,7 +14,7 @@ class MyPallettes extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.updateColor !== this.props.updateColor) {
       console.log(this.props.updateColor);
-      // Call when a new update is made
+      // Call when a new update is sent to DB
       this.props.getColors();
       // Clear the update info
       this.props.clearUpdateInStore();
