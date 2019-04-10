@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class ColorInfo extends Component {
-
+  handleChange(event) {
+    console.log(event.target.value);
+  }
   render(){
     return (
       <div className="color-info">
@@ -19,18 +21,22 @@ class ColorInfo extends Component {
          <input
            className="info-input"
            value={this.props.R}
+           onChange={event => this.handleChange(event)}
          />
          <input
            className="info-input"
            value={this.props.G}
+           onChange={event => this.handleChange(event)}
          />
          <input
            className="info-input"
            value={this.props.B}
+           onChange={event => this.handleChange(event)}
          />
          <input
            className="info-input"
            value={this.props.a}
+           onChange={event => this.handleChange(event)}
          />
        </div>
       </div>

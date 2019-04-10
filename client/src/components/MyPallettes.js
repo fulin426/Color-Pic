@@ -45,6 +45,7 @@ class MyPallettes extends Component {
                 title={palette.title}
                 objectID={palette._id}
                 colorPosition={index}
+                selectedSet={palette.colors}
               />
             </p>
             {this.renderOneColorSet(palette.colors)}

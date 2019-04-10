@@ -2,7 +2,7 @@ const initialState = {
   Data: [],
   AddColor: '',
   DeleteColor: '',
-  UpdateColor: ''
+  UpdateColor: '',
 };
 
 export default (state = initialState, action) => {

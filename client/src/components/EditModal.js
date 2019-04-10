@@ -4,7 +4,10 @@ import { ChromePicker } from 'react-color';
 import { Button, Modal, Icon, Input, Grid, Segment } from 'semantic-ui-react';
 import { updateColorPalette } from '../actions/MyPaletteAPI';
 import { sendPositionInfo } from '../actions';
+import { sendSelectedColor } from '../actions';
+import { sendColorInfo } from '../actions';
 import { clearPosition } from '../actions';
+import { sendAlphaInfo } from '../actions';
 import ColorInfo from './ColorInfo';
 
 class EditModal extends Component {
@@ -12,7 +15,6 @@ class EditModal extends Component {
     open: false,
     title: '',
     selectedSet: [],
-    position: 1
   };
 
   componentDidMount() {
@@ -22,10 +24,6 @@ class EditModal extends Component {
       selectedSet: this.props.data[this.props.colorPosition].colors
     });
     this.props.clearPosition();
-  }
-
-  editColor() {
-    // edit color set in state before sending
   }
 
   handleInput(event) {
@@ -39,7 +37,6 @@ class EditModal extends Component {
     this.setState({
       open: false,
       title: this.props.title,
-      position: 1
     });
     this.props.clearPosition();
   }
@@ -47,7 +44,6 @@ class EditModal extends Component {
   handleConfirm = () => {
     this.setState({
       open: false,
-      position: 1
     });
     const UpdateData = {
       title: this.state.title,
@@ -57,28 +53,53 @@ class EditModal extends Component {
     this.props.clearPosition();
   }
 
-  handleOnClickSquare(index) {
+  handleOnClickSquare(color, index, alpha) {
+    this.props.sendSelectedColor(color);
+    this.props.sendColorInfo(color, alpha);
     this.props.sendPositionInfo(index);
   }
 
-  renderCarot(index) {
-    if (index === this.props.position) {
-      return {
-        color: 'black'
-      };
-    } else {
-      return {
-        color: 'white'
-      };
-    }
+  handleChange = (color, event) => {
+    let colorPalette = this.state.selectedSet;
+    // create new color object
+    let newColor = {
+      hexColor: color.hex.toUpperCase(),
+      alpha: color.rgb.a
+    };
+    // update new item in color array
+    colorPalette[this.props.position] = newColor
+    // set new color square in local state
+    this.setState({
+      selectedSet: colorPalette
+    })
+    // update color info and display
+    this.props.sendColorInfo(color.hex.toUpperCase());
+    this.props.sendSelectedColor(color.hex.toUpperCase());
+    this.props.sendAlphaInfo(color.rgb.a);
   }
 
-  renderOneColorSet(data, position) {
-    const colorSet = data[position].colors.map((color, index) =>
+  renderColorPicker() {
+    return (
+      <ChromePicker
+        className="chrome-picker"
+        style={{ marginRight: 4 + 'em' }}
+        color={{
+          r: this.props.R,
+          g: this.props.G,
+          b: this.props.B,
+          a: this.props.alpha
+        }}
+        onChange={this.handleChange}
+      />
+    );
+  }
+
+  renderOneColorSet() {
+    const colorSet = this.state.selectedSet.map((color, index) =>
       <div className="color-square-container" key={color.hexColor}>
         <div
           className="color-square"
-          onClick={() => this.handleOnClickSquare(index)}
+          onClick={() => this.handleOnClickSquare(color.hexColor, index, color.alpha)}
           style={{
             backgroundColor: color.hexColor,
             opacity: color.alpha,
@@ -96,14 +117,31 @@ class EditModal extends Component {
      return colorSet;
   }
 
+  renderCarot(index) {
+    if (index === this.props.position) {
+      return {
+        color: 'black'
+      };
+    } else {
+      return {
+        color: 'white'
+      };
+    }
+  }
+
   //Semantic UI configeration
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-    this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
+    this.setState({
+      closeOnEscape,
+      closeOnDimmerClick,
+      open: true,
+    });
+    // send color info for first square when modeal opens
+    this.props.sendColorInfo(this.state.selectedSet[0].hexColor, this.state.selectedSet[0].hexColor.alpha);
   }
 
   render() {
-    const { open, closeOnEscape, closeOnDimmerClick } = this.state
-
+    const { open, closeOnEscape, closeOnDimmerClick, title } = this.state
     return (
       <div className="edit-modal">
         <Icon
@@ -122,17 +160,17 @@ class EditModal extends Component {
             <Input
               className="savepalette-modal-input"
               label="Title"
-              value={this.state.title}
+              value={title}
               onChange={event => this.handleInput(event)}
               placeholder='Edit Palette Name...'
             />
             <div className="colors-render">
-              {this.renderOneColorSet(this.props.data, this.props.colorPosition)}
+              {this.renderOneColorSet()}
             </div>
             <Grid stackable columns={2}>
               <Grid.Column width={10}>
                 <Segment>
-                  <ChromePicker />
+                  {this.renderColorPicker()}
                 </Segment>
               </Grid.Column>
               <Grid.Column width={6}>
@@ -162,12 +200,20 @@ class EditModal extends Component {
 const mapStateToProps = state => {
   return {
     data: state.myPalettes.Data,
-    position: state.colorInfo.position
+    position: state.colorInfo.position,
+    hexColor: state.colorInfo.hexColor,
+    R: state.colorInfo.R,
+    G: state.colorInfo.G,
+    B: state.colorInfo.B,
+    alpha: state.colorInfo.alpha,
   };
 };
 
 export default connect(mapStateToProps, {
   updateColorPalette,
   sendPositionInfo,
+  sendSelectedColor,
+  sendColorInfo,
+  sendAlphaInfo,
   clearPosition
 })(EditModal);
