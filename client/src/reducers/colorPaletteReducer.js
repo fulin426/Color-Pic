@@ -23,11 +23,6 @@ export default (state = initialState, action) => {
           ...state,
           UpdateColor: `${action.payload} is the new update`
         };
-      case 'CLEAR_UPDATE':
-        return {
-          ...state,
-          UpdateColor: ''
-        }
       case 'DELETE_COLORS':
         return {
           ...state,

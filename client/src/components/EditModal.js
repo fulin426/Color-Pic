@@ -8,6 +8,7 @@ import { sendSelectedColor } from '../actions';
 import { sendColorInfo } from '../actions';
 import { clearPosition } from '../actions';
 import { sendAlphaInfo } from '../actions';
+import { getColors } from '../actions/MyPaletteAPI';
 import ColorInfo from './ColorInfo';
 
 class EditModal extends Component {
@@ -33,12 +34,15 @@ class EditModal extends Component {
   }
 
   cancel = () => {
-    // send original title if canceled
+    // send original info if canceled
     this.setState({
       open: false,
       title: this.props.title,
+      selectedSet: this.props.data[this.props.colorPosition].colors
     });
     this.props.clearPosition();
+    // reset data by calling from database if canceled
+    this.props.getColors();
   }
 
   handleConfirm = () => {
@@ -68,11 +72,11 @@ class EditModal extends Component {
     };
     // update new item in color array
     colorPalette[this.props.position] = newColor
-    // set new color square in local state
+    // // set new color square in local state
     this.setState({
       selectedSet: colorPalette
     })
-    // update color info and display
+    // update color info in display
     this.props.sendColorInfo(color.hex.toUpperCase());
     this.props.sendSelectedColor(color.hex.toUpperCase());
     this.props.sendAlphaInfo(color.rgb.a);
@@ -136,8 +140,8 @@ class EditModal extends Component {
       closeOnDimmerClick,
       open: true,
     });
-    // send color info for first square when modeal opens
-    this.props.sendColorInfo(this.state.selectedSet[0].hexColor, this.state.selectedSet[0].hexColor.alpha);
+    // send color info for first square when model opens
+    this.props.sendColorInfo(this.state.selectedSet[0].hexColor, this.state.selectedSet[0].alpha);
   }
 
   render() {
@@ -215,5 +219,6 @@ export default connect(mapStateToProps, {
   sendSelectedColor,
   sendColorInfo,
   sendAlphaInfo,
-  clearPosition
+  clearPosition,
+  getColors
 })(EditModal);

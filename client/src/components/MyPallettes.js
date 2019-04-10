@@ -72,6 +72,7 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor,

@@ -1,6 +1,7 @@
 import axios from 'axios';
 // Get user color palettes
 export const getColors = () => dispatch => {
+  console.log('getting colors');
   axios.get('/api/colors')
     .then(res =>
       dispatch({
