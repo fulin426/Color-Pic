@@ -36,16 +36,22 @@ export const updateColorPalette = (id, colorSet) => dispatch => {
         payload: colorSet
       })
     )
-    .catch(error =>
+    .catch(error => {
       console.log(error)
-    );
-}
-
-export const clearUpdateInStore = () => dispatch => {
-  dispatch({
-    type: 'CLEAR_UPDATE',
-    update: ''
-  })
+    })
+    .then(() => {
+      // Make get call to retrieve new set
+      axios.get('/api/colors')
+        .then(res =>
+          dispatch({
+            type: 'GET_COLORS',
+            payload: res.data
+          })
+        )
+        .catch(error =>
+          console.log(error)
+        );
+    })
 }
 
 // Delete user color palettes

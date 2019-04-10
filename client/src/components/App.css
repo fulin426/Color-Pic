@@ -83,7 +83,7 @@
 }
 
 .url-input {
- width: 70%;
+ width: 75%;
 }
 
 /* render hex color squares */
@@ -166,7 +166,7 @@
 }
 /* different widths depending on display size */
 .chrome-picker {
-  width: 540px !important;
+  width: 480px !important;
 }
 
 @media only screen and (max-width: 992px) {
@@ -177,7 +177,7 @@
 
 @media only screen and (max-width: 576px) {
   .chrome-picker {
-    max-width: 325px !important;
+    max-width: 300px !important;
   }
 }
 /* save palette modal */

@@ -160,7 +160,6 @@ class EditModal extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     data: state.myPalettes.Data,
     position: state.colorInfo.position

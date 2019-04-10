@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Header, Container, Grid } from 'semantic-ui-react';
 import { getColors } from '../actions/MyPaletteAPI';
-import { clearUpdateInStore } from '../actions/MyPaletteAPI';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import EditModal from './EditModal';
 
@@ -11,15 +10,6 @@ class MyPallettes extends Component {
     this.props.getColors();
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.updateColor !== this.props.updateColor) {
-      console.log(this.props.updateColor);
-      // Call when a new update is sent to DB
-      this.props.getColors();
-      // Clear the update info
-      this.props.clearUpdateInStore();
-    }
-  }
   //Renders one set of 5 colors then insert into renderPalettes()
   renderOneColorSet(colors) {
     const colorSet = colors.map(color =>
@@ -88,4 +78,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect (mapStateToProps, { getColors, clearUpdateInStore })(MyPallettes);
+export default connect (mapStateToProps, { getColors })(MyPallettes);
