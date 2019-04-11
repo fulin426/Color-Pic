@@ -28,7 +28,7 @@ class EditModal extends Component {
   handleOnClickSquare(color, index, alpha) {
     this.setState({
       hexInput: color
-    })
+    });
     this.props.sendSelectedColor(color);
     this.props.sendColorInfo(color, alpha);
     this.props.sendPositionInfo(index);
@@ -106,11 +106,14 @@ class EditModal extends Component {
   }
 
   hexColorOnChange(event) {
-    //only use upper case and trim white space
+    // only use upper case and trim white space
     const newHexColor = event.target.value.toUpperCase().trim();
-    this.setState({
-      hexInput: newHexColor
-    });
+    // Do not update state if more than 7 total characters
+    if(newHexColor.length <= 7) {
+      this.setState({
+        hexInput: newHexColor
+      });
+    }
     //if hexcolor has all 7 characters and includes # as the first character
     if (newHexColor.length === 7 && newHexColor[0] === '#') {
       let colorPalette = this.props.selectedSet;
@@ -133,6 +136,7 @@ class EditModal extends Component {
       closeOnEscape,
       closeOnDimmerClick,
       open: true,
+      // send info to local state when modal opens
       title: this.props.data[position].title,
       selectedSet: this.props.data[position].colors,
       hexInput: this.props.data[position].colors[0].hexColor
