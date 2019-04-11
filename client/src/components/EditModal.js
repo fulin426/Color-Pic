@@ -127,28 +127,28 @@ class EditModal extends Component {
     }
   }
 
-  //Semantic UI configeration
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
+    const position = this.props.colorPosition;
     this.setState({
       closeOnEscape,
       closeOnDimmerClick,
       open: true,
-      title: this.props.data[this.props.colorPosition].title,
-      selectedSet: this.props.data[this.props.colorPosition].colors,
-      hexInput: this.props.data[this.props.colorPosition].colors[0].hexColor
+      title: this.props.data[position].title,
+      selectedSet: this.props.data[position].colors,
+      hexInput: this.props.data[position].colors[0].hexColor
     });
     // send color info for first square when model opens
-    this.props.sendColorInfo(this.props.data[this.props.colorPosition].colors[0].hexColor, this.props.data[this.props.colorPosition].colors[0].alpha);
+    this.props.sendColorInfo(this.props.data[position].colors[0].hexColor, this.props.data[position].colors[0].alpha);
   }
 
   cancel = () => {
     // set original info when modal is canceled
-    console.log(this.props.data[this.props.colorPosition].colors);
+    const position = this.props.colorPosition;
     this.setState({
       open: false,
-      title: this.props.data[this.props.colorPosition].title,
-      hexInput: this.props.data[this.props.colorPosition].colors[0].hexColor,
-      selectedSet: this.props.data[this.props.colorPosition].colors
+      title: this.props.data[position].title,
+      hexInput: this.props.data[position].colors[0].hexColor,
+      selectedSet: this.props.data[position].colors
     });
     this.props.clearPosition();
     // reset info from DB
