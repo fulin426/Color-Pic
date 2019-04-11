@@ -9,61 +9,32 @@ import { sendColorInfo } from '../actions';
 import { clearPosition } from '../actions';
 import { sendAlphaInfo } from '../actions';
 import { getColors } from '../actions/MyPaletteAPI';
-import ColorInfo from './ColorInfo';
+import ColorInfoEditModal from './ColorInfoEditModal';
 
 class EditModal extends Component {
   state = {
     open: false,
     title: '',
     selectedSet: [],
+    hexInput:''
   };
 
-  componentDidMount() {
-    // send info to local state initially
-    this.setState({
-      title: this.props.title,
-      selectedSet: this.props.data[this.props.colorPosition].colors
-    });
-    this.props.clearPosition();
-  }
-
-  handleInput(event) {
+  handleTitleInput(event) {
     this.setState({
       title: event.target.value
     });
   }
 
-  cancel = () => {
-    // send original info if canceled
-    this.setState({
-      open: false,
-      title: this.props.title,
-      selectedSet: this.props.data[this.props.colorPosition].colors
-    });
-    this.props.clearPosition();
-    // reset data by calling from database if canceled
-    this.props.getColors();
-  }
-
-  handleConfirm = () => {
-    this.setState({
-      open: false,
-    });
-    const UpdateData = {
-      title: this.state.title,
-      colors: this.state.selectedSet
-    };
-    this.props.updateColorPalette(this.props.objectID, UpdateData);
-    this.props.clearPosition();
-  }
-
   handleOnClickSquare(color, index, alpha) {
+    this.setState({
+      hexInput: color
+    })
     this.props.sendSelectedColor(color);
     this.props.sendColorInfo(color, alpha);
     this.props.sendPositionInfo(index);
   }
 
-  handleChange = (color, event) => {
+  handleChange = (color) => {
     let colorPalette = this.state.selectedSet;
     // create new color object
     let newColor = {
@@ -74,7 +45,8 @@ class EditModal extends Component {
     colorPalette[this.props.position] = newColor
     // // set new color square in local state
     this.setState({
-      selectedSet: colorPalette
+      selectedSet: colorPalette,
+      hexInput: color.hex.toUpperCase()
     })
     // update color info in display
     this.props.sendColorInfo(color.hex.toUpperCase());
@@ -93,7 +65,7 @@ class EditModal extends Component {
           b: this.props.B,
           a: this.props.alpha
         }}
-        onChange={this.handleChange}
+        onChangeComplete={this.handleChange}
       />
     );
   }
@@ -133,15 +105,66 @@ class EditModal extends Component {
     }
   }
 
+  hexColorOnChange(event) {
+    //only use upper case and trim white space
+    const newHexColor = event.target.value.toUpperCase().trim();
+    this.setState({
+      hexInput: newHexColor
+    });
+    //if hexcolor has all 7 characters and includes # as the first character
+    if (newHexColor.length === 7 && newHexColor[0] === '#') {
+      let colorPalette = this.props.selectedSet;
+      let newColor = {
+        hexColor: newHexColor,
+        alpha: this.props.a
+      };
+      // update new item in color array
+      colorPalette[this.props.position] = newColor
+      // update color info in display
+      this.props.sendColorInfo(newHexColor);
+      this.props.sendSelectedColor(newHexColor);
+      this.props.sendAlphaInfo(this.props.a);
+    }
+  }
+
   //Semantic UI configeration
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
     this.setState({
       closeOnEscape,
       closeOnDimmerClick,
       open: true,
+      title: this.props.data[this.props.colorPosition].title,
+      selectedSet: this.props.data[this.props.colorPosition].colors,
+      hexInput: this.props.data[this.props.colorPosition].colors[0].hexColor
     });
     // send color info for first square when model opens
-    this.props.sendColorInfo(this.state.selectedSet[0].hexColor, this.state.selectedSet[0].alpha);
+    this.props.sendColorInfo(this.props.data[this.props.colorPosition].colors[0].hexColor, this.props.data[this.props.colorPosition].colors[0].alpha);
+  }
+
+  cancel = () => {
+    // set original info when modal is canceled
+    console.log(this.props.data[this.props.colorPosition].colors);
+    this.setState({
+      open: false,
+      title: this.props.data[this.props.colorPosition].title,
+      hexInput: this.props.data[this.props.colorPosition].colors[0].hexColor,
+      selectedSet: this.props.data[this.props.colorPosition].colors
+    });
+    this.props.clearPosition();
+    // reset info from DB
+    this.props.getColors();
+  }
+
+  handleConfirm = () => {
+    this.setState({
+      open: false,
+    });
+    const UpdateData = {
+      title: this.state.title,
+      colors: this.state.selectedSet
+    };
+    this.props.updateColorPalette(this.props.objectID, UpdateData);
+    this.props.clearPosition();
   }
 
   render() {
@@ -165,7 +188,7 @@ class EditModal extends Component {
               className="savepalette-modal-input"
               label="Title"
               value={title}
-              onChange={event => this.handleInput(event)}
+              onChange={event => this.handleTitleInput(event)}
               placeholder='Edit Palette Name...'
             />
             <div className="colors-render">
@@ -179,7 +202,11 @@ class EditModal extends Component {
               </Grid.Column>
               <Grid.Column width={6}>
                 <Segment>
-                  <ColorInfo />
+                  <ColorInfoEditModal
+                    hexInput={this.state.hexInput}
+                    hexColorOnChange={event => this.hexColorOnChange(event)}
+                    selectedSet={this.state.selectedSet}
+                  />
                 </Segment>
               </Grid.Column>
             </Grid>

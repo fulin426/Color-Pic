@@ -16,7 +16,7 @@ class ColorPicker extends Component {
       hexColor: color.hex.toUpperCase(),
       alpha: color.rgb.a
     };
-    
+
     //update new item in color array
     colorPalette[this.props.position] = newColor
     // send new color pallette, use upppercase for hex colors
@@ -39,7 +39,7 @@ class ColorPicker extends Component {
               b: this.props.B,
               a: this.props.colors[this.props.position].alpha
             }}
-            onChange={this.handleChange}
+            onChangeComplete={this.handleChange}
           />
         </div>
       );
