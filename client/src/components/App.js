@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import HeaderMenu from './HeaderMenu';
-import HomePage from './HomePage';
+import LandingPage from './LandingPage';
 import MyPallettes from './MyPallettes';
-import AboutPage from './AboutPage';
+import Generate from './Generate';
 import './App.css';
 
 class App extends Component {
@@ -13,9 +13,9 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <HeaderMenu />
-          <Route path="/" exact component={HomePage} />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/Generate" component={Generate} />
           <Route path="/MyPallettes" component={MyPallettes} />
-          <Route path="/About" component={AboutPage} />
         </BrowserRouter>
       </div>
     );
