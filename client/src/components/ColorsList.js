@@ -10,12 +10,15 @@ import { Dimmer, Loader, Grid, Icon } from 'semantic-ui-react';
 
 class ColorsList extends Component {
   componentDidMount() {
-    this.props.clearRecieved();
-    // send empty array before recieving new color set
-    this.props.clearColorList();
-    this.props.analyzeImage(this.props.url);
+    // only make new api call if initally no colors
+    if (this.props.colors.length <= 1) {
+      this.props.clearRecieved();
+      // send empty array before recieving new color set
+      this.props.clearColorList();
+      this.props.analyzeImage(this.props.url);
+    }
   };
-  
+
   // Make API call each time the URL changes
   componentDidUpdate(prevProps) {
     if (this.props.url !== prevProps.url ) {

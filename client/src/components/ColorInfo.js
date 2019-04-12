@@ -35,7 +35,7 @@ class ColorInfo extends Component {
          />
          <input
            className="info-input"
-           value={this.props.a}
+           value={this.props.alpha}
            onChange={event => this.handleChange(event)}
          />
        </div>
@@ -50,7 +50,7 @@ const mapStateToProps = state => {
     R: state.colorInfo.R,
     G: state.colorInfo.G,
     B: state.colorInfo.B,
-    a: state.colorInfo.alpha,
+    alpha: state.colorInfo.alpha,
     colors: state.colors.colors,
     position: state.colorInfo.position
   };

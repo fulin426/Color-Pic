@@ -10,14 +10,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <HeaderMenu />
-          <Route path="/" exact component={LandingPage} />
-          <Route path="/Generate" component={Generate} />
-          <Route path="/MyPallettes" component={MyPallettes} />
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <HeaderMenu />
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/Generate" component={Generate} />
+        <Route path="/MyPallettes" component={MyPallettes} />
+      </BrowserRouter>
     );
   }
 }

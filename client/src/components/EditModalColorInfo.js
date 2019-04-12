@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { sendSelectedColor } from '../actions';
-// import { sendAlphaInfo } from '../actions';
-// import { sendColorInfo } from '../actions';
 
-class ColorInfo extends Component {
+class EditModalColorInfo extends Component {
   handleChange(event) {
     console.log(event.target.value);
   }
 
   render(){
+    const { hexInput, R, G, B, alpha } = this.props
+
     return (
       <div className="color-info">
        <h5>Hex</h5>
        <input
          className="hex-info-input"
-         value={this.props.hexInput}
+         value={hexInput}
          onChange={event => this.props.hexColorOnChange(event)}
        />
        <p className="info-text">R</p>
@@ -25,22 +24,22 @@ class ColorInfo extends Component {
        <div>
          <input
            className="info-input"
-           value={this.props.R}
+           value={R}
            onChange={event => this.handleChange(event)}
          />
          <input
            className="info-input"
-           value={this.props.G}
+           value={G}
            onChange={event => this.handleChange(event)}
          />
          <input
            className="info-input"
-           value={this.props.B}
+           value={B}
            onChange={event => this.handleChange(event)}
          />
          <input
            className="info-input"
-           value={this.props.a}
+           value={alpha}
            onChange={event => this.handleChange(event)}
          />
        </div>
@@ -55,10 +54,10 @@ const mapStateToProps = state => {
     R: state.colorInfo.R,
     G: state.colorInfo.G,
     B: state.colorInfo.B,
-    a: state.colorInfo.alpha,
+    alpha: state.colorInfo.alpha,
     colors: state.colors.colors,
     position: state.colorInfo.position
   };
 };
 
-export default connect(mapStateToProps, { })(ColorInfo);
+export default connect(mapStateToProps, { })(EditModalColorInfo);

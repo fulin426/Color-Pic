@@ -4,9 +4,9 @@
   text-align: center;
 }
 
-.header-menu {
+/* .header-menu {
   margin-bottom: 25px;
-}
+} */
 
 .image-selection, .search-button, .random-btn {
   cursor: pointer;

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const InputBar = (props) => {
+  const { imgSearch, searchButtonClick} = props
   return(
     <div className="container">
       <div className="input-group mb-3">
@@ -10,11 +11,11 @@ const InputBar = (props) => {
           placeholder="Search by Img url"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
-          onChange={props.imgSearch}
+          onChange={imgSearch}
         />
         <div
           className="input-group-append search-button"
-          onClick={props.searchButtonClick}
+          onClick={searchButtonClick}
         >
           <span className="input-group-text" id="basic-addon2">Search</span>
         </div>

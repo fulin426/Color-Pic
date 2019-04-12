@@ -9,7 +9,7 @@ import { sendColorInfo } from '../actions';
 import { clearPosition } from '../actions';
 import { sendAlphaInfo } from '../actions';
 import { getColors } from '../actions/MyPaletteAPI';
-import ColorInfoEditModal from './ColorInfoEditModal';
+import EditModalColorInfo from './EditModalColorInfo';
 
 class EditModal extends Component {
   state = {
@@ -172,7 +172,8 @@ class EditModal extends Component {
   }
 
   render() {
-    const { open, closeOnEscape, closeOnDimmerClick, title } = this.state
+    const { open, closeOnEscape, closeOnDimmerClick, title, hexInput, selectedSet } = this.state
+
     return (
       <div className="edit-modal">
         <Icon
@@ -206,10 +207,10 @@ class EditModal extends Component {
               </Grid.Column>
               <Grid.Column width={6}>
                 <Segment>
-                  <ColorInfoEditModal
-                    hexInput={this.state.hexInput}
+                  <EditModalColorInfo
+                    hexInput={hexInput}
                     hexColorOnChange={event => this.hexColorOnChange(event)}
-                    selectedSet={this.state.selectedSet}
+                    selectedSet={selectedSet}
                   />
                 </Segment>
               </Grid.Column>
@@ -228,7 +229,7 @@ class EditModal extends Component {
           </Modal.Actions>
         </Modal>
       </div>
-    )
+    );
   }
 }
 
