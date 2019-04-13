@@ -1,6 +1,11 @@
 const initialState = {
   colors: [],
-  status: ''
+  status: '',
+  error: false,
+  errorData: '',
+  open: false,
+  loader: 'hide',
+  image: ''
 }
 
 export default (state = initialState, action) => {
@@ -8,7 +13,16 @@ export default (state = initialState, action) => {
     case 'ANALYZE_IMAGE':
       return {...state,
         colors: action.payload,
-        status: 'recieved'
+        status: action.status,
+        // only close modal once success payload is recieved
+        open: action.open,
+        // clear error message if success
+        error: action.error,
+        loader: action.loader
+      };
+    case 'CLARIFAI_REQUEST_WAITING':
+      return {...state,
+        loader: action.loader,
       };
     case 'CLEAR_RECIEVED':
       return {...state,
@@ -17,6 +31,36 @@ export default (state = initialState, action) => {
     case 'CLEAR_COLORS':
       return {...state,
         colors: action.colors
+      };
+    case 'NEW_IMAGE_SUBMIT':
+      return {...state,
+        image: action.image
+      };
+    case 'CLEAR_IMAGE_SUBMIT':
+      return {...state,
+        image: action.image
+      };
+    case 'CLEAR_ERROR':
+      return {...state,
+        error: action.error
+      }
+    case 'ANALYZE_IMAGE_ERROR':
+      return {...state,
+        errorData: action.errorData,
+        error: action.error,
+        loader: action.loader,
+        // keep modal open if error
+        open: action.open
+      };
+    case 'OPEN_IMAGE_MODAL':
+      return {...state,
+        open: action.open,
+        error: false,
+      };
+    case 'CLOSE_IMAGE_MODAL':
+      return {...state,
+        open: action.open,
+        error: false
       };
     case 'UPDATE_HEX_COLOR':
       function updateObjectInArray(array, action) {

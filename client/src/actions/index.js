@@ -19,26 +19,32 @@ function toHex(n) {
 // Califai API Call
 export const analyzeImage = (url) => dispatch => {
   app.models.predict("eeed0b6733a644cea07cf4c60f87ebb7", url)
-  .then(function(response) {
-      const hexColors = [];
-      response.outputs[0].data.colors.map(color => {
-        return hexColors.push(color.raw_hex.slice(1, color.raw_hex.length));
-      });
-      fetch('/api/colormind?colors=' + hexColors)
-        .then(res => res.json())
-        .then(function (response) {
-          let RGBtoHexData = [];
-          let colorMindResponse = response;
-          for (let i = 0; i < colorMindResponse.length; i++) {
-            RGBtoHexData.push({
-              hexColor: rgbToHex(colorMindResponse[i][0], colorMindResponse[i][1], colorMindResponse[i][2]),
-              alpha: 1
-            });
-          }
-        // console.log(RGBtoHexData);
+  .then(res => {
+    const hexColors = [];
+    // Create new array of hexcolors from response data
+    res.outputs[0].data.colors.map(color => {
+      return hexColors.push(color.raw_hex.slice(1, color.raw_hex.length));
+    });
+    // send hexcolor data as data query to back end
+    fetch('/api/colormind?colors=' + hexColors)
+      .then(res => res.json())
+      .then(res => {
+        let RGBtoHexData = [];
+        let colorMindResponse = res;
+        // create new array from response data with color palette and default alpha = 1
+        for (let i = 0; i < colorMindResponse.length; i++) {
+          RGBtoHexData.push({
+            hexColor: rgbToHex(colorMindResponse[i][0], colorMindResponse[i][1], colorMindResponse[i][2]),
+            alpha: 1
+          });
+        }
         dispatch({
           type: 'ANALYZE_IMAGE',
-          payload: RGBtoHexData
+          payload: RGBtoHexData,
+          status: 'recieved',
+          error: false,
+          open: false,
+          loader: 'hide'
         });
       })
     })
@@ -46,12 +52,56 @@ export const analyzeImage = (url) => dispatch => {
       console.log(err);
       dispatch({
         type: 'ANALYZE_IMAGE_ERROR',
-        error: err.data.status.details
+        errorData: err.data.status.details,
+        error: true,
+        open: true,
+        loader: 'hide'
     });
   })
 };
+// image modal Actions
+export const closeImgModal = () => dispatch => {
+  dispatch({
+    type: 'OPEN_IMAGE_MODAL',
+    open: false
+  })
+}
 
-//add error handling
+export const openImgModal = () => dispatch => {
+  dispatch({
+    type: 'CLOSE_IMAGE_MODAL',
+    open: true
+  })
+}
+
+export const newImgSubmit = () => dispatch => {
+  dispatch({
+    type: 'NEW_IMAGE_SUBMIT',
+    image: 'new'
+  })
+}
+
+export const showModalLoader = () => dispatch => {
+  dispatch({
+    type: 'CLARIFAI_REQUEST_WAITING',
+    loader: 'show'
+  })
+}
+
+export const clearImgSubmit = () => dispatch => {
+  dispatch({
+    type: 'CLEAR_IMAGE_SUBMIT',
+    image: ''
+  })
+}
+
+export const clearErrorStatus = () => dispatch => {
+  dispatch({
+    type: 'CLEAR_ERROR',
+    error: false
+  })
+}
+
 export const sendColorInfo = (hexColor, alpha) => dispatch => {
   let R = hexToR(hexColor);
   let G = hexToG(hexColor);
@@ -115,7 +165,7 @@ export const updateHexColor = (newColorSet) => dispatch => {
     newColorSet: newColorSet
   })
 }
-
+// image submit actions
 export const changeMainImage = url => {
   return {
     type: 'MAIN_IMAGE',

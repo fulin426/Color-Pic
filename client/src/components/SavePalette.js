@@ -18,7 +18,7 @@ class SavePalette extends Component {
       error: false
     });
   }
-  
+
   // Modal Settings
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
   this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
@@ -55,7 +55,7 @@ class SavePalette extends Component {
       return (
         <Button onClick={() => this.setError()}
           color='blue'
-          style={{ opacity: 0.8 }}
+          style={{ opacity: 0.7 }}
         >
           Create New
         </Button>
