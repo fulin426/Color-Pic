@@ -9,6 +9,7 @@ import { newImgSubmit } from '../actions';
 import { clearImgSubmit } from '../actions';
 import { clearErrorStatus } from '../actions';
 import { showModalLoader } from '../actions';
+import { sendErrorStatus } from '../actions';
 import { Button, Modal, Input, Dimmer, Loader } from 'semantic-ui-react'
 
 class AddImgModal extends Component {
@@ -18,10 +19,26 @@ class AddImgModal extends Component {
 
   submitURL(event) {
     event.preventDefault();
-    this.props.analyzeImage(this.state.input);
-    this.props.newImgSubmit();
-    this.props.showModalLoader();
+    if (this.state.input === '') {
+      this.props.sendErrorStatus();
+    }
+    // if no duplicate urls and input not empty
+    if (this.checkForDuplicateUrls() === 'no duplicates' && this.state.input !== '') {
+      console.log('requested');
+      this.props.analyzeImage(this.state.input);
+      this.props.newImgSubmit();
+      this.props.showModalLoader();
+    }
   };
+
+  checkForDuplicateUrls() {
+    for(let i=0; i < this.props.exampleImages.length; i++) {
+      if(this.state.input === this.props.exampleImages[i]) {
+        return 'duplicate exists';
+      }
+    }
+    return 'no duplicates';
+  }
 
   componentDidUpdate() {
     if (this.props.error === false && this.props.status === 'recieved' && this.props.image === 'new') {
@@ -43,15 +60,10 @@ class AddImgModal extends Component {
     this.props.clearErrorStatus();
   }
 
-  //if empty Input
-  setError() {
-    this.setState({ error: true });
-  }
-
   renderURLinput() {
     // if user clicks confirm with blank title
     // render red error input
-    if (this.state.error === true) {
+    if (this.props.error === true) {
       return(
         <Input
           className="url-input"
@@ -92,7 +104,7 @@ class AddImgModal extends Component {
     if (this.state.input === '') {
       return(
         <Button
-          onClick={() => this.setError()}
+          onClick={event => this.submitURL(event)}
           className="ui button"
           color='blue'
           style={{ opacity: 0.7 }}
@@ -114,9 +126,15 @@ class AddImgModal extends Component {
   }
 
   renderErrorMessage() {
-    if (this.props.error !== false) {
+    if (this.props.error === true && this.state.input !== '' && this.checkForDuplicateUrls() === 'no duplicates') {
       return(
         <p> Bad Request! Please check your URL and try again </p>
+      );
+    }
+    if (this.checkForDuplicateUrls() === 'duplicate exists') {
+      this.props.sendErrorStatus();
+      return(
+        <p> Image URL already exists. Please try a different one</p>
       );
     }
   }
@@ -160,8 +178,10 @@ class AddImgModal extends Component {
           >
             <Modal.Content className="add-image-modal">
               <h3>Try your own image</h3>
-              {this.renderURLinput()}
-              {this.renderSubmitButton()}
+              <form onSubmit={event => this.submitURL(event)}>
+                {this.renderURLinput()}
+                {this.renderSubmitButton()}
+              </form>
               {this.renderErrorMessage()}
               {this.renderLoader()}
             </Modal.Content>
@@ -172,13 +192,14 @@ class AddImgModal extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     open: state.colors.open,
     error: state.colors.error,
     status: state.colors.status,
     loader: state.colors.loader,
-    image: state.colors.image
+    image: state.colors.image,
+    exampleImages: state.url.exampleImages
   };
 };
 
@@ -191,5 +212,6 @@ export default connect(mapStateToProps, {
   newImgSubmit,
   clearImgSubmit,
   clearErrorStatus,
-  showModalLoader
+  showModalLoader,
+  sendErrorStatus
 })(AddImgModal);

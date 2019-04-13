@@ -63,14 +63,16 @@ export const analyzeImage = (url) => dispatch => {
 export const closeImgModal = () => dispatch => {
   dispatch({
     type: 'OPEN_IMAGE_MODAL',
-    open: false
+    open: false,
+    error: false,
   })
 }
 
 export const openImgModal = () => dispatch => {
   dispatch({
     type: 'CLOSE_IMAGE_MODAL',
-    open: true
+    open: true,
+    error: false
   })
 }
 
@@ -92,6 +94,13 @@ export const clearImgSubmit = () => dispatch => {
   dispatch({
     type: 'CLEAR_IMAGE_SUBMIT',
     image: ''
+  })
+}
+
+export const sendErrorStatus = () => dispatch => {
+  dispatch({
+    type: 'SEND_ERROR',
+    error: true
   })
 }
 

@@ -40,6 +40,10 @@ export default (state = initialState, action) => {
       return {...state,
         image: action.image
       };
+    case 'SEND_ERROR':
+      return {...state,
+        error: action.error
+      }
     case 'CLEAR_ERROR':
       return {...state,
         error: action.error
@@ -55,12 +59,12 @@ export default (state = initialState, action) => {
     case 'OPEN_IMAGE_MODAL':
       return {...state,
         open: action.open,
-        error: false,
+        error: action.error
       };
     case 'CLOSE_IMAGE_MODAL':
       return {...state,
         open: action.open,
-        error: false
+        error: action.error
       };
     case 'UPDATE_HEX_COLOR':
       function updateObjectInArray(array, action) {
