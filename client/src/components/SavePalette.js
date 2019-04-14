@@ -44,9 +44,7 @@ class SavePalette extends Component {
 
   //if empty Input
   setError() {
-    this.setState({
-      error: true
-    });
+    this.setState({ error: true });
   }
 
   renderConfirmButton() {

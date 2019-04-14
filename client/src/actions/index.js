@@ -111,6 +111,7 @@ export const clearErrorStatus = () => dispatch => {
   })
 }
 
+// Color info Actions
 export const sendColorInfo = (hexColor, alpha) => dispatch => {
   let R = hexToR(hexColor);
   let G = hexToG(hexColor);
@@ -174,6 +175,7 @@ export const updateHexColor = (newColorSet) => dispatch => {
     newColorSet: newColorSet
   })
 }
+
 // image submit actions
 export const changeMainImage = url => {
   return {
@@ -187,4 +189,11 @@ export const addImageSelection = url => {
     type: 'ADD_URL',
     url: url
   };
+}
+
+export const deleteURL = (url) => dispatch => {
+  dispatch({
+    type: 'DELETE_URL',
+    url: url
+  })
 }

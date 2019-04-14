@@ -4,7 +4,8 @@ import { changeMainImage } from '../actions';
 import { analyzeImage } from '../actions';
 import { clearRecieved } from '../actions';
 import { clearPosition } from '../actions';
-import { Grid } from 'semantic-ui-react';
+import { deleteURL } from '../actions';
+import { Grid, Icon } from 'semantic-ui-react';
 import  ImageModal from './ImageModal';
 
 class ImageSelection extends Component {
@@ -41,11 +42,10 @@ class ImageSelection extends Component {
             style={this.renderBorder(url)}
             onClick={() => this.handleClick(url)}
           />
-          <div className="circle">
-            <i
-              id="delete-img"
-              className="fas fa-times-circle"
-            />
+          <div
+            onClick={() => this.props.deleteURL(url)}
+            className="delete-img">
+            <Icon name="delete" />
           </div>
         </div>
       )
@@ -69,6 +69,7 @@ class ImageSelection extends Component {
 };
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     url: state.url.url,
     exampleUrl: state.url.exampleImages,
@@ -79,4 +80,6 @@ export default connect(mapStateToProps, {
   changeMainImage,
   clearRecieved,
   clearPosition,
-  analyzeImage })(ImageSelection);
+  deleteURL,
+  analyzeImage
+})(ImageSelection);

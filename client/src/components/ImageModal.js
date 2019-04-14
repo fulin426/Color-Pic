@@ -46,9 +46,7 @@ class AddImgModal extends Component {
       this.props.changeMainImage(this.state.input);
       this.props.addImageSelection(this.state.input);
       this.props.clearImgSubmit();
-      this.setState({
-        input: ''
-      });
+      this.setState({ input: ''});
     }
   }
 
@@ -128,7 +126,7 @@ class AddImgModal extends Component {
   renderErrorMessage() {
     if (this.props.error === true && this.state.input !== '' && this.checkForDuplicateUrls() === 'no duplicates') {
       return(
-        <p> Bad Request! Please check your URL and try again </p>
+        <p> Please check URL and try again </p>
       );
     }
     if (this.checkForDuplicateUrls() === 'duplicate exists') {
@@ -166,7 +164,7 @@ class AddImgModal extends Component {
   }
 
   render() {
-    const { open, closeOnEscape, closeOnDimmerClick } = this.state
+    const { closeOnEscape, closeOnDimmerClick } = this.state
       return (
         <div>
           <Button onClick={this.closeConfigShow(false, true)}>Try your own image</Button>

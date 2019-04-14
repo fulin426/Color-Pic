@@ -24,12 +24,17 @@
  position: relative;
 }
 
-.circle {
+.delete-img {
   display: none;
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 2px;
+  right: 2px;
   z-index: 1;
+  cursor: pointer;
+}
+ /* show X when enters image div */
+.image-wrapper:hover .delete-img {
+  display: block;
 }
 
 .images-container {
