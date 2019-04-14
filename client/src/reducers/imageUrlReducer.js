@@ -20,10 +20,16 @@ export default (state = initialState, action) => {
        exampleImages: state.exampleImages.concat(action.url)
      };
      case 'DELETE_URL':
-     console.log(action.url);
+     // temporary so at least one image is showing and no react errors
+     if(state.exampleImages.length === 1) {
+       return state;
+     }
+      const newImageList = state.exampleImages.filter( url => url !== action.url);
       return {
         ...state,
-        exampleImages: state.exampleImages.filter( url => url !== action.url)
+        // set new url to first one in new Image list
+        url: newImageList[0],
+        exampleImages: newImageList
       };
     default:
      return state;

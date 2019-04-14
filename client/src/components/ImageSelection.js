@@ -69,7 +69,6 @@ class ImageSelection extends Component {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     url: state.url.url,
     exampleUrl: state.url.exampleImages,

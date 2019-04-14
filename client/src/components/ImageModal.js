@@ -20,11 +20,10 @@ class AddImgModal extends Component {
   submitURL(event) {
     event.preventDefault();
     if (this.state.input === '') {
-      this.props.sendErrorStatus();
+      return this.props.sendErrorStatus();
     }
     // if no duplicate urls and input not empty
     if (this.checkForDuplicateUrls() === 'no duplicates' && this.state.input !== '') {
-      console.log('requested');
       this.props.analyzeImage(this.state.input);
       this.props.newImgSubmit();
       this.props.showModalLoader();
@@ -51,11 +50,11 @@ class AddImgModal extends Component {
   }
 
   handleInput(event) {
-    this.setState({
-      input: event.target.value,
-    });
+    this.setState({ input: event.target.value });
     // Clear error if someone types anything
     this.props.clearErrorStatus();
+    // clear if new image submitted
+    this.props.clearImgSubmit();
   }
 
   renderURLinput() {
@@ -148,11 +147,11 @@ class AddImgModal extends Component {
   }
   // Semantic UI settings
   close = () => {
-    this.setState({
-      input: '',
-    });
+    this.setState({ input: '' });
     // Open and Close state in store.js instead of local state
     this.props.closeImgModal();
+    this.props.clearErrorStatus();
+    this.props.clearImgSubmit();
   }
 
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
@@ -161,6 +160,8 @@ class AddImgModal extends Component {
       closeOnDimmerClick
     });
     this.props.openImgModal();
+    this.props.clearErrorStatus();
+    this.props.clearImgSubmit();
   }
 
   render() {
@@ -190,7 +191,7 @@ class AddImgModal extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state);
   return {
     open: state.colors.open,
     error: state.colors.error,
