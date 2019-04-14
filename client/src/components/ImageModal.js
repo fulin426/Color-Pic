@@ -191,7 +191,7 @@ class AddImgModal extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     open: state.colors.open,
     error: state.colors.error,
