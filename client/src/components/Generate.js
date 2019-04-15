@@ -7,7 +7,6 @@ import ColorPicker from './ColorPicker';
 import ColorInfo from './ColorInfo';
 import Regenerate from './Regenerate';
 import SavePalette from './SavePalette';
-import Footer from './Footer';
 import { Container, Grid } from 'semantic-ui-react';
 
 const HomePage = () => {
@@ -38,7 +37,6 @@ const HomePage = () => {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <Footer />
       </Container>
     </div>
   );

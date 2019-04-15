@@ -199,6 +199,7 @@
 .footer {
   height: 10rem;
   padding: 2rem;
+  text-align: center;
 }
 /* my Color palettes */
 /* reused some css from colorslist */
@@ -228,3 +229,5 @@
   float: right;
   display: inline-block;
 }
+
+/* LandingPage */

@@ -42,14 +42,14 @@ class MobileContainer extends Component {
           <Link to="/MyPallettes">
             <Menu.Item as='a'>My Palettes</Menu.Item>
           </Link>
-          <Menu.Item as='a'>Log In</Menu.Item>
-          <Menu.Item as='a'>Sign Up</Menu.Item>
+          {/* <Menu.Item as='a'>Log In</Menu.Item>
+          <Menu.Item as='a'>Sign Up</Menu.Item> */}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
           <Segment
             textAlign='center'
-            style={{ minHeight: 225, padding: '1em 0em' }}
+            style={{ minHeight: 125, padding: '1em 0em' }}
             vertical
           >
             <Container>
