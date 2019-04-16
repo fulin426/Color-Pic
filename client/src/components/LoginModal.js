@@ -8,7 +8,8 @@ class LoginModal extends Component {
     header: 'Log In to Color Pic',
     button: 'Log In',
     username: '',
-    password: ''
+    password: '',
+    userNamePlaceHolder: ''
    }
 
   showLogin = size => () => {
@@ -17,7 +18,8 @@ class LoginModal extends Component {
       open: true,
       activeItem: 'Log In',
       header: 'Log In to Color Pic',
-      button: 'Log In'
+      button: 'Log In',
+      userNamePlaceHolder:'Username'
     })
   }
 
@@ -27,17 +29,23 @@ class LoginModal extends Component {
       open: true,
       activeItem: 'Sign Up',
       header: 'Sign Up for Color Pic',
-      button: 'Sign Up'
+      button: 'Sign Up',
+      userNamePlaceHolder: 'Register new user'
     })
   }
 
-  close = () => this.setState({ open: false })
+  close = () => {
+    this.setState({ open: false });
+  }
 
   handleLogInClick = (e, { name }) => {
     this.setState({
       activeItem: name,
       button: name,
-      header: 'Log In to Color Pic'
+      header: 'Log In to Color Pic',
+      username: '',
+      password: '',
+      userNamePlaceHolder:'Username'
     });
   }
 
@@ -45,7 +53,10 @@ class LoginModal extends Component {
     this.setState({
       activeItem: name,
       button: name,
-      header: 'Sign Up for Color Pic'
+      header: 'Sign Up for Color Pic',
+      username: '',
+      password: '',
+      userNamePlaceHolder: 'Register New User'
     });
   }
 
@@ -69,7 +80,8 @@ class LoginModal extends Component {
       button,
       header,
       username,
-      password
+      password,
+      userNamePlaceHolder
     } = this.state
 
     return (
@@ -102,7 +114,7 @@ class LoginModal extends Component {
               <label className="login-label">Username</label>
               <Input
                 className="login-input"
-                placeholder='Username'
+                placeholder={userNamePlaceHolder}
                 value={username}
                 onChange={event => this.inputUsername(event)}
               />
