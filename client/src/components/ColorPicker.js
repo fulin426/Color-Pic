@@ -33,7 +33,7 @@ class ColorPicker extends Component {
           <ChromePicker
             className="chrome-picker"
             style={{
-              width: '100%', 
+              width: '100%',
               marginRight: 4 + 'em'
             }}
             color={{
@@ -52,7 +52,7 @@ class ColorPicker extends Component {
 
   render() {
     return(
-      <Grid.Column mobile={16} computer={10}>
+      <Grid.Column mobile={16} tablet={9} computer={10}>
         {this.renderColorPicker()}
       </Grid.Column>
     );

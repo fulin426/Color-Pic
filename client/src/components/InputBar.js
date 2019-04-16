@@ -9,7 +9,7 @@ const InputBar = (props) => {
           type="text"
           className="form-control"
           placeholder="Search by Img url"
-          aria-label="Recipient's username"
+          aria-label="Search Bar"
           aria-describedby="basic-addon2"
           onChange={imgSearch}
         />

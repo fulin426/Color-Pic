@@ -186,13 +186,13 @@
 
 @media only screen and (max-width: 992px) {
   .chrome-picker {
-    width: 400px !important;
+    width: 375px !important;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .chrome-picker {
-    max-width: 300px !important;
+    max-width: 315px !important;
   }
 }
 /* save palette modal */
@@ -237,3 +237,28 @@
 }
 
 /* LandingPage */
+
+/* LoginModal */
+.login-header {
+  text-align: center;
+  padding: 16px;
+}
+.login-input{
+  display: block;
+  width: 100%;
+}
+
+.login-label {
+  margin: 14px 0px 10px 0px;
+  display: block;
+}
+
+.login-btn {
+  margin: 0px auto;
+  margin-top: 24px;
+  width: 100px;
+}
+
+.menu-overide {
+  margin: 0px !important;
+}

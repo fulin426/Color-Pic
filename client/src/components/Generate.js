@@ -28,7 +28,7 @@ const HomePage = () => {
         <Grid celled>
           <Grid.Row>
             <ColorPicker />
-            <Grid.Column mobile={16} computer={6}>
+            <Grid.Column mobile={16} tablet={7} computer={6}>
               <ColorInfo />
               <div className="regen-save-buttons">
                 <Regenerate />

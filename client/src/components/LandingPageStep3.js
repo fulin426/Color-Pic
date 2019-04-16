@@ -16,11 +16,11 @@ const LandingPageExampleThree = () => {
       <Grid
         verticalAlign='middle'
         textAlign='center'
+        stackable
         columns={2}
         style={{ padding: '1em' }}
         >
         <Grid.Column
-          mobile={16}
           computer={9}
           style={{ padding: '0em' }}
           >
@@ -38,7 +38,6 @@ const LandingPageExampleThree = () => {
           </Segment>
         </Grid.Column>
         <Grid.Column
-          mobile={16}
           computer={7}
           style={{ padding: '0em' }}
           >

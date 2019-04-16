@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import LoginModal from './LoginModal';
 import { Button, Container, Menu, Responsive, Segment, Visibility } from 'semantic-ui-react'
 
 const getWidth = () => {
@@ -37,12 +38,13 @@ class DesktopContainer extends Component {
                 <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
                 <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
                 <Menu.Item position='right'>
-                  <Button as='a'>
+                  <LoginModal />
+                  {/* <Button as='a'>
                     Log in
-                  </Button>
-                  <Button as='a' style={{ marginLeft: '0.5em' }}>
+                  </Button> */}
+                  {/* <Button as='a' style={{ marginLeft: '0.5em' }}>
                     Sign Up
-                  </Button>
+                  </Button> */}
                 </Menu.Item>
               </Container>
             </Menu>
