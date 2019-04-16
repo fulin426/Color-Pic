@@ -32,7 +32,10 @@ class ColorPicker extends Component {
         <div className="color-picker">
           <ChromePicker
             className="chrome-picker"
-            style={{ marginRight: 4 + 'em' }}
+            style={{
+              width: '100%', 
+              marginRight: 4 + 'em'
+            }}
             color={{
               r: this.props.R,
               g: this.props.G,

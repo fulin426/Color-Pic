@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Container,
   Grid,
   Image,
   Segment,
@@ -12,10 +10,13 @@ import ExamplePhoto from '../images/ExamplePhoto.jpeg';
  * such things.
  */
 
-const LandingPageExampleOne = ( {mobile} ) => {
+const LandingPageExampleOne = () => {
   return(
     <div>
       <Grid
+        verticalAlign='middle'
+        textAlign='center'
+        stackable
         columns={2}
         style={{ padding: '1em' }}
         >
@@ -29,18 +30,12 @@ const LandingPageExampleOne = ( {mobile} ) => {
         </Grid.Column>
         <Grid.Column
           width={7}
-          style={{
-            textAlign: "center",
-            padding: '0em'
-          }}
+          style={{ padding: '0em' }}
           >
           <Segment
             style={{
             padding: '0em 2em 0em 2em',
             height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            textAlign: 'center'
           }}>
             <p
               style={{

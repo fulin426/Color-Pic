@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Container,
   Grid,
   Image,
   Segment,
@@ -12,32 +10,34 @@ import ExampleImageAdjust from '../images/ExampleImageAdjust.png';
  * such things.
  */
 
-const LandingPageExampleTwo = ( {mobile} ) => {
+const LandingPageExampleTwo = () => {
   return(
     <div>
       <Grid
+        verticalAlign='middle'
+        textAlign='center'
         columns={2}
         style={{ padding: '1em' }}
         >
         <Grid.Column
-          width={7}
+          mobile={7}
+          computer={7}
           style={{
             textAlign: "center",
             padding: '0em'
           }}
           >
           <Segment
+            fluid vertical
             style={{
             padding: '0em 2em 0em 2em',
             height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            textAlign: 'center'
           }}>
             <p
               style={{
                 display: 'block',
-                fontSize: '24px'
+                fontSize: '24px',
+                textAlign: 'center'
               }}>
               <Icon name="adjust" />
               Adjust colors and refine palette.
@@ -45,7 +45,8 @@ const LandingPageExampleTwo = ( {mobile} ) => {
           </Segment>
         </Grid.Column>
         <Grid.Column
-          width={9}
+          mobile={16}
+          computer={9}
           style={{ padding: '0em' }}
           >
           <Segment style={{ padding: '1em' }}>

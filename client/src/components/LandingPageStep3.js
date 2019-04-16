@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
-  Container,
   Grid,
   Image,
   Segment,
@@ -12,40 +10,42 @@ import MyPalettesExample from '../images/MyPalettesExample.png';
  * such things.
  */
 
-const LandingPageExampleTwo = ( {mobile} ) => {
+const LandingPageExampleThree = () => {
   return(
     <div>
       <Grid
+        verticalAlign='middle'
+        textAlign='center'
         columns={2}
         style={{ padding: '1em' }}
         >
         <Grid.Column
-          width={9}
+          mobile={16}
+          computer={9}
           style={{ padding: '0em' }}
           >
-          <Segment style={{ padding: '1em' }}>
-            <Image style={{
-              maxHeight: '400px',
-              margin: 'auto 0'
+          <Segment
+            style={{
+              textAlign: 'center',
+              padding: '1em'
             }}
+          >
+            <Image
+            centered
+            style={{ maxHeight: '400px'}}
             src={ MyPalettesExample }
           />
           </Segment>
         </Grid.Column>
         <Grid.Column
-          width={7}
-          style={{
-            textAlign: "center",
-            padding: '0em'
-          }}
+          mobile={16}
+          computer={7}
+          style={{ padding: '0em' }}
           >
           <Segment
             style={{
             padding: '0em 2em 0em 2em',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            textAlign: 'center'
+            height: '100%'
           }}>
             <p
               style={{
@@ -62,4 +62,4 @@ const LandingPageExampleTwo = ( {mobile} ) => {
   );
 }
 
-export default LandingPageExampleTwo;
+export default LandingPageExampleThree;

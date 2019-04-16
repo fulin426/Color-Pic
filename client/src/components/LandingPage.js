@@ -6,7 +6,7 @@ import LandingPageStep1 from './LandingPageStep1';
 import LandingPageStep2 from './LandingPageStep2';
 import LandingPageStep3 from './LandingPageStep3';
 
-const LandingPage = ({ mobile }) => {
+const LandingPage = () => {
   return(
     <Container>
       <LandingPageExample />
@@ -15,10 +15,6 @@ const LandingPage = ({ mobile }) => {
       <LandingPageStep3 />
     </Container>
   );
-}
-
-LandingPage.propTypes = {
-  mobile: PropTypes.bool,
 }
 
 export default LandingPage;

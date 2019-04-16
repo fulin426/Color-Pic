@@ -1,4 +1,3 @@
-import axios from 'axios';
 const Clarifai = require('clarifai');
 const app = new Clarifai.App({apiKey: 'bd8644854b19417dacdfa3adba21aab1'});
 //Convert Hex to RGB functions

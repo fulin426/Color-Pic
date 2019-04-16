@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Container,
   Grid,
@@ -14,7 +13,7 @@ import LandingPageExamplePicture from '../images/LandingPageExample.png';
  * such things.
  */
 
-const LandingPageExample = ( {mobile} ) => {
+const LandingPageExample = () => {
   return(
     <div>
       <Grid
@@ -44,7 +43,7 @@ const LandingPageExample = ( {mobile} ) => {
             <Header
               as="h1"
               style={{
-                fontSize: mobile ? '24px' : '36px',
+                fontSize: '36px',
                 marginTop: '3rem',
                 marginBottom: '4rem'
               }}

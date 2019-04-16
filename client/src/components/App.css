@@ -175,7 +175,13 @@
 }
 /* different widths depending on display size */
 .chrome-picker {
-  width: 480px !important;
+  width: 640px !important;
+}
+
+@media only screen and (max-width: 1199px) {
+  .chrome-picker {
+    width: 540px !important;
+  }
 }
 
 @media only screen and (max-width: 992px) {

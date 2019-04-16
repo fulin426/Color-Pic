@@ -33,15 +33,9 @@ class DesktopContainer extends Component {
           >
             <Menu size='large'>
               <Container>
-                <Link to="/">
-                  <Menu.Item as='a'>Color Pic</Menu.Item>
-                </Link>
-                <Link to="/Generate">
-                  <Menu.Item as='a'>Generate</Menu.Item>
-                </Link>
-                <Link to="/MyPallettes">
-                  <Menu.Item as='a'>My Palettes</Menu.Item>
-                </Link>
+                <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
+                <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
+                <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
                 <Menu.Item position='right'>
                   <Button as='a'>
                     Log in

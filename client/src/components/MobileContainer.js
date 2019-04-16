@@ -33,15 +33,9 @@ class MobileContainer extends Component {
           vertical
           visible={sidebarOpened}
         >
-          <Link to="/">
-          <Menu.Item as='a'>Color Pic</Menu.Item>
-            </Link>
-          <Link to="/Generate">
-            <Menu.Item as='a'>Generate</Menu.Item>
-          </Link>
-          <Link to="/MyPallettes">
-            <Menu.Item as='a'>My Palettes</Menu.Item>
-          </Link>
+          <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
+          <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
+          <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
           {/* <Menu.Item as='a'>Log In</Menu.Item>
           <Menu.Item as='a'>Sign Up</Menu.Item> */}
         </Sidebar>
