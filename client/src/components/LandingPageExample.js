@@ -19,7 +19,7 @@ const LandingPageExample = () => {
       <Grid
         stackable
         columns={2}
-        style={{ padding: '1em' }}
+        style={{ padding: '1em', marginBottom: '3em' }}
         >
         <Grid.Column
           width={10}

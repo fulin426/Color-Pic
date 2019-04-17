@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Button, Modal, Input, Menu, Header } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Button, Modal, Input, Menu, Header } from 'semantic-ui-react';
 
 class LoginModal extends Component {
   state = {
@@ -9,7 +9,8 @@ class LoginModal extends Component {
     button: 'Log In',
     username: '',
     password: '',
-    userNamePlaceHolder: ''
+    userNamePlaceHolder: '',
+    description:''
    }
 
   showLogin = size => () => {
@@ -19,7 +20,8 @@ class LoginModal extends Component {
       activeItem: 'Log In',
       header: 'Log In to Color Pic',
       button: 'Log In',
-      userNamePlaceHolder:'Username'
+      userNamePlaceHolder:'Username',
+      description: ''
     })
   }
 
@@ -30,7 +32,8 @@ class LoginModal extends Component {
       activeItem: 'Sign Up',
       header: 'Sign Up for Color Pic',
       button: 'Sign Up',
-      userNamePlaceHolder: 'Register new user'
+      userNamePlaceHolder: 'Register new user',
+      description:'Register to access more features'
     })
   }
 
@@ -45,7 +48,8 @@ class LoginModal extends Component {
       header: 'Log In to Color Pic',
       username: '',
       password: '',
-      userNamePlaceHolder:'Username'
+      userNamePlaceHolder:'Username',
+      description:''
     });
   }
 
@@ -56,7 +60,8 @@ class LoginModal extends Component {
       header: 'Sign Up for Color Pic',
       username: '',
       password: '',
-      userNamePlaceHolder: 'Register New User'
+      userNamePlaceHolder: 'Register New User',
+      description:'Register to access more features'
     });
   }
 
@@ -81,16 +86,16 @@ class LoginModal extends Component {
       header,
       username,
       password,
-      userNamePlaceHolder
+      userNamePlaceHolder,
+      description
     } = this.state
 
     return (
       <div>
-        <Button onClick={this.showLogin('tiny')}>Log In</Button>
-        <Button
-          onClick={this.showSignup('tiny')}
-          style={{ marginLeft: '0.5em' }}
-        >
+        <Button onClick={this.showLogin('tiny')}>
+          Log In
+        </Button>
+        <Button onClick={this.showSignup('tiny')} style={{ marginLeft: '0.5em', marginRight: '1rem' }}>
           Sign Up
         </Button>
         <Modal size={size} open={open} onClose={this.close}>
@@ -110,6 +115,9 @@ class LoginModal extends Component {
             />
           </Menu>
           <Modal.Content>
+            <div className="login-description">
+              <p>{description}</p>
+            </div>
             <form>
               <label className="login-label">Username</label>
               <Input
@@ -127,10 +135,7 @@ class LoginModal extends Component {
                 onChange={event => this.inputPassword(event)}
               />
               <div className="login-btn">
-                <Button
-                  color="blue"
-                  onClick={event => this.buttonSubmit(event)}
-                >
+                <Button color="blue" onClick={event => this.buttonSubmit(event)}>
                   {button}
                 </Button>
               </div>

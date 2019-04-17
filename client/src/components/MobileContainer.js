@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import LoginModal from './LoginModal';
 import { Container, Icon, Menu, Responsive, Segment, Sidebar } from 'semantic-ui-react';
 
 const getWidth = () => {
@@ -51,14 +52,7 @@ class MobileContainer extends Component {
                 <Menu.Item onClick={this.handleToggle}>
                   <Icon name='sidebar' />
                 </Menu.Item>
-                {/* <Menu.Item position='right'>
-                  <Button as='a'>
-                    Log in
-                  </Button>
-                  <Button as='a'>
-                    Sign Up
-                  </Button>
-                </Menu.Item> */}
+                <LoginModal />
               </Menu>
             </Container>
           </Segment>

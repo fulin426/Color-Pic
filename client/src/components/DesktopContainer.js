@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
-import { Button, Container, Menu, Responsive, Segment, Visibility } from 'semantic-ui-react'
+import { Button, Container, Menu, Responsive, Segment, Visibility, Icon } from 'semantic-ui-react'
 
 const getWidth = () => {
   const isSSR = typeof window === 'undefined'
@@ -39,12 +39,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
                 <Menu.Item position='right'>
                   <LoginModal />
-                  {/* <Button as='a'>
-                    Log in
-                  </Button> */}
-                  {/* <Button as='a' style={{ marginLeft: '0.5em' }}>
-                    Sign Up
-                  </Button> */}
+                  <Icon name="user circle" size="large"/>
                 </Menu.Item>
               </Container>
             </Menu>

@@ -259,6 +259,10 @@
   width: 100px;
 }
 
+.login-description {
+  text-align: center;
+}
+
 .menu-overide {
   margin: 0px !important;
 }
