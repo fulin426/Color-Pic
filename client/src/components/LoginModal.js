@@ -9,6 +9,7 @@ class LoginModal extends Component {
     button: 'Log In',
     username: '',
     password: '',
+    email: '',
     userNamePlaceHolder: '',
     description:''
    }
@@ -30,7 +31,7 @@ class LoginModal extends Component {
       size,
       open: true,
       activeItem: 'Sign Up',
-      header: 'Sign Up for Color Pic',
+      header: 'Join Color Pic Today',
       button: 'Sign Up',
       userNamePlaceHolder: 'Register new user',
       description:'Register to access more features'
@@ -38,7 +39,12 @@ class LoginModal extends Component {
   }
 
   close = () => {
-    this.setState({ open: false });
+    this.setState({
+      open: false,
+      username: '',
+      password: '',
+      email: ''
+    });
   }
 
   handleLogInClick = (e, { name }) => {
@@ -48,6 +54,7 @@ class LoginModal extends Component {
       header: 'Log In to Color Pic',
       username: '',
       password: '',
+      email: '',
       userNamePlaceHolder:'Username',
       description:''
     });
@@ -60,6 +67,7 @@ class LoginModal extends Component {
       header: 'Sign Up for Color Pic',
       username: '',
       password: '',
+      email: '',
       userNamePlaceHolder: 'Register New User',
       description:'Register to access more features'
     });
@@ -73,10 +81,33 @@ class LoginModal extends Component {
     this.setState({ password: event.target.value });
   }
 
+  inputEmail(event) {
+    this.setState({ email: event.target.value });
+  }
+
   buttonSubmit(event) {
     event.preventDefault();
     console.log('submit that login');
   }
+
+  emailRender() {
+    // Only show email for sign up
+    if(this.state.activeItem === 'Sign Up') {
+      return(
+        <div>
+          <label className="login-label">Email</label>
+          <Input
+            type='email'
+            className="login-input"
+            placeholder='email@example.com'
+            value={this.state.email}
+            onChange={event => this.inputEmail(event)}
+          />
+        </div>
+      );
+    }
+  }
+
   render() {
     const {
       open,
@@ -134,11 +165,10 @@ class LoginModal extends Component {
                 value={password}
                 onChange={event => this.inputPassword(event)}
               />
-              <div className="login-btn">
-                <Button color="blue" onClick={event => this.buttonSubmit(event)}>
-                  {button}
-                </Button>
-              </div>
+              {this.emailRender()}
+              <Button className="login-btn" color="blue" onClick={event => this.buttonSubmit(event)}>
+                {button}
+              </Button>
             </form>
           </Modal.Content>
         </Modal>

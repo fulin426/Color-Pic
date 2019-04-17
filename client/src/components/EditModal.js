@@ -130,11 +130,10 @@ class EditModal extends Component {
     }
   }
 
-  closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
+  closeConfigShow = (dimmer) => () => {
     const position = this.props.colorPosition;
     this.setState({
-      closeOnEscape,
-      closeOnDimmerClick,
+      dimmer,
       open: true,
       // send info to local state when modal opens
       title: this.props.data[position].title,
@@ -172,19 +171,19 @@ class EditModal extends Component {
   }
 
   render() {
-    const { open, closeOnEscape, closeOnDimmerClick, title, hexInput, selectedSet } = this.state
+    const { open, dimmer, title, hexInput, selectedSet } = this.state
 
     return (
       <div className="edit-modal">
         <Icon
           size='large'
-          onClick={this.closeConfigShow(false, true)}
+          onClick={this.closeConfigShow(true)}
           name="edit"
         />
         <Modal
           open={open}
-          closeOnEscape={closeOnEscape}
-          closeOnDimmerClick={closeOnDimmerClick}
+          //Dimmer not currently working
+          dimmer={dimmer}
           onClose={this.close}
         >
           <Modal.Header>Edit Palette</Modal.Header>

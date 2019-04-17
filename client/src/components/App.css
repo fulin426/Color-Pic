@@ -266,6 +266,7 @@
 }
 .login-input{
   display: block;
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 
@@ -275,9 +276,9 @@
 }
 
 .login-btn {
-  margin: 0px auto;
-  margin-top: 24px;
-  width: 100px;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1rem !important;
+  width: 100% !important;
 }
 
 .login-description {
