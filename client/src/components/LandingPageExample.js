@@ -26,7 +26,7 @@ const LandingPageExample = () => {
           style={{ padding: '0em' }}
           >
           <Segment style={{ padding: '0em' }}>
-            <Image src={ LandingPageExamplePicture } />
+            <Image src={ LandingPageExamplePicture } alt='Landing Page Example Palette'/>
           </Segment>
         </Grid.Column>
         <Grid.Column

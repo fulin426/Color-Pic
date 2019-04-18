@@ -1,19 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const ColorPalette = require('./routes/colorPalette');
-const colormindAPI = require('./routes/colormindAPI');
 
 // Bodyparser Middleware
-app.use(bodyParser.json());
+app.use(express.json());
 
 // DB config
 const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(db, {
+  useNewUrlParser: true,
+  useCreateIndex: true
+ })
   .then(() => console.log('MongoDB Connected!'))
   .catch(error => console.log('Not able to connect...',error));
 
@@ -21,10 +21,16 @@ mongoose.connect(db, { useNewUrlParser: true })
 app.set("port", process.env.PORT || 5000);
 
 // Use Route for colormind API
-app.use('/api/colormind', colormindAPI);
+app.use('/api/colormind', require('./routes/colormindAPI'));
 
 // Use Route for user Colors API
-app.use('/api/colors', ColorPalette);
+app.use('/api/colors', require('./routes/colorPalette'));
+
+// Use Route for User Registration
+app.use('/api/users', require('./routes/users'));
+
+// Use Route for User Authorize
+app.use('/api/auth', require('./routes/auth'));
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
