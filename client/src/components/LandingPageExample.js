@@ -59,14 +59,14 @@ const LandingPageExample = () => {
               Create, edit, and save schemes
             </p>
             <Link to="/Generate">
-            <Button
-              style={{
-                fontSize: '16px',
-                marginBottom: '1rem'
-              }}
-            >
-              Start Generator
-            </Button>
+              <Button
+                style={{
+                  fontSize: '16px',
+                  marginBottom: '1rem'
+                }}
+              >
+                Start Generator
+              </Button>
             </Link>
           </Segment>
         </Grid.Column>

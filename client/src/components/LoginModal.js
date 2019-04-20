@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, Input, Menu } from 'semantic-ui-react';
 import { registerUser } from '../actions/authActions';
+import { loginUser } from '../actions/authActions';
 const Isemail = require('isemail');
 //possibly split into two components login and sign up
 class LoginModal extends Component {
@@ -69,6 +70,7 @@ class LoginModal extends Component {
       userNamePlaceHolder:'Username',
       description:''
     });
+    this.resetDefaults();
   }
 
   handleSignUpClick = (e, { name }) => {
@@ -83,6 +85,7 @@ class LoginModal extends Component {
       userNamePlaceHolder: 'Register New User',
       description:'Register to access more features'
     });
+    this.resetDefaults();
   }
 
   // clear all error messages
@@ -126,26 +129,17 @@ class LoginModal extends Component {
       return
     }
 
-    // // Validate Email
-    // if(Isemail.validate(this.state.email) === false) {
-    //   this.setState({
-    //     errorStatusEmail: 'error',
-    //     errorMsgEmail:'Not a valid email',
-    //   });
-    //   return
-    // }
-
     // If either password is empty
-    if (this.state.password === '' || this.state.verifyPassword === '') {
+    if (this.state.activeItem === 'Sign Up' && this.state.password === '') {
       this.setState({
-        errorMsgPassword:'Passwords cannot be empty',
+        errorMsgPassword:'Password cannot be empty',
         errorStatusPassword: true
       });
       return
     }
 
     // If passwords do not match show error message
-    if (this.state.password !== this.state.verifyPassword) {
+    if (this.state.activeItem === 'Sign Up' && this.state.password !== this.state.verifyPassword) {
       this.setState({
         errorMsgPassword:'Passwords do not match',
         errorStatusPassword: true
@@ -153,13 +147,24 @@ class LoginModal extends Component {
       return
     }
 
+    // Validate Email
+    if(this.state.activeItem === 'Sign Up' && Isemail.validate(this.state.email) === false) {
+      this.setState({
+        errorStatusEmail: 'error',
+        errorMsgEmail:'Not a valid email',
+      });
+      return
+    }
+
+
     if(this.state.activeItem === 'Sign Up'){
       this.props.registerUser(this.state.email, this.state.password);
       this.close();
     }
 
     if(this.state.activeItem === 'Log In'){
-      console.log('log me in');
+      this.props.loginUser(this.state.email, this.state.password);
+      this.close();
     }
   }
 
@@ -178,7 +183,6 @@ class LoginModal extends Component {
             onChange={event => this.handleInput(event, 'verifyPassword')}
             error={this.state.errorStatusPassword}
           />
-          <p style={{color: 'red'}}>{this.state.errorMsgPassword}</p>
         </div>
       );
     }
@@ -193,14 +197,11 @@ class LoginModal extends Component {
       header,
       email,
       password,
-      verifyPassword,
       userNamePlaceHolder,
       errorStatusPassword,
       errorStatusEmail,
       description,
       errorMsgEmail,
-      errorMsgPassword,
-      descriptionColor
     } = this.state
 
     return (
@@ -231,7 +232,7 @@ class LoginModal extends Component {
             <div className="login-description">
               <p>{description}</p>
             </div>
-            <form>
+            <form onSubmit={event => this.buttonSubmit(event)}>
               <label className="login-label">Email</label>
               <Input
                 className="login-input"
@@ -252,6 +253,7 @@ class LoginModal extends Component {
                 onChange={event => this.handleInput(event, 'password')}
                 error={errorStatusPassword}
               />
+              <p style={{color: 'red'}}>{this.state.errorMsgPassword}</p>
               {this.verifyPasswordRender()}
               <Button
                 className="login-btn"
@@ -268,4 +270,4 @@ class LoginModal extends Component {
   }
 }
 
-export default connect( null, {registerUser })(LoginModal);
+export default connect( null, {registerUser, loginUser })(LoginModal);

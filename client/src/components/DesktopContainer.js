@@ -56,7 +56,7 @@ class DesktopContainer extends Component {
                 <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
                 <Menu.Item position='right'>
                   {this.loginRender()}
-                  <Icon name="user circle" size="large"/>
+                  {/* <Icon name="user circle" size="large"/> */}
                 </Menu.Item>
               </Container>
             </Menu>
