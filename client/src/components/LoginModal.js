@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, Input, Menu, Header } from 'semantic-ui-react';
+import { Button, Modal, Input, Menu } from 'semantic-ui-react';
 
 class LoginModal extends Component {
   state = {
@@ -7,8 +7,8 @@ class LoginModal extends Component {
     activeItem: 'Log In',
     header: 'Log In to Color Pic',
     button: 'Log In',
-    username: '',
     password: '',
+    verifyPassword: '',
     email: '',
     userNamePlaceHolder: '',
     description:''
@@ -21,7 +21,7 @@ class LoginModal extends Component {
       activeItem: 'Log In',
       header: 'Log In to Color Pic',
       button: 'Log In',
-      userNamePlaceHolder:'Username',
+      userNamePlaceHolder:'email@email.com',
       description: ''
     })
   }
@@ -73,12 +73,12 @@ class LoginModal extends Component {
     });
   }
 
-  inputUsername(event) {
-    this.setState({ username: event.target.value });
-  }
-
   inputPassword(event) {
     this.setState({ password: event.target.value });
+  }
+
+  inputVerifyPassword(event) {
+    this.setState({ verifyPassword: event.target.value });
   }
 
   inputEmail(event) {
@@ -90,18 +90,19 @@ class LoginModal extends Component {
     console.log('submit that login');
   }
 
-  emailRender() {
+  verifyPasswordRender() {
     // Only show email for sign up
     if(this.state.activeItem === 'Sign Up') {
       return(
         <div>
-          <label className="login-label">Email</label>
+          <label className="login-label">Verify Password</label>
           <Input
-            type='email'
+            type="password"
             className="login-input"
-            placeholder='email@example.com'
-            value={this.state.email}
-            onChange={event => this.inputEmail(event)}
+            placeholder="Password"
+            autoComplete="on"
+            value={this.state.verifyPassword}
+            onChange={event => this.inputVerifyPassword(event)}
           />
         </div>
       );
@@ -115,8 +116,9 @@ class LoginModal extends Component {
       activeItem,
       button,
       header,
-      username,
+      email,
       password,
+      verifyPassword,
       userNamePlaceHolder,
       description
     } = this.state
@@ -150,22 +152,24 @@ class LoginModal extends Component {
               <p>{description}</p>
             </div>
             <form>
-              <label className="login-label">Username</label>
+              <label className="login-label">Email</label>
               <Input
                 className="login-input"
                 placeholder={userNamePlaceHolder}
-                value={username}
-                onChange={event => this.inputUsername(event)}
+                value={email}
+                autoComplete="on"
+                onChange={event => this.inputEmail(event)}
               />
               <label className="login-label">Password</label>
               <Input
-                type='password'
+                type="password"
                 className="login-input"
-                placeholder='Password'
+                placeholder="Password"
+                autoComplete="on"
                 value={password}
                 onChange={event => this.inputPassword(event)}
               />
-              {this.emailRender()}
+              {this.verifyPasswordRender()}
               <Button className="login-btn" color="blue" onClick={event => this.buttonSubmit(event)}>
                 {button}
               </Button>

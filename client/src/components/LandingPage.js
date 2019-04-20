@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Container, Grid, Image, Icon} from 'semantic-ui-react';
+import { Container, Grid, Icon} from 'semantic-ui-react';
 import LandingPageExample from './LandingPageExample';
 
 const LandingPage = () => {
