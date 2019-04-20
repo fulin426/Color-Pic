@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-//Colors Model
+const auth = require('./middleware/auth');
 const ColorPalette = require('../models/colorsmodel');
 
 // @route GET /api/colors
 // get all colors
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
   ColorPalette.find()
     .then(color => res.json(color))
     .catch(err => res.send(err));
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 
 // @route POST /api/colors
 // create a new color palette
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
   const newColorPalette = new ColorPalette({
     title: req.body.title,
     colors: req.body.colors
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
 
 //@route Update /api/colors/:id
 //Update a color palette
-router.put('/:id', (req, res) => {
+router.put('/:id', auth, (req, res) => {
   const update = {
     title: req.body.title,
     colors: req.body.colors
@@ -39,7 +39,7 @@ router.put('/:id', (req, res) => {
 
 //@route DELETE /api/colors/:id
 //Delete a color palette
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
   ColorPalette.findById(req.params.id)
     .then(item => item.remove().then(() => res.json({ success: true })))
     .catch(err => res.json({ success: false }));

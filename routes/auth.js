@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwtSecret = require('../config/keys').jwtSecret;
 const jwt = require('jsonwebtoken');
+const auth = require('./middleware/auth');
 
 // Users Model
 const User = require('../models/usermodel');
@@ -10,15 +11,15 @@ const User = require('../models/usermodel');
 // @route GET /api/auth
 // Authorize user
 router.post('/', (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   // Simple Validation
-  if(!username|| !password) {
+  if(!email|| !password) {
     return res.status(400).json({ msg: 'Please enter all fields' })
   }
 
   // Check for existing user
-  User.findOne({ username })
+  User.findOne({ email })
     .then(user => {
       if(!user) return res.status(400).json({ msg: 'User Does not exist' });
 
@@ -37,7 +38,6 @@ router.post('/', (req, res) => {
                 token,
                 user: {
                   id: user.id,
-                  name: user.name,
                   email: user.email
                 }
               });
@@ -45,6 +45,14 @@ router.post('/', (req, res) => {
           )
         })
     })
+});
+
+// @route GET /api/auth/users
+// Get user data
+router.get('/user', auth, (req, res) => {
+  User.findById(req.user.id)
+    .select('-password')
+    .then(user => res.json(user));
 });
 
 module.exports = router;

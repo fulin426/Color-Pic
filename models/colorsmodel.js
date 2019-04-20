@@ -11,6 +11,10 @@ const ColorsSchema = new mongoose.Schema({
       type: Array,
       required: true
     },
+    register_date: {
+      type: Date,
+      default: Date.now
+    },
 });
 
 // Export the model
