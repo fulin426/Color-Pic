@@ -174,6 +174,7 @@ class AddImgModal extends Component {
             closeOnEscape={closeOnEscape}
             closeOnDimmerClick={closeOnDimmerClick}
             onClose={this.close}
+            closeIcon
           >
             <Modal.Content className="add-image-modal">
               <h3>Try your own image</h3>

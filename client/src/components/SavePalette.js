@@ -38,7 +38,7 @@ class SavePalette extends Component {
     this.props.newColorPalette({
       title: this.state.input,
       colors: this.props.colors
-    })
+    }, this.props.token)
     this.close();
   }
 
@@ -129,6 +129,7 @@ class SavePalette extends Component {
           closeOnEscape={closeOnEscape}
           closeOnDimmerClick={closeOnDimmerClick}
           onClose={this.close}
+          closeIcon
         >
           <Modal.Content>
             <Header as="h2">
@@ -152,6 +153,7 @@ class SavePalette extends Component {
 const mapStateToProps = state => {
   return {
     colors: state.colors.colors,
+    token: state.auth.token
   };
 };
 

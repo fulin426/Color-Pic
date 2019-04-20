@@ -16,7 +16,7 @@ class ConfirmDelete extends Component {
 
   handleConfirm = () => {
     // Item also removed via state
-    this.props.deleteColorPalette(this.props.objectID);
+    this.props.deleteColorPalette(this.props.objectID, this.props.token);
     this.setState({
       open: false
     });
@@ -51,6 +51,7 @@ class ConfirmDelete extends Component {
 const mapStateToProps = state => {
   return {
     deleteColor: state.myPalettes.DeleteColor,
+    token: state.auth.token
   };
 };
 

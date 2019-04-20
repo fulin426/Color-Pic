@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Modal, Input, Menu } from 'semantic-ui-react';
+import { registerUser } from '../actions/authActions';
+const Isemail = require('isemail');
 
 class LoginModal extends Component {
   state = {
@@ -11,7 +14,11 @@ class LoginModal extends Component {
     verifyPassword: '',
     email: '',
     userNamePlaceHolder: '',
-    description:''
+    description:'',
+    errorStatusPassword: false,
+    errorMsgPassword:'',
+    errorStatusEmail: false,
+    errorMsgEmail:''
    }
 
   showLogin = size => () => {
@@ -39,10 +46,13 @@ class LoginModal extends Component {
   }
 
   close = () => {
+    this.resetDefaults();
+    // clear all inputs when modal closes
     this.setState({
       open: false,
       username: '',
       password: '',
+      verifyPassword: '',
       email: ''
     });
   }
@@ -54,6 +64,7 @@ class LoginModal extends Component {
       header: 'Log In to Color Pic',
       username: '',
       password: '',
+      verifyPassword: '',
       email: '',
       userNamePlaceHolder:'Username',
       description:''
@@ -67,31 +78,102 @@ class LoginModal extends Component {
       header: 'Sign Up for Color Pic',
       username: '',
       password: '',
+      verifyPassword: '',
       email: '',
       userNamePlaceHolder: 'Register New User',
       description:'Register to access more features'
     });
   }
 
+  // clear all error messages
+  resetDefaults() {
+    if (this.state.activeItem === 'Sign Up') {
+      this.setState({ description:'Register to access more features' });
+    }
+
+    this.setState({
+      errorStatusPassword: false,
+      errorStatusEmail: false,
+      errorMsgEmail: '',
+      errorMsgPassword: ''
+    });
+  }
+
   inputPassword(event) {
     this.setState({ password: event.target.value });
+    this.resetDefaults();
   }
 
   inputVerifyPassword(event) {
     this.setState({ verifyPassword: event.target.value });
+    this.resetDefaults();
   }
 
   inputEmail(event) {
     this.setState({ email: event.target.value });
+    this.resetDefaults();
   }
 
   buttonSubmit(event) {
     event.preventDefault();
-    console.log('submit that login');
+    // If all fields are empty
+    if (this.state.email === '' && this.state.password === '' && this.state.verifyPassword === '' ) {
+      this.setState({
+        errorStatusEmail: true,
+        errorStatusPassword: true,
+        errorMsgEmail:'Email cannot be empty',
+        errorMsgPassword:'Passwords cannot be empty',
+      });
+      return
+    }
+
+    // If email is empty
+    if (this.state.email === '') {
+      this.setState({
+        errorMsgEmail:'Email cannot be empty',
+        errorStatusEmail: true
+      });
+      return
+    }
+
+    // // Validate Email
+    // if(Isemail.validate(this.state.email) === false) {
+    //   this.setState({
+    //     errorStatusEmail: 'error',
+    //     errorMsgEmail:'Not a valid email',
+    //   });
+    //   return
+    // }
+
+    // If either password is empty
+    if (this.state.password === '' || this.state.verifyPassword === '') {
+      this.setState({
+        errorMsgPassword:'Passwords cannot be empty',
+        errorStatusPassword: true
+      });
+      return
+    }
+
+    // If passwords do not match show error message
+    if (this.state.password !== this.state.verifyPassword) {
+      this.setState({
+        errorMsgPassword:'Passwords do not match',
+        errorStatusPassword: true
+      });
+      return
+    }
+
+    if(this.state.activeItem === 'Sign Up'){
+      this.props.registerUser(this.state.email, this.state.password);
+    }
+
+    if(this.state.activeItem === 'Log In'){
+      console.log('log me in');
+    }
   }
 
+  // Only verifyPassword for Sign Up
   verifyPasswordRender() {
-    // Only show email for sign up
     if(this.state.activeItem === 'Sign Up') {
       return(
         <div>
@@ -103,7 +185,9 @@ class LoginModal extends Component {
             autoComplete="on"
             value={this.state.verifyPassword}
             onChange={event => this.inputVerifyPassword(event)}
+            error={this.state.errorStatusPassword}
           />
+          <p style={{color: 'red'}}>{this.state.errorMsgPassword}</p>
         </div>
       );
     }
@@ -120,7 +204,12 @@ class LoginModal extends Component {
       password,
       verifyPassword,
       userNamePlaceHolder,
-      description
+      errorStatusPassword,
+      errorStatusEmail,
+      description,
+      errorMsgEmail,
+      errorMsgPassword,
+      descriptionColor
     } = this.state
 
     return (
@@ -131,7 +220,7 @@ class LoginModal extends Component {
         <Button onClick={this.showSignup('tiny')} style={{ marginLeft: '0.5em', marginRight: '1rem' }}>
           Sign Up
         </Button>
-        <Modal size={size} open={open} onClose={this.close}>
+        <Modal size={size} open={open} onClose={this.close} closeIcon>
           <div className="login-header">
             <h2>{header}</h2>
           </div>
@@ -159,7 +248,9 @@ class LoginModal extends Component {
                 value={email}
                 autoComplete="on"
                 onChange={event => this.inputEmail(event)}
+                error={errorStatusEmail}
               />
+              <p style={{"color": "red"}}>{errorMsgEmail}</p>
               <label className="login-label">Password</label>
               <Input
                 type="password"
@@ -168,9 +259,14 @@ class LoginModal extends Component {
                 autoComplete="on"
                 value={password}
                 onChange={event => this.inputPassword(event)}
+                error={errorStatusPassword}
               />
               {this.verifyPasswordRender()}
-              <Button className="login-btn" color="blue" onClick={event => this.buttonSubmit(event)}>
+              <Button
+                className="login-btn"
+                color="blue"
+                onClick={event => this.buttonSubmit(event)}
+              >
                 {button}
               </Button>
             </form>
@@ -181,4 +277,4 @@ class LoginModal extends Component {
   }
 }
 
-export default LoginModal;
+export default connect( null, {registerUser })(LoginModal);

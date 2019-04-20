@@ -106,13 +106,15 @@ class ColorsList extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     colors: state.colors.colors,
     selectedColor: state.colorInfo.selectedColor,
     position: state.colorInfo.position,
     url: state.url.url,
     error: state.error,
-    status: state.colors.status
+    status: state.colors.status,
+    token: state.auth.token
   };
 };
 
@@ -122,5 +124,5 @@ export default connect(mapStateToProps, {
   sendPositionInfo,
   sendSelectedColor,
   clearRecieved,
-  clearColorList,
+  clearColorList
 })(ColorsList);
