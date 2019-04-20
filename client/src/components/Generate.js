@@ -14,7 +14,7 @@ import { Container, Grid, Modal } from 'semantic-ui-react';
 class HomePage extends Component {
   savepaletteRender() {
     if(this.props.Authenticated === true) {
-      return(<SavePalette />);
+      return <SavePalette />;
     } else {
       return (
         <LoginModal
