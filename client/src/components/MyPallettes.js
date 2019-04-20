@@ -7,7 +7,17 @@ import EditModal from './EditModal';
 
 class MyPallettes extends Component {
   componentDidMount() {
-    this.props.getColors();
+    if(this.props.email !== undefined) {
+      this.props.getColors(this.props.email);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Email isn't always loaded right when component is mounted
+    if (this.props.email !== prevProps.email ) {
+      console.log('get them colors!');
+      this.props.getColors(this.props.email);
+    }
   }
 
   //Renders one set of 5 colors then insert into renderPalettes()
@@ -72,11 +82,12 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  console.log(state.auth.user.email);
   return {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor,
-    updateColor: state.myPalettes.UpdateColor
+    updateColor: state.myPalettes.UpdateColor,
+    email: state.auth.user.email
   };
 };
 

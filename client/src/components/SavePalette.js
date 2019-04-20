@@ -36,6 +36,7 @@ class SavePalette extends Component {
   // Send new color set to database
   handleConfirmClick() {
     this.props.newColorPalette({
+      email: this.props.email,
       title: this.state.input,
       colors: this.props.colors
     }, this.props.token)
@@ -151,7 +152,9 @@ class SavePalette extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
+    email: state.auth.user.email,
     colors: state.colors.colors,
     token: state.auth.token
   };

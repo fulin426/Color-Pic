@@ -2,8 +2,8 @@ import axios from 'axios';
 import { tokenConfig } from './authActions';
 
 // Get user color palettes
-export const getColors = () => dispatch => {
-  axios.get('/api/colors')
+export const getColors = (email) => dispatch => {
+  axios.get(`/api/colors/${email}`)
     .then(res =>
       dispatch({
         type: 'GET_COLORS',

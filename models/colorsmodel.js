@@ -2,19 +2,22 @@
 const mongoose = require('mongoose');
 
 const ColorsSchema = new mongoose.Schema({
-    title: {
-      type: String,
-      required: true,
-      max: 100
-    },
-    colors: {
-      type: Array,
-      required: true
-    },
-    register_date: {
-      type: Date,
-      default: Date.now
-    },
+  email: {
+    type: String,
+  },
+  title: {
+    type: String,
+    required: true,
+    max: 100
+  },
+  colors: {
+    type: Array,
+    required: true
+  },
+  register_date: {
+    type: Date,
+    default: Date.now
+  },
 });
 
 // Export the model

@@ -5,8 +5,8 @@ const ColorPalette = require('../models/colorsmodel');
 
 // @route GET /api/colors
 // get all colors
-router.get('/', (req, res) => {
-  ColorPalette.find()
+router.get('/:email', (req, res) => {
+  ColorPalette.find({ email: req.params.email })
     .then(color => res.json(color))
     .catch(err => res.send(err));
 });
@@ -15,9 +15,11 @@ router.get('/', (req, res) => {
 // create a new color palette
 router.post('/', auth, (req, res) => {
   const newColorPalette = new ColorPalette({
+    email: req.body.email,
     title: req.body.title,
     colors: req.body.colors
   });
+  console.log(req.body.email);
   newColorPalette.save()
     .then(colors => res.json(colors))
     .catch(err => res.send(err));

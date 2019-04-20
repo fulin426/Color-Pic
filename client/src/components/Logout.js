@@ -31,7 +31,6 @@ class Logout extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.auth.isAuthenticated);
   return {
     Authenticated: state.auth.isAuthenticated,
     email: state.auth.user.email
