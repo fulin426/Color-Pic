@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { loadUser } from '../actions/authActions';
 import HeaderMenu from './HeaderMenu';
 import LandingPage from './LandingPage';
 import MyPallettes from './MyPallettes';
@@ -8,6 +10,9 @@ import Generate from './Generate';
 import './App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.loadUser();
+  }
   render() {
     return (
       <BrowserRouter>
@@ -21,4 +26,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, { loadUser })(App);

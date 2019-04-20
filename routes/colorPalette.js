@@ -5,7 +5,7 @@ const ColorPalette = require('../models/colorsmodel');
 
 // @route GET /api/colors
 // get all colors
-router.get('/', auth, (req, res) => {
+router.get('/', (req, res) => {
   ColorPalette.find()
     .then(color => res.json(color))
     .catch(err => res.send(err));
@@ -18,7 +18,6 @@ router.post('/', auth, (req, res) => {
     title: req.body.title,
     colors: req.body.colors
   });
-  console.log(req.body);
   newColorPalette.save()
     .then(colors => res.json(colors))
     .catch(err => res.send(err));

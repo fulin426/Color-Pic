@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button, Modal, Input, Menu } from 'semantic-ui-react';
 import { registerUser } from '../actions/authActions';
 const Isemail = require('isemail');
-
+//possibly split into two components login and sign up
 class LoginModal extends Component {
   state = {
     open: false,
@@ -99,18 +99,8 @@ class LoginModal extends Component {
     });
   }
 
-  inputPassword(event) {
-    this.setState({ password: event.target.value });
-    this.resetDefaults();
-  }
-
-  inputVerifyPassword(event) {
-    this.setState({ verifyPassword: event.target.value });
-    this.resetDefaults();
-  }
-
-  inputEmail(event) {
-    this.setState({ email: event.target.value });
+  handleInput(event, key) {
+    this.setState({ [key]: event.target.value });
     this.resetDefaults();
   }
 
@@ -165,6 +155,7 @@ class LoginModal extends Component {
 
     if(this.state.activeItem === 'Sign Up'){
       this.props.registerUser(this.state.email, this.state.password);
+      this.close();
     }
 
     if(this.state.activeItem === 'Log In'){
@@ -184,7 +175,7 @@ class LoginModal extends Component {
             placeholder="Password"
             autoComplete="on"
             value={this.state.verifyPassword}
-            onChange={event => this.inputVerifyPassword(event)}
+            onChange={event => this.handleInput(event, 'verifyPassword')}
             error={this.state.errorStatusPassword}
           />
           <p style={{color: 'red'}}>{this.state.errorMsgPassword}</p>
@@ -247,7 +238,7 @@ class LoginModal extends Component {
                 placeholder={userNamePlaceHolder}
                 value={email}
                 autoComplete="on"
-                onChange={event => this.inputEmail(event)}
+                onChange={event => this.handleInput(event, 'email')}
                 error={errorStatusEmail}
               />
               <p style={{"color": "red"}}>{errorMsgEmail}</p>
@@ -258,7 +249,7 @@ class LoginModal extends Component {
                 placeholder="Password"
                 autoComplete="on"
                 value={password}
-                onChange={event => this.inputPassword(event)}
+                onChange={event => this.handleInput(event, 'password')}
                 error={errorStatusPassword}
               />
               {this.verifyPasswordRender()}
