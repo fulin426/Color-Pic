@@ -188,6 +188,16 @@ class LoginModal extends Component {
     }
   }
 
+  buttonTwoRender() {
+    if (this.props.buttonTwo !== undefined) {
+      return(
+        <Button onClick={this.showSignup('tiny')} style={{ marginLeft: '0.5em', marginRight: '1rem' }}>
+          {this.props.buttonTwo}
+        </Button>
+      );
+    }
+  }
+
   render() {
     const {
       open,
@@ -207,11 +217,9 @@ class LoginModal extends Component {
     return (
       <div>
         <Button onClick={this.showLogin('tiny')}>
-          Log In
+          {this.props.buttonOne}
         </Button>
-        <Button onClick={this.showSignup('tiny')} style={{ marginLeft: '0.5em', marginRight: '1rem' }}>
-          Sign Up
-        </Button>
+        {this.buttonTwoRender()}
         <Modal size={size} open={open} onClose={this.close} closeIcon>
           <div className="login-header">
             <h2>{header}</h2>

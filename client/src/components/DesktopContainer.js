@@ -28,11 +28,23 @@ class DesktopContainer extends Component {
 
   loginRender() {
     if (this.props.Authenticated === true) {
-      return(<Logout />);
+      return <Logout />;
+    } else {
+      return (
+        // Pass down button name depending on modal is used
+        <LoginModal
+          buttonOne="Log In"
+          buttonTwo="Sign up"
+        />
+      );
     }
-    return <LoginModal />;
   }
 
+  myPalettesRender() {
+    if (this.props.Authenticated === true) {
+      return(<Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>);
+    }
+  }
   render() {
     const { children } = this.props
     // const { fixed } = this.state
@@ -53,7 +65,7 @@ class DesktopContainer extends Component {
               <Container>
                 <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
                 <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
-                <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
+                {this.myPalettesRender()}
                 <Menu.Item position='right'>
                   {this.loginRender()}
                   {/* <Icon name="user circle" size="large"/> */}
