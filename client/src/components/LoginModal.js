@@ -129,10 +129,19 @@ class LoginModal extends Component {
       return
     }
 
-    // If either password is empty
+    // If either password is empty on Sign Up
     if (this.state.activeItem === 'Sign Up' && this.state.password === '') {
       this.setState({
         errorMsgPassword:'Password cannot be empty',
+        errorStatusPassword: true
+      });
+      return
+    }
+
+    // If Login Password is empty
+    if (this.state.activeItem === 'Log In' && this.state.password === '') {
+      this.setState({
+        errorMsgPassword:'Please enter password',
         errorStatusPassword: true
       });
       return
@@ -156,13 +165,14 @@ class LoginModal extends Component {
       return
     }
 
-
-    if(this.state.activeItem === 'Sign Up'){
+    // If Sign Up and No errors statuses
+    if(this.state.activeItem === 'Sign Up') {
       this.props.registerUser(this.state.email, this.state.password);
       this.close();
     }
 
-    if(this.state.activeItem === 'Log In'){
+    // If Log In and No errors statuses
+    if(this.state.activeItem === 'Log In') {
       this.props.loginUser(this.state.email, this.state.password);
       this.close();
     }
@@ -278,4 +288,11 @@ class LoginModal extends Component {
   }
 }
 
-export default connect( null, {registerUser, loginUser })(LoginModal);
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    success: state.auth.success
+  };
+};
+
+export default connect( mapStateToProps, {registerUser, loginUser })(LoginModal);

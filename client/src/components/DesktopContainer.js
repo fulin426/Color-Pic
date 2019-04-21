@@ -5,13 +5,12 @@ import LoginModal from './LoginModal';
 import Logout from './Logout';
 import { logoutUser } from '../actions/authActions';
 import {
-  Button,
   Container,
   Menu,
   Responsive,
   Segment,
   Visibility,
-  Icon
+  // Icon
 } from 'semantic-ui-react'
 
 const getWidth = () => {
@@ -32,10 +31,7 @@ class DesktopContainer extends Component {
     } else {
       return (
         // Pass down button name depending on modal is used
-        <LoginModal
-          buttonOne="Log In"
-          buttonTwo="Sign up"
-        />
+        <LoginModal buttonOne="Log In" buttonTwo="Sign up" />
       );
     }
   }
@@ -62,15 +58,13 @@ class DesktopContainer extends Component {
             vertical
           >
             <Menu size='large'>
-              <Container>
-                <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
-                <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
-                {this.myPalettesRender()}
-                <Menu.Item position='right'>
-                  {this.loginRender()}
-                  {/* <Icon name="user circle" size="large"/> */}
-                </Menu.Item>
-              </Container>
+              <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
+              <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
+              {this.myPalettesRender()}
+              <Menu.Item position='right'>
+                {this.loginRender()}
+                {/* <Icon name="user circle" size="large"/> */}
+              </Menu.Item>
             </Menu>
           </Segment>
         </Visibility>

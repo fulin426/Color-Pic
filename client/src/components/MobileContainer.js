@@ -1,8 +1,17 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
-import { Container, Icon, Menu, Responsive, Segment, Sidebar } from 'semantic-ui-react';
+import Logout from './Logout';
+import { logoutUser } from '../actions/authActions';
+import {
+  Container,
+  Icon,
+  Menu,
+  Responsive,
+  Segment,
+  Sidebar
+} from 'semantic-ui-react';
 
 const getWidth = () => {
   const isSSR = typeof window === 'undefined'
@@ -16,6 +25,17 @@ class MobileContainer extends Component {
   handleSidebarHide = () => this.setState({ sidebarOpened: false })
 
   handleToggle = () => this.setState({ sidebarOpened: true })
+
+  loginRender() {
+    if (this.props.Authenticated === true) {
+      return <Logout />;
+    } else {
+      return (
+        // Pass down button name depending on modal is used
+        <LoginModal buttonOne="Log In" buttonTwo="Sign up" />
+      );
+    }
+  }
 
   render() {
     const { children } = this.props
@@ -37,8 +57,6 @@ class MobileContainer extends Component {
           <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
           <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
           <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
-          {/* <Menu.Item as='a'>Log In</Menu.Item>
-          <Menu.Item as='a'>Sign Up</Menu.Item> */}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -52,7 +70,7 @@ class MobileContainer extends Component {
                 <Menu.Item onClick={this.handleToggle}>
                   <Icon name='sidebar' />
                 </Menu.Item>
-                <LoginModal />
+                {this.loginRender()}
               </Menu>
             </Container>
           </Segment>
@@ -63,8 +81,10 @@ class MobileContainer extends Component {
   }
 }
 
-MobileContainer.propTypes = {
-  children: PropTypes.node,
-}
+const mapStateToProps = state => {
+  return {
+    Authenticated: state.auth.isAuthenticated
+  };
+};
 
-export default MobileContainer;
+export default connect(mapStateToProps, { logoutUser })(MobileContainer);

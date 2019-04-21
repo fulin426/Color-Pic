@@ -23,8 +23,6 @@ export const loadUser = (token) => dispatch => {
 
 // Register User
 export const registerUser = (email, password) => dispatch => {
-  console.log(email);
-  console.log(password);
   // Headers
   const config = {
     headers: {

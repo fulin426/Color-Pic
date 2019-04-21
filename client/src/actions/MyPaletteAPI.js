@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { tokenConfig } from './authActions';
 
-// Get user color palettes
-export const getColors = (email) => dispatch => {
+const callAPI = (email, dispatch) => {
+  console.log("api called");
   axios.get(`/api/colors/${email}`)
     .then(res =>
       dispatch({
@@ -13,6 +13,11 @@ export const getColors = (email) => dispatch => {
     .catch(error =>
       console.log(error)
     );
+}
+
+// Get user color palettes
+export const getColors = (email) => dispatch => {
+  callAPI(email, dispatch);
 }
 
 // Add color palettes
@@ -30,7 +35,7 @@ export const newColorPalette = (colorSet) => dispatch => {
 }
 
 // Update color palettes
-export const updateColorPalette = (id, colorSet) => dispatch => {
+export const updateColorPalette = (id, colorSet, email) => dispatch => {
   axios.put(`/api/colors/${id}`, colorSet, tokenConfig())
     .then(res =>
       dispatch({
@@ -41,19 +46,7 @@ export const updateColorPalette = (id, colorSet) => dispatch => {
     .catch(error => {
       console.log(error)
     })
-    .then(() => {
-      // Make get call to retrieve new set
-      axios.get('/api/colors')
-        .then(res =>
-          dispatch({
-            type: 'GET_COLORS',
-            payload: res.data
-          })
-        )
-        .catch(error =>
-          console.log(error)
-        );
-    })
+    .then(() => { callAPI(email, dispatch) })
 }
 
 // Delete user color palettes

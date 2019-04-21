@@ -9,7 +9,7 @@ import ColorInfo from './ColorInfo';
 import Regenerate from './Regenerate';
 import SavePalette from './SavePalette';
 import LoginModal from './LoginModal';
-import { Container, Grid, Modal } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 
 class HomePage extends Component {
   savepaletteRender() {

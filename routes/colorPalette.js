@@ -19,7 +19,6 @@ router.post('/', auth, (req, res) => {
     title: req.body.title,
     colors: req.body.colors
   });
-  console.log(req.body.email);
   newColorPalette.save()
     .then(colors => res.json(colors))
     .catch(err => res.send(err));

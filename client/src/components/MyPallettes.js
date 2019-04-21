@@ -7,6 +7,7 @@ import EditModal from './EditModal';
 
 class MyPallettes extends Component {
   componentDidMount() {
+    console.log(this.props.colors);
     if(this.props.email !== undefined) {
       this.props.getColors(this.props.email);
     }
@@ -82,7 +83,6 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.auth.user.email);
   return {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor,

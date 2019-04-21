@@ -155,7 +155,7 @@ class EditModal extends Component {
     });
     this.props.clearPosition();
     // reset info from DB
-    this.props.getColors();
+    this.props.getColors(this.props.email);
   }
 
   handleConfirm = () => {
@@ -166,7 +166,7 @@ class EditModal extends Component {
       title: this.state.title,
       colors: this.state.selectedSet
     };
-    this.props.updateColorPalette(this.props.objectID, UpdateData);
+    this.props.updateColorPalette(this.props.objectID, UpdateData, this.props.email);
     this.props.clearPosition();
   }
 
@@ -242,6 +242,7 @@ const mapStateToProps = state => {
     G: state.colorInfo.G,
     B: state.colorInfo.B,
     alpha: state.colorInfo.alpha,
+    email: state.auth.user.email
   };
 };
 
