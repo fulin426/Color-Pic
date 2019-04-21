@@ -14,7 +14,10 @@ export const loadUser = (token) => dispatch => {
       })
     )
     .catch(err => {
-      // dispatch(returnErrors(err.response.data, err.response.status));
+      dispatch({
+        type: 'GET_ERRORS',
+        payload: err.response
+      });
       dispatch({
         type: 'AUTH_ERROR'
       });
@@ -42,6 +45,10 @@ export const registerUser = (email, password) => dispatch => {
     )
     .catch(err => {
       console.log('register fail!')
+      dispatch({
+        type: 'GET_ERRORS',
+        payload: err.response
+      });
       dispatch({
         type: 'REGISTER_FAIL'
       });
@@ -82,7 +89,6 @@ export const logoutUser = () => {
 };
 
 // Set up local storage for tokens
-// Setup config/headers and token
 export const tokenConfig = () => {
   // Get token from localstorage
   const token = localStorage.getItem('token');
@@ -100,4 +106,18 @@ export const tokenConfig = () => {
   }
 
   return config;
+};
+
+// Logout User
+export const openModal = () => {
+  return {
+    type: 'OPEN_MODAL'
+  };
+};
+
+// Logout User
+export const closeModal = () => {
+  return {
+    type: 'CLOSE_MODAL'
+  };
 };

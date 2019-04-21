@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { Button, Modal, Input, Menu } from 'semantic-ui-react';
 import { registerUser } from '../actions/authActions';
 import { loginUser } from '../actions/authActions';
+import { openModal } from '../actions/authActions';
+import { closeModal } from '../actions/authActions';
+
 const Isemail = require('isemail');
 //possibly split into two components login and sign up
 class LoginModal extends Component {
   state = {
-    open: false,
     activeItem: 'Log In',
     header: 'Log In to Color Pic',
     button: 'Log In',
@@ -24,38 +26,37 @@ class LoginModal extends Component {
 
   showLogin = size => () => {
     this.setState({
-      size,
-      open: true,
       activeItem: 'Log In',
       header: 'Log In to Color Pic',
       button: 'Log In',
       userNamePlaceHolder:'email@email.com',
       description: ''
     })
+    this.props.openModal();
   }
 
   showSignup = size => () => {
     this.setState({
-      size,
-      open: true,
       activeItem: 'Sign Up',
-      header: 'Join Color Pic Today',
+      header: 'Join Color Pic',
       button: 'Sign Up',
       userNamePlaceHolder: 'Register new user',
       description:'Register to access more features'
     })
+    this.props.openModal();
+    console.log(this.state);
   }
 
   close = () => {
     this.resetDefaults();
     // clear all inputs when modal closes
     this.setState({
-      open: false,
       username: '',
       password: '',
       verifyPassword: '',
       email: ''
     });
+    this.props.closeModal();
   }
 
   handleLogInClick = (e, { name }) => {
@@ -77,7 +78,7 @@ class LoginModal extends Component {
     this.setState({
       activeItem: name,
       button: name,
-      header: 'Sign Up for Color Pic',
+      header: 'Join Color Pic Today',
       username: '',
       password: '',
       verifyPassword: '',
@@ -90,10 +91,6 @@ class LoginModal extends Component {
 
   // clear all error messages
   resetDefaults() {
-    if (this.state.activeItem === 'Sign Up') {
-      this.setState({ description:'Register to access more features' });
-    }
-
     this.setState({
       errorStatusPassword: false,
       errorStatusEmail: false,
@@ -201,7 +198,10 @@ class LoginModal extends Component {
   buttonTwoRender() {
     if (this.props.buttonTwo !== undefined) {
       return(
-        <Button onClick={this.showSignup('tiny')} style={{ marginLeft: '0.5em', marginRight: '1rem' }}>
+        <Button
+          onClick={this.showSignup()}
+          style={{ marginLeft: '0.5em', marginRight: '1rem' }}
+        >
           {this.props.buttonTwo}
         </Button>
       );
@@ -210,8 +210,6 @@ class LoginModal extends Component {
 
   render() {
     const {
-      open,
-      size,
       activeItem,
       button,
       header,
@@ -226,11 +224,11 @@ class LoginModal extends Component {
 
     return (
       <div>
-        <Button onClick={this.showLogin('tiny')}>
+        <Button onClick={this.showLogin()}>
           {this.props.buttonOne}
         </Button>
         {this.buttonTwoRender()}
-        <Modal size={size} open={open} onClose={this.close} closeIcon>
+        <Modal size='tiny' open={this.props.modal} onClose={this.close} closeIcon>
           <div className="login-header">
             <h2>{header}</h2>
           </div>
@@ -289,10 +287,16 @@ class LoginModal extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
-    success: state.auth.success
+    errorMessage: state.errors.msg,
+    modal:state.auth.modal
   };
 };
 
-export default connect( mapStateToProps, {registerUser, loginUser })(LoginModal);
+export default connect( mapStateToProps, {
+  registerUser,
+  loginUser,
+  openModal,
+  closeModal
+})(LoginModal);

@@ -4,7 +4,7 @@ const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: '',
-  success: true
+  modal: false
 };
 
 export default function(state = initialState, action) {
@@ -21,6 +21,16 @@ export default function(state = initialState, action) {
         isLoading: false,
         user: action.payload
       };
+    case 'OPEN_MODAL':
+      return {
+        ...state,
+        modal: true
+      };
+    case 'CLOSE_MODAL':
+      return {
+        ...state,
+        modal: false
+      };
     case 'LOGIN_SUCCESS':
     case 'REGISTER_SUCCESS':
       localStorage.setItem('token', action.payload.token);
@@ -29,7 +39,7 @@ export default function(state = initialState, action) {
         ...action.payload,
         isAuthenticated: true,
         isLoading: false,
-        success: true
+        modal: false
       };
     case 'AUTH_ERROR':
     case 'LOGIN_FAIL':
@@ -42,7 +52,6 @@ export default function(state = initialState, action) {
         user: null,
         isAuthenticated: false,
         isLoading: false,
-        success: false
       };
     default:
       return state;
