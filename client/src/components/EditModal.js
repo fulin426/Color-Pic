@@ -191,6 +191,7 @@ class EditModal extends Component {
               value={title}
               onChange={event => this.handleTitleInput(event)}
               placeholder='Edit Palette Name...'
+              focus
             />
             <div className="colors-render">
               {this.renderOneColorSet()}

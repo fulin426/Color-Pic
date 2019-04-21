@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Header, Container, Grid } from 'semantic-ui-react';
 import { getColors } from '../actions/MyPaletteAPI';
+import { logoutUser } from '../actions/authActions';
+import { Header, Container, Grid, Image } from 'semantic-ui-react';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import EditModal from './EditModal';
-import { Image } from 'semantic-ui-react'
 
 class MyPallettes extends Component {
   componentDidMount() {
-    if(this.props.email !== undefined) {
+    // If token expired log out user
+    if (this.props.email === undefined) {
+      this.props.logoutUser();
+    } else {
       this.props.getColors(this.props.email);
     }
   }
 
   componentDidUpdate(prevProps) {
     // Email isn't always loaded right when component is mounted
-    if (this.props.email !== prevProps.email ) {
+    if (this.props.email !== prevProps.email && this.props.email !== undefined) {
       this.props.getColors(this.props.email);
     }
   }
 
-  //Renders one set of 5 colors then insert into renderPalettes()
+  // Renders one set of 5 colors then insert into renderPalettes()
   renderOneColorSet(colors) {
     const colorSet = colors.map(color =>
       <div className="color-square-container" key={color.hexColor}>
@@ -42,9 +45,6 @@ class MyPallettes extends Component {
       const Palettes = this.props.myPalettes.map((palette, index) =>
         <Grid.Column
           key={palette._id}
-          // mobile={16}
-          // tablet={8}
-          // computer={8}
         >
           <div className="palette-container">
             <h5>
@@ -97,4 +97,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect (mapStateToProps, { getColors })(MyPallettes);
+export default connect (mapStateToProps, { getColors, logoutUser })(MyPallettes);

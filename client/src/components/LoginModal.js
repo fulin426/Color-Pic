@@ -261,6 +261,7 @@ class LoginModal extends Component {
                 autoComplete="on"
                 onChange={event => this.handleInput(event, 'email')}
                 error={errorStatusEmail}
+                focus
               />
               <p style={{"color": "red"}}>{errorMsgEmail}</p>
               <label className="login-label">Password</label>

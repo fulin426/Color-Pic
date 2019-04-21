@@ -8,14 +8,16 @@ class SavePalette extends Component {
   state = {
     input: '',
     open: false,
-    error: false
+    error: false,
+    placeHolder: 'New Palette Name...'
   };
 
   handleInput(event) {
     // set error to false as long as there's user input
     this.setState({
       input: event.target.value,
-      error: false
+      error: false,
+      placeHolder: 'New Palette Name...'
     });
   }
 
@@ -44,14 +46,25 @@ class SavePalette extends Component {
     this.close();
   }
 
-  //if empty Input
   setError() {
-    this.setState({ error: true });
+    if (this.state.input === '') {
+      this.setState({
+        error: true,
+        placeHolder: 'Title Required...'
+      });
+    }
+
+    if (this.state.input.length >= 40) {
+      this.setState({
+        error: true,
+        placeHolder: 'Over Max Characters Allowed'
+      });
+    }
   }
 
   renderConfirmButton() {
     // set error to true if empty title input
-    if (this.state.input === '') {
+    if (this.state.input === '' || this.state.input.length >= 40) {
       return (
         <Button onClick={() => this.setError()}
           color='blue'
@@ -75,35 +88,6 @@ class SavePalette extends Component {
     }
   }
 
-  renderTitleInput() {
-    // if user clicks confirm with blank title
-    // render red error input
-    if (this.state.error === true) {
-        return(
-          <Input
-            className="savepalette-modal-input"
-            label="Title"
-            value={this.state.input}
-            onChange={event => this.handleInput(event)}
-            placeholder='Title Required...'
-            error
-          />
-        );
-    }
-    else {
-      //everything else render normal input
-      return(
-        <Input
-          className="savepalette-modal-input"
-          label="Title"
-          value={this.state.input}
-          onChange={event => this.handleInput(event)}
-          placeholder='New Palette Name...'
-        />
-      );
-    }
-  }
-
   colorsRender() {
     const ColorsList = this.props.colors.map((color,index) =>
       <div key={color.hexColor} className="color-square-container">
@@ -121,7 +105,13 @@ class SavePalette extends Component {
   }
 
   render() {
-    const { open, closeOnEscape, closeOnDimmerClick } = this.state
+    const {
+      open,
+      closeOnEscape,
+      closeOnDimmerClick,
+      error,
+      placeHolder
+    } = this.state
 
     return (
       <div>
@@ -135,7 +125,15 @@ class SavePalette extends Component {
         >
           <Modal.Content>
             <Header as="h2">Save Palette</Header>
-            {this.renderTitleInput()}
+            <Input
+              className="savepalette-modal-input"
+              label="Title"
+              value={this.state.input}
+              onChange={event => this.handleInput(event)}
+              placeholder={placeHolder}
+              focus
+              error={error}
+            />
             <div className="colors-render">
               {this.colorsRender()}
             </div>
