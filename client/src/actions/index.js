@@ -59,56 +59,48 @@ export const analyzeImage = (url) => dispatch => {
     });
   })
 };
+
 // image modal Actions
-export const closeImgModal = () => dispatch => {
-  dispatch({
-    type: 'OPEN_IMAGE_MODAL',
-    open: false,
-    error: false,
-  })
+export const openImgModal = () => {
+  return ({
+    type: 'OPEN_IMAGE_MODAL'
+  });
 }
 
-export const openImgModal = () => dispatch => {
-  dispatch({
+export const closeImgModal = () => {
+  return ({
     type: 'CLOSE_IMAGE_MODAL',
-    open: true,
-    error: false
-  })
+  });
 }
 
-export const newImgSubmit = () => dispatch => {
-  dispatch({
-    type: 'NEW_IMAGE_SUBMIT',
-    image: 'new'
-  })
+export const newImgSubmit = () => {
+  return ({
+    type: 'NEW_IMAGE_SUBMIT'
+  });
 }
 
-export const showModalLoader = () => dispatch => {
-  dispatch({
-    type: 'CLARIFAI_REQUEST_WAITING',
-    loader: 'show'
-  })
+export const showModalLoader = () => {
+  return ({
+    type: 'CLARIFAI_REQUEST_WAITING'
+  });
 }
 
-export const clearImgSubmit = () => dispatch => {
-  dispatch({
-    type: 'CLEAR_IMAGE_SUBMIT',
-    image: ''
-  })
+export const clearImgSubmit = () => {
+  return ({
+    type: 'CLEAR_IMAGE_SUBMIT'
+  });
 }
 
-export const sendErrorStatus = () => dispatch => {
-  dispatch({
-    type: 'SEND_ERROR',
-    error: true
-  })
+export const sendErrorStatus = () => {
+  return ({
+    type: 'SEND_ERROR'
+  });
 }
 
-export const clearErrorStatus = () => dispatch => {
-  dispatch({
-    type: 'CLEAR_ERROR',
-    error: false
-  })
+export const clearErrorStatus = () => {
+  return ({
+    type: 'CLEAR_ERROR'
+  });
 }
 
 // Color info Actions

@@ -7,7 +7,6 @@ import EditModal from './EditModal';
 
 class MyPallettes extends Component {
   componentDidMount() {
-    console.log(this.props.colors);
     if(this.props.email !== undefined) {
       this.props.getColors(this.props.email);
     }
@@ -16,7 +15,6 @@ class MyPallettes extends Component {
   componentDidUpdate(prevProps) {
     // Email isn't always loaded right when component is mounted
     if (this.props.email !== prevProps.email ) {
-      console.log('get them colors!');
       this.props.getColors(this.props.email);
     }
   }

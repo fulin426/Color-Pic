@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
       };
     case 'CLARIFAI_REQUEST_WAITING':
       return {...state,
-        loader: action.loader,
+        loader: 'show'
       };
     case 'CLEAR_RECIEVED':
       return {...state,
@@ -34,19 +34,19 @@ export default (state = initialState, action) => {
       };
     case 'NEW_IMAGE_SUBMIT':
       return {...state,
-        image: action.image
+        image: 'new'
       };
     case 'CLEAR_IMAGE_SUBMIT':
       return {...state,
-        image: action.image
+        image: ''
       };
     case 'SEND_ERROR':
       return {...state,
-        error: action.error
+        error: true
       }
     case 'CLEAR_ERROR':
       return {...state,
-        error: action.error
+        error: false
       }
     case 'ANALYZE_IMAGE_ERROR':
       return {...state,
@@ -58,13 +58,13 @@ export default (state = initialState, action) => {
       };
     case 'OPEN_IMAGE_MODAL':
       return {...state,
-        open: action.open,
-        error: action.error
+        open: true,
+        error: false
       };
     case 'CLOSE_IMAGE_MODAL':
       return {...state,
-        open: action.open,
-        error: action.error
+        open: false,
+        error: false,
       };
     case 'UPDATE_HEX_COLOR':
       function updateObjectInArray(array, action) {
