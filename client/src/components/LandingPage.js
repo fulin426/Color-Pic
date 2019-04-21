@@ -9,8 +9,7 @@ const LandingPage = () => {
       <Grid
         stackable
         columns={3}
-        divided
-        style={{ marginBottom: '2em'}}
+        style={{ margin: '4em 0em' }}
       >
          <Grid.Row>
            <Grid.Column textAlign='center'>

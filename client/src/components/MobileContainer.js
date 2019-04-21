@@ -37,6 +37,22 @@ class MobileContainer extends Component {
     }
   }
 
+  myPalettesRender() {
+    if (this.props.Authenticated === true) {
+      return(
+        <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
+      );
+    }
+  }
+
+  sideBarStyles() {
+    if (this.props.Authenticated === true) {
+      return({ minHeight: 122, padding: '1em 0em' });
+    }
+    else {
+      return({ minHeight: 82, padding: '1em 0em' })
+    }
+  }
   render() {
     const { children } = this.props
     const { sidebarOpened } = this.state
@@ -56,13 +72,13 @@ class MobileContainer extends Component {
         >
           <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
           <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
-          <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
+          {this.myPalettesRender()}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
           <Segment
             textAlign='center'
-            style={{ minHeight: 125, padding: '1em 0em' }}
+            style={this.sideBarStyles()}
             vertical
           >
             <Container>

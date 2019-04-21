@@ -57,7 +57,7 @@ class EditModal extends Component {
   renderColorPicker() {
     return (
       <ChromePicker
-        className="chrome-picker"
+        className="chrome-picker-edit"
         style={{ marginRight: 4 + 'em' }}
         color={{
           r: this.props.R,

@@ -1,7 +1,6 @@
 const initialState = {
   message: '',
-  status: null,
-  id: null
+  status: null
 };
 
 export default (state = initialState, action) => {
@@ -15,8 +14,7 @@ export default (state = initialState, action) => {
     case 'CLEAR_ERRORS':
       return {
         msg: '',
-        status: null,
-        id: null
+        status: null
       };
     default:
     return state;

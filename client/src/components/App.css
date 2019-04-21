@@ -178,9 +178,16 @@
   width: 640px !important;
 }
 
+.chrome-picker-edit {
+  width: 490px !important;
+}
+
 @media only screen and (max-width: 1199px) {
   .chrome-picker {
     width: 540px !important;
+  }
+  .chrome-picker-edit {
+    width: 460px !important;
   }
 }
 
@@ -188,11 +195,17 @@
   .chrome-picker {
     width: 375px !important;
   }
+  .chrome-picker-edit {
+    width: 350px !important;
+  }
 }
 
 @media only screen and (max-width: 576px) {
   .chrome-picker {
     max-width: 315px !important;
+  }
+  .chrome-picker-edit {
+    width: 285px !important;
   }
 }
 /* save palette modal */
