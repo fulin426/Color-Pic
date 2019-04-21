@@ -13,9 +13,7 @@ import { sendErrorStatus } from '../actions';
 import { Button, Modal, Input, Dimmer, Loader } from 'semantic-ui-react'
 
 class AddImgModal extends Component {
-  state = {
-    input: '',
-  };
+  state = { input: '' };
 
   submitURL(event) {
     event.preventDefault();

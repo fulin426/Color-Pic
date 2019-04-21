@@ -7,7 +7,7 @@ import { clearPosition } from '../actions';
 import { Button } from 'semantic-ui-react';
 
 class Regenerate extends Component {
-  handleClick(url) {
+  handleClick = url => () => {
     // send empty array before recieving new color set
     this.props.clearColorList();
     // first clear the status from API
@@ -22,7 +22,7 @@ class Regenerate extends Component {
       <Button
         className="regen-btn"
         content="Regenerate"
-        onClick={() => this.handleClick(this.props.url)}
+        onClick={this.handleClick(this.props.url)}
       />
     );
   }

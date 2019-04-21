@@ -15,6 +15,7 @@ router.get('/:email', (req, res) => {
 // create a new color palette
 router.post('/', auth, (req, res) => {
   const newColorPalette = new ColorPalette({
+    url: req.body.url,
     email: req.body.email,
     title: req.body.title,
     colors: req.body.colors

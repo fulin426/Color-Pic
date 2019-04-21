@@ -5,6 +5,9 @@ const ColorsSchema = new mongoose.Schema({
   email: {
     type: String,
   },
+  url: {
+    type: String,
+  },
   title: {
     type: String,
     required: true,

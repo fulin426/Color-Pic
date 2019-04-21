@@ -17,7 +17,6 @@ function toHex(n) {
 
 // Califai API Call
 export const analyzeImage = (url) => dispatch => {
-  console.log(url);
   app.models.predict("eeed0b6733a644cea07cf4c60f87ebb7", url)
   .then(res => {
     const hexColors = [];

@@ -11,7 +11,7 @@ class SavePalette extends Component {
     error: false
   };
 
-  handleInput (event) {
+  handleInput(event) {
     // set error to false as long as there's user input
     this.setState({
       input: event.target.value,
@@ -36,6 +36,7 @@ class SavePalette extends Component {
   // Send new color set to database
   handleConfirmClick() {
     this.props.newColorPalette({
+      url: this.props.url,
       email: this.props.email,
       title: this.state.input,
       colors: this.props.colors
@@ -133,9 +134,7 @@ class SavePalette extends Component {
           closeIcon
         >
           <Modal.Content>
-            <Header as="h2">
-              Save Palette
-            </Header>
+            <Header as="h2">Save Palette</Header>
             {this.renderTitleInput()}
             <div className="colors-render">
               {this.colorsRender()}
@@ -152,8 +151,8 @@ class SavePalette extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
+    url: state.url.url,
     email: state.auth.user.email,
     colors: state.colors.colors,
     token: state.auth.token

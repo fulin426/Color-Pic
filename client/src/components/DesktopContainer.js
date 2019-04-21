@@ -10,7 +10,6 @@ import {
   Responsive,
   Segment,
   Visibility,
-  // Icon
 } from 'semantic-ui-react'
 
 const getWidth = () => {
@@ -43,7 +42,6 @@ class DesktopContainer extends Component {
   }
   render() {
     const { children } = this.props
-    // const { fixed } = this.state
 
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
@@ -63,7 +61,6 @@ class DesktopContainer extends Component {
               {this.myPalettesRender()}
               <Menu.Item position='right'>
                 {this.loginRender()}
-                {/* <Icon name="user circle" size="large"/> */}
               </Menu.Item>
             </Menu>
           </Segment>

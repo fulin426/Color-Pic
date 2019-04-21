@@ -4,28 +4,20 @@ import { Confirm, Icon } from 'semantic-ui-react';
 import { deleteColorPalette } from '../actions/MyPaletteAPI';
 
 class ConfirmDelete extends Component {
-  state = {
-    open: false
-  };
+  state = { open: false };
 
   show = () => {
-    this.setState({
-      open: true
-    });
+    this.setState({ open: true });
   }
 
   handleConfirm = () => {
     // Item also removed via state
     this.props.deleteColorPalette(this.props.objectID, this.props.token);
-    this.setState({
-      open: false
-    });
+    this.setState({ open: false });
   }
 
   handleCancel = () => {
-    this.setState({
-      open: false
-    });
+    this.setState({ open: false });
   }
 
   render() {

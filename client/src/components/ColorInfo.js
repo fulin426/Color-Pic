@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 class ColorInfo extends Component {
   handleChange(event) {
+    //empty now to reduce errors in console.log
     console.log(event.target.value);
   }
   render(){

@@ -20,15 +20,11 @@ class EditModal extends Component {
   };
 
   handleTitleInput(event) {
-    this.setState({
-      title: event.target.value
-    });
+    this.setState({ title: event.target.value });
   }
 
   handleOnClickSquare(color, index, alpha) {
-    this.setState({
-      hexInput: color
-    });
+    this.setState({ hexInput: color });
     this.props.sendSelectedColor(color);
     this.props.sendColorInfo(color, alpha);
     this.props.sendPositionInfo(index);
@@ -217,13 +213,8 @@ class EditModal extends Component {
             </Grid>
           </Modal.Content>
           <Modal.Actions>
-            <Button onClick={this.cancel}>
-              Cancel
-            </Button>
-            <Button
-              onClick={this.handleConfirm}
-              color='blue'
-            >
+            <Button onClick={this.cancel}>Cancel</Button>
+            <Button onClick={this.handleConfirm} color='blue'>
               Confirm
             </Button>
           </Modal.Actions>

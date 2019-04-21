@@ -4,6 +4,7 @@ import { Header, Container, Grid } from 'semantic-ui-react';
 import { getColors } from '../actions/MyPaletteAPI';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import EditModal from './EditModal';
+import { Image } from 'semantic-ui-react'
 
 class MyPallettes extends Component {
   componentDidMount() {
@@ -25,14 +26,15 @@ class MyPallettes extends Component {
       <div className="color-square-container" key={color.hexColor}>
         <div
           className="color-square"
-          style={{
-            backgroundColor: color.hexColor,
-            opacity: color.alpha
-          }}
+          style={{ backgroundColor: color.hexColor, opacity: color.alpha }}
         />
       </div>
      );
-     return colorSet;
+     return (
+       <div style={{ margin: '0px auto' }}>
+         {colorSet}
+       </div>
+     );
   }
 
   renderPalettes() {
@@ -40,11 +42,12 @@ class MyPallettes extends Component {
       const Palettes = this.props.myPalettes.map((palette, index) =>
         <Grid.Column
           key={palette._id}
-          mobile={16}
-          computer={8}
+          // mobile={16}
+          // tablet={8}
+          // computer={8}
         >
           <div className="palette-container">
-            <p>
+            <h5>
               {palette.title}
               <ConfirmDeleteModal
                 title={palette.title}
@@ -56,7 +59,11 @@ class MyPallettes extends Component {
                 colorPosition={index}
                 selectedSet={palette.colors}
               />
-            </p>
+            </h5>
+            <Image
+              src={palette.url}
+              centered
+            />
             {this.renderOneColorSet(palette.colors)}
           </div>
         </Grid.Column>
@@ -68,10 +75,10 @@ class MyPallettes extends Component {
   render() {
     return(
       <Container>
-        <Header as="h1" className="header">
+        <Header as="h1" className="palette-header">
           My Color Palettes
         </Header>
-        <Grid>
+        <Grid stackable columns={3}>
           {this.renderPalettes()}
         </Grid>
       </Container>
@@ -81,6 +88,7 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor,
