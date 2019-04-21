@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../actions/authActions';
+import { clearColors } from '../actions/MyPaletteAPI';
 
 class Logout extends Component {
   logout(event) {
     this.props.logoutUser();
+    this.props.clearColors();
   }
 
   render() {
@@ -37,4 +39,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { logoutUser })(Logout);
+export default connect(mapStateToProps, { logoutUser, clearColors })(Logout);

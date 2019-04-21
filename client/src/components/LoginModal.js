@@ -5,6 +5,7 @@ import { registerUser } from '../actions/authActions';
 import { loginUser } from '../actions/authActions';
 import { openModal } from '../actions/authActions';
 import { closeModal } from '../actions/authActions';
+import { clearErrors } from '../actions/authActions';
 
 const Isemail = require('isemail');
 //possibly split into two components login and sign up
@@ -33,6 +34,7 @@ class LoginModal extends Component {
       description: ''
     })
     this.props.openModal();
+    this.props.clearErrors();
   }
 
   showSignup = size => () => {
@@ -44,7 +46,7 @@ class LoginModal extends Component {
       description:'Register to access more features'
     })
     this.props.openModal();
-    console.log(this.state);
+    this.props.clearErrors();
   }
 
   close = () => {
@@ -57,6 +59,7 @@ class LoginModal extends Component {
       email: ''
     });
     this.props.closeModal();
+    this.props.clearErrors();
   }
 
   handleLogInClick = (e, { name }) => {
@@ -72,6 +75,7 @@ class LoginModal extends Component {
       description:''
     });
     this.resetDefaults();
+    this.props.clearErrors();
   }
 
   handleSignUpClick = (e, { name }) => {
@@ -87,6 +91,7 @@ class LoginModal extends Component {
       description:'Register to access more features'
     });
     this.resetDefaults();
+    this.props.clearErrors();
   }
 
   // clear all error messages
@@ -165,13 +170,11 @@ class LoginModal extends Component {
     // If Sign Up and No errors statuses
     if(this.state.activeItem === 'Sign Up') {
       this.props.registerUser(this.state.email, this.state.password);
-      this.close();
     }
 
     // If Log In and No errors statuses
     if(this.state.activeItem === 'Log In') {
       this.props.loginUser(this.state.email, this.state.password);
-      this.close();
     }
   }
 
@@ -247,6 +250,7 @@ class LoginModal extends Component {
           <Modal.Content>
             <div className="login-description">
               <p>{description}</p>
+              <p style={{color: 'red'}}>{this.props.errorMessage}</p>
             </div>
             <form onSubmit={event => this.buttonSubmit(event)}>
               <label className="login-label">Email</label>
@@ -287,10 +291,10 @@ class LoginModal extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state);
   return {
-    errorMessage: state.errors.msg,
-    modal:state.auth.modal
+    errorMessage: state.errors.message,
+    modal: state.auth.modal
   };
 };
 
@@ -298,5 +302,6 @@ export default connect( mapStateToProps, {
   registerUser,
   loginUser,
   openModal,
-  closeModal
+  closeModal,
+  clearErrors
 })(LoginModal);

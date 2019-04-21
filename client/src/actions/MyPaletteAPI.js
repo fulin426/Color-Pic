@@ -2,7 +2,6 @@ import axios from 'axios';
 import { tokenConfig } from './authActions';
 
 const callAPI = (email, dispatch) => {
-  console.log("api called");
   axios.get(`/api/colors/${email}`)
     .then(res =>
       dispatch({
@@ -61,4 +60,11 @@ export const deleteColorPalette = (id) => dispatch => {
     .catch(error =>
       console.log(error)
     );
+}
+
+// Clear Colors
+export const clearColors = () => {
+  return {
+    type: 'CLEAR_PALETTE_COLORS'
+  };
 }

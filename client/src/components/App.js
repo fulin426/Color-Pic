@@ -11,7 +11,10 @@ import './App.css';
 
 class App extends Component {
   componentDidMount() {
-    this.props.loadUser();
+    // Only load user if there is a token in local storage
+    if(localStorage.getItem('token') !== null) {
+      this.props.loadUser();
+    }
   }
   render() {
     return (

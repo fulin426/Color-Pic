@@ -29,6 +29,14 @@ export default (state = initialState, action) => {
           Data: state.Data.filter(item => item._id !== action.payload),
           DeleteColor: `${action.payload} was Deleted`
         };
+      case 'CLEAR_PALETTE_COLORS':
+        return {
+          ...state,
+          Data: [],
+          AddColor: '',
+          DeleteColor: '',
+          UpdateColor: '',
+        };
     default:
      return state;
   }

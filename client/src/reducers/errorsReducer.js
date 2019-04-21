@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
       };
     case 'CLEAR_ERRORS':
       return {
-        msg: {},
+        msg: '',
         status: null,
         id: null
       };

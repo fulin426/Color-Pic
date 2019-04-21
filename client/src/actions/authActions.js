@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 // Check token & load user
-export const loadUser = (token) => dispatch => {
+export const loadUser = () => dispatch => {
   // User loading
   dispatch({ type: 'USER_LOADING'});
-
   axios
-    .get('/api/auth/user', tokenConfig(token))
+    .get('/api/auth/user', tokenConfig())
     .then(res =>
       dispatch({
         type: 'USER_LOADED',
@@ -75,6 +74,11 @@ export const loginUser = (email, password) => dispatch => {
       })
     )
     .catch(err => {
+      console.log('login fail!')
+      dispatch({
+        type: 'GET_ERRORS',
+        payload: err.response
+      });
       dispatch({
         type: 'LOGIN_FAIL'
       });
@@ -108,16 +112,22 @@ export const tokenConfig = () => {
   return config;
 };
 
-// Logout User
+// Modal Actions
 export const openModal = () => {
   return {
     type: 'OPEN_MODAL'
   };
 };
 
-// Logout User
 export const closeModal = () => {
   return {
     type: 'CLOSE_MODAL'
+  };
+};
+
+// Logout User
+export const clearErrors = () => {
+  return {
+    type: 'CLEAR_ERRORS'
   };
 };
