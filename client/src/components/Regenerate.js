@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
-import { clearColorList } from '../actions';
 import { clearRecieved } from '../actions';
 import { clearPosition } from '../actions';
 import { Button, Icon } from 'semantic-ui-react';
 
 class Regenerate extends Component {
   handleClick = url => () => {
-    // send empty array before recieving new color set
-    this.props.clearColorList();
     // first clear the status from API
     this.props.clearRecieved();
     // set position to 1
@@ -39,4 +36,4 @@ export default connect(mapStateToProps, {
   analyzeImage,
   clearRecieved,
   clearPosition,
-  clearColorList })(Regenerate);
+})(Regenerate);

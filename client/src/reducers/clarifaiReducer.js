@@ -21,35 +21,38 @@ export default (state = initialState, action) => {
         loader: action.loader
       };
     case 'CLARIFAI_REQUEST_WAITING':
-      return {...state,
+      return {
+        ...state,
         loader: 'show'
       };
     case 'CLEAR_RECIEVED':
-      return {...state,
-        status: action.status,
-      };
-    case 'CLEAR_COLORS':
-      return {...state,
-        colors: action.colors
+      return {
+        ...state,
+        status: action.status
       };
     case 'NEW_IMAGE_SUBMIT':
-      return {...state,
+      return {
+        ...state,
         image: 'new'
       };
     case 'CLEAR_IMAGE_SUBMIT':
-      return {...state,
+      return {
+        ...state,
         image: ''
       };
     case 'SEND_ERROR':
-      return {...state,
+      return {
+        ...state,
         error: true
       }
     case 'CLEAR_ERROR':
-      return {...state,
+      return {
+        ...state,
         error: false
       }
     case 'ANALYZE_IMAGE_ERROR':
-      return {...state,
+      return {
+        ...state,
         errorData: action.errorData,
         error: action.error,
         loader: action.loader,
@@ -57,12 +60,14 @@ export default (state = initialState, action) => {
         open: action.open
       };
     case 'OPEN_IMAGE_MODAL':
-      return {...state,
+      return {
+        ...state,
         open: true,
         error: false
       };
     case 'CLOSE_IMAGE_MODAL':
-      return {...state,
+      return {
+        ...state,
         open: false,
         error: false,
       };

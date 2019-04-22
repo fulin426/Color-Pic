@@ -5,7 +5,6 @@ import { sendColorInfo } from '../actions';
 import { sendPositionInfo } from '../actions';
 import { sendSelectedColor } from '../actions';
 import { clearRecieved } from '../actions';
-import { clearColorList } from '../actions';
 import { Dimmer, Loader, Grid, Icon } from 'semantic-ui-react';
 
 class ColorsList extends Component {
@@ -13,8 +12,6 @@ class ColorsList extends Component {
     // only make new api call if initally no colors
     if (this.props.colors.length <= 1) {
       this.props.clearRecieved();
-      // send empty array before recieving new color set
-      this.props.clearColorList();
       this.props.analyzeImage(this.props.url);
     }
   };
@@ -22,7 +19,6 @@ class ColorsList extends Component {
   // Make API call each time the URL changes
   componentDidUpdate(prevProps) {
     if (this.props.url !== prevProps.url ) {
-      this.props.clearColorList();
       this.props.analyzeImage(this.props.url);
     };
 
@@ -86,26 +82,30 @@ class ColorsList extends Component {
       );
       return(ColorsList);
     }
-    // otherwise return error statement
-    return (
-      <div className="color-loader" >
+  }
+
+  renderLoader() {
+    if(this.props.loader === 'show') {
+      return(
         <Dimmer active inverted>
           <Loader size='big' inverted>Loading Colors</Loader>
         </Dimmer>
-      </div>
-    );
+      );
+    }
   }
 
   render() {
     return (
     <Grid.Column width={16}>
       {this.colorsRender()}
+      {this.renderLoader()}
     </Grid.Column>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     colors: state.colors.colors,
     selectedColor: state.colorInfo.selectedColor,
@@ -113,7 +113,8 @@ const mapStateToProps = state => {
     url: state.url.url,
     error: state.error,
     status: state.colors.status,
-    token: state.auth.token
+    token: state.auth.token,
+    loader: state.colors.loader
   };
 };
 
@@ -123,5 +124,4 @@ export default connect(mapStateToProps, {
   sendPositionInfo,
   sendSelectedColor,
   clearRecieved,
-  clearColorList
 })(ColorsList);

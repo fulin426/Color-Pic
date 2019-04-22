@@ -17,6 +17,9 @@ function toHex(n) {
 
 // Califai API Call
 export const analyzeImage = (url) => dispatch => {
+  // Show loading screen
+  dispatch({ type: 'CLARIFAI_REQUEST_WAITING' });
+
   app.models.predict("eeed0b6733a644cea07cf4c60f87ebb7", url)
   .then(res => {
     const hexColors = [];
@@ -136,13 +139,6 @@ export const clearPosition = () => dispatch => {
   dispatch({
     type: 'CLEAR_POSITION_INFO',
     position: 0
-  })
-}
-
-export const clearColorList = () => dispatch => {
-  dispatch({
-    type: 'CLEAR_COLORS',
-    colors: []
   })
 }
 
