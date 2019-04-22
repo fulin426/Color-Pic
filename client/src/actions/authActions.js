@@ -4,6 +4,7 @@ import axios from 'axios';
 export const loadUser = () => dispatch => {
   // User loading
   dispatch({ type: 'USER_LOADING'});
+  
   axios
     .get('/api/auth/user', tokenConfig())
     .then(res =>
@@ -25,6 +26,9 @@ export const loadUser = () => dispatch => {
 
 // Register User
 export const registerUser = (email, password) => dispatch => {
+  // Show loading bubble in user register
+  dispatch({ type: 'USER_LOADING'});
+
   // Headers
   const config = {
     headers: {
@@ -56,6 +60,9 @@ export const registerUser = (email, password) => dispatch => {
 
 // Login User
 export const loginUser = (email, password) => dispatch => {
+  // Show loading bubble in login
+  dispatch({ type: 'USER_LOADING'});
+
   // headers
   const config = {
     headers: {

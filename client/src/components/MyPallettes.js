@@ -2,18 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getColors } from '../actions/MyPaletteAPI';
 import { logoutUser } from '../actions/authActions';
-import { Header, Container, Grid, Image } from 'semantic-ui-react';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import EditModal from './EditModal';
+import {
+  Header,
+  Container,
+  Grid,
+  Image,
+  Dimmer,
+  Loader
+} from 'semantic-ui-react';
 
 class MyPallettes extends Component {
   componentDidMount() {
-    // If token expired log out user
-    if (this.props.email === undefined) {
-      this.props.logoutUser();
-    } else {
-      this.props.getColors(this.props.email);
-    }
+    this.props.getColors(this.props.email);
   }
 
   componentDidUpdate(prevProps) {
@@ -72,6 +74,16 @@ class MyPallettes extends Component {
     }
   }
 
+  renderLoader() {
+    if(this.props.loading === true) {
+      return(
+        <Dimmer active inverted>
+          <Loader size='big' inverted />
+        </Dimmer>
+      );
+    }
+  }
+
   render() {
     return(
       <Container>
@@ -80,6 +92,7 @@ class MyPallettes extends Component {
         </Header>
         <Grid stackable columns={3}>
           {this.renderPalettes()}
+          {this.renderLoader()}
         </Grid>
       </Container>
 
@@ -93,6 +106,7 @@ const mapStateToProps = state => {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor,
     updateColor: state.myPalettes.UpdateColor,
+    loading: state.myPalettes.loading,
     email: state.auth.user.email
   };
 };

@@ -37,7 +37,7 @@ class MobileContainer extends Component {
     }
   }
 
-  myPalettesRender() {
+  myPalettesMenuItemRender() {
     if (this.props.Authenticated === true) {
       return(
         <Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>
@@ -72,7 +72,7 @@ class MobileContainer extends Component {
         >
           <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
           <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
-          {this.myPalettesRender()}
+          {this.myPalettesMenuItemRender()}
         </Sidebar>
 
         <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -86,7 +86,9 @@ class MobileContainer extends Component {
                 <Menu.Item onClick={this.handleToggle}>
                   <Icon name='sidebar' />
                 </Menu.Item>
-                {this.loginRender()}
+                <Menu.Item position='right'>
+                  {this.loginRender()}
+                </Menu.Item>
               </Menu>
             </Container>
           </Segment>

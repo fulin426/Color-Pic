@@ -3,6 +3,7 @@ const initialState = {
   AddColor: '',
   DeleteColor: '',
   UpdateColor: '',
+  loading: false
 };
 
 export default (state = initialState, action) => {
@@ -10,7 +11,8 @@ export default (state = initialState, action) => {
     case 'GET_COLORS':
       return {
         ...state,
-        Data: action.payload
+        Data: action.payload,
+        loading: false
       };
      case 'ADD_COLORS':
       return {
@@ -28,6 +30,11 @@ export default (state = initialState, action) => {
           ...state,
           Data: state.Data.filter(item => item._id !== action.payload),
           DeleteColor: `${action.payload} was Deleted`
+        };
+      case 'COLORS_LOADING':
+        return {
+          ...state,
+          loading: true
         };
       case 'CLEAR_PALETTE_COLORS':
         return {

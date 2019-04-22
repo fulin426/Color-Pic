@@ -10,6 +10,8 @@ import {
   Responsive,
   Segment,
   Visibility,
+  Dimmer,
+  Loader
 } from 'semantic-ui-react'
 
 const getWidth = () => {
@@ -40,6 +42,17 @@ class DesktopContainer extends Component {
       return(<Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>);
     }
   }
+
+  renderLoader() {
+    if(this.props.isLoading === true) {
+      return(
+        <Dimmer active inverted>
+          <Loader size='small' inverted />
+        </Dimmer>
+      );
+    }
+  }
+
   render() {
     const { children } = this.props
 
@@ -61,6 +74,7 @@ class DesktopContainer extends Component {
               {this.myPalettesRender()}
               <Menu.Item position='right'>
                 {this.loginRender()}
+                {this.renderLoader()}
               </Menu.Item>
             </Menu>
           </Segment>
@@ -74,7 +88,8 @@ class DesktopContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    Authenticated: state.auth.isAuthenticated
+    Authenticated: state.auth.isAuthenticated,
+    isLoading: state.auth.isLoading
   };
 };
 

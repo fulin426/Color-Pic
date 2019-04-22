@@ -6,6 +6,13 @@ import { logoutUser } from '../actions/authActions';
 import { clearColors } from '../actions/MyPaletteAPI';
 
 class Logout extends Component {
+  componentDidMount() {
+    // If token expired log out user
+    if (this.props.email === undefined) {
+      this.props.logoutUser();
+    }
+  }
+
   logout(event) {
     this.props.logoutUser();
     this.props.clearColors();
@@ -34,9 +41,8 @@ class Logout extends Component {
 
 const mapStateToProps = state => {
   return {
-    Authenticated: state.auth.isAuthenticated,
     email: state.auth.user.email
   };
-};
+}
 
 export default connect(mapStateToProps, { logoutUser, clearColors })(Logout);

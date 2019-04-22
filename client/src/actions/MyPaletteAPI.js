@@ -2,6 +2,9 @@ import axios from 'axios';
 import { tokenConfig } from './authActions';
 
 const callAPI = (email, dispatch) => {
+  // Data Loading
+  dispatch({ type: 'COLORS_LOADING' });
+
   axios.get(`/api/colors/${email}`)
     .then(res =>
       dispatch({

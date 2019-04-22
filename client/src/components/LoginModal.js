@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Modal, Input, Menu } from 'semantic-ui-react';
 import { registerUser } from '../actions/authActions';
 import { loginUser } from '../actions/authActions';
 import { openModal } from '../actions/authActions';
 import { closeModal } from '../actions/authActions';
 import { clearErrors } from '../actions/authActions';
+import { Button, Modal, Input, Menu, Dimmer, Loader } from 'semantic-ui-react';
 
 const Isemail = require('isemail');
 //possibly split into two components login and sign up
@@ -211,6 +211,16 @@ class LoginModal extends Component {
     }
   }
 
+  renderLoader() {
+    if(this.props.isLoading === true) {
+      return(
+        <Dimmer active inverted>
+          <Loader size='big' inverted />
+        </Dimmer>
+      );
+    }
+  }
+
   render() {
     const {
       activeItem,
@@ -284,6 +294,7 @@ class LoginModal extends Component {
                 {button}
               </Button>
             </form>
+            {this.renderLoader()}
           </Modal.Content>
         </Modal>
       </div>
@@ -292,10 +303,10 @@ class LoginModal extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     errorMessage: state.errors.message,
-    modal: state.auth.modal
+    modal: state.auth.modal,
+    isLoading: state.auth.isLoading
   };
 };
 
