@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HomePageHeader from './HomePageHeader';
 import ColorsList from './ColorsList';
 import ImageMain from './ImageMain';
 import ImageSelection from './ImageSelection';
@@ -8,8 +7,14 @@ import ColorPicker from './ColorPicker';
 import ColorInfo from './ColorInfo';
 import Regenerate from './Regenerate';
 import SavePalette from './SavePalette';
-import LoginModal from './LoginModal';
-import { Container, Grid } from 'semantic-ui-react';
+import {
+  Container,
+  Grid,
+  Popup,
+  Button,
+  Icon,
+  Header
+} from 'semantic-ui-react';
 
 class HomePage extends Component {
   savepaletteRender() {
@@ -17,8 +22,12 @@ class HomePage extends Component {
       return <SavePalette />;
     } else {
       return (
-        <LoginModal
-          buttonOne="Save Palette"
+        <Popup
+          trigger={<Button className="save-pallette"><Icon name='save' />  Save Palette</Button>}
+          content="Log In required for this feature"
+          position='bottom right'
+          size='small'
+          basic
         />
       );
     }
@@ -27,7 +36,9 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <Container textAlign='center'>
-          <HomePageHeader />
+          <Header as="h1" className="generate-header">
+            Choose a picture and analyze
+          </Header>
           <Grid celled>
             <Grid.Row>
               <ImageSelection />

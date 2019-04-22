@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { newColorPalette } from '../actions/MyPaletteAPI';
-import { Button, Modal, Input, Header } from 'semantic-ui-react'
+import { Button, Modal, Input, Header, Icon } from 'semantic-ui-react'
 
 class SavePalette extends Component {
   state = {
@@ -115,7 +115,13 @@ class SavePalette extends Component {
 
     return (
       <div>
-        <Button onClick={this.closeConfigShow(true, false)}>Save Palette</Button>
+        <Button
+          onClick={this.closeConfigShow(true, false)}
+          className="save-pallette"
+          icon
+        >
+          <Icon name='save' />  Save Palette
+        </Button>
         <Modal
           open={open}
           closeOnEscape={closeOnEscape}

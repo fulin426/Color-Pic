@@ -45,7 +45,7 @@ class ImageSelection extends Component {
           <div
             onClick={() => this.props.deleteURL(url)}
             className="delete-img">
-            <Icon name="delete" />
+            <Icon name="remove circle" />
           </div>
         </div>
       )

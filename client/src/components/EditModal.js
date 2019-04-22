@@ -181,7 +181,6 @@ class EditModal extends Component {
           //Dimmer not currently working
           dimmer={dimmer}
           onClose={this.close}
-          closeIcon
         >
           <Modal.Header>Edit Palette</Modal.Header>
           <Modal.Content>

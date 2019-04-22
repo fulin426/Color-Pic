@@ -11,7 +11,8 @@ import {
   Segment,
   Visibility,
   Dimmer,
-  Loader
+  Loader,
+  Icon
 } from 'semantic-ui-react'
 
 const getWidth = () => {
@@ -69,7 +70,7 @@ class DesktopContainer extends Component {
             vertical
           >
             <Menu size='large'>
-              <Menu.Item as={Link} to='/'>Color Pic</Menu.Item>
+              <Menu.Item as={Link} to='/'><Icon name='home' />Color Pic</Menu.Item>
               <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
               {this.myPalettesRender()}
               <Menu.Item position='right'>

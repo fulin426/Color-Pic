@@ -4,6 +4,8 @@
   text-align: center;
 }
 
+
+
 .image-selection, .search-button, .random-btn {
   cursor: pointer;
 }
@@ -150,11 +152,11 @@
   width: 90%;
   max-width: 240px;
   margin: 0 !important;
-  margin-bottom: 5px;
+  margin-bottom: .5rem !important;
 }
 
 .regen-save-buttons {
-  display: -webkit-inline-box;
+  /* display: -webkit-inline-box; */
 }
 
 /* color picker */
@@ -237,12 +239,18 @@
 .icon-div:hover {
   opacity: 1.0 !important;
 }
+
+.savepalette-popup {
+  display: inline-block;
+}
+
 /* my Color palettes */
 /* reused some css from colorslist */
-.palette-header {
+.palette-header, .generate-header {
   margin-top: 1rem !important;
   margin-bottom: 4rem !important;
 }
+
 .palette-container {
   max-width: 400px;
   padding-bottom: 15px;

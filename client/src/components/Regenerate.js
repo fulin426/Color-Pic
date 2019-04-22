@@ -4,7 +4,7 @@ import { analyzeImage } from '../actions';
 import { clearColorList } from '../actions';
 import { clearRecieved } from '../actions';
 import { clearPosition } from '../actions';
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 
 class Regenerate extends Component {
   handleClick = url => () => {
@@ -21,9 +21,10 @@ class Regenerate extends Component {
     return (
       <Button
         className="regen-btn"
-        content="Regenerate"
         onClick={this.handleClick(this.props.url)}
-      />
+      >
+        <Icon name='redo' />  Regenerate
+      </Button>
     );
   }
 }
