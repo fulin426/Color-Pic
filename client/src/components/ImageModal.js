@@ -10,7 +10,7 @@ import { clearImgSubmit } from '../actions';
 import { clearErrorStatus } from '../actions';
 import { showModalLoader } from '../actions';
 import { sendErrorStatus } from '../actions';
-import { Button, Modal, Input, Dimmer, Loader } from 'semantic-ui-react'
+import { Button, Modal, Input, Dimmer, Loader, Icon } from 'semantic-ui-react'
 
 class AddImgModal extends Component {
   state = { input: '' };
@@ -169,7 +169,7 @@ class AddImgModal extends Component {
     const { closeOnEscape, closeOnDimmerClick } = this.state
       return (
         <div>
-          <Button onClick={this.closeConfigShow(false, true)}>Try your own image</Button>
+          <Button onClick={this.closeConfigShow(false, true)} icon>Try your own image</Button>
           <Modal
             open={this.props.open}
             closeOnEscape={closeOnEscape}

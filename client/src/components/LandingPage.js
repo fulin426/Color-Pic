@@ -21,7 +21,7 @@ const LandingPage = () => {
              <h3>Adjust colors and refine palette</h3>
            </Grid.Column>
            <Grid.Column textAlign='center'>
-             <Icon name="images" size='huge'/>
+             <Icon name="save" size='huge'/>
              <h3>Save palettes for future reference</h3>
            </Grid.Column>
          </Grid.Row>

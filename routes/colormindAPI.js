@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// refactor using require
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const axios = require('axios');
 
 router.get('/', (req, res) => {
   //Convert Hex to RGB functions, some calcs can be moved to utils
@@ -38,19 +37,15 @@ router.get('/', (req, res) => {
   	input : hexToRGB
   }
 
-  const http = new XMLHttpRequest();
-  // The onreadystatechange property specifies a function to be
-  // executed every time the status of the XMLHttpRequest object changes
-  http.onreadystatechange = function() {
-    // The response is ready
-  	if(http.readyState == 4 && http.status == 200) {
-  		const palette = JSON.parse(http.responseText).result;
-  		res.json(palette);
-  	}
-  }
-
-  http.open("POST", url, true);
-  http.send(JSON.stringify(data));
+  axios.post("http://colormind.io/api/", data)
+  .then(response => {
+    console.log(response.data.result);
+    res.json(response.data.result);
+  })
+  .catch(function (error) {
+    console.log(error);
+    res.status(400).json('Bad Request');
+  });
 });
 
 module.exports = router;
