@@ -1,0 +1,9 @@
+.username {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+}
+.logout-btn {
+  display: inline-block;
+  margin-left: 16px !important;
+}

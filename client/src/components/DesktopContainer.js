@@ -69,9 +69,9 @@ class DesktopContainer extends Component {
           onBottomPassedReverse={this.hideFixedMenu}
         >
           <Segment className="menu-container" textAlign="center" vertical>
-            <Menu className="menu-large" size="large">
-              <Menu.Item className="menu-item" as={Link} to="/">Color Pic</Menu.Item>
-              <Menu.Item className="menu-item" as={Link} to="/Generate">Generate</Menu.Item>
+            <Menu className="menu-small" size="small" borderless>
+              <Menu.Item as={Link} to="/">Color Pic</Menu.Item>
+              <Menu.Item as={Link} to="/Generate">Generate</Menu.Item>
               {this.myPalettesRender()}
               <Menu.Item position="right">
                 {this.loginRender()}

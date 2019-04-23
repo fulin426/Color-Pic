@@ -50,7 +50,7 @@ class MobileContainer extends Component {
       return({ minHeight: 122, padding: '1em 0em' });
     }
     else {
-      return({ minHeight: 82, padding: '1em 0em' })
+      return({ minHeight: 82, padding: '0em 0em' })
     }
   }
   render() {

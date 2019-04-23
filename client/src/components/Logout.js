@@ -4,6 +4,7 @@ import { Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../actions/authActions';
 import { clearColors } from '../actions/MyPaletteAPI';
+import './css/logout.css';
 
 class Logout extends Component {
   componentDidMount() {
@@ -21,14 +22,12 @@ class Logout extends Component {
   render() {
     return(
       <div>
-        <p style={{ 'display': 'inline-block'}}>
+        <p className="username">
           Welcome {this.props.email}!
         </p>
         <Link to="/">
           <Button
-            style={{
-            'display': 'inline-block',
-            'marginLeft': '0.5em'}}
+            className="logout-btn"
             onClick={event => this.logout(event)}
           >
             Log Out
