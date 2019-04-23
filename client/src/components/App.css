@@ -1,10 +1,7 @@
-
 .header {
   margin-top: 20px;
   text-align: center;
 }
-
-
 
 .image-selection, .search-button, .random-btn {
   cursor: pointer;
@@ -174,6 +171,7 @@
 
 .chrome-picker-edit {
   width: 490px !important;
+  display: inline-block;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -209,33 +207,6 @@
   padding-bottom: 10px;
 }
 
-.footer {
-  height: 12rem;
-  padding-top: 2rem;
-  border-top: 1px solid lightgrey;
-}
-
-.footer-header {
-  float: right;
-  display: inline-block;
-}
-
-.icon-container {
-  display: inline-block;
-  cursor: pointer;
-  float: left;
-}
-
-.icon-div {
-  color: black;
-  opacity: 0.8 ;
-  margin: 0px 4px;
-}
-
-.icon-div:hover {
-  opacity: 1.0 !important;
-}
-
 .savepalette-popup {
   display: inline-block;
 }
@@ -251,20 +222,6 @@
   max-width: 400px;
   padding-bottom: 15px;
   margin: 0 auto;
-}
-
-.confirm-delete-modal {
-  float: right;
-  cursor: pointer;
-  height: 100%;
-  display: inline-block;
-}
-
-.edit-modal {
-  float: right;
-  cursor: pointer;
-  height: 100%;
-  display: inline-block;
 }
 
 .input-colors-container {

@@ -3,7 +3,7 @@ import MobileContainer from './MobileContainer';
 import DesktopContainer from './DesktopContainer';
 
 const HeaderMenu = ({ children }) => (
-  <div className="header-menu">
+  <div>
     <DesktopContainer>{children}</DesktopContainer>
     <MobileContainer>{children}</MobileContainer>
   </div>

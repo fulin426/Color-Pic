@@ -1,0 +1,26 @@
+.footer {
+  height: 12rem;
+  padding-top: 2rem;
+  border-top: 1px solid lightgrey;
+}
+
+.footer-header {
+  float: right;
+  display: inline-block;
+}
+
+.icon-container {
+  display: inline-block;
+  cursor: pointer;
+  float: left;
+}
+
+.icon-div {
+  color: black;
+  opacity: 0.8 ;
+  margin: 0px 4px;
+}
+
+.icon-div:hover {
+  opacity: 1.0 !important;
+}

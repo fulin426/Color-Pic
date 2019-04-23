@@ -1,0 +1,37 @@
+.color-square-container {
+  display: inline-block;
+  width: 20%;
+}
+
+.color-square {
+  width: 100%;
+  padding-top: 75%;
+  display: inline-block;
+}
+
+.carot-container {
+  text-align: center;
+}
+
+.modal-input {
+  width: 90%;
+  max-width: 425px;
+  padding-bottom: 10px;
+}
+
+.edit-modal {
+  float: right;
+  cursor: pointer;
+  height: 100%;
+  display: inline-block;
+}
+
+.icon-div {
+  color: black;
+  opacity: 0.8 ;
+  margin: 0px 4px;
+}
+
+.icon-div:hover {
+  opacity: 1.0 !important;
+}

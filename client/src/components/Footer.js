@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon, Container } from 'semantic-ui-react';
+import './css/footer.css';
 
 const Footer = ({url}) => {
   return(
@@ -14,7 +15,7 @@ const Footer = ({url}) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon name="github" size='big' />
+          <Icon className="icon-div" name="github" size='big' />
         </a>
         <a
           className="icon-div"

@@ -84,12 +84,20 @@ class ColorsList extends Component {
     }
   }
 
+  // Load a initial height before colors are recieved
+  renderLoaderHeight() {
+    if(this.props.colors.length === 0) {
+      return({ height: 60});
+    }
+  }
   renderLoader() {
     if(this.props.loader === 'show') {
-      return(
-        <Dimmer active inverted>
-          <Loader size='big' inverted>Loading Colors</Loader>
-        </Dimmer>
+      return (
+        <div style={this.renderLoaderHeight()}>
+          <Dimmer active inverted>
+            <Loader size='large' inverted>Loading Colors</Loader>
+          </Dimmer>
+        </div>
       );
     }
   }

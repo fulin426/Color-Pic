@@ -10,6 +10,7 @@ import { clearPosition } from '../actions';
 import { sendAlphaInfo } from '../actions';
 import { getColors } from '../actions/MyPaletteAPI';
 import EditModalColorInfo from './EditModalColorInfo';
+import './css/editModal.css';
 
 class EditModal extends Component {
   state = {
@@ -170,7 +171,7 @@ class EditModal extends Component {
     const { open, dimmer, title, hexInput, selectedSet } = this.state
 
     return (
-      <div className="edit-modal">
+      <div className="edit-modal icon-div">
         <Icon
           size='large'
           onClick={this.closeConfigShow(true)}
@@ -185,17 +186,16 @@ class EditModal extends Component {
           <Modal.Header>Edit Palette</Modal.Header>
           <Modal.Content>
             <Input
-              className="savepalette-modal-input"
+              className="modal-input"
               label="Title"
               value={title}
               onChange={event => this.handleTitleInput(event)}
               placeholder='Edit Palette Name...'
-              focus
             />
-            <div className="colors-render">
+            <div>
               {this.renderOneColorSet()}
             </div>
-            <Grid stackable columns={2}>
+            <Grid textAlign='center' stackable columns={2}>
               <Grid.Column width={10}>
                 <Segment>
                   {this.renderColorPicker()}

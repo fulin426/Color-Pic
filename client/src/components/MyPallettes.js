@@ -4,14 +4,7 @@ import { getColors } from '../actions/MyPaletteAPI';
 import { logoutUser } from '../actions/authActions';
 import ConfirmDeleteModal from './ConfirmDeleteModal';
 import EditModal from './EditModal';
-import {
-  Header,
-  Container,
-  Grid,
-  Image,
-  Dimmer,
-  Loader
-} from 'semantic-ui-react';
+import { Header, Container, Grid, Image} from 'semantic-ui-react';
 
 class MyPallettes extends Component {
   componentDidMount() {
@@ -74,16 +67,6 @@ class MyPallettes extends Component {
     }
   }
 
-  renderLoader() {
-    if(this.props.loading === true) {
-      return(
-        <Dimmer active inverted>
-          <Loader size='big' inverted />
-        </Dimmer>
-      );
-    }
-  }
-
   render() {
     return(
       <Container>
@@ -92,10 +75,8 @@ class MyPallettes extends Component {
         </Header>
         <Grid stackable columns={3}>
           {this.renderPalettes()}
-          {this.renderLoader()}
         </Grid>
       </Container>
-
     );
   }
 }

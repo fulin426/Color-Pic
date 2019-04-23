@@ -22,7 +22,7 @@ class Logout extends Component {
     return(
       <div>
         <p style={{ 'display': 'inline-block'}}>
-          {this.props.email}
+          Welcome {this.props.email}!
         </p>
         <Link to="/">
           <Button

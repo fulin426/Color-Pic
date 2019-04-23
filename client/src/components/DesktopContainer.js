@@ -11,9 +11,9 @@ import {
   Segment,
   Visibility,
   Dimmer,
-  Loader,
-  Icon
+  Loader
 } from 'semantic-ui-react'
+import './css/desktopContainer.css';
 
 const getWidth = () => {
   const isSSR = typeof window === 'undefined'
@@ -24,8 +24,12 @@ const getWidth = () => {
 class DesktopContainer extends Component {
   state = {}
 
-  hideFixedMenu = () => this.setState({ fixed: false })
-  showFixedMenu = () => this.setState({ fixed: true })
+  hideFixedMenu = () => {
+    this.setState({ fixed: false });
+  }
+  showFixedMenu = () => {
+    this.setState({ fixed: true });
+  }
 
   loginRender() {
     if (this.props.Authenticated === true) {
@@ -40,7 +44,7 @@ class DesktopContainer extends Component {
 
   myPalettesRender() {
     if (this.props.Authenticated === true) {
-      return(<Menu.Item as={Link} to='/MyPallettes'>My Palettes</Menu.Item>);
+      return(<Menu.Item as={Link} to="/MyPallettes">My Palettes</Menu.Item>);
     }
   }
 
@@ -48,7 +52,7 @@ class DesktopContainer extends Component {
     if(this.props.isLoading === true) {
       return(
         <Dimmer active inverted>
-          <Loader size='small' inverted />
+          <Loader size="small" inverted />
         </Dimmer>
       );
     }
@@ -64,16 +68,12 @@ class DesktopContainer extends Component {
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
-          <Segment
-            textAlign='center'
-            style={{ minHeight: 80, padding: '1em 0em' }}
-            vertical
-          >
-            <Menu size='large'>
-              <Menu.Item as={Link} to='/'><Icon name='home' />Color Pic</Menu.Item>
-              <Menu.Item as={Link} to='/Generate'>Generate</Menu.Item>
+          <Segment className="menu-container" textAlign="center" vertical>
+            <Menu className="menu-large" size="large">
+              <Menu.Item className="menu-item" as={Link} to="/">Color Pic</Menu.Item>
+              <Menu.Item className="menu-item" as={Link} to="/Generate">Generate</Menu.Item>
               {this.myPalettesRender()}
-              <Menu.Item position='right'>
+              <Menu.Item position="right">
                 {this.loginRender()}
                 {this.renderLoader()}
               </Menu.Item>

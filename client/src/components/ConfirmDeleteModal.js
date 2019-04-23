@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Confirm, Icon } from 'semantic-ui-react';
 import { deleteColorPalette } from '../actions/MyPaletteAPI';
+import './css/confirmDeleteModal.css'
 
 class ConfirmDelete extends Component {
   state = { open: false };
@@ -22,8 +23,9 @@ class ConfirmDelete extends Component {
 
   render() {
     return (
-      <div className="confirm-delete-modal">
+      <div className="confirm-delete-modal icon-div">
         <Icon
+          className=""
           size='large'
           onClick={this.show}
           name="trash alternate"

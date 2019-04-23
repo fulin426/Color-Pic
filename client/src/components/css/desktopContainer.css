@@ -1,0 +1,13 @@
+.menu-container {
+  min-height: 80px;
+  padding: 0px 0px !important;
+}
+
+.menu-large {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+.menu-item {
+  border: 0px !important;
+}
