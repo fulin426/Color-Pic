@@ -26,7 +26,7 @@ class HomePage extends Component {
           trigger={<Button className="save-pallette"><Icon name='save' />  Save Palette</Button>}
           content="Log In required for this feature"
           position='bottom right'
-          size='small'
+          size='large'
           basic
         />
       );

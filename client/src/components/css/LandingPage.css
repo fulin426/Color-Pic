@@ -22,9 +22,13 @@
 }
 
 .explanation-container{
-  padding-top: 2rem;
+  padding-top: 1rem;
   max-width: 1000px;
-  height: 18rem;
+  height: 20rem;
+}
+
+.explanation-header {
+  margin-bottom: 2rem !important;
 }
 
 .explanation-text {
