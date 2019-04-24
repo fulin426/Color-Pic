@@ -44,7 +44,11 @@ class DesktopContainer extends Component {
 
   myPalettesRender() {
     if (this.props.Authenticated === true) {
-      return(<Menu.Item as={Link} to="/MyPallettes">My Palettes</Menu.Item>);
+      return(
+        <Menu.Item as={Link} to="/MyPallettes">
+          <h5>My Palettes</h5>
+        </Menu.Item>
+      );
     }
   }
 
@@ -70,8 +74,12 @@ class DesktopContainer extends Component {
         >
           <Segment className="menu-container" textAlign="center" vertical>
             <Menu className="menu-small" size="small" borderless>
-              <Menu.Item as={Link} to="/">Color Pic</Menu.Item>
-              <Menu.Item as={Link} to="/Generate">Generate</Menu.Item>
+              <Menu.Item as={Link} to="/">
+                <h5>Color Pic</h5>
+              </Menu.Item>
+              <Menu.Item as={Link} to="/Generate">
+                <h5>Generate</h5>
+              </Menu.Item>
               {this.myPalettesRender()}
               <Menu.Item position="right">
                 {this.loginRender()}

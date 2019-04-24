@@ -23,10 +23,11 @@ class Logout extends Component {
     return(
       <div>
         <p className="username">
-          Welcome {this.props.email}!
+          Welcome! {this.props.email}
         </p>
         <Link to="/">
           <Button
+            color="blue"
             className="logout-btn"
             onClick={event => this.logout(event)}
           >

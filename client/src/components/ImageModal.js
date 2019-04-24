@@ -66,7 +66,6 @@ class AddImgModal extends Component {
           onChange={event => this.handleInput(event)}
           value={this.state.input}
           placeholder="Please enter a url..."
-          focus
           error
          />
       );
@@ -78,7 +77,6 @@ class AddImgModal extends Component {
           onChange={event => this.handleInput(event)}
           value={this.state.input}
           placeholder="Error! Please check url and try again..."
-          focus
           error
          />
       );
@@ -92,7 +90,6 @@ class AddImgModal extends Component {
           onChange={event => this.handleInput(event)}
           value={this.state.input}
           placeholder="Copy and paste image url..."
-          focus
          />
       );
     }

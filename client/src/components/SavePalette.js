@@ -137,7 +137,6 @@ class SavePalette extends Component {
               value={this.state.input}
               onChange={event => this.handleInput(event)}
               placeholder={placeHolder}
-              focus
               error={error}
             />
             <div className="colors-render">

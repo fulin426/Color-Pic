@@ -14,10 +14,10 @@ class LoginModal extends Component {
     activeItem: 'Log In',
     header: 'Log In to Color Pic',
     button: 'Log In',
-    password: '',
     verifyPassword: '',
     email: '',
     userNamePlaceHolder: '',
+    passWordPlaceHolder:'',
     description:'',
     errorStatusPassword: false,
     errorMsgPassword:'',
@@ -30,7 +30,8 @@ class LoginModal extends Component {
       activeItem: 'Log In',
       header: 'Log In to Color Pic',
       button: 'Log In',
-      userNamePlaceHolder:'email@email.com',
+      userNamePlaceHolder:'Demo Email: demo@demo.com',
+      passWordPlaceHolder:'Demo Password: demo',
       description: ''
     })
     this.props.openModal();
@@ -43,6 +44,7 @@ class LoginModal extends Component {
       header: 'Join Color Pic',
       button: 'Sign Up',
       userNamePlaceHolder: 'Register new user',
+      passWordPlaceHolder:'Password',
       description:'Register to access more features'
     })
     this.props.openModal();
@@ -71,7 +73,8 @@ class LoginModal extends Component {
       password: '',
       verifyPassword: '',
       email: '',
-      userNamePlaceHolder:'Username',
+      userNamePlaceHolder:'Demo Email: demo@demo.com',
+      passWordPlaceHolder:'Demo Password: demo',
       description:''
     });
     this.resetDefaults();
@@ -88,6 +91,7 @@ class LoginModal extends Component {
       verifyPassword: '',
       email: '',
       userNamePlaceHolder: 'Register New User',
+      passWordPlaceHolder:'Password',
       description:'Register to access more features'
     });
     this.resetDefaults();
@@ -202,6 +206,7 @@ class LoginModal extends Component {
     if (this.props.buttonTwo !== undefined) {
       return(
         <Button
+          color="blue"
           onClick={this.showSignup()}
           style={{ marginLeft: '0.5em', marginRight: '1rem' }}
         >
@@ -229,6 +234,7 @@ class LoginModal extends Component {
       email,
       password,
       userNamePlaceHolder,
+      passWordPlaceHolder,
       errorStatusPassword,
       errorStatusEmail,
       description,
@@ -237,7 +243,7 @@ class LoginModal extends Component {
 
     return (
       <div>
-        <Button onClick={this.showLogin()}>
+        <Button color="blue" onClick={this.showLogin()}>
           {this.props.buttonOne}
         </Button>
         {this.buttonTwoRender()}
@@ -271,14 +277,13 @@ class LoginModal extends Component {
                 autoComplete="on"
                 onChange={event => this.handleInput(event, 'email')}
                 error={errorStatusEmail}
-                focus
               />
               <p style={{"color": "red"}}>{errorMsgEmail}</p>
               <label className="login-label">Password</label>
               <Input
                 type="password"
                 className="login-input"
-                placeholder="Password"
+                placeholder={passWordPlaceHolder}
                 autoComplete="on"
                 value={password}
                 onChange={event => this.handleInput(event, 'password')}

@@ -1,63 +1,22 @@
 import React from 'react';
-import {
-  Grid,
-  Image,
-  Segment,
-  Header,
-  Button
-} from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import LandingPageExamplePicture from '../images/LandingPageExample.png';
-/* Heads up! HomepageHeading uses inline styling, however it's not the best practice. Use CSS or styled components for
- * such things.
- */
+import './css/LandingPage.css';
+import { Grid, Image, Segment, Header, Button } from 'semantic-ui-react';
 
 const LandingPageExample = () => {
   return(
-    <div>
-      <Grid
-        stackable
-        columns={2}
-        verticalAlign='middle'
-        style={{ padding: '1em', marginBottom: '1em' }}
-        >
-        <Grid.Column
-          width={10}
-          style={{ padding: '0em' }}
-          >
-          <Segment style={{ padding: '0em', height: '100%' }}>
-            <Image src={ LandingPageExamplePicture } alt='Landing Page Example Palette'/>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column
-          width={6}
-          style={{
-            textAlign: "center",
-            padding: '0em',
-            box: '0'
-          }}
-          >
-          <Segment style={{
-            padding: '1em',
-            height: '100%',
-            border: '0',
-            boxShadow: 'none'
-          }}>
-            <Header
-              as="h1"
-              style={{
-                fontSize: '36px',
-                marginTop: '2rem',
-                marginBottom: '3rem'
-              }}
-            >
+    <div className="dark-landing">
+      <Grid columns={1} verticalAlign='middle' className="grid-size">
+        <Grid.Column width={16} textAlign='center'>
+          <Segment className="dark-landing">
+            <Header as="h1" className="landing-header">
               Fast and Efficient color palettes generator
             </Header>
-            <p style={{ fontSize: '18px', marginBottom: '3rem' }} >
+            <p className="text-style">
               Create, edit, and save schemes
             </p>
             <Link to="/Generate">
-              <Button style={{ fontSize: '16px', marginBottom: '1rem' }} >
+              <Button color="blue" className="landing-btn">
                 Start Generator
               </Button>
             </Link>

@@ -1,0 +1,22 @@
+.dark-landing {
+  background-color: #363636 !important;
+  color: whitesmoke !important;
+}
+
+.grid-size {
+  height: 25rem;
+}
+
+.landing-header {
+  font-size: 36px !important;
+  color: whitesmoke !important;
+}
+
+.text-style {
+  font-size: 20px;
+  margin-bottom: 3rem;
+}
+
+.landing-btn {
+  font-size: 18px !important;
+}
