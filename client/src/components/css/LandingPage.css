@@ -1,6 +1,8 @@
 .dark-landing {
   background-color: #363636 !important;
   color: whitesmoke !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .grid-size {
