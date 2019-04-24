@@ -64,7 +64,8 @@ class ColorsList extends Component {
     if (this.props.colors.length >= 1 ) {
       const ColorsList = this.props.colors.map((color,index) =>
         <div
-          key={color.hexColor}
+          // add index in case there are of same color
+          key={color.hexColor + index}
           className="color-square-container"
         >
           <div
@@ -113,7 +114,7 @@ class ColorsList extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     colors: state.colors.colors,
     selectedColor: state.colorInfo.selectedColor,

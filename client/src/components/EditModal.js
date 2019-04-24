@@ -69,7 +69,7 @@ class EditModal extends Component {
 
   renderOneColorSet() {
     const colorSet = this.state.selectedSet.map((color, index) =>
-      <div className="color-square-container" key={color.hexColor}>
+      <div className="color-square-container" key={color.hexColor + index}>
         <div
           className="color-square"
           onClick={() => this.handleOnClickSquare(color.hexColor, index, color.alpha)}

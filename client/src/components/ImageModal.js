@@ -10,7 +10,7 @@ import { clearImgSubmit } from '../actions';
 import { clearErrorStatus } from '../actions';
 import { showModalLoader } from '../actions';
 import { sendErrorStatus } from '../actions';
-import { Button, Modal, Input, Dimmer, Loader, Icon } from 'semantic-ui-react'
+import { Button, Modal, Input, Dimmer, Loader } from 'semantic-ui-react'
 
 class AddImgModal extends Component {
   state = { input: '' };

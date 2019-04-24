@@ -11,6 +11,7 @@ import './App.css';
 
 class App extends Component {
   componentDidMount() {
+    console.log('This app was created by Fu-Lin Liu, a web developer based out of San Francisco. I can be reached at fulin426@gmail.com');
     // Only load user if there is a token in local storage
     if(localStorage.getItem('token') !== null) {
       this.props.loadUser();

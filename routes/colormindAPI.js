@@ -46,14 +46,14 @@ router.get('/', (req, res) => {
     // Api fills in a color if slot empty
     hexToRGB = hexToRGB.concat('N');
   }
-  console.log(hexToRGB);
+
   // if less than 5 push 'N' in remaining slots
   if (hexToRGB.length < 5) {
     for (let i = hexToRGB.length; i < 5 ; i++) {
       hexToRGB.push('N');
     }
   }
-  console.log(shuffle(hexToRGB).slice(0,5));
+  
   //only send first 5 colors
   axios.post("http://colormind.io/api/", {
     model : "default",

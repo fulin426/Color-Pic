@@ -265,8 +265,8 @@ class LoginModal extends Component {
           </Menu>
           <Modal.Content>
             <div className="login-description">
-              <p>{description}</p>
-              <p style={{color: 'red'}}>{this.props.errorMessage}</p>
+              <h5>{description}</h5>
+              <h5 style={{color: 'red'}}>{this.props.errorMessage}</h5>
             </div>
             <form onSubmit={event => this.buttonSubmit(event)}>
               <label className="login-label">Email</label>

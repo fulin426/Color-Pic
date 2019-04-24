@@ -5,7 +5,6 @@ import LoginModal from './LoginModal';
 import Logout from './Logout';
 import { logoutUser } from '../actions/authActions';
 import {
-  Container,
   Menu,
   Responsive,
   Segment,

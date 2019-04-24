@@ -7,7 +7,7 @@ import { Grid, Image} from 'semantic-ui-react';
 
 const renderOneColorSet = (set) => {
   let colorSet = set.map((color, index) =>
-  <div className="color-square-container" key={color+index}>
+  <div className="color-square-container" key={color + index}>
     <div className="color-square" style={{ backgroundColor: color }} />
   </div>
   );
@@ -21,7 +21,7 @@ const LandingPageExampleSets = () => {
     { CameraExample: [ '#26221A', '#3D464F', '#96BBDC', '#74AACB', '#867D80'] },
     { BladeRunnerExample: [ '#804C27', '#F7AC49', '#CD6622', '#7A2717', '#2C2022'] }
   ];
-  
+
   return(
     <Grid>
       <Grid.Row>

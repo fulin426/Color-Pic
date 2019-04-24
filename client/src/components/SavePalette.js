@@ -90,7 +90,7 @@ class SavePalette extends Component {
 
   colorsRender() {
     const ColorsList = this.props.colors.map((color,index) =>
-      <div key={color.hexColor} className="color-square-container">
+      <div key={color.hexColor + index} className="color-square-container">
         <div
           className="color-square"
           style={{
