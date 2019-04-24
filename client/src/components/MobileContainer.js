@@ -82,12 +82,7 @@ class MobileContainer extends Component {
             vertical
           >
             <Container>
-              <Menu
-                pointing
-                secondary
-                className="menu-small "
-                size='large'
-              >
+              <Menu pointing secondary size='large'>
                 <Menu.Item onClick={this.handleToggle}>
                   <Icon name='sidebar' />
                 </Menu.Item>
