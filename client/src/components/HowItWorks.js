@@ -1,10 +1,10 @@
 import React from 'react';
 import { Header, Grid } from 'semantic-ui-react';
-import './css/howItWorks.css';
+import './css/landingPage.css';
 
 const HowItWorks = () => {
   return(
-    <Grid verticalAlign='middle'>
+    <Grid verticalAlign='middle' centered>
       <Grid.Row className="explanation-container">
         <Grid.Column >
           <Header as='h2' textAlign='center'>

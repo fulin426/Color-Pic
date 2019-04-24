@@ -13,7 +13,7 @@ import {
   Dimmer,
   Loader
 } from 'semantic-ui-react'
-import './css/desktopContainer.css';
+
 
 const getWidth = () => {
   const isSSR = typeof window === 'undefined'

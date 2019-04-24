@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './css/LandingPage.css';
+import './css/landingPage.css';
 import { Grid, Image, Segment, Header, Button } from 'semantic-ui-react';
 
 const LandingPageExample = () => {

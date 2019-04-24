@@ -4,7 +4,7 @@ import LandingPageExample from './LandingPageExample';
 import LandingIcons from './LandingIcons';
 import LandingPageExampleSets from './LandingPageExampleSets';
 import HowItWorks from './HowItWorks';
-import './css/LandingPage.css';
+import './css/landingPage.css';
 
 const LandingPage = () => {
   return(
