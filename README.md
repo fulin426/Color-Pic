@@ -14,26 +14,16 @@ The Color Pic application uses image recognition to predict what the dominant co
 ![Screenshots](./client/public/ExampleAnalyze.png)
 
 ## Technology ##
-React, Redux, Semantic UI, Axios, Node.js, Express, MongoDB
+React, Redux, Semantic UI React, Axios, [React Color](https://casesandberg.github.io/react-color/) Node.js, Express, MongoDB
 
 ## API Info ##
 * [Clarifai](https://www.clarifai.com/models/color-image-recognition-model-eeed0b6733a644cea07cf4c60f87ebb7)
 * [Colormind.io](http://colormind.io/api-access/)
 
-## Running locally
-# Install dependencies for server
-npm install
-
-# Install dependencies for client
-npm run client-install
-
-# Run the client & server with concurrently
-npm run dev
-
-# Run the Express server only
-npm run server
-
-# Run the React client only
-npm run client
-
-# Server runs on http://localhost:5000 and client on http://localhost:3000
+### Running locally
+* Install dependencies for server ==> npm install
+* Install dependencies for client ==> npm run client-install
+* Run the client & server with concurrently ==> npm run dev
+* Run the Express server only ==> npm run server
+* Run the React client only ==> npm run client
+* Server runs on http://localhost:5000 and client on http://localhost:3000
