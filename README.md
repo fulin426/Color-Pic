@@ -20,7 +20,7 @@ React, Redux, Semantic UI React, Axios, [React Color](https://casesandberg.githu
 * [Clarifai](https://www.clarifai.com/models/color-image-recognition-model-eeed0b6733a644cea07cf4c60f87ebb7)
 * [Colormind.io](http://colormind.io/api-access/)
 
-### Running locally
+## Running locally ##
 * Install dependencies for server ==> npm install
 * Install dependencies for client ==> npm run client-install
 * Run the client & server with concurrently ==> npm run dev
