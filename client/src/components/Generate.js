@@ -44,13 +44,9 @@ class HomePage extends Component {
               <ImageSelection />
               <ImageMain />
             </Grid.Row>
-          </Grid>
-          <Grid celled>
             <Grid.Row>
               <ColorsList />
             </Grid.Row>
-          </Grid>
-          <Grid celled>
             <Grid.Row>
               <ColorPicker />
               <Grid.Column mobile={16} tablet={7} computer={6}>

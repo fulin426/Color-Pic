@@ -135,6 +135,7 @@
   max-width: 240px;
   padding: 1rem;
   border: 1px solid lightgrey;
+  border-radius: 3px;
   margin: 0 auto;
   margin-bottom: 1rem;
   text-align: center;
