@@ -15,9 +15,12 @@ The Color Pic application uses image recognition to predict what the dominant co
 ![Screenshots](./client/public/Landing2.png)
 ![Screenshots](./client/public/ExampleAnalyze.png)
 
+## How it works
+The Color Pic application uses image recognition from [Clarifai](https://www.clarifai.com/) to predict what the dominant colors are in a given picture. The colors are then sent to [Colormind](http://colormind.io/) to generate a suggested color palette, it searches for colors that work well together. This works in a semi-random way, so hit regenerate to see a different color set each time.
+
 ## Technology
 
-React, Redux, Semantic UI React, Axios, [React Color](https://casesandberg.github.io/react-color/), Node.js, Express, MongoDB
+React, Redux, Semantic UI, Axios, [React Color](https://casesandberg.github.io/react-color/), JWT, Node.js, Express, MongoDB
 
 ## API Info
 
