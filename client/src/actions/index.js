@@ -1,9 +1,4 @@
-import { hexToR } from "./convertRGB";
-import { hexToG } from "./convertRGB";
-import { hexToB } from "./convertRGB";
 import { rgbToHex } from "./convertRGB";
-import { toHex } from "./convertRGB";
-
 const Clarifai = require("clarifai");
 const clarifaiID = require("../config/keys").clarifaiID;
 const app = new Clarifai.App({ apiKey: clarifaiID });

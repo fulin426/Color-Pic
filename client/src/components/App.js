@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 import { loadUser } from "../actions/authActions";
+import Analytics from "react-router-ga";
 import HeaderMenu from "./HeaderMenu";
 import LandingPage from "./LandingPage";
 import MyPallettes from "./MyPallettes";
@@ -22,11 +23,13 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <HeaderMenu />
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/Generate" component={Generate} />
-        <Route path="/MyPallettes" component={MyPallettes} />
-        <Footer />
+        <Analytics id="UA-135017095-3" debug>
+          <HeaderMenu />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/Generate" component={Generate} />
+          <Route path="/MyPallettes" component={MyPallettes} />
+          <Footer />
+        </Analytics>
       </BrowserRouter>
     );
   }
