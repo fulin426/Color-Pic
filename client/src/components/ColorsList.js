@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
-import { sendColorInfo } from '../actions';
-import { sendPositionInfo } from '../actions';
-import { sendSelectedColor } from '../actions';
-import { clearRecieved } from '../actions';
+import { sendColorInfo } from '../actions/colorInfoActions';
+import { sendPositionInfo } from '../actions/colorInfoActions';
+import { sendSelectedColor } from '../actions/colorInfoActions';
+import { clearRecieved } from '../actions/colorInfoActions';
 import { Dimmer, Loader, Grid, Icon } from 'semantic-ui-react';
 
 class ColorsList extends Component {

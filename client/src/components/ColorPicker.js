@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { ChromePicker } from 'react-color';
 import { connect } from 'react-redux';
-import { updateHexColor } from '../actions';
-import { sendColorInfo } from '../actions';
-import { sendAlphaInfo } from '../actions';
-import { sendSelectedColor } from '../actions';
+import { updateHexColor } from '../actions/colorInfoActions';
+import { sendColorInfo } from '../actions/colorInfoActions';
+import { sendAlphaInfo } from '../actions/colorInfoActions';
+import { sendSelectedColor } from '../actions/colorInfoActions';
 import { Grid } from 'semantic-ui-react'
 
 class ColorPicker extends Component {

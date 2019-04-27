@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { analyzeImage } from '../actions';
-import { clearRecieved } from '../actions';
-import { clearPosition } from '../actions';
+import { clearRecieved } from '../actions/colorInfoActions';
+import { clearPosition } from '../actions/colorInfoActions';
 import { Button, Icon } from 'semantic-ui-react';
 
 class Regenerate extends Component {
