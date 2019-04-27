@@ -35,5 +35,5 @@ React, Redux, Semantic UI React, Axios, [React Color](https://casesandberg.githu
 
 ### Requirements
 
-Add mongoURI and jwtSecret to keys.js in config folder
+Add mongoURI and jwtSecret to keys.js in config folder<br/>
 Clarifai developer key required in client/src folder [Developer Guide](https://www.clarifai.com/developer/guide/)
