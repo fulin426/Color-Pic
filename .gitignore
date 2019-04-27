@@ -10,6 +10,7 @@ npm-debug.log
 
 # testing
 /coverage
+keys.js
 
 # production
 /package-lock.json

@@ -3,7 +3,9 @@
   text-align: center;
 }
 
-.image-selection, .search-button, .random-btn {
+.image-selection,
+.search-button,
+.random-btn {
   cursor: pointer;
 }
 
@@ -16,7 +18,7 @@
 }
 
 .image-wrapper {
- position: relative;
+  position: relative;
 }
 
 .delete-img {
@@ -27,18 +29,18 @@
   z-index: 1;
   cursor: pointer;
 }
- /* show X when enters image div */
+/* show X when enters image div */
 .image-wrapper:hover .delete-img {
   display: block;
 }
 
 .images-container {
- overflow: auto;
- max-height: 325px;
+  overflow: auto;
+  max-height: 325px;
 }
 
 .image-selection:hover {
-  opacity: 1.0;
+  opacity: 1;
 }
 
 .sample-img {
@@ -51,7 +53,7 @@
 }
 
 @media only screen and (max-width: 992px) {
-  .image-selection{
+  .image-selection {
     max-width: 120px;
   }
   .images-container {
@@ -87,7 +89,7 @@
 }
 
 .url-input {
- width: 75%;
+  width: 75%;
 }
 
 /* render hex color squares */
@@ -118,7 +120,7 @@
   max-width: 165px;
   display: block;
   margin: 0 auto;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .info-input {
@@ -141,12 +143,13 @@
   text-align: center;
 }
 
-.regen-btn, .save-pallette {
+.regen-btn,
+.save-pallette {
   height: 40px;
   width: 90%;
   max-width: 240px;
   margin: 0 !important;
-  margin-bottom: .5rem !important;
+  margin-bottom: 0.5rem !important;
 }
 
 .regen-save-buttons {
@@ -214,7 +217,8 @@
 
 /* my Color palettes */
 /* reused some css from colorslist */
-.palette-header, .generate-header {
+.palette-header,
+.generate-header {
   margin-top: 1rem !important;
   margin-bottom: 4rem !important;
 }
@@ -241,7 +245,7 @@
   text-align: center;
   padding: 16px;
 }
-.login-input{
+.login-input {
   display: block;
   margin-bottom: 0.5rem;
   width: 100%;
