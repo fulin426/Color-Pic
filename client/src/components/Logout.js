@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import { logoutUser } from '../actions/authActions';
-import { clearColors } from '../actions/MyPaletteAPI';
-import './css/logout.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { logoutUser } from "../actions/authActions";
+import { clearColors } from "../actions/MyPaletteAPI";
+import "./css/logout.css";
 
 class Logout extends Component {
   componentDidMount() {
@@ -20,11 +20,9 @@ class Logout extends Component {
   }
 
   render() {
-    return(
+    return (
       <div>
-        <p className="username">
-          Welcome! {this.props.email}
-        </p>
+        <p className="username">Welcome! {this.props.email}</p>
         <Link to="/">
           <Button
             color="blue"
@@ -43,6 +41,9 @@ const mapStateToProps = state => {
   return {
     email: state.auth.user.email
   };
-}
+};
 
-export default connect(mapStateToProps, { logoutUser, clearColors })(Logout);
+export default connect(
+  mapStateToProps,
+  { logoutUser, clearColors }
+)(Logout);

@@ -1,49 +1,56 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { analyzeImage } from '../actions';
-import { changeMainImage } from '../actions';
-import { addImageSelection } from '../actions';
-import { closeImgModal } from '../actions';
-import { openImgModal } from '../actions';
-import { newImgSubmit } from '../actions';
-import { clearImgSubmit } from '../actions';
-import { clearErrorStatus } from '../actions';
-import { showModalLoader } from '../actions';
-import { sendErrorStatus } from '../actions';
-import { Button, Modal, Input, Dimmer, Loader } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { analyzeImage } from "../actions";
+import { changeMainImage } from "../actions";
+import { addImageSelection } from "../actions";
+import { closeImgModal } from "../actions";
+import { openImgModal } from "../actions";
+import { newImgSubmit } from "../actions";
+import { clearImgSubmit } from "../actions";
+import { clearErrorStatus } from "../actions";
+import { showModalLoader } from "../actions";
+import { sendErrorStatus } from "../actions";
+import { Button, Modal, Input, Dimmer, Loader } from "semantic-ui-react";
 
 class AddImgModal extends Component {
-  state = { input: '' };
+  state = { input: "" };
 
   submitURL(event) {
     event.preventDefault();
-    if (this.state.input === '') {
+    if (this.state.input === "") {
       return this.props.sendErrorStatus();
     }
     // if no duplicate urls and input not empty
-    if (this.checkForDuplicateUrls() === 'no duplicates' && this.state.input !== '') {
+    if (
+      this.checkForDuplicateUrls() === "no duplicates" &&
+      this.state.input !== ""
+    ) {
       this.props.analyzeImage(this.state.input);
       this.props.newImgSubmit();
       this.props.showModalLoader();
     }
-  };
+  }
 
   checkForDuplicateUrls() {
-    for(let i=0; i < this.props.exampleImages.length; i++) {
-      if(this.state.input === this.props.exampleImages[i]) {
-        return 'duplicate exists';
+    for (let i = 0; i < this.props.exampleImages.length; i++) {
+      if (this.state.input === this.props.exampleImages[i]) {
+        return "duplicate exists";
       }
     }
-    return 'no duplicates';
+    return "no duplicates";
   }
 
   componentDidUpdate() {
-    if (this.props.error === false && this.props.status === 'recieved' && this.props.image === 'new') {
+    if (
+      this.props.error === false &&
+      this.props.status === "recieved" &&
+      this.props.image === "new"
+    ) {
       // only run if there are no errors, data is recieved and a new image is submitted
       this.props.changeMainImage(this.state.input);
       this.props.addImageSelection(this.state.input);
       this.props.clearImgSubmit();
-      this.setState({ input: ''});
+      this.setState({ input: "" });
     }
   }
 
@@ -59,7 +66,7 @@ class AddImgModal extends Component {
     // if user clicks confirm with blank title
     // render red error input
     if (this.props.error === true) {
-      return(
+      return (
         <Input
           className="url-input"
           type="text"
@@ -67,10 +74,10 @@ class AddImgModal extends Component {
           value={this.state.input}
           placeholder="Please enter a url..."
           error
-         />
+        />
       );
     } else if (this.props.error !== false) {
-      return(
+      return (
         <Input
           className="url-input"
           type="text"
@@ -78,41 +85,40 @@ class AddImgModal extends Component {
           value={this.state.input}
           placeholder="Error! Please check url and try again..."
           error
-         />
+        />
       );
-    }
-    else {
+    } else {
       //everything else render normal input
-      return(
+      return (
         <Input
           className="url-input"
           type="text"
           onChange={event => this.handleInput(event)}
           value={this.state.input}
           placeholder="Copy and paste image url..."
-         />
+        />
       );
     }
   }
 
   renderSubmitButton() {
-    if (this.state.input === '') {
-      return(
+    if (this.state.input === "") {
+      return (
         <Button
           onClick={event => this.submitURL(event)}
           className="ui button"
-          color='blue'
+          color="blue"
           style={{ opacity: 0.7 }}
         >
           Submit
         </Button>
       );
     } else {
-      return(
+      return (
         <Button
           onClick={event => this.submitURL(event)}
           className="ui button"
-          color='blue'
+          color="blue"
         >
           Submit
         </Button>
@@ -121,36 +127,36 @@ class AddImgModal extends Component {
   }
 
   renderErrorMessage() {
-    if (this.props.error === true && this.state.input !== '' && this.checkForDuplicateUrls() === 'no duplicates') {
-      return(
-        <p> Please check URL and try again </p>
-      );
+    if (
+      this.props.error === true &&
+      this.state.input !== "" &&
+      this.checkForDuplicateUrls() === "no duplicates"
+    ) {
+      return <p> Please check URL and try again </p>;
     }
-    if (this.checkForDuplicateUrls() === 'duplicate exists') {
+    if (this.checkForDuplicateUrls() === "duplicate exists") {
       this.props.sendErrorStatus();
-      return(
-        <p> Image URL already exists. Please try a different one</p>
-      );
+      return <p> Image URL already exists. Please try a different one</p>;
     }
   }
 
   renderLoader() {
-    if(this.props.loader === 'show') {
-      return(
+    if (this.props.loader === "show") {
+      return (
         <Dimmer active inverted>
-          <Loader size='big' inverted />
+          <Loader size="big" inverted />
         </Dimmer>
       );
     }
   }
   // Semantic UI settings
   close = () => {
-    this.setState({ input: '' });
+    this.setState({ input: "" });
     // Open and Close state in store.js instead of local state
     this.props.closeImgModal();
     this.props.clearErrorStatus();
     this.props.clearImgSubmit();
-  }
+  };
 
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
     this.setState({
@@ -160,33 +166,35 @@ class AddImgModal extends Component {
     this.props.openImgModal();
     this.props.clearErrorStatus();
     this.props.clearImgSubmit();
-  }
+  };
 
   render() {
-    const { closeOnEscape, closeOnDimmerClick } = this.state
-      return (
-        <div>
-          <Button onClick={this.closeConfigShow(false, true)} icon>Try your own image</Button>
-          <Modal
-            open={this.props.open}
-            closeOnEscape={closeOnEscape}
-            closeOnDimmerClick={closeOnDimmerClick}
-            onClose={this.close}
-            closeIcon
-          >
-            <Modal.Content className="add-image-modal">
-              <h3>Try your own image</h3>
-              <form onSubmit={event => this.submitURL(event)}>
-                {this.renderURLinput()}
-                {this.renderSubmitButton()}
-              </form>
-              {this.renderErrorMessage()}
-              {this.renderLoader()}
-            </Modal.Content>
-          </Modal>
-        </div>
-      )
-    }
+    const { closeOnEscape, closeOnDimmerClick } = this.state;
+    return (
+      <div>
+        <Button onClick={this.closeConfigShow(false, true)} icon>
+          Try your own image
+        </Button>
+        <Modal
+          open={this.props.open}
+          closeOnEscape={closeOnEscape}
+          closeOnDimmerClick={closeOnDimmerClick}
+          onClose={this.close}
+          closeIcon
+        >
+          <Modal.Content className="add-image-modal">
+            <h3>Try your own image</h3>
+            <form onSubmit={event => this.submitURL(event)}>
+              {this.renderURLinput()}
+              {this.renderSubmitButton()}
+            </form>
+            {this.renderErrorMessage()}
+            {this.renderLoader()}
+          </Modal.Content>
+        </Modal>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
@@ -201,15 +209,18 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {
-  analyzeImage,
-  changeMainImage,
-  addImageSelection,
-  closeImgModal,
-  openImgModal,
-  newImgSubmit,
-  clearImgSubmit,
-  clearErrorStatus,
-  showModalLoader,
-  sendErrorStatus
-})(AddImgModal);
+export default connect(
+  mapStateToProps,
+  {
+    analyzeImage,
+    changeMainImage,
+    addImageSelection,
+    closeImgModal,
+    openImgModal,
+    newImgSubmit,
+    clearImgSubmit,
+    clearErrorStatus,
+    showModalLoader,
+    sendErrorStatus
+  }
+)(AddImgModal);

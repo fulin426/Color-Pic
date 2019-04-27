@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { newColorPalette } from '../actions/MyPaletteAPI';
-import { Button, Modal, Input, Header, Icon } from 'semantic-ui-react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { newColorPalette } from "../actions/MyPaletteAPI";
+import { Button, Modal, Input, Header, Icon } from "semantic-ui-react";
 
 class SavePalette extends Component {
   state = {
-    input: '',
+    input: "",
     open: false,
     error: false,
-    placeHolder: 'New Palette Name...'
+    placeHolder: "New Palette Name..."
   };
 
   handleInput(event) {
@@ -17,68 +17,72 @@ class SavePalette extends Component {
     this.setState({
       input: event.target.value,
       error: false,
-      placeHolder: 'New Palette Name...'
+      placeHolder: "New Palette Name..."
     });
   }
 
   // Modal Settings
   closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
-  this.setState({ closeOnEscape, closeOnDimmerClick, open: true })
-  }
+    this.setState({ closeOnEscape, closeOnDimmerClick, open: true });
+  };
 
   close = () => {
     // reset to default state on close
     this.setState({
-      input: '',
+      input: "",
       open: false,
       error: false
     });
-  }
+  };
 
   // Send new color set to database
   handleConfirmClick() {
-    this.props.newColorPalette({
-      url: this.props.url,
-      email: this.props.email,
-      title: this.state.input,
-      colors: this.props.colors
-    }, this.props.token)
+    this.props.newColorPalette(
+      {
+        url: this.props.url,
+        email: this.props.email,
+        title: this.state.input,
+        colors: this.props.colors
+      },
+      this.props.token
+    );
     this.close();
   }
 
   setError() {
-    if (this.state.input === '') {
+    if (this.state.input === "") {
       this.setState({
         error: true,
-        placeHolder: 'Title Required...'
+        placeHolder: "Title Required..."
       });
     }
 
     if (this.state.input.length >= 40) {
       this.setState({
         error: true,
-        placeHolder: 'Over Max Characters Allowed'
+        placeHolder: "Over Max Characters Allowed"
       });
     }
   }
 
   renderConfirmButton() {
     // set error to true if empty title input
-    if (this.state.input === '' || this.state.input.length >= 40) {
+    if (this.state.input === "" || this.state.input.length >= 40) {
       return (
-        <Button onClick={() => this.setError()}
-          color='blue'
+        <Button
+          onClick={() => this.setError()}
+          color="blue"
           style={{ opacity: 0.7 }}
         >
           Create New
         </Button>
       );
     } else {
-      return(
+      return (
         <Link to="/MyPallettes">
           <Button
-            color='blue'
-            style={{ marginLeft: .75 + 'em'}}
+            color="blue"
+            style={{ marginLeft: 0.75 + "em" }}
             onClick={() => this.handleConfirmClick()}
           >
             Create New
@@ -89,7 +93,7 @@ class SavePalette extends Component {
   }
 
   colorsRender() {
-    const ColorsList = this.props.colors.map((color,index) =>
+    const ColorsList = this.props.colors.map((color, index) => (
       <div key={color.hexColor + index} className="color-square-container">
         <div
           className="color-square"
@@ -100,8 +104,8 @@ class SavePalette extends Component {
         />
         <p>{color.hexColor}</p>
       </div>
-    );
-    return(ColorsList);
+    ));
+    return ColorsList;
   }
 
   render() {
@@ -111,7 +115,7 @@ class SavePalette extends Component {
       closeOnDimmerClick,
       error,
       placeHolder
-    } = this.state
+    } = this.state;
 
     return (
       <div>
@@ -120,7 +124,7 @@ class SavePalette extends Component {
           className="save-pallette"
           icon
         >
-          <Icon name='save' />  Save Palette
+          <Icon name="save" /> Save Palette
         </Button>
         <Modal
           open={open}
@@ -139,9 +143,7 @@ class SavePalette extends Component {
               placeholder={placeHolder}
               error={error}
             />
-            <div className="colors-render">
-              {this.colorsRender()}
-            </div>
+            <div className="colors-render">{this.colorsRender()}</div>
           </Modal.Content>
           <Modal.Actions>
             <Button onClick={() => this.close()}>Cancel</Button>
@@ -162,4 +164,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { newColorPalette })(SavePalette);
+export default connect(
+  mapStateToProps,
+  { newColorPalette }
+)(SavePalette);

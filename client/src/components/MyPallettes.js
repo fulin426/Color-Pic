@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { getColors } from '../actions/MyPaletteAPI';
-import { logoutUser } from '../actions/authActions';
-import ConfirmDeleteModal from './ConfirmDeleteModal';
-import EditModal from './EditModal';
-import { Header, Container, Grid, Image} from 'semantic-ui-react';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getColors } from "../actions/MyPaletteAPI";
+import { logoutUser } from "../actions/authActions";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import EditModal from "./EditModal";
+import { Header, Container, Grid, Image } from "semantic-ui-react";
 
 class MyPallettes extends Component {
   componentDidMount() {
@@ -13,34 +13,31 @@ class MyPallettes extends Component {
 
   componentDidUpdate(prevProps) {
     // Email isn't always loaded right when component is mounted
-    if (this.props.email !== prevProps.email && this.props.email !== undefined) {
+    if (
+      this.props.email !== prevProps.email &&
+      this.props.email !== undefined
+    ) {
       this.props.getColors(this.props.email);
     }
   }
 
   // Renders one set of 5 colors then insert into renderPalettes()
   renderOneColorSet(colors) {
-    const colorSet = colors.map((color, index) =>
+    const colorSet = colors.map((color, index) => (
       <div className="color-square-container" key={color.hexColor + index}>
         <div
           className="color-square"
           style={{ backgroundColor: color.hexColor, opacity: color.alpha }}
         />
       </div>
-     );
-     return (
-       <div style={{ margin: '0px auto' }}>
-         {colorSet}
-       </div>
-     );
+    ));
+    return <div style={{ margin: "0px auto" }}>{colorSet}</div>;
   }
 
   renderPalettes() {
     if (this.props.myPalettes !== undefined) {
-      const Palettes = this.props.myPalettes.map((palette, index) =>
-        <Grid.Column
-          key={palette._id}
-        >
+      const Palettes = this.props.myPalettes.map((palette, index) => (
+        <Grid.Column key={palette._id}>
           <div className="palette-container">
             <h5>
               {palette.title}
@@ -55,20 +52,17 @@ class MyPallettes extends Component {
                 selectedSet={palette.colors}
               />
             </h5>
-            <Image
-              src={palette.url}
-              centered
-            />
+            <Image src={palette.url} centered />
             {this.renderOneColorSet(palette.colors)}
           </div>
         </Grid.Column>
-      );
+      ));
       return Palettes;
     }
   }
 
   render() {
-    return(
+    return (
       <Container>
         <Header as="h1" className="palette-header">
           My Color Palettes
@@ -92,4 +86,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect (mapStateToProps, { getColors, logoutUser })(MyPallettes);
+export default connect(
+  mapStateToProps,
+  { getColors, logoutUser }
+)(MyPallettes);

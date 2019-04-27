@@ -1,15 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Grid, Image } from 'semantic-ui-react';
+import React from "react";
+import { connect } from "react-redux";
+import { Grid, Image } from "semantic-ui-react";
 
-const ImageMain = ({url}) => {
-  return(
+const ImageMain = ({ url }) => {
+  return (
     <Grid.Column mobile={16} computer={13}>
-      <Image
-        className="sample-img"
-        src={url}
-        alt="analyze main"
-      />
+      <Image className="sample-img" src={url} alt="analyze main" />
     </Grid.Column>
   );
 };

@@ -1,41 +1,26 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class ColorInfo extends Component {
   render() {
     return (
       <div className="color-info">
-       <h5>Hex</h5>
-       <input
-         className="hex-info-input"
-         value={this.props.hexColor}
-       />
-       <p className="info-text">R</p>
-       <p className="info-text">G</p>
-       <p className="info-text">B</p>
-       <p className="info-text">a</p>
-       <div>
-         <input
-           className="info-input"
-           defaultValue={this.props.R}
-           readOnly
-         />
-         <input
-           className="info-input"
-           defaultValue={this.props.G}
-           readOnly
-         />
-         <input
-           className="info-input"
-           defaultValue={this.props.B}
-           readOnly
-         />
-         <input
-           className="info-input"
-           defaultValue={this.props.alpha}
-           readOnly
-         />
-       </div>
+        <h5>Hex</h5>
+        <input className="hex-info-input" value={this.props.hexColor} />
+        <p className="info-text">R</p>
+        <p className="info-text">G</p>
+        <p className="info-text">B</p>
+        <p className="info-text">a</p>
+        <div>
+          <input className="info-input" defaultValue={this.props.R} readOnly />
+          <input className="info-input" defaultValue={this.props.G} readOnly />
+          <input className="info-input" defaultValue={this.props.B} readOnly />
+          <input
+            className="info-input"
+            defaultValue={this.props.alpha}
+            readOnly
+          />
+        </div>
       </div>
     );
   }
@@ -53,4 +38,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { })(ColorInfo);
+export default connect(
+  mapStateToProps,
+  {}
+)(ColorInfo);

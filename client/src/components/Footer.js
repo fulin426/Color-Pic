@@ -1,13 +1,11 @@
-import React from 'react';
-import { Icon, Container } from 'semantic-ui-react';
-import './css/footer.css';
+import React from "react";
+import { Icon, Container } from "semantic-ui-react";
+import "./css/footer.css";
 
-const Footer = ({url}) => {
-  return(
+const Footer = ({ url }) => {
+  return (
     <Container className="footer">
-      <h5 className="footer-header">
-        © 2019
-      </h5>
+      <h5 className="footer-header">© 2019</h5>
       <div className="icon-container">
         <a
           className="icon-div"
@@ -15,7 +13,7 @@ const Footer = ({url}) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon className="icon-div" name="github" size='big' />
+          <Icon className="icon-div" name="github" size="big" />
         </a>
         <a
           className="icon-div"
@@ -23,7 +21,7 @@ const Footer = ({url}) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon className="icon-div" name="linkedin square" size='big' />
+          <Icon className="icon-div" name="linkedin square" size="big" />
         </a>
         <a
           className="icon-div"
@@ -31,7 +29,7 @@ const Footer = ({url}) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon className="icon-div" name="mail" size='big' />
+          <Icon className="icon-div" name="mail" size="big" />
         </a>
       </div>
     </Container>

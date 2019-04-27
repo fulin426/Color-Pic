@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-const InputBar = (props) => {
-  const { imgSearch, searchButtonClick} = props
-  return(
+const InputBar = props => {
+  const { imgSearch, searchButtonClick } = props;
+  return (
     <div className="container">
       <div className="input-group mb-3">
         <input
@@ -17,11 +17,13 @@ const InputBar = (props) => {
           className="input-group-append search-button"
           onClick={searchButtonClick}
         >
-          <span className="input-group-text" id="basic-addon2">Search</span>
+          <span className="input-group-text" id="basic-addon2">
+            Search
+          </span>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default InputBar;

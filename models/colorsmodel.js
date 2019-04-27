@@ -1,12 +1,11 @@
-
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ColorsSchema = new mongoose.Schema({
   email: {
-    type: String,
+    type: String
   },
   url: {
-    type: String,
+    type: String
   },
   title: {
     type: String,
@@ -20,10 +19,10 @@ const ColorsSchema = new mongoose.Schema({
   register_date: {
     type: Date,
     default: Date.now
-  },
+  }
 });
 
 // Export the model
-const colorPalette = mongoose.model('colorPalette', ColorsSchema);
+const colorPalette = mongoose.model("colorPalette", ColorsSchema);
 
 module.exports = colorPalette;

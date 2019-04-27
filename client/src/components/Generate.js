@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import ColorsList from './ColorsList';
-import ImageMain from './ImageMain';
-import ImageSelection from './ImageSelection';
-import ColorPicker from './ColorPicker';
-import ColorInfo from './ColorInfo';
-import Regenerate from './Regenerate';
-import SavePalette from './SavePalette';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import ColorsList from "./ColorsList";
+import ImageMain from "./ImageMain";
+import ImageSelection from "./ImageSelection";
+import ColorPicker from "./ColorPicker";
+import ColorInfo from "./ColorInfo";
+import Regenerate from "./Regenerate";
+import SavePalette from "./SavePalette";
 import {
   Container,
   Grid,
@@ -14,19 +14,23 @@ import {
   Button,
   Icon,
   Header
-} from 'semantic-ui-react';
+} from "semantic-ui-react";
 
 class HomePage extends Component {
   savepaletteRender() {
-    if(this.props.Authenticated === true) {
+    if (this.props.Authenticated === true) {
       return <SavePalette />;
     } else {
       return (
         <Popup
-          trigger={<Button className="save-pallette"><Icon name='save' />  Save Palette</Button>}
+          trigger={
+            <Button className="save-pallette">
+              <Icon name="save" /> Save Palette
+            </Button>
+          }
           content="Log In required for this feature"
-          position='bottom right'
-          size='large'
+          position="bottom right"
+          size="large"
           basic
         />
       );
@@ -35,7 +39,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="HomePage">
-        <Container textAlign='center'>
+        <Container textAlign="center">
           <Header as="h1" className="generate-header">
             Choose a picture and analyze
           </Header>
@@ -70,4 +74,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { })(HomePage);
+export default connect(
+  mapStateToProps,
+  {}
+)(HomePage);

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import LoginModal from './LoginModal';
-import Logout from './Logout';
-import { logoutUser } from '../actions/authActions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import LoginModal from "./LoginModal";
+import Logout from "./Logout";
+import { logoutUser } from "../actions/authActions";
 import {
   Menu,
   Responsive,
@@ -11,24 +11,23 @@ import {
   Visibility,
   Dimmer,
   Loader
-} from 'semantic-ui-react'
-
+} from "semantic-ui-react";
 
 const getWidth = () => {
-  const isSSR = typeof window === 'undefined'
+  const isSSR = typeof window === "undefined";
 
-  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth
-}
+  return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
+};
 
 class DesktopContainer extends Component {
-  state = {}
+  state = {};
 
   hideFixedMenu = () => {
     this.setState({ fixed: false });
-  }
+  };
   showFixedMenu = () => {
     this.setState({ fixed: true });
-  }
+  };
 
   loginRender() {
     if (this.props.Authenticated === true) {
@@ -43,7 +42,7 @@ class DesktopContainer extends Component {
 
   myPalettesRender() {
     if (this.props.Authenticated === true) {
-      return(
+      return (
         <Menu.Item as={Link} to="/MyPallettes">
           <h5>My Palettes</h5>
         </Menu.Item>
@@ -52,8 +51,8 @@ class DesktopContainer extends Component {
   }
 
   renderLoader() {
-    if(this.props.isLoading === true) {
-      return(
+    if (this.props.isLoading === true) {
+      return (
         <Dimmer active inverted>
           <Loader size="small" inverted />
         </Dimmer>
@@ -62,7 +61,7 @@ class DesktopContainer extends Component {
   }
 
   render() {
-    const { children } = this.props
+    const { children } = this.props;
 
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
@@ -90,7 +89,7 @@ class DesktopContainer extends Component {
 
         {children}
       </Responsive>
-    )
+    );
   }
 }
 
@@ -101,4 +100,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { logoutUser })(DesktopContainer);
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(DesktopContainer);
