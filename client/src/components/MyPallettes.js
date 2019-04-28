@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getColors } from "../actions/MyPaletteAPI";
 import { logoutUser } from "../actions/authActions";
-import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import EditModal from "./EditModal";
+import EllipseMenu from "./EllipseMenu";
+import "./css/myPalettes.css";
 import { Header, Container, Grid, Image } from "semantic-ui-react";
 
 class MyPallettes extends Component {
@@ -41,11 +42,13 @@ class MyPallettes extends Component {
           <div className="palette-container">
             <h5>
               {palette.title}
-              <ConfirmDeleteModal
+              {/* <EditModal
                 title={palette.title}
                 objectID={palette._id}
-              />
-              <EditModal
+                colorPosition={index}
+                selectedSet={palette.colors}
+              /> */}
+              <EllipseMenu
                 title={palette.title}
                 objectID={palette._id}
                 colorPosition={index}
@@ -86,7 +89,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getColors, logoutUser }
-)(MyPallettes);
+export default connect(mapStateToProps,{ getColors, logoutUser })(MyPallettes);

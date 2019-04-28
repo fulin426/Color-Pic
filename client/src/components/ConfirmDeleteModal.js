@@ -1,44 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Confirm, Icon } from "semantic-ui-react";
+import { Confirm, Icon, Modal, Button } from "semantic-ui-react";
 import { deleteColorPalette } from "../actions/MyPaletteAPI";
 import "./css/confirmDeleteModal.css";
 
 class ConfirmDelete extends Component {
-  state = { open: false };
-
-  show = () => {
-    this.setState({ open: true });
-  };
-
   handleConfirm = () => {
-    // Item also removed via state
     this.props.deleteColorPalette(this.props.objectID, this.props.token);
-    this.setState({ open: false });
-  };
-
-  handleCancel = () => {
-    this.setState({ open: false });
+    this.props.close();
   };
 
   render() {
     return (
-      <div className="confirm-delete-modal icon-div">
-        <Icon
-          className=""
-          size="large"
-          onClick={this.show}
-          name="trash alternate"
-        />
-        <Confirm
-          open={this.state.open}
-          content={`Are you sure you want to delete ${
-            this.props.title
-          } palette?`}
-          onCancel={this.handleCancel}
-          onConfirm={this.handleConfirm}
-          size="small"
-        />
+      <div>
+        <p className="item-style" onClick={this.props.openModal}><Icon name="trash" />Delete</p>
+        <Modal size="tiny" open={this.props.open} onClose={this.props.close}>
+          <Modal.Content>
+            <p>{`Are you sure you want to delete ${this.props.title} palette?`}</p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button onClick={this.props.close}>Cancel</Button>
+            <Button
+              onClick={this.handleConfirm}
+              color="blue"
+              content="Confirm"
+            />
+          </Modal.Actions>
+        </Modal>
       </div>
     );
   }
@@ -51,9 +39,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    deleteColorPalette
-  }
-)(ConfirmDelete);
+export default connect(mapStateToProps, { deleteColorPalette })(ConfirmDelete);

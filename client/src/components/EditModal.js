@@ -178,9 +178,9 @@ class EditModal extends Component {
 
     return (
       <div className="edit-modal icon-div">
-        <Icon size="large" onClick={this.closeConfigShow(true)} name="edit" />
+        <p onClick={this.props.openModal}><Icon name="edit" />Edit</p>
         <Modal
-          open={open}
+          open={this.props.open}
           //Dimmer not currently working
           dimmer={dimmer}
           onClose={this.close}

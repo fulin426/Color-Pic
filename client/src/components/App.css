@@ -217,28 +217,6 @@
 
 /* my Color palettes */
 /* reused some css from colorslist */
-.palette-header,
-.generate-header {
-  margin-top: 1rem !important;
-  margin-bottom: 4rem !important;
-}
-
-.palette-container {
-  max-width: 400px;
-  padding-bottom: 15px;
-  margin: 0 auto;
-}
-
-.input-colors-container {
-  display: inline-block;
-}
-
-.edit-sketchpicker {
-  float: right;
-  display: inline-block;
-}
-
-/* LandingPage */
 
 /* LoginModal */
 .login-header {
