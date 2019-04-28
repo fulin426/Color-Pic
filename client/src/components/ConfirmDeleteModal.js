@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { Icon, Modal, Button } from "semantic-ui-react";
 import { deleteColorPalette } from "../actions/MyPaletteAPI";
 import "./css/confirmDeleteModal.css";

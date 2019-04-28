@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ChromePicker } from "react-color";
-import { Button, Modal, Icon, Input, Grid, Segment } from "semantic-ui-react";
+import { Button, Icon, Input, Grid, Segment } from "semantic-ui-react";
 import { updateColorPalette } from "../actions/MyPaletteAPI";
 import { sendPositionInfo } from "../actions/colorInfoActions";
 import { sendSelectedColor } from "../actions/colorInfoActions";
@@ -173,7 +173,7 @@ class EditModal extends Component {
   };
 
   render() {
-    const { open, dimmer, title, hexInput, selectedSet } = this.state;
+    const { title, hexInput, selectedSet } = this.state;
 
     return (
       <div className="edit-modal">

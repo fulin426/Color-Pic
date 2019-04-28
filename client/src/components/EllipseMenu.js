@@ -28,14 +28,14 @@ class DropdownExampleIcon extends Component {
         style={{ float: "right" }}
       >
         <Dropdown.Menu>
-          <Link to="/Edit">
+          {/* <Link to="/Edit">
             <Dropdown.Item>
               <p className="edit-item-style">
                 <Icon name="edit" />
                 Edit
               </p>
             </Dropdown.Item>
-          </Link>
+          </Link> */}
           <Dropdown.Item onClick={() => this.openModal()}>
             <ConfirmDeleteModal
               title={this.props.title}

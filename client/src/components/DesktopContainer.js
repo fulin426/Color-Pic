@@ -57,6 +57,8 @@ class DesktopContainer extends Component {
           <Loader size="small" inverted />
         </Dimmer>
       );
+    } else {
+      return null;
     }
   }
 
@@ -94,6 +96,7 @@ class DesktopContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     Authenticated: state.auth.isAuthenticated,
     isLoading: state.auth.isLoading
