@@ -13,7 +13,6 @@ npm-debug.log
 
 # production
 /package-lock.json
-keys.js
 
 # misc
 .DS_Store
