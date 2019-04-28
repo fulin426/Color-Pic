@@ -31,16 +31,30 @@
   display: inline-block;
 }
 
-.edit-delete-menu {
+.image-header,
+.ellipsisMenu {
+  display: inline-block;
+}
+
+.ellipsisMenu {
   float: right;
+}
+/* override default menu styling */
+.menu-parent {
+  border: none !important;
+  min-height: 0px !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  content: default !important;
 }
 
 .menu-styles {
   padding-left: 3px;
   padding-top: 2px;
   padding-bottom: 2px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
+
 /* These styles override the link tag */
 .edit-item-style {
   padding: 11px 16px;

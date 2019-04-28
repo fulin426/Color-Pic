@@ -43,21 +43,15 @@ class MyPallettes extends Component {
       const Palettes = this.props.myPalettes.map((palette, index) => (
         <Grid.Column key={palette._id}>
           <div className="palette-container">
-            <h5>
-              {palette.title}
-              {/* <EditModal
-                title={palette.title}
-                objectID={palette._id}
-                colorPosition={index}
-                selectedSet={palette.colors}
-              /> */}
+            <h5 className="image-header">{palette.title}</h5>
+            <div className="ellipsisMenu">
               <EllipseMenu
                 title={palette.title}
                 objectID={palette._id}
                 colorPosition={index}
                 selectedSet={palette.colors}
               />
-            </h5>
+            </div>
             <Image src={palette.url} centered />
             {this.renderOneColorSet(palette.colors)}
           </div>
@@ -101,3 +95,12 @@ export default connect(
   mapStateToProps,
   { getColors, logoutUser }
 )(MyPallettes);
+
+{
+  /* <EditModal
+  title={palette.title}
+  objectID={palette._id}
+  colorPosition={index}
+  selectedSet={palette.colors}
+/> */
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
-import { Dropdown, Icon } from "semantic-ui-react";
+import { Dropdown, Icon, Menu } from "semantic-ui-react";
 
 class DropdownExampleIcon extends Component {
   state = { open: false };
@@ -22,31 +22,36 @@ class DropdownExampleIcon extends Component {
   }
   render() {
     return (
-      <Dropdown
-        className="icon menu-styles"
-        icon="ellipsis vertical"
-        style={{ float: "right" }}
-      >
-        <Dropdown.Menu>
-          {/* <Link to="/Edit">
-            <Dropdown.Item>
-              <p className="edit-item-style">
-                <Icon name="edit" />
-                Edit
-              </p>
-            </Dropdown.Item>
-          </Link> */}
-          <Dropdown.Item onClick={() => this.openModal()}>
-            <ConfirmDeleteModal
-              title={this.props.title}
-              objectID={this.props.objectID}
-              open={this.state.open}
-              openModal={() => this.openModal()}
-              close={() => this.closeModal()}
-            />
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <Menu className="menu-parent">
+        <Menu.Menu position="right">
+          <Dropdown
+            simple
+            direction="right"
+            className="icon menu-styles"
+            icon="ellipsis vertical"
+          >
+            <Dropdown.Menu>
+              {/* <Link to="/Edit">
+                  <Dropdown.Item>
+                    <p className="edit-item-style">
+                      <Icon name="edit" />
+                      Edit
+                    </p>
+                  </Dropdown.Item>
+                </Link> */}
+              <Dropdown.Item onClick={() => this.openModal()}>
+                <ConfirmDeleteModal
+                  title={this.props.title}
+                  objectID={this.props.objectID}
+                  open={this.state.open}
+                  openModal={() => this.openModal()}
+                  close={() => this.closeModal()}
+                />
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Menu>
+      </Menu>
     );
   }
 }
