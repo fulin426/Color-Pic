@@ -42,7 +42,22 @@
   padding-bottom: 2px;
   border-radius: 10px;
 }
+/* These styles override the link tag */
+.edit-item-style {
+  padding: 11px 16px;
+  cursor: pointer;
+  display: block;
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: none;
+  color: black;
+  opacity: 0.87;
+}
 
+.edit-item-style:hover {
+  background-color: #f5f5f5;
+  opacity: 1;
+}
 .menu-styles:hover {
-  background-color: #E0E1E2;
+  background-color: #e0e1e2;
 }

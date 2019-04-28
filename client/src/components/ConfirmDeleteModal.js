@@ -13,10 +13,15 @@ class ConfirmDelete extends Component {
   render() {
     return (
       <div>
-        <p className="item-style" onClick={this.props.openModal}><Icon name="trash" />Delete</p>
+        <p onClick={this.props.openModal}>
+          <Icon name="trash" />
+          Delete
+        </p>
         <Modal size="tiny" open={this.props.open} onClose={this.props.close}>
           <Modal.Content>
-            <p>{`Are you sure you want to delete ${this.props.title} palette?`}</p>
+            <p>{`Are you sure you want to delete ${
+              this.props.title
+            } palette?`}</p>
           </Modal.Content>
           <Modal.Actions>
             <Button onClick={this.props.close}>Cancel</Button>
@@ -39,4 +44,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { deleteColorPalette })(ConfirmDelete);
+export default connect(
+  mapStateToProps,
+  { deleteColorPalette }
+)(ConfirmDelete);

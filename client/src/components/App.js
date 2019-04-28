@@ -6,6 +6,7 @@ import Analytics from "react-router-ga";
 import HeaderMenu from "./HeaderMenu";
 import LandingPage from "./LandingPage";
 import MyPallettes from "./MyPallettes";
+import EditPalette from "./EditPalette";
 import Footer from "./Footer";
 import Generate from "./Generate";
 import "./App.css";
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/" exact component={LandingPage} />
           <Route path="/Generate" component={Generate} />
           <Route path="/MyPallettes" component={MyPallettes} />
+          <Route path="/Edit" component={EditPalette} />
           <Footer />
         </Analytics>
       </BrowserRouter>
@@ -35,7 +37,4 @@ class App extends Component {
   }
 }
 
-export default connect(
-  null,
-  { loadUser }
-)(App);
+export default connect(null, { loadUser })(App);

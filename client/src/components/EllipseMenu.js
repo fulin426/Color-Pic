@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { Dropdown, Icon } from "semantic-ui-react";
 
@@ -9,8 +10,8 @@ class DropdownExampleIcon extends Component {
     // Default padding cannot be overriden easily, closes dropdown by default
     // Set dropdown item onClick open just in case user clicks edges
     // Only set to true if open state is already false i.e closed
-    if(this.state.open === true) {
-      return
+    if (this.state.open === true) {
+      return;
     } else {
       this.setState({ open: true });
     }
@@ -26,10 +27,15 @@ class DropdownExampleIcon extends Component {
         icon="ellipsis vertical"
         style={{ float: "right" }}
       >
-        <Dropdown.Menu >
-          <Dropdown.Item>
-            <p className="item-style"><Icon name="edit" />Edit</p>
-          </Dropdown.Item>
+        <Dropdown.Menu>
+          <Link to="/Edit">
+            <Dropdown.Item>
+              <p className="edit-item-style">
+                <Icon name="edit" />
+                Edit
+              </p>
+            </Dropdown.Item>
+          </Link>
           <Dropdown.Item onClick={() => this.openModal()}>
             <ConfirmDeleteModal
               title={this.props.title}
