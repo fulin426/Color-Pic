@@ -39,6 +39,7 @@
 .ellipsisMenu {
   float: right;
 }
+
 /* override default menu styling */
 .menu-parent {
   border: none !important;
@@ -57,7 +58,9 @@
 
 /* These styles override the link tag */
 .edit-item-style {
+  width: 100%;
   padding: 11px 16px;
+  margin-left: 2px;
   cursor: pointer;
   display: block;
   font-weight: 400;
@@ -71,8 +74,15 @@
   background-color: #f5f5f5;
   opacity: 1;
 }
+
 .menu-styles:hover {
   background-color: #e0e1e2;
+}
+
+/* line up text in dropdown */
+.edit-text {
+  margin-left: 6px;
+  display: inline-block;
 }
 
 /* Masonry Styles */

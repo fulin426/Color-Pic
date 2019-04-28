@@ -26,19 +26,18 @@ class DropdownExampleIcon extends Component {
         <Menu.Menu position="right">
           <Dropdown
             simple
-            direction="right"
             className="icon menu-styles"
             icon="ellipsis vertical"
           >
             <Dropdown.Menu>
-              {/* <Link to="/Edit">
-                  <Dropdown.Item>
-                    <p className="edit-item-style">
-                      <Icon name="edit" />
-                      Edit
-                    </p>
-                  </Dropdown.Item>
-                </Link> */}
+              <Link to="/Edit">
+                <Dropdown.Item style={{ padding: "0px" }}>
+                  <p className="edit-item-style">
+                    <Icon name="edit" />
+                    <div className="edit-text">Edit</div>
+                  </p>
+                </Dropdown.Item>
+              </Link>
               <Dropdown.Item onClick={() => this.openModal()}>
                 <ConfirmDeleteModal
                   title={this.props.title}
