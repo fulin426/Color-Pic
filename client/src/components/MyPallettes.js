@@ -70,8 +70,8 @@ class MyPallettes extends Component {
         {/* <Grid stackable columns={3}>
           {this.renderPalettes()}
         </Grid> */}
-        <div class="ui container">
-          <div class="ui three column doubling stackable masonry grid">
+        <div className="ui container">
+          <div className="ui three column doubling stackable masonry grid">
             {this.renderPalettes()}
           </div>
         </div>

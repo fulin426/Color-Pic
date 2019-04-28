@@ -96,7 +96,6 @@ class DesktopContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     Authenticated: state.auth.isAuthenticated,
     isLoading: state.auth.isLoading
