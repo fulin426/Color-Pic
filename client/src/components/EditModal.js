@@ -180,7 +180,7 @@ class EditModal extends Component {
       <div className="edit-modal icon-div">
         <p onClick={this.props.openModal}><Icon name="edit" />Edit</p>
         <Modal
-          open={this.props.open}
+          open={open}
           //Dimmer not currently working
           dimmer={dimmer}
           onClose={this.close}
