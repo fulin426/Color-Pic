@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getColors } from "../actions/MyPaletteAPI";
 import { logoutUser } from "../actions/authActions";
-import EditModal from "./EditModal";
+// import EditModal from "./EditModal";
 import EllipseMenu from "./EllipseMenu";
 import "./css/myPalettes.css";
 import { Header, Container, Grid, Image } from "semantic-ui-react";
@@ -25,7 +25,10 @@ class MyPallettes extends Component {
   // Renders one set of 5 colors then insert into renderPalettes()
   renderOneColorSet(colors) {
     const colorSet = colors.map((color, index) => (
-      <div className="color-square-container" key={color.hexColor + index}>
+      <div
+        className="color-square-container column"
+        key={color.hexColor + index}
+      >
         <div
           className="color-square"
           style={{ backgroundColor: color.hexColor, opacity: color.alpha }}
@@ -70,16 +73,21 @@ class MyPallettes extends Component {
         <Header as="h1" className="palette-header">
           My Color Palettes
         </Header>
-        <Grid stackable columns={3}>
+        {/* <Grid stackable columns={3}>
           {this.renderPalettes()}
-        </Grid>
+        </Grid> */}
+        <div class="ui container">
+          <div class="ui three column doubling stackable masonry grid">
+            {this.renderPalettes()}
+          </div>
+        </div>
       </Container>
     );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor,

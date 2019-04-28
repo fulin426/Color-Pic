@@ -15,8 +15,6 @@ export default (state = initialState, action) => {
         loading: false
       };
     case "ADD_COLORS":
-      console.log(state);
-      console.log(action.payload);
       return {
         ...state,
         Data: state.Data.concat(action.payload),

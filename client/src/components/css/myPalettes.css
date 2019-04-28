@@ -19,7 +19,6 @@
 .palette-container {
   position: relative !important;
   max-width: 400px;
-  padding-bottom: 15px;
   margin: 0 auto;
 }
 
@@ -60,4 +59,38 @@
 }
 .menu-styles:hover {
   background-color: #e0e1e2;
+}
+
+/* Masonry Styles */
+/* https://github.com/Semantic-Org/Semantic-UI/issues/3353 */
+.masonry.grid {
+  display: block;
+}
+
+.ui.grid > .column:not(.row) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .masonry.grid {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 0;
+    -moz-column-gap: 0;
+    column-gap: 0;
+  }
+
+  .ui.doubling.masonry.grid[class*="three column"] > .column {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .masonry.grid {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
 }
