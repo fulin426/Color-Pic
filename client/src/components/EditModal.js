@@ -10,7 +10,6 @@ import { clearPosition } from "../actions/colorInfoActions";
 import { sendAlphaInfo } from "../actions/colorInfoActions";
 import { getColors } from "../actions/MyPaletteAPI";
 import EditModalColorInfo from "./EditModalColorInfo";
-import "./css/editModal.css";
 
 class EditModal extends Component {
   state = {
@@ -177,52 +176,40 @@ class EditModal extends Component {
     const { open, dimmer, title, hexInput, selectedSet } = this.state;
 
     return (
-      <div className="edit-modal icon-div">
-        <p onClick={this.props.openModal}><Icon name="edit" />Edit</p>
-        <Modal
-          open={open}
-          //Dimmer not currently working
-          dimmer={dimmer}
-          onClose={this.close}
-        >
-          <Modal.Header>Edit Palette</Modal.Header>
-          <Modal.Content>
-            <Input
-              className="modal-input"
-              label="Title"
-              value={title}
-              onChange={event => this.handleTitleInput(event)}
-              placeholder="Edit Palette Name..."
-            />
-            <div>{this.renderOneColorSet()}</div>
-            <Grid textAlign="center" stackable columns={2}>
-              <Grid.Column width={10}>
-                <Segment>{this.renderColorPicker()}</Segment>
-              </Grid.Column>
-              <Grid.Column width={6}>
-                <Segment>
-                  <EditModalColorInfo
-                    hexInput={hexInput}
-                    hexColorOnChange={event => this.hexColorOnChange(event)}
-                    selectedSet={selectedSet}
-                  />
-                </Segment>
-              </Grid.Column>
-            </Grid>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button onClick={this.cancel}>Cancel</Button>
-            <Button onClick={this.handleConfirm} color="blue">
-              Confirm
-            </Button>
-          </Modal.Actions>
-        </Modal>
+      <div className="edit-modal">
+        <Input
+          className="modal-input"
+          label="Title"
+          value={title}
+          onChange={event => this.handleTitleInput(event)}
+          placeholder="Edit Palette Name..."
+        />
+        <div>{this.renderOneColorSet()}</div>
+        <Grid textAlign="center" stackable columns={2}>
+          <Grid.Column width={10}>
+            <Segment>{this.renderColorPicker()}</Segment>
+          </Grid.Column>
+          <Grid.Column width={6}>
+            <Segment>
+              <EditModalColorInfo
+                hexInput={hexInput}
+                hexColorOnChange={event => this.hexColorOnChange(event)}
+                selectedSet={selectedSet}
+              />
+            </Segment>
+          </Grid.Column>
+        </Grid>
+        <Button onClick={this.cancel}>Cancel</Button>
+        <Button onClick={this.handleConfirm} color="blue">
+          Confirm
+        </Button>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return {
     data: state.myPalettes.Data,
     position: state.colorInfo.position,

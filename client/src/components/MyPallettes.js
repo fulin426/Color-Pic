@@ -79,7 +79,7 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state);
   return {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor,
@@ -89,4 +89,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps,{ getColors, logoutUser })(MyPallettes);
+export default connect(
+  mapStateToProps,
+  { getColors, logoutUser }
+)(MyPallettes);

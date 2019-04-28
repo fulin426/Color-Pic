@@ -44,7 +44,7 @@ class SavePalette extends Component {
         title: this.state.input,
         colors: this.props.colors
       },
-      this.props.token
+      this.props.email
     );
     this.close();
   }

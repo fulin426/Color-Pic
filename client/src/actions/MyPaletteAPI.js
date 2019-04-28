@@ -22,7 +22,7 @@ export const getColors = email => dispatch => {
 };
 
 // Add color palettes
-export const newColorPalette = colorSet => dispatch => {
+export const newColorPalette = (colorSet, email) => dispatch => {
   axios
     .post("/api/colors", colorSet, tokenConfig())
     .then(res =>
@@ -31,7 +31,12 @@ export const newColorPalette = colorSet => dispatch => {
         payload: res.data
       })
     )
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+    })
+    .then(() => {
+      callAPI(email, dispatch);
+    });
 };
 
 // Update color palettes
