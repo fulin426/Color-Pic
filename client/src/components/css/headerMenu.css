@@ -5,6 +5,7 @@
 
 .menu-small {
   border-radius: 0px !important;
-  box-shadow: none !important;
   content: default !important;
+  border-left: none !important;
+  border-right: none !important;
 }

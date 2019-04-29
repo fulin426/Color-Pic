@@ -10,7 +10,8 @@ import {
   Segment,
   Visibility,
   Dimmer,
-  Loader
+  Loader,
+  Container
 } from "semantic-ui-react";
 
 const getWidth = () => {
@@ -74,17 +75,19 @@ class DesktopContainer extends Component {
         >
           <Segment className="menu-container" textAlign="center" vertical>
             <Menu className="menu-small" size="small" borderless>
-              <Menu.Item as={Link} to="/">
-                <h5>Color Pic</h5>
-              </Menu.Item>
-              <Menu.Item as={Link} to="/Generate">
-                <h5>Generate</h5>
-              </Menu.Item>
-              {this.myPalettesRender()}
-              <Menu.Item position="right">
-                {this.loginRender()}
-                {this.renderLoader()}
-              </Menu.Item>
+              <Container>
+                <Menu.Item as={Link} to="/">
+                  <h5>Color Pic</h5>
+                </Menu.Item>
+                <Menu.Item as={Link} to="/Generate">
+                  <h5>Generate</h5>
+                </Menu.Item>
+                {this.myPalettesRender()}
+                <Menu.Item position="right">
+                  {this.loginRender()}
+                  {this.renderLoader()}
+                </Menu.Item>
+              </Container>
             </Menu>
           </Segment>
         </Visibility>

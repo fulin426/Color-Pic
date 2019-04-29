@@ -4,12 +4,14 @@ import "./css/landingPage.css";
 
 const HowItWorks = () => {
   return (
-    <Grid verticalAlign="middle" centered>
+    <Grid stackable columns={2} verticalAlign="middle" centered>
       <Grid.Row className="explanation-container">
-        <Grid.Column>
+        <Grid.Column computer={5} tablet={6} mobile={16}>
           <Header as="h1" className="explanation-header" textAlign="center">
             How it Works
           </Header>
+        </Grid.Column>
+        <Grid.Column computer={11} tablet={10} mobile={16}>
           <p className="explanation-text">
             The Color Pic application uses image recognition from{" "}
             <a
