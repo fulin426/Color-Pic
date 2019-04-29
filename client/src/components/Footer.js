@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon, Container } from "semantic-ui-react";
-import "./css/footer.css";
+import "./css/landingPage.css";
 
 const Footer = ({ url }) => {
   return (
@@ -33,6 +33,13 @@ const Footer = ({ url }) => {
             <Icon className="icon-div" name="mail" size="big" />
           </a>
         </div>
+        <a
+          href="https://fulin426.github.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div className="portfolio-link">Portfolio</div>
+        </a>
       </Container>
     </div>
   );
