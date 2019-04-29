@@ -5,6 +5,7 @@ import { loginUser } from "../actions/authActions";
 import { openModal } from "../actions/authActions";
 import { closeModal } from "../actions/authActions";
 import { clearErrors } from "../actions/authActions";
+import "./css/loginModal.css";
 import { Button, Modal, Input, Menu, Dimmer, Loader } from "semantic-ui-react";
 
 const Isemail = require("isemail");
@@ -215,11 +216,7 @@ class LoginModal extends Component {
   buttonTwoRender() {
     if (this.props.buttonTwo !== undefined) {
       return (
-        <Button
-          color="blue"
-          onClick={this.showSignup()}
-          style={{ marginLeft: "0.5em", marginRight: "1rem" }}
-        >
+        <Button color="blue" onClick={this.showSignup()} className="btn-two">
           {this.props.buttonTwo}
         </Button>
       );
@@ -253,7 +250,7 @@ class LoginModal extends Component {
 
     return (
       <div>
-        <Button color="blue" onClick={this.showLogin()}>
+        <Button className="login-btn-menu" onClick={this.showLogin()}>
           {this.props.buttonOne}
         </Button>
         {this.buttonTwoRender()}

@@ -217,33 +217,3 @@
 
 /* my Color palettes */
 /* reused some css from colorslist */
-
-/* LoginModal */
-.login-header {
-  text-align: center;
-  padding: 16px;
-}
-.login-input {
-  display: block;
-  margin-bottom: 0.5rem;
-  width: 100%;
-}
-
-.login-label {
-  margin: 14px 0px 10px 0px;
-  display: block;
-}
-
-.login-btn {
-  margin-top: 1.5rem !important;
-  margin-bottom: 1rem !important;
-  width: 100% !important;
-}
-
-.login-description {
-  text-align: center;
-}
-
-.menu-overide {
-  margin: 0px !important;
-}
