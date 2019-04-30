@@ -5,7 +5,7 @@ import ImageMain from "./ImageMain";
 import ColorInfo from "./ColorInfo";
 import ColorsList from "./ColorsList";
 import ColorPicker from "./ColorPicker";
-import "./css/editModal.css";
+// import "./css/editModal.css";
 import { Header, Grid, Container, Button } from "semantic-ui-react";
 
 const EditPalette = () => {

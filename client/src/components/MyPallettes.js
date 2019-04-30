@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getColors } from "../actions/MyPaletteAPI";
 import { logoutUser } from "../actions/authActions";
-// import EditModal from "./EditModal";
+import EditModal from "./EditModal";
 import EllipseMenu from "./EllipseMenu";
 import "./css/myPalettes.css";
 import { Header, Container, Grid, Image } from "semantic-ui-react";
@@ -51,6 +51,12 @@ class MyPallettes extends Component {
                 colorPosition={index}
                 selectedSet={palette.colors}
               />
+              {/* <EditModal
+                title={palette.title}
+                objectID={palette._id}
+                colorPosition={index}
+                selectedSet={palette.colors}
+              /> */}
             </div>
             <Image src={palette.url} centered />
             {this.renderOneColorSet(palette.colors)}
@@ -95,12 +101,3 @@ export default connect(
   mapStateToProps,
   { getColors, logoutUser }
 )(MyPallettes);
-
-{
-  /* <EditModal
-  title={palette.title}
-  objectID={palette._id}
-  colorPosition={index}
-  selectedSet={palette.colors}
-/> */
-}

@@ -79,10 +79,46 @@
   background-color: #e0e1e2;
 }
 
+.edit-icon {
+  margin-left: -1px;
+}
+
 /* line up text in dropdown */
 .edit-text {
-  margin-left: 6px;
+  margin-left: -1px;
   display: inline-block;
+}
+
+.color-square-container {
+  display: inline-block;
+  width: 20%;
+}
+
+/* Edit Modal styles */
+.color-square {
+  width: 100%;
+  padding-top: 75%;
+  display: inline-block;
+}
+
+.carot-container {
+  text-align: center;
+}
+
+.modal-input {
+  width: 90%;
+  max-width: 425px;
+  padding-bottom: 10px;
+}
+
+.edit-icon-div {
+  color: black;
+  opacity: 0.8;
+  margin: 0px 2px;
+}
+
+.edit-icon-div:hover {
+  opacity: 1 !important;
 }
 
 /* Masonry Styles */
