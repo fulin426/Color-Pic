@@ -1,12 +1,12 @@
 import React from "react";
-import { Header, Grid } from "semantic-ui-react";
+import { Header, Grid, Icon } from "semantic-ui-react";
 import "./css/landingPage.css";
 
 const HowItWorks = () => {
   return (
     <Grid stackable columns={2} verticalAlign="middle" centered>
       <Grid.Row className="explanation-container">
-        <Grid.Column computer={5} tablet={6} mobile={16}>
+        <Grid.Column textAlign="center" computer={5} tablet={6} mobile={16}>
           <Header as="h1" className="explanation-header" textAlign="center">
             How it Works
           </Header>

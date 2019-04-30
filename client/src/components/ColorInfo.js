@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./css/colorInfo.css";
 
 class ColorInfo extends Component {
   render() {

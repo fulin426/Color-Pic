@@ -1,0 +1,36 @@
+/* color info display */
+.info-text {
+  display: inline-block;
+  margin: 5px 16px;
+}
+
+.hex-info-input {
+  text-align: center !important;
+  padding: 5px;
+  max-width: 165px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+}
+
+.info-input {
+  width: 42px;
+  padding: 4px;
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: center;
+}
+
+.color-info {
+  margin-top: 1rem;
+  display: inline-block;
+  height: 12rem;
+  width: 90%;
+  max-width: 240px;
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  text-align: center;
+}

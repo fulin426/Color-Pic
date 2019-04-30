@@ -6,7 +6,7 @@ const LandingIcons = () => {
     <Grid columns={3} style={{ margin: "4em 0em" }}>
       <Grid.Row>
         <Grid.Column textAlign="center">
-          <Icon name="images" size="huge" />
+          <Icon name="image outline" size="huge" />
           <h3>Capture colors from Images</h3>
         </Grid.Column>
         <Grid.Column textAlign="center">

@@ -50,12 +50,6 @@ class MyPallettes extends Component {
                 colorPosition={index}
                 selectedSet={palette.colors}
               />
-              {/* <EditModal
-                title={palette.title}
-                objectID={palette._id}
-                colorPosition={index}
-                selectedSet={palette.colors}
-              /> */}
             </div>
             <Image src={palette.url} centered />
             {this.renderOneColorSet(palette.colors)}
