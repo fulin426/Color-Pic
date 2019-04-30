@@ -183,7 +183,6 @@ class EditModal extends Component {
           dimmer={dimmer}
           onClose={this.close}
         >
-          <Modal.Header>Edit Palette</Modal.Header>
           <Modal.Content>
             <Input
               className="modal-input"

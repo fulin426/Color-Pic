@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import EditModal from "./EditModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
-import { Dropdown, Icon, Menu } from "semantic-ui-react";
+import { Dropdown, Menu } from "semantic-ui-react";
 
 class DropdownExampleIcon extends Component {
   state = {
@@ -76,12 +75,3 @@ class DropdownExampleIcon extends Component {
 }
 
 export default DropdownExampleIcon;
-
-{/* <Link to="/Edit">
-  <Dropdown.Item style={{ padding: "0px" }}>
-    <p className="edit-item-style">
-      <Icon name="edit" />
-      <div className="edit-text">Edit</div>
-    </p>
-  </Dropdown.Item>
-</Link> */}

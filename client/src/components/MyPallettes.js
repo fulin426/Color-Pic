@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getColors } from "../actions/MyPaletteAPI";
 import { logoutUser } from "../actions/authActions";
-import EditModal from "./EditModal";
 import EllipseMenu from "./EllipseMenu";
-import "./css/myPalettes.css";
 import { Header, Container, Grid, Image } from "semantic-ui-react";
+import "./css/myPalettes.css";
 
 class MyPallettes extends Component {
   componentDidMount() {
