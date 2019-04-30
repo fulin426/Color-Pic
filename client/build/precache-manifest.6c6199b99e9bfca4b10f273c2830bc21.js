@@ -1,5 +1,9 @@
 self.__precacheManifest = [
   {
+    "revision": "bc263099f3c7c230b66d772df1e22a7c",
+    "url": "/static/media/Save_Preview.bc263099.jpg"
+  },
+  {
     "revision": "647af6bde2ef52fd82b1babec57b4ad9",
     "url": "/static/media/FujiExample.647af6bd.jpg"
   },
@@ -20,19 +24,19 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.a8a9905a.js"
   },
   {
-    "revision": "97a2e4ed1442285a30ba",
-    "url": "/static/js/main.3efdf05c.chunk.js"
+    "revision": "c32d40f26a1d7b692168",
+    "url": "/static/js/main.79d02112.chunk.js"
   },
   {
-    "revision": "b1f6ecd43a5e4b7213c3",
-    "url": "/static/js/2.2af925d8.chunk.js"
+    "revision": "9cee8171e571744a1c43",
+    "url": "/static/js/2.93964dba.chunk.js"
   },
   {
-    "revision": "97a2e4ed1442285a30ba",
-    "url": "/static/css/main.f115e27c.chunk.css"
+    "revision": "c32d40f26a1d7b692168",
+    "url": "/static/css/main.9b997afa.chunk.css"
   },
   {
-    "revision": "f20d9985af7d6e646d3d3d95c6411a1b",
+    "revision": "d1dd22656a0737d97c763afeb36250fd",
     "url": "/index.html"
   }
 ];
