@@ -12,8 +12,8 @@ The Color Pic application uses image recognition to predict what the dominant co
 ### [Live Demo](https://color-pic.herokuapp.com/)
 
 ![Screenshots](./client/public/Landing1.png)
-![Screenshots](./client/public/Landing2.png)
 ![Screenshots](./client/public/ExampleAnalyze.png)
+![Screenshots](./client/public/Landing2.png)
 ![Screenshots](./client/public/Gallery.png)
 
 ## How it works
