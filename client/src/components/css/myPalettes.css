@@ -106,6 +106,7 @@
 }
 
 .modal-input {
+  display: inline-block;
   width: 90%;
   max-width: 425px;
   padding-bottom: 10px;

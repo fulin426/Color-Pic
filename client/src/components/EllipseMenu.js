@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { sendColorInfo } from '../actions/colorInfoActions';
 import EditModal from "./EditModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import { Dropdown, Menu } from "semantic-ui-react";
@@ -28,6 +30,9 @@ class DropdownExampleIcon extends Component {
     if (this.state.openEdit === true) {
       return;
     } else {
+      // send color info for first square when model opens
+      const position = this.props.colorPosition;
+      this.props.sendColorInfo(this.props.data[position].colors[0].hexColor, this.props.data[position].colors[0].alpha);
       this.setState({ openEdit: true });
     }
   }
@@ -74,4 +79,10 @@ class DropdownExampleIcon extends Component {
   }
 }
 
-export default DropdownExampleIcon;
+const mapStateToProps = state => {
+  return {
+    data: state.myPalettes.Data
+  };
+};
+
+export default connect(mapStateToProps, { sendColorInfo })(DropdownExampleIcon);

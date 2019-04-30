@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ChromePicker } from 'react-color';
-import { Button, Modal, Icon, Input, Grid, Segment } from 'semantic-ui-react';
 import { updateColorPalette } from '../actions/MyPaletteAPI';
 import { sendPositionInfo } from '../actions/colorInfoActions';
 import { sendSelectedColor } from '../actions/colorInfoActions';
 import { sendColorInfo } from '../actions/colorInfoActions';
 import { clearPosition } from '../actions/colorInfoActions';
 import { sendAlphaInfo } from '../actions/colorInfoActions';
-import { getColors } from '../actions/MyPaletteAPI';
 import EditModalColorInfo from './EditModalColorInfo';
+import { Button, Modal, Icon, Input, Grid, Segment } from 'semantic-ui-react';
 import "./css/myPalettes.css";
 
 class EditModal extends Component {
@@ -18,6 +17,16 @@ class EditModal extends Component {
     selectedSet: [],
     hexInput:''
   };
+
+  componentDidMount() {
+    // send info to local state when modal opens
+    const position = this.props.colorPosition;
+    this.setState({
+      title: this.props.data[position].title,
+      selectedSet: this.props.data[position].colors,
+      hexInput: this.props.data[position].colors[0].hexColor
+    });
+  }
 
   handleTitleInput(event) {
     this.setState({ title: event.target.value });
@@ -135,10 +144,10 @@ class EditModal extends Component {
       selectedSet: this.props.data[position].colors,
       hexInput: this.props.data[position].colors[0].hexColor
     });
-    //open state moved to parent component
-    this.props.openEdit();
     // send color info for first square when model opens
     this.props.sendColorInfo(this.props.data[position].colors[0].hexColor, this.props.data[position].colors[0].alpha);
+    //open state moved to parent component
+    this.props.openEdit();
   }
 
   cancel = () => {
@@ -168,7 +177,6 @@ class EditModal extends Component {
 
   render() {
     const { dimmer, title, hexInput, selectedSet } = this.state
-
     return (
       <div className="edit-modal edit-icon-div">
         <Icon
@@ -243,5 +251,4 @@ export default connect(mapStateToProps, {
   sendColorInfo,
   sendAlphaInfo,
   clearPosition,
-  getColors
 })(EditModal);
