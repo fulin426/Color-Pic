@@ -179,17 +179,17 @@ class LoginModal extends Component {
       return;
     }
 
-    // Validate Email
-    // if (
-    //   this.state.activeItem === "Sign Up" &&
-    //   Isemail.validate(this.state.email) === false
-    // ) {
-    //   this.setState({
-    //     errorStatusEmail: "error",
-    //     errorMsgEmail: "Not a valid email"
-    //   });
-    //   return;
-    // }
+    Validate Email
+    if (
+      this.state.activeItem === "Sign Up" &&
+      Isemail.validate(this.state.email) === false
+    ) {
+      this.setState({
+        errorStatusEmail: "error",
+        errorMsgEmail: "Not a valid email"
+      });
+      return;
+    }
 
     // If Sign Up and No errors statuses
     if (this.state.activeItem === "Sign Up") {
