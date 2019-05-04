@@ -170,17 +170,26 @@ class LoginModal extends Component {
       return;
     }
 
-    // Validate Email
-    if (
-      this.state.activeItem === "Sign Up" &&
-      Isemail.validate(this.state.email) === false
-    ) {
+    // Password should be at least 6 chars
+    if (this.state.activeItem === "Sign Up" && this.state.password.length < 6) {
       this.setState({
-        errorStatusEmail: "error",
-        errorMsgEmail: "Not a valid email"
+        errorStatusPassword: true,
+        errorMsgPassword: "Passwords should be at least 6 characters"
       });
       return;
     }
+
+    // Validate Email
+    // if (
+    //   this.state.activeItem === "Sign Up" &&
+    //   Isemail.validate(this.state.email) === false
+    // ) {
+    //   this.setState({
+    //     errorStatusEmail: "error",
+    //     errorMsgEmail: "Not a valid email"
+    //   });
+    //   return;
+    // }
 
     // If Sign Up and No errors statuses
     if (this.state.activeItem === "Sign Up") {
