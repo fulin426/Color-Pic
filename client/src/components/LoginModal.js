@@ -179,7 +179,7 @@ class LoginModal extends Component {
       return;
     }
 
-    Validate Email
+    // Validate Email
     if (
       this.state.activeItem === "Sign Up" &&
       Isemail.validate(this.state.email) === false
