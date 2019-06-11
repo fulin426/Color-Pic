@@ -9,7 +9,7 @@ The Color Pic application uses image recognition to predict what the dominant co
 - User can save palettes for future reference
 - User can create a new user profile and login
 
-### [Live Demo](https://color-pic.herokuapp.com/)
+### [Live Demo](https://www.colorpic.net/)
 
 ![Screenshots](./client/public/Landing1.png)
 ![Screenshots](./client/public/ExampleAnalyze.png)
