@@ -1,4 +1,4 @@
 module.exports = {
-  mongoURI: 'mongodb://user1234:colorpic123@ds153304.mlab.com:53304/colorpic-data',
+  mongoURI: 'mongodb+srv://fulin:pass123@cluster0.bxgyz.mongodb.net/Cluster0?retryWrites=true&w=majority',
   "jwtSecret": "user_jwtSecretHsh"
 }

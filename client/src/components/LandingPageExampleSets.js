@@ -19,15 +19,7 @@ const LandingPageExampleSets = () => {
     { FujiExample: ["#ECE3E0", "#252C32", "#6A707E", "#53262E", "#B81F34"] },
     { DabinExample: ["#684C56", "#EDDFD0", "#87AC95", "#AA8489", "#884B86"] },
     { CameraExample: ["#26221A", "#3D464F", "#96BBDC", "#74AACB", "#867D80"] },
-    {
-      BladeRunnerExample: [
-        "#804C27",
-        "#F7AC49",
-        "#CD6622",
-        "#7A2717",
-        "#2C2022"
-      ]
-    }
+    { BladeRunnerExample: ["#804C27", "#F7AC49", "#CD6622", "#7A2717", "#2C2022"]}
   ];
 
   return (
