@@ -1,39 +1,27 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { analyzeImage } from "../actions";
 import { clearRecieved } from "../actions/colorInfoActions";
 import { clearPosition } from "../actions/colorInfoActions";
 import { Button, Icon } from "semantic-ui-react";
 
-class Regenerate extends Component {
-  handleClick = url => () => {
+const Regenerate = () => {
+  const url = useSelector(state => state.url.url);
+  const dispatch = useDispatch();
+
+  const handleClick = (url) => {
     // first clear the status from API
-    this.props.clearRecieved();
+    dispatch(clearRecieved());
     // set position to 1
-    this.props.clearPosition();
-    this.props.analyzeImage(url);
+    dispatch(clearPosition());
+    dispatch(analyzeImage(url));
   };
 
-  render() {
-    return (
-      <Button className="regen-btn" onClick={this.handleClick(this.props.url)}>
-        <Icon name="redo" /> Regenerate
-      </Button>
-    );
-  }
+  return (
+    <Button className="regen-btn" onClick={handleClick(url)}>
+      <Icon name="redo" /> Regenerate
+    </Button>
+  );
 }
 
-const mapStateToProps = state => {
-  return {
-    url: state.url.url
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  {
-    analyzeImage,
-    clearRecieved,
-    clearPosition
-  }
-)(Regenerate);
+export default Regenerate;

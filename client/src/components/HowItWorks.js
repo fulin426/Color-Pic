@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Grid, Icon } from "semantic-ui-react";
+import { Header, Grid } from "semantic-ui-react";
 import "./css/landingPage.css";
 
 const HowItWorks = () => {
