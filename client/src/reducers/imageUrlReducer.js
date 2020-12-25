@@ -10,19 +10,26 @@ const initialState = {
 export default (state = initialState, action) => {
   switch(action.type) {
     case 'MAIN_IMAGE':
-     return {
+      // so no empty string urls are being set
+      if (action.url.length === 0) {
+        return state;
+      }
+      return {
        ...state,
        url: action.url
      };
     case 'ADD_URL':
-     return {
+      if (action.url.length === 0) {
+        return state;
+      }
+      return {
        ...state,
        exampleImages: state.exampleImages.concat(action.url)
      };
      case 'DELETE_URL':
      // temporary so at least one image is showing and no react errors
      if(state.exampleImages.length === 1) {
-       return state;
+        return state;
      }
       const newImageList = state.exampleImages.filter( url => url !== action.url);
       return {
