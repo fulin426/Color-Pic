@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { changeMainImage } from "../actions";
-import { analyzeImage } from "../actions";
 import { clearRecieved } from "../actions/colorInfoActions";
 import { clearPosition } from "../actions/colorInfoActions";
 import { deleteURL } from "../actions";
@@ -73,6 +72,5 @@ export default connect(
     clearRecieved,
     clearPosition,
     deleteURL,
-    analyzeImage
   }
 )(ImageSelection);

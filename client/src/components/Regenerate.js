@@ -18,7 +18,7 @@ const Regenerate = () => {
   };
 
   return (
-    <Button className="regen-btn" onClick={handleClick(url)}>
+    <Button className="regen-btn" onClick={() => handleClick(url)}>
       <Icon name="redo" /> Regenerate
     </Button>
   );

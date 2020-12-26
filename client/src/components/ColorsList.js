@@ -115,7 +115,6 @@ class ColorsList extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
   return {
     colors: state.colors.colors,
     selectedColor: state.colorInfo.selectedColor,
