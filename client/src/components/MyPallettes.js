@@ -13,10 +13,7 @@ class MyPallettes extends Component {
 
   componentDidUpdate(prevProps) {
     // Email isn't always loaded right when component is mounted
-    if (
-      this.props.email !== prevProps.email &&
-      this.props.email !== undefined
-    ) {
+    if (this.props.email !== prevProps.email && this.props.email !== undefined) {
       this.props.getColors(this.props.email);
     }
   }
@@ -66,9 +63,6 @@ class MyPallettes extends Component {
         <Header as="h1" className="palette-header">
           My Color Palettes
         </Header>
-        {/* <Grid stackable columns={3}>
-          {this.renderPalettes()}
-        </Grid> */}
         <div className="ui container">
           <div className="ui three column doubling stackable masonry grid">
             {this.renderPalettes()}
@@ -80,7 +74,6 @@ class MyPallettes extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
   return {
     myPalettes: state.myPalettes.Data,
     addColor: state.myPalettes.AddColor,
@@ -90,7 +83,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { getColors, logoutUser }
-)(MyPallettes);
+export default connect(mapStateToProps,{ getColors, logoutUser })(MyPallettes);
